@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:jungle_planks",
+    "buildersdelight:jungle_planks_1",
+    "buildersdelight:jungle_planks_2",
+    "buildersdelight:jungle_planks_3",
+    "buildersdelight:jungle_planks_4",
+    "buildersdelight:jungle_planks_5",
+    "buildersdelight:jungle_planks_6",
+    "buildersdelight:jungle_planks_7"
+  ]
+}

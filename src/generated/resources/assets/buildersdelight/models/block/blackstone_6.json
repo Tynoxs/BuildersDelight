@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "buildersdelight:block/blackstone_6",
+    "end": "buildersdelight:block/blackstone_6_top"
+  }
+}

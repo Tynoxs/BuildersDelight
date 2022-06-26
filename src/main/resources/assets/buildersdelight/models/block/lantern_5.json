@@ -1,0 +1,74 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "buildersdelight:block/decoration/lanterns/fire",
+		"2": "buildersdelight:block/decoration/lanterns/lantern_5",
+		"particle": "buildersdelight:block/decoration/lanterns/lantern_5"
+	},
+	"elements": [
+		{
+			"name": "Bowl",
+			"from": [4, 1, 4],
+			"to": [12, 3, 12],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 2.5, 8]},
+			"faces": {
+				"north": {"uv": [0.5, 0.5, 4.5, 1.5], "texture": "#2"},
+				"east": {"uv": [0.5, 0.5, 4.5, 1.5], "texture": "#2"},
+				"south": {"uv": [0.5, 0.5, 4.5, 1.5], "texture": "#2"},
+				"west": {"uv": [0.5, 0.5, 4.5, 1.5], "texture": "#2"},
+				"up": {"uv": [0.5, 6.5, 4.5, 10.5], "texture": "#2"},
+				"down": {"uv": [0.5, 2, 4.5, 6], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Bowl",
+			"from": [5, 0, 5],
+			"to": [11, 1, 11],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 2.5, 8]},
+			"faces": {
+				"north": {"uv": [1, 0.5, 4, 1], "texture": "#2"},
+				"east": {"uv": [1, 0.5, 4, 1], "texture": "#2"},
+				"south": {"uv": [1, 0.5, 4, 1], "texture": "#2"},
+				"west": {"uv": [1, 0.5, 4, 1], "texture": "#2"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#2"},
+				"down": {"uv": [5, 2.5, 8, 5.5], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Fire",
+			"from": [8, 3, 4.5],
+			"to": [8, 9, 11.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -3, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 7], "texture": "#1"},
+				"east": {"uv": [4, 9, 11, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 9, 16], "texture": "#1"},
+				"west": {"uv": [4, 9, 11, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 0, 9], "texture": "#1"},
+				"down": {"uv": [0, 0, 0, 9], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Fire",
+			"from": [4.5, 3, 8],
+			"to": [11.5, 9, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7.5, 8]},
+			"faces": {
+				"north": {"uv": [4, 9, 11, 16], "texture": "#1"},
+				"east": {"uv": [0, 0, 0, 7], "texture": "#1"},
+				"south": {"uv": [4, 9, 11, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 0, 7], "texture": "#1"},
+				"up": {"uv": [0, 0, 0, 9], "rotation": 270, "texture": "#1"},
+				"down": {"uv": [0, 0, 0, 9], "rotation": 90, "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Lantern",
+			"origin": [8, 10.5, 8],
+			"color": 0,
+			"children": [0, 1, 2, 3]
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:cobblestone_stairs_1",
+    "buildersdelight:cobblestone_stairs_2",
+    "buildersdelight:cobblestone_stairs_3",
+    "buildersdelight:cobblestone_stairs_4",
+    "buildersdelight:cobblestone_stairs_5",
+    "buildersdelight:cobblestone_stairs_6",
+    "buildersdelight:cobblestone_stairs_7",
+    "minecraft:cobblestone_stairs"
+  ]
+}

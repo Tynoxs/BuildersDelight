@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:andesite_stairs_1",
+    "buildersdelight:andesite_stairs_2",
+    "buildersdelight:andesite_stairs_3",
+    "buildersdelight:andesite_stairs_4",
+    "buildersdelight:andesite_stairs_5",
+    "buildersdelight:andesite_stairs_6",
+    "buildersdelight:andesite_stairs_7",
+    "minecraft:andesite_stairs",
+    "minecraft:polished_andesite_stairs"
+  ]
+}

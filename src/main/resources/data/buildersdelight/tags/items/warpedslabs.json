@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:warped_slab_1",
+    "buildersdelight:warped_slab_2",
+    "buildersdelight:warped_slab_3",
+    "buildersdelight:warped_slab_4",
+    "buildersdelight:warped_slab_5",
+    "buildersdelight:warped_slab_6",
+    "buildersdelight:warped_slab_7",
+    "minecraft:warped_slab"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "": [
+		{"model": "buildersdelight:block/industrial_6", "weight":99},
+		{"model": "buildersdelight:block/industrial_6_a", "weight":1}
+    ]
+  }
+}

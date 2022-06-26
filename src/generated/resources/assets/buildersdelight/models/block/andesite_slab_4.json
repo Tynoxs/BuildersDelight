@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "side": "buildersdelight:block/andesite_4",
+    "bottom": "buildersdelight:block/andesite_4",
+    "top": "buildersdelight:block/andesite_4"
+  }
+}

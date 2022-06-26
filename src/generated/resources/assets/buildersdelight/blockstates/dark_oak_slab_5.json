@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "buildersdelight:block/dark_oak_slab_5_top"
+    },
+    "type=bottom": {
+      "model": "buildersdelight:block/dark_oak_slab_5"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/dark_oak_planks_5"
+    }
+  }
+}

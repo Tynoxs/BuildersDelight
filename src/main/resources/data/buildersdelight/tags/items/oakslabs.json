@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:oak_slab_1",
+    "buildersdelight:oak_slab_2",
+    "buildersdelight:oak_slab_3",
+    "buildersdelight:oak_slab_4",
+    "buildersdelight:oak_slab_5",
+    "buildersdelight:oak_slab_6",
+    "buildersdelight:oak_slab_7",
+    "minecraft:oak_slab"
+  ]
+}

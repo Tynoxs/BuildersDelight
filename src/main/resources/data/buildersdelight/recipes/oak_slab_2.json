@@ -1,0 +1,16 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:oak_planks_2"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:oak_slab_2",
+    "count": 6
+  }
+}

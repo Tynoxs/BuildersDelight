@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:birch_stairs_1",
+    "buildersdelight:birch_stairs_2",
+    "buildersdelight:birch_stairs_3",
+    "buildersdelight:birch_stairs_4",
+    "buildersdelight:birch_stairs_5",
+    "buildersdelight:birch_stairs_6",
+    "buildersdelight:birch_stairs_7",
+    "minecraft:birch_stairs"
+  ]
+}

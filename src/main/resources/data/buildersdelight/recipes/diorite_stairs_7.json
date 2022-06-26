@@ -1,0 +1,18 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  0",
+    " 00",
+	"000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:diorite_7"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:diorite_stairs_7",
+    "count": 4
+  }
+}

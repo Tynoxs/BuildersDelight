@@ -1,0 +1,18 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  0",
+    " 00",
+	"000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:granite_7"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:granite_stairs_7",
+    "count": 4
+  }
+}

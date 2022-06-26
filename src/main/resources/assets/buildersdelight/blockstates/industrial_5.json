@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "": [
+		{"model": "buildersdelight:block/industrial_5"},
+		{"model": "buildersdelight:block/industrial_5_a"},
+		{"model": "buildersdelight:block/industrial_5_b"},
+		{"model": "buildersdelight:block/industrial_5_c"}
+    ]
+  }
+}

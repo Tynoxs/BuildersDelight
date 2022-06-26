@@ -1,0 +1,18 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  0",
+    " 00",
+	"000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:oak_planks_4"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:oak_stairs_4",
+    "count": 4
+  }
+}

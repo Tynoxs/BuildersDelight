@@ -1,0 +1,18 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  0",
+    " 00",
+	"000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:sandstone_4"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:sandstone_stairs_4",
+    "count": 4
+  }
+}

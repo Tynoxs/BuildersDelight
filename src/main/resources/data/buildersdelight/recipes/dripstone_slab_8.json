@@ -1,0 +1,16 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:dripstone_block"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:dripstone_slab_8",
+    "count": 6
+  }
+}

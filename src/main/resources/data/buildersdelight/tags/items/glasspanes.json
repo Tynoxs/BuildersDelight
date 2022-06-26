@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:glass_pane_1",
+    "buildersdelight:glass_pane_2",
+    "buildersdelight:glass_pane_3",
+    "buildersdelight:glass_pane_4",
+    "buildersdelight:glass_pane_5",
+    "buildersdelight:glass_pane_6",
+    "buildersdelight:glass_pane_7",
+    "minecraft:glass_pane"
+  ]
+}

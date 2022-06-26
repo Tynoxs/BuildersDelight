@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:amethyst_block_1",
+    "buildersdelight:amethyst_block_2",
+    "buildersdelight:amethyst_block_3",
+    "buildersdelight:amethyst_block_4",
+    "buildersdelight:amethyst_block_5",
+    "buildersdelight:amethyst_block_6",
+    "buildersdelight:amethyst_block_7",
+    "minecraft:amethyst_block"
+  ]
+}

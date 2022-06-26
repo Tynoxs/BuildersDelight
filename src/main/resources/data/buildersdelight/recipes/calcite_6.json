@@ -1,0 +1,17 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 0 ",
+	" 0 "
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:calcite_slab_6"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:calcite_6",
+    "count": 1
+  }
+}

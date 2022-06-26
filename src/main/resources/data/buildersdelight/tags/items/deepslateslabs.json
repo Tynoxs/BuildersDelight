@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:deepslate_slab_1",
+    "buildersdelight:deepslate_slab_2",
+    "buildersdelight:deepslate_slab_3",
+    "buildersdelight:deepslate_slab_4",
+    "buildersdelight:deepslate_slab_5",
+    "minecraft:polished_deepslate_slab",
+    "minecraft:deepslate_tile_slab",
+    "minecraft:deepslate_brick_slab"
+  ]
+}

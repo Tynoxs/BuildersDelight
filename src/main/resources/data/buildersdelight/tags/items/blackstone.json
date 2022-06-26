@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:blackstone_1",
+    "buildersdelight:blackstone_2",
+    "buildersdelight:blackstone_3",
+    "buildersdelight:blackstone_4",
+    "buildersdelight:blackstone_5",
+    "buildersdelight:blackstone_6",
+    "minecraft:polished_blackstone",
+    "minecraft:blackstone",
+    "minecraft:chiseled_polished_blackstone",
+    "minecraft:polished_blackstone_bricks"
+  ]
+}

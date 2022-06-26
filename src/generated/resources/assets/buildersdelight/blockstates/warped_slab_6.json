@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "buildersdelight:block/warped_slab_6_top"
+    },
+    "type=bottom": {
+      "model": "buildersdelight:block/warped_slab_6"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/warped_planks_6"
+    }
+  }
+}

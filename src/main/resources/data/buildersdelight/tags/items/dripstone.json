@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:dripstone_1",
+    "buildersdelight:dripstone_2",
+    "buildersdelight:dripstone_3",
+    "buildersdelight:dripstone_4",
+    "buildersdelight:dripstone_5",
+    "buildersdelight:dripstone_6",
+    "buildersdelight:dripstone_7",
+    "minecraft:dripstone_block"
+  ]
+}

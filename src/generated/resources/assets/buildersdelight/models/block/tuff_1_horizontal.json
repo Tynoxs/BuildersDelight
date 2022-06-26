@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "side": "buildersdelight:block/tuff_1",
+    "end": "buildersdelight:block/tuff_1_top"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  0",
+    " 00",
+	"000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:acacia_planks_7"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:acacia_stairs_7",
+    "count": 4
+  }
+}

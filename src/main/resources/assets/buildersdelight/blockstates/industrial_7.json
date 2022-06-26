@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "buildersdelight:block/industrial_7"
+    },
+    "lit=true": {
+      "model": "buildersdelight:block/industrial_7_on"
+    }
+  }
+}

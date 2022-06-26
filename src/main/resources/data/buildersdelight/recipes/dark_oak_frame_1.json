@@ -1,0 +1,24 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "202",
+    "010",
+    "202"
+  ],
+  "key": {
+    "0": {
+      "tag": "buildersdelight:planksdarkoak"
+    },
+    "1": {
+      "tag": "minecraft:wool"
+    },
+    "2": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:dark_oak_frame_1",
+    "count": 8
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:sandstone_1",
+    "buildersdelight:sandstone_2",
+    "buildersdelight:sandstone_3",
+    "buildersdelight:sandstone_4",
+    "buildersdelight:sandstone_5",
+    "minecraft:sandstone",
+    "minecraft:cut_sandstone",
+    "minecraft:chiseled_sandstone"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 0 ",
+	" 0 "
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:cobblestone_slab_5"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:cobblestone_5",
+    "count": 1
+  }
+}

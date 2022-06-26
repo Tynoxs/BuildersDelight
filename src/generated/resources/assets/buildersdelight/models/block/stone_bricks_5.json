@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "buildersdelight:block/stone_bricks_5",
+    "end": "buildersdelight:block/stone_bricks_5_top"
+  }
+}

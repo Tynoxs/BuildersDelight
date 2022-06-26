@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:warped_stairs_1",
+    "buildersdelight:warped_stairs_2",
+    "buildersdelight:warped_stairs_3",
+    "buildersdelight:warped_stairs_4",
+    "buildersdelight:warped_stairs_5",
+    "buildersdelight:warped_stairs_6",
+    "buildersdelight:warped_stairs_7",
+    "minecraft:warped_stairs"
+  ]
+}

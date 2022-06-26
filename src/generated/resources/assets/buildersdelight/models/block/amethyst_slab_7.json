@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "side": "buildersdelight:block/amethyst_block_7",
+    "bottom": "buildersdelight:block/amethyst_block_7",
+    "top": "buildersdelight:block/amethyst_block_7"
+  }
+}

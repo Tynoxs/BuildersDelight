@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "side": "buildersdelight:block/andesite_1",
+    "bottom": "buildersdelight:block/andesite_1",
+    "top": "buildersdelight:block/andesite_1"
+  }
+}

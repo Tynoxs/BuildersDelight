@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:granite_1",
+    "buildersdelight:granite_2",
+    "buildersdelight:granite_3",
+    "buildersdelight:granite_4",
+    "buildersdelight:granite_5",
+    "buildersdelight:granite_6",
+    "buildersdelight:granite_7",
+    "minecraft:granite",
+    "minecraft:polished_granite"
+  ]
+}

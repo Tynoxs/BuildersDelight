@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "buildersdelight:block/andesite_1",
+    "end": "buildersdelight:block/andesite_1_top"
+  }
+}

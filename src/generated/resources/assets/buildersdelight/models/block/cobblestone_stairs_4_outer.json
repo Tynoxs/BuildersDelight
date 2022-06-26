@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "buildersdelight:block/cobblestone_4",
+    "bottom": "buildersdelight:block/cobblestone_4",
+    "top": "buildersdelight:block/cobblestone_4"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "buildersdelight:block/granite_slab_5_top"
+    },
+    "type=bottom": {
+      "model": "buildersdelight:block/granite_slab_5"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/granite_5"
+    }
+  }
+}

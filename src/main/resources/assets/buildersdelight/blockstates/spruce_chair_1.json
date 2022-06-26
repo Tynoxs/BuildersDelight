@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "buildersdelight:block/spruce_chair_1",
+	  "y": 180
+    },
+    "facing=east": {
+      "model": "buildersdelight:block/spruce_chair_1",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "buildersdelight:block/spruce_chair_1"
+    },
+    "facing=west": {
+      "model": "buildersdelight:block/spruce_chair_1",
+      "y": 90
+    }
+  }
+}

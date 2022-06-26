@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "buildersdelight:jungle_slab_1",
+    "buildersdelight:jungle_slab_2",
+    "buildersdelight:jungle_slab_3",
+    "buildersdelight:jungle_slab_4",
+    "buildersdelight:jungle_slab_5",
+    "buildersdelight:jungle_slab_6",
+    "buildersdelight:jungle_slab_7",
+    "minecraft:jungle_slab"
+  ]
+}

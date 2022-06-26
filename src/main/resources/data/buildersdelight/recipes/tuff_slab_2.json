@@ -1,0 +1,16 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:tuff_2"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:tuff_slab_2",
+    "count": 6
+  }
+}

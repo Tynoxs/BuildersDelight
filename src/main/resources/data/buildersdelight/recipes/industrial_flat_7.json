@@ -1,0 +1,16 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:industrial_7"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:industrial_flat_7",
+    "count": 6
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000",
+    "010",
+    "000"
+  ],
+  "key": {
+    "0": {
+      "tag": "buildersdelight:glass"
+    },
+    "1": {
+      "tag": "buildersdelight:plankswarped"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:warped_glass_5",
+    "count": 8
+  }
+}

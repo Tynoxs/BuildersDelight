@@ -1,0 +1,17 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 0 ",
+	" 0 "
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:deepslate_slab_4"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:deepslate_4",
+    "count": 1
+  }
+}
