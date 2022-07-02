@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+	"minecraft:acacia_planks",
+    "buildersdelight:acacia_planks_1",
+    "buildersdelight:acacia_planks_2",
+    "buildersdelight:acacia_planks_3",
+    "buildersdelight:acacia_planks_4",
+    "buildersdelight:acacia_planks_5",
+    "buildersdelight:acacia_planks_6",
+    "buildersdelight:acacia_planks_7"
+  ]
+}

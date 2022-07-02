@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "buildersdelight:acacia_furniture_kit"
+  },
+  "result": "buildersdelight:acacia_table_1"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "buildersdelight:crimson_furniture_kit"
+  },
+  "result": "buildersdelight:crimson_chair_1"
+}

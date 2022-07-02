@@ -15,13 +15,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.IModelData;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class CTPaneBakedModel implements IDynamicBakedModel {
 
@@ -65,7 +63,7 @@ public class CTPaneBakedModel implements IDynamicBakedModel {
 
     @Override
     public ItemTransforms getTransforms(){
-        return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(Blocks.STONE.toString().replace("Block{","").replace("}",""), "")).getTransforms();
+        return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(Blocks.STONE)).getPath())).getTransforms();
     }
 
     @Nonnull

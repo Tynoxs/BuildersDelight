@@ -1,0 +1,12 @@
+{
+  "variants": [
+	"minecraft:prismarine_slab",
+	"minecraft:prismarine_brick_slab",
+    "buildersdelight:prismarine_slab_1",
+    "buildersdelight:prismarine_slab_2",
+    "buildersdelight:prismarine_slab_3",
+    "buildersdelight:prismarine_slab_4",
+    "buildersdelight:prismarine_slab_5",
+    "buildersdelight:prismarine_slab_6"
+  ]
+}

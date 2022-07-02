@@ -1,0 +1,13 @@
+{
+  "variants": [
+	"minecraft:diorite_stairs",
+	"minecraft:polished_diorite_stairs",
+    "buildersdelight:diorite_stairs_1",
+    "buildersdelight:diorite_stairs_2",
+    "buildersdelight:diorite_stairs_3",
+    "buildersdelight:diorite_stairs_4",
+    "buildersdelight:diorite_stairs_5",
+    "buildersdelight:diorite_stairs_6",
+    "buildersdelight:diorite_stairs_7"
+  ]
+}

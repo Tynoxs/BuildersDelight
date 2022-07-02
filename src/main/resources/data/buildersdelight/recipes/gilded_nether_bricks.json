@@ -11,11 +11,11 @@
       "tag": "forge:gems/quartz"
     },
     "1": {
-      "tag": "buildersdelight:netherbricks"
+      "tag": "buildersdelight:nether_bricks"
     }
   },
   "result": {
     "item": "buildersdelight:gilded_nether_bricks_1",
-    "count": 2
+    "count": 16
   }
 }

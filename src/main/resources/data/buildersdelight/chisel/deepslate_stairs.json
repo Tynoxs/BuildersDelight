@@ -1,0 +1,12 @@
+{
+  "variants": [
+	"minecraft:polished_deepslate_stairs",
+	"minecraft:deepslate_brick_stairs",
+	"minecraft:deepslate_tile_stairs",
+    "buildersdelight:deepslate_stairs_1",
+    "buildersdelight:deepslate_stairs_2",
+    "buildersdelight:deepslate_stairs_3",
+    "buildersdelight:deepslate_stairs_4",
+    "buildersdelight:deepslate_stairs_5"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "variants": [
+	"minecraft:brick_slab",
+    "buildersdelight:brick_slab_1",
+    "buildersdelight:brick_slab_2",
+    "buildersdelight:brick_slab_3",
+    "buildersdelight:brick_slab_4",
+    "buildersdelight:brick_slab_5",
+    "buildersdelight:brick_slab_6",
+    "buildersdelight:brick_slab_7"
+  ]
+}

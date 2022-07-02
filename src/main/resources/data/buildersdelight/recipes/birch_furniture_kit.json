@@ -1,0 +1,21 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 0 ",
+	"010",
+	" 0 "
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:string"
+    },
+	"1": {
+      "tag": "buildersdelight:birch_planks"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:birch_furniture_kit",
+    "count": 2
+  }
+}

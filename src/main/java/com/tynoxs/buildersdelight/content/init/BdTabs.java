@@ -15,7 +15,7 @@ public class BdTabs {
 			@Override
 			@OnlyIn(Dist.CLIENT)
 			public ItemStack makeIcon() {
-				return new ItemStack(BdBlocks.SPRUCE_PLANKS_6.get());
+				return new ItemStack(BdBlocks.SPRUCE_PLANKS_7.get());
 			}
 		};
 		TabDecoration = new CreativeModeTab("tab_decoration") {
@@ -29,7 +29,7 @@ public class BdTabs {
 			@Override
 			@OnlyIn(Dist.CLIENT)
 			public ItemStack makeIcon() {
-				return new ItemStack(BdItems.SPRUCE_PLANK.get());
+				return new ItemStack(BdItems.SPRUCE_FURNITURE_KIT.get());
 			}
 		};
 	}

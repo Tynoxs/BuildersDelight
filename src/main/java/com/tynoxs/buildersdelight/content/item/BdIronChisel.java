@@ -1,5 +1,6 @@
 package com.tynoxs.buildersdelight.content.item;
 
+import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.content.gui.menus.ContainerChisel;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.nbt.CompoundTag;
@@ -33,7 +34,8 @@ public class BdIronChisel extends BdItem {
     public void onCraftedBy(ItemStack stack, Level world, Player player) {
         super.onCraftedBy(stack, world, player);
         if (!world.isClientSide && player instanceof ServerPlayer serverPlayer) {
-            Advancement advancement = world.getServer().getAdvancements().getAdvancement(new ResourceLocation("buildersdelight:iron_chisel"));
+            Advancement advancement = world.getServer().getAdvancements().getAdvancement(
+                    new ResourceLocation("buildersdelight:recipes/iron_chisel"));
             if (advancement != null) {
                 serverPlayer.getAdvancements().award(advancement, "unlock");
             }

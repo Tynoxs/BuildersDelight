@@ -15,21 +15,13 @@ public class BdItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        simpleItem(BdItems.ACACIA_PLANK.get());
         simpleItem(BdItems.ACACIA_FURNITURE_KIT.get());
-        simpleItem(BdItems.BIRCH_PLANK.get());
         simpleItem(BdItems.BIRCH_FURNITURE_KIT.get());
-        simpleItem(BdItems.CRIMSON_PLANK.get());
         simpleItem(BdItems.CRIMSON_FURNITURE_KIT.get());
-        simpleItem(BdItems.DARK_OAK_PLANK.get());
         simpleItem(BdItems.DARK_OAK_FURNITURE_KIT.get());
-        simpleItem(BdItems.JUNGLE_PLANK.get());
         simpleItem(BdItems.JUNGLE_FURNITURE_KIT.get());
-        simpleItem(BdItems.OAK_PLANK.get());
         simpleItem(BdItems.OAK_FURNITURE_KIT.get());
-        simpleItem(BdItems.SPRUCE_PLANK.get());
         simpleItem(BdItems.SPRUCE_FURNITURE_KIT.get());
-        simpleItem(BdItems.WARPED_PLANK.get());
         simpleItem(BdItems.WARPED_FURNITURE_KIT.get());
 
         handheldItem(BdItems.IRON_CHISEL.get());

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+	"minecraft:warped_planks",
+    "buildersdelight:warped_planks_1",
+    "buildersdelight:warped_planks_2",
+    "buildersdelight:warped_planks_3",
+    "buildersdelight:warped_planks_4",
+    "buildersdelight:warped_planks_5",
+    "buildersdelight:warped_planks_6",
+    "buildersdelight:warped_planks_7"
+  ]
+}

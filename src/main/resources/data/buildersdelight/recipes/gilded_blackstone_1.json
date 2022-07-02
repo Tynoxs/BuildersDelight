@@ -1,0 +1,21 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 0 ",
+    "010",
+    " 0 "
+  ],
+  "key": {
+    "0": {
+      "tag": "forge:ingots/gold"
+    },
+    "1": {
+      "tag": "buildersdelight:blackstone"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:gilded_blackstone_1",
+    "count": 16
+  }
+}
