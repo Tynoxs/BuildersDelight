@@ -94,6 +94,3 @@ public class ChiselRecipeFactory extends SimpleJsonResourceReloadListener {
 
 
 }
-
-
-

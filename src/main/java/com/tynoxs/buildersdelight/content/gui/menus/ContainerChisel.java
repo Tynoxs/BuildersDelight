@@ -9,14 +9,11 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.*;
-import net.minecraft.world.item.Item;
-import net.minecraftforge.fml.common.Mod;
-
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
-
+import net.minecraftforge.fml.common.Mod;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +30,6 @@ public class ContainerChisel extends AbstractContainerMenu {
 
     public ContainerChisel(int id, Inventory inv, FriendlyByteBuf friendlyByteBuf) {
         this(id, inv, ContainerLevelAccess.NULL, new SimpleContainer(30));
-
     }
     private List<Slot> variantsSlots = new ArrayList<>();
 
@@ -47,8 +43,32 @@ public class ContainerChisel extends AbstractContainerMenu {
         pContainer.startOpen(pPlayerInventory.player);
         this.access = access;
 
-        //Variants slots
         int index =0;
+
+        this.inputSlot = this.addSlot(new Slot(pContainer, index, 28, 18){
+            @Override
+            public boolean mayPlace(ItemStack pStack) {
+                return true;
+            }
+
+            @Override
+            public void setChanged() {
+                super.setChanged();
+                ItemStack itemstack = ContainerChisel.this.inputSlot.getItem();
+                updateVariants(itemstack);
+            }
+        });
+        index+=1;
+
+        this.resultSlot = this.addSlot(new Slot(pContainer, index, 28, 45) {
+            public boolean mayPlace(ItemStack stack) {
+                return false;
+            }
+        });
+
+        index+=1;
+
+        //Variants slots
         for(int i = 0; i < 4; ++i) {
             for(int j = 0; j < 7; ++j) {
                 Slot slot = new Slot(pContainer, index, 55 + j * 18, 18 + i * 18){
@@ -56,7 +76,6 @@ public class ContainerChisel extends AbstractContainerMenu {
                     public boolean mayPlace(ItemStack pStack) {
                         return false;
                     }
-
                     @Override
                     public boolean mayPickup(Player pPlayer) {
                         if(!ContainerChisel.this.resultSlot.hasItem()){
@@ -77,27 +96,6 @@ public class ContainerChisel extends AbstractContainerMenu {
             }
         }
 
-
-        this.inputSlot = this.addSlot(new Slot(pContainer, index, 28, 18){
-            @Override
-            public boolean mayPlace(ItemStack pStack) {
-                return true;
-            }
-
-            @Override
-            public void setChanged() {
-                super.setChanged();
-                ItemStack itemstack = ContainerChisel.this.inputSlot.getItem();
-                updateVariants(itemstack);
-            }
-        });
-
-        this.resultSlot = this.addSlot(new Slot(pContainer, index+1, 28, 45) {
-            public boolean mayPlace(ItemStack stack) {
-                return false;
-            }
-        });
-
         //Player inv slots
         for(int k = 0; k < 3; ++k) {
             for(int i1 = 0; i1 < 9; ++i1) {
@@ -113,14 +111,13 @@ public class ContainerChisel extends AbstractContainerMenu {
 
     private void updateVariants(ItemStack input) {
         if(input == ItemStack.EMPTY){
-            for(int i = 0; i < 28; i++){
+            for(int i = 2; i < 30; i++){
                 slots.get(i).set(input);
-
             }
         }
         List<ItemStack> recipe = recipeFactory.getVariants(input);
 
-        int slotIndex =0;
+        int slotIndex =2;
         for(ItemStack variant :recipe){
             slots.get(slotIndex).set(variant);
             slotIndex+=1;
@@ -152,52 +149,34 @@ public class ContainerChisel extends AbstractContainerMenu {
         return slot != resultSlot && super.canTakeItemForPickAll(stack, slot);
     }
 
-    public ItemStack quickMoveStack(Player player, int p_40329_) {
+    public ItemStack quickMoveStack(Player player, int pIndex) {
         ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = this.slots.get(p_40329_);
+        Slot slot = this.slots.get(pIndex);
         if (slot != null && slot.hasItem()) {
             ItemStack itemstack1 = slot.getItem();
-            Item item = itemstack1.getItem();
             itemstack = itemstack1.copy();
-            if (p_40329_ == 1) {
-                item.onCraftedBy(itemstack1, player.level, player);
-                if (!this.moveItemStackTo(itemstack1, 2, 38, true)) {
+            if (pIndex < 2) {
+                if (!this.moveItemStackTo(itemstack1, 9, 45, true)) {
                     return ItemStack.EMPTY;
                 }
-
-                slot.onQuickCraft(itemstack1, itemstack);
-            } else if (p_40329_ == 0) {
-                if (!this.moveItemStackTo(itemstack1, 2, 38, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (recipeFactory.hasVariants(itemstack1)) {
-                if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (p_40329_ >= 2 && p_40329_ < 29) {
-                if (!this.moveItemStackTo(itemstack1, 29, 38, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (p_40329_ >= 29 && p_40329_ < 38 && !this.moveItemStackTo(itemstack1, 2, 29, false)) {
+            }else if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
                 return ItemStack.EMPTY;
             }
 
             if (itemstack1.isEmpty()) {
                 slot.set(ItemStack.EMPTY);
+            } else {
+                slot.setChanged();
             }
 
-            slot.setChanged();
             if (itemstack1.getCount() == itemstack.getCount()) {
                 return ItemStack.EMPTY;
             }
 
             slot.onTake(player, itemstack1);
-            this.broadcastChanges();
         }
-
         return itemstack;
     }
-
 
     public void removed(Player player) {
         super.removed(player);
@@ -212,7 +191,6 @@ public class ContainerChisel extends AbstractContainerMenu {
                 player.getInventory().placeItemBackInInventory(this.chisel.removeItemNoUpdate(inputSlot.index));
             }
         }
-
     }
 
     @Override
@@ -229,6 +207,4 @@ public class ContainerChisel extends AbstractContainerMenu {
     public boolean stillValid(Player pPlayer) {
         return true;
     }
-
-
 }

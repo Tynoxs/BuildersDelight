@@ -3,6 +3,7 @@ package com.tynoxs.buildersdelight;
 import com.tynoxs.buildersdelight.content.entity.renderer.SitRenderer;
 import com.tynoxs.buildersdelight.content.init.*;
 import com.tynoxs.buildersdelight.content.recipe.ChiselRecipeFactory;
+import com.tynoxs.buildersdelight.content.recipe.ClientChiselRecipeFactory;
 import com.tynoxs.buildersdelight.util.UtilBlockRendering;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.common.MinecraftForge;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class BuildersDelight {
 
 	private static BuildersDelight instance;
+
 	private ChiselRecipeFactory recipeFactory;
 
 	public static final String MODID = "buildersdelight";
@@ -38,6 +40,9 @@ public class BuildersDelight {
 	public void clientSetup(FMLClientSetupEvent event) {
 		UtilBlockRendering.register();
 		EntityRenderers.register(BdEntities.SIT.get(), SitRenderer::new);
+		recipeFactory.clear();
+		ClientChiselRecipeFactory clientChiselRecipeFactory = new ClientChiselRecipeFactory(recipeFactory);
+		clientChiselRecipeFactory.loadClientRecipes();
 	}
 
 	public void addResourceReload(AddReloadListenerEvent event) {

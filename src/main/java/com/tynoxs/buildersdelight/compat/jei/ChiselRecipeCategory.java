@@ -8,7 +8,6 @@ import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.recipe.IFocus;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
@@ -69,13 +68,8 @@ public class ChiselRecipeCategory implements IRecipeCategory<ChiselRecipe> {
                             .addItemStacks(Arrays.asList(stack));
                     index += 1;
                 }
-
             }
         }
-        for(IFocus focus : focuses.getAllFocuses()){
-            System.out.println( focus.getTypedValue().getIngredient());
-        }
-
     }
 
     @Override
