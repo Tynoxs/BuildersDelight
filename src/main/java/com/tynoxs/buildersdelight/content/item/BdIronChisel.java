@@ -46,7 +46,7 @@ public class BdIronChisel extends BdItem {
         ItemStack stack = player.getItemInHand(hand);
 
         if(!world.isClientSide){
-            NetworkHooks.openGui((ServerPlayer)player, new MenuProvider() {
+            NetworkHooks.openScreen((ServerPlayer)player, new MenuProvider() {
                 @Override
                 public Component getDisplayName(){
                     return Component.translatable("container.iron_chisel");
