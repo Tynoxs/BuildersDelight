@@ -46,7 +46,6 @@ public class BlockCandle extends BlockLantern {
         }
     }
 
-    @Override
     public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
         double d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11;
         Direction dir1 = stateIn.getValue(FACING);
