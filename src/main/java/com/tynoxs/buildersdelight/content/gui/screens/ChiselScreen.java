@@ -2,7 +2,6 @@ package com.tynoxs.buildersdelight.content.gui.screens;
 
 import com.tynoxs.buildersdelight.content.gui.menus.ContainerChisel;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
@@ -59,11 +58,11 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 
 		if(pMouseX > buttonX && pMouseX <  buttonX+16) {
 			if (pMouseY > buttonY && pMouseY < buttonY + 16) {
-				TranslatableComponent text;
+				Component text;
 				if(toggled){
-					text = new TranslatableComponent("container.button.chisel_all_on");
+					text = Component.translatable("container.button.chisel_all_on");
 				}else{
-					text = new TranslatableComponent("container.button.chisel_all_off");
+					text = Component.translatable("container.button.chisel_all_off");
 				}
 				this.renderTooltip(ms, text, pMouseX, pMouseY);
 
