@@ -7,7 +7,7 @@ import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IModelData;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.client.model.data.ModelProperty;
 
 import javax.annotation.Nonnull;
@@ -23,7 +23,7 @@ public class CTConnectedBakedModel extends CTBakedModel {
 
     @Nonnull
     @Override
-    public IModelData getModelData(@Nonnull BlockAndTintGetter world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData){
+    public ModelData getModelData(@Nonnull BlockAndTintGetter world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull ModelData tileData){
         ModelData modelData = new ModelData();
         for(Direction direction : Direction.values())
             modelData.sides.put(direction, new SideData(direction, world, pos, state.getBlock()));
@@ -31,7 +31,7 @@ public class CTConnectedBakedModel extends CTBakedModel {
     }
 
     @Override
-    protected float[] getUV(Direction side, IModelData modelData){
+    protected float[] getUV(Direction side, ModelData modelData){
         if(!(modelData instanceof ModelData))
             return getUV(0, 0);
 

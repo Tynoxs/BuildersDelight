@@ -8,7 +8,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IModelData;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.client.model.data.ModelProperty;
 
 import javax.annotation.Nonnull;
@@ -24,7 +24,7 @@ public class CTConnectedPaneBakedModel extends CTPaneBakedModel {
 
     @Nonnull
     @Override
-    public IModelData getModelData(@Nonnull BlockAndTintGetter world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData){
+    public ModelData getModelData(@Nonnull BlockAndTintGetter world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull ModelData tileData){
         ModelData modelData = new ModelData();
         for(Direction direction : Direction.Plane.HORIZONTAL){
             modelData.sides.put(direction, new SideData(direction, world, pos, state.getBlock()));
@@ -42,12 +42,12 @@ public class CTConnectedPaneBakedModel extends CTPaneBakedModel {
     }
 
     @Override
-    protected boolean isEnabledUp(Direction part, IModelData extraData){
+    protected boolean isEnabledUp(Direction part, ModelData extraData){
         return extraData instanceof ModelData && (part == null ? ((ModelData)extraData).upPost : ((ModelData)extraData).up.get(part));
     }
 
     @Override
-    protected boolean isEnabledDown(Direction part, IModelData extraData){
+    protected boolean isEnabledDown(Direction part, ModelData extraData){
         return extraData instanceof ModelData && (part == null ? ((ModelData)extraData).downPost : ((ModelData)extraData).down.get(part));
     }
 
@@ -57,7 +57,7 @@ public class CTConnectedPaneBakedModel extends CTPaneBakedModel {
     }
 
     @Override
-    protected float[] getUV(Direction side, IModelData modelData){
+    protected float[] getUV(Direction side, ModelData modelData){
         if(side == Direction.UP || side == Direction.DOWN)
             return this.getBorderUV();
 
