@@ -24,18 +24,25 @@ public class CTConnectedBakedModel extends CTBakedModel {
     @Nonnull
     @Override
     public ModelData getModelData(@Nonnull BlockAndTintGetter world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull ModelData tileData){
-        ModelData modelData = new ModelData();
-        for(Direction direction : Direction.values())
-            modelData.sides.put(direction, new SideData(direction, world, pos, state.getBlock()));
+        Map<Direction,SideData> sides = new HashMap<>();
+
+        for(Direction direction : Direction.values()) {
+            sides.put(direction, new SideData(direction, world, pos, state.getBlock()));
+        }
+
+        ModelData modelData = ModelData.builder()
+            .with(BDProperties.SIDES, sides)
+            .build();
+
         return modelData;
     }
 
     @Override
     protected float[] getUV(Direction side, ModelData modelData){
-        if(!(modelData instanceof ModelData))
+        if(!modelData.has(BDProperties.SIDES))
             return getUV(0, 0);
 
-        SideData blocks = ((ModelData)modelData).sides.get(side);
+        SideData blocks = modelData.get(BDProperties.SIDES).get(side);
         float[] uv;
 
         if(!blocks.left && !blocks.up && !blocks.right && !blocks.down) // all directions
@@ -160,27 +167,5 @@ public class CTConnectedBakedModel extends CTBakedModel {
 
     private float[] getUV(int x, int y){
         return new float[]{x * 2, y * 2, (x + 1) * 2, (y + 1) * 2};
-    }
-
-    private static class ModelData implements IModelData {
-
-        public Map<Direction,SideData> sides = new HashMap<>();
-
-        @Override
-        public boolean hasProperty(ModelProperty<?> prop){
-            return false;
-        }
-
-        @Nullable
-        @Override
-        public <T> T getData(ModelProperty<T> prop){
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public <T> T setData(ModelProperty<T> prop, T data){
-            return null;
-        }
     }
 }
