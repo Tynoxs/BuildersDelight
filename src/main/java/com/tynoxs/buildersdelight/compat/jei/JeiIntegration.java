@@ -1,6 +1,7 @@
 package com.tynoxs.buildersdelight.compat.jei;
 
 import com.tynoxs.buildersdelight.BuildersDelight;
+import com.tynoxs.buildersdelight.compat.jei.JEIRecipeTypes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
@@ -27,7 +28,7 @@ public class JeiIntegration implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         IModPlugin.super.registerRecipes(registration);
-        registration.addRecipes(BuildersDelight.get().getRecipeFactory().getChiselRecipes(), ChiselRecipeCategory.UID);
+        registration.addRecipes(JEIRecipeTypes.CHISEL, BuildersDelight.get().getRecipeFactory().getChiselRecipes());
 
     }
 }

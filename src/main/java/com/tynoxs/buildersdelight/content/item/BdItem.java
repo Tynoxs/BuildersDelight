@@ -2,7 +2,6 @@ package com.tynoxs.buildersdelight.content.item;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -22,7 +21,7 @@ public class BdItem extends Item {
 
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, @NotNull TooltipFlag pFlag) {
         String name = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(pStack.getItem())).getPath();
-        pTooltip.add(new TranslatableComponent("tooltip.item." + name).withStyle(ChatFormatting.GRAY));
+        pTooltip.add(Component.translatable("tooltip.item." + name).withStyle(ChatFormatting.GRAY));
     }
 
 }

@@ -1,7 +1,7 @@
 package com.tynoxs.buildersdelight.content.init;
 
-import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.content.gui.screens.ChiselScreen;
+import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.content.gui.menus.ContainerChisel;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -20,7 +20,7 @@ import net.minecraftforge.registries.RegistryObject;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BdContainers {
 
-    public static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, BuildersDelight.MODID);
+    public static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.MENU_TYPES, BuildersDelight.MODID);
     public static final RegistryObject<MenuType<ContainerChisel>> CHISEL_CONTAINER = registerMenuType(ContainerChisel::new,"chisel_container");
 
     @SubscribeEvent
