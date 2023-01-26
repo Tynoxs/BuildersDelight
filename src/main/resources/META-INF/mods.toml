@@ -4,7 +4,7 @@ license="All rights reserved"
 issueTrackerURL="https://github.com/Tynoxs/BuildersDelight/issues"
 [[mods]]
 modId="buildersdelight"
-version="1.0"
+version="1.1"
 displayName="Builder's Delight"
 displayURL="https://curseforge.com/minecraft/mc-mods/builders-delight-forge"
 updateJSONURL="https://github.com/Tynoxs/BuildersDelight/raw/1.18.2/update.json"
@@ -22,6 +22,6 @@ side="BOTH"
 [[dependencies.buildersdelight]]
 modId="minecraft"
 mandatory=true
-versionRange="[1.18.2,1.19)"
+versionRange="[1.19.1,1.19.2)"
 ordering="NONE"
 side="BOTH"

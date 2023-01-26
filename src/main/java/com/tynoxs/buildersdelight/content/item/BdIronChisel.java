@@ -5,7 +5,6 @@ import com.tynoxs.buildersdelight.content.gui.menus.ContainerChisel;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.nbt.CompoundTag;
 
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
@@ -47,10 +46,10 @@ public class BdIronChisel extends BdItem {
         ItemStack stack = player.getItemInHand(hand);
 
         if(!world.isClientSide){
-            NetworkHooks.openGui((ServerPlayer)player, new MenuProvider() {
+            NetworkHooks.openScreen((ServerPlayer)player, new MenuProvider() {
                 @Override
                 public Component getDisplayName(){
-                    return new TranslatableComponent("container.iron_chisel");
+                    return Component.translatable("container.iron_chisel");
                 }
 
                 @Nullable

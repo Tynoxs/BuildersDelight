@@ -6,7 +6,6 @@ import com.tynoxs.buildersdelight.content.block.custom.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -84,7 +83,7 @@ public class BdDecoration {
                 {
                     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag)
                     {
-                        pTooltip.add(new TranslatableComponent("tooltip.block." + name).withStyle(ChatFormatting.GRAY));
+                        pTooltip.add(Component.translatable("tooltip.block." + name).withStyle(ChatFormatting.GRAY));
                     }
                 });
     }

@@ -8,7 +8,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IModelData;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.client.model.data.ModelProperty;
 
 import javax.annotation.Nonnull;
@@ -24,31 +24,42 @@ public class CTConnectedPaneBakedModel extends CTPaneBakedModel {
 
     @Nonnull
     @Override
-    public IModelData getModelData(@Nonnull BlockAndTintGetter world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData){
-        ModelData modelData = new ModelData();
+    public ModelData getModelData(@Nonnull BlockAndTintGetter world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull ModelData tileData){
+        Map<Direction,SideData> sides = new HashMap<>();
+        Map<Direction,Boolean> upMap = new HashMap<>(), downMap = new HashMap<>();
+        boolean upPost = false, downPost = false;
+
         for(Direction direction : Direction.Plane.HORIZONTAL){
-            modelData.sides.put(direction, new SideData(direction, world, pos, state.getBlock()));
+            sides.put(direction, new SideData(direction, world, pos, state.getBlock()));
             BlockState upState = world.getBlockState(pos.above());
             boolean up = upState.getBlock() == state.getBlock() && upState.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction));
-            modelData.up.put(direction, up);
-            modelData.upPost = upState.getBlock() == state.getBlock();
+            upMap.put(direction, up);
+            upPost = upState.getBlock() == state.getBlock();
             BlockState downState = world.getBlockState(pos.below());
             boolean down = downState.getBlock() == state.getBlock() && downState.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction));
-            modelData.down.put(direction, down);
-            modelData.downPost = downState.getBlock() == state.getBlock();
+            downMap.put(direction, down);
+            downPost = downState.getBlock() == state.getBlock();
         }
+
+        ModelData modelData = ModelData.builder()
+            .with(BDProperties.SIDES, sides)
+            .with(BDProperties.UP, upMap)
+            .with(BDProperties.DOWN, downMap)
+            .with(BDProperties.UPPOST, upPost)
+            .with(BDProperties.DOWNPOST, downPost)
+            .build();
 
         return modelData;
     }
 
     @Override
-    protected boolean isEnabledUp(Direction part, IModelData extraData){
-        return extraData instanceof ModelData && (part == null ? ((ModelData)extraData).upPost : ((ModelData)extraData).up.get(part));
+    protected boolean isEnabledUp(Direction part, ModelData extraData){
+        return (extraData.has(BDProperties.UPPOST) || extraData.has(BDProperties.UP)) && (part == null ? extraData.get(BDProperties.UPPOST) : extraData.get(BDProperties.UP).get(part));
     }
 
     @Override
-    protected boolean isEnabledDown(Direction part, IModelData extraData){
-        return extraData instanceof ModelData && (part == null ? ((ModelData)extraData).downPost : ((ModelData)extraData).down.get(part));
+    protected boolean isEnabledDown(Direction part, ModelData extraData){
+        return (extraData.has(BDProperties.DOWNPOST) || extraData.has(BDProperties.DOWN)) && (part == null ? extraData.get(BDProperties.DOWNPOST) : extraData.get(BDProperties.DOWN).get(part));
     }
 
     @Override
@@ -57,14 +68,14 @@ public class CTConnectedPaneBakedModel extends CTPaneBakedModel {
     }
 
     @Override
-    protected float[] getUV(Direction side, IModelData modelData){
+    protected float[] getUV(Direction side, ModelData modelData){
         if(side == Direction.UP || side == Direction.DOWN)
             return this.getBorderUV();
 
-        if(!(modelData instanceof ModelData))
+        if(!modelData.has(BDProperties.SIDES))
             return getUV(0, 0);
 
-        SideData blocks = ((ModelData)modelData).sides.get(side);
+        SideData blocks = modelData.get(BDProperties.SIDES).get(side);
         float[] uv;
 
         if(!blocks.left && !blocks.up && !blocks.right && !blocks.down) // all directions
@@ -190,78 +201,4 @@ public class CTConnectedPaneBakedModel extends CTPaneBakedModel {
     private float[] getUV(int x, int y){
         return new float[]{x * 2, y * 2, (x + 1) * 2, (y + 1) * 2};
     }
-
-    private static class ModelData implements IModelData {
-
-        public Map<Direction,SideData> sides = new HashMap<>();
-        public Map<Direction,Boolean> up = new HashMap<>(), down = new HashMap<>();
-        public boolean upPost, downPost;
-
-        @Override
-        public boolean hasProperty(ModelProperty<?> prop){
-            return false;
-        }
-
-        @Nullable
-        @Override
-        public <T> T getData(ModelProperty<T> prop){
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public <T> T setData(ModelProperty<T> prop, T data){
-            return null;
-        }
-    }
-
-    private static class SideData {
-
-        private BlockGetter world;
-        private Block block;
-
-        public boolean left;
-        public boolean right;
-        public boolean up;
-        public boolean up_left;
-        public boolean up_right;
-        public boolean down;
-        public boolean down_left;
-        public boolean down_right;
-
-        public SideData(Direction side, BlockGetter world, BlockPos pos, Block block){
-            this.world = world;
-            this.block = block;
-
-            Direction left;
-            Direction right;
-            Direction up;
-            Direction down;
-            if(side.getAxis() == Direction.Axis.Y){
-                left = side == Direction.UP ? Direction.WEST : Direction.EAST;
-                right = side == Direction.UP ? Direction.EAST : Direction.WEST;
-                up = Direction.NORTH;
-                down = Direction.SOUTH;
-            }else{
-                left = side.getClockWise();
-                right = side.getCounterClockWise();
-                up = Direction.UP;
-                down = Direction.DOWN;
-            }
-
-            this.left = this.isSameBlock(pos.relative(left));
-            this.right = this.isSameBlock(pos.relative(right));
-            this.up = this.isSameBlock(pos.relative(up));
-            this.up_left = this.isSameBlock(pos.relative(up).relative(left));
-            this.up_right = this.isSameBlock(pos.relative(up).relative(right));
-            this.down = this.isSameBlock(pos.relative(down));
-            this.down_left = this.isSameBlock(pos.relative(down).relative(left));
-            this.down_right = this.isSameBlock(pos.relative(down).relative(right));
-        }
-
-        private boolean isSameBlock(BlockPos pos){
-            return this.world.getBlockState(pos).getBlock() == this.block;
-        }
-    }
-
 }

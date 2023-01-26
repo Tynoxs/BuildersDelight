@@ -6,7 +6,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.data.event.GatherDataEvent;
 
 @Mod.EventBusSubscriber(modid = BuildersDelight.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BDDataGenerators {
@@ -15,10 +15,10 @@ public class BDDataGenerators {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
-        generator.addProvider(new BdBlockLootTableProvider(generator));
-        generator.addProvider(new BdDecorationLootTableProvider(generator));
-        generator.addProvider(new BdBlockStateProvider(generator, existingFileHelper));
-        generator.addProvider(new BdItemModelProvider(generator, existingFileHelper));
-        generator.addProvider(new BdBlockTagProvider(generator, existingFileHelper));
+        generator.addProvider(true, new BdBlockLootTableProvider(generator));
+        generator.addProvider(true, new BdDecorationLootTableProvider(generator));
+        generator.addProvider(true, new BdBlockStateProvider(generator, existingFileHelper));
+        generator.addProvider(true, new BdItemModelProvider(generator, existingFileHelper));
+        generator.addProvider(true, new BdBlockTagProvider(generator, existingFileHelper));
     }
 }

@@ -14,7 +14,6 @@ public class BlockBrazier extends BlockLantern {
         super(properties);
     }
 
-    @Override
     public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
         double d0, d1, d2;
         Direction dir1 = stateIn.getValue(FACING);

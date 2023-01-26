@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class ClientChiselRecipeFactory {
@@ -45,14 +46,14 @@ public class ClientChiselRecipeFactory {
 
         recipeFactory.clear();
 
-        for(ResourceLocation location : resourceManager.listResources("chisel", (p_10774_) -> {
-            return p_10774_.endsWith(".json");
-        })) {
+        for(var location : resourceManager.listResources("chisel", (p_10774_) -> {
+            return p_10774_.getPath().endsWith(".json");
+        }).entrySet()) {
             try {
-                Resource resource = resourceManager.getResource(location);
+                Optional<Resource> resource = resourceManager.getResource(location.getKey());
 
                 try {
-                    InputStream inputstream = resource.getInputStream();
+                    InputStream inputstream = resource.get().open();
 
                     try {
                         Reader reader = new BufferedReader(new InputStreamReader(inputstream, StandardCharsets.UTF_8));
@@ -60,7 +61,7 @@ public class ClientChiselRecipeFactory {
                         try {
                             JsonElement jsonelement = GsonHelper.fromJson(this.gson, reader, JsonElement.class);
                             try {
-                                ChiselRecipe recipe = recipeFactory.fromJson(location, GsonHelper.convertToJsonObject(jsonelement, "top element"));
+                                ChiselRecipe recipe = recipeFactory.fromJson(location.getKey(), GsonHelper.convertToJsonObject(jsonelement, "top element"));
                                 if (recipe == null) {
                                     LOGGER.info("Skipping loading recipe {} as it's serializer returned null", location);
                                     continue;
@@ -94,19 +95,7 @@ public class ClientChiselRecipeFactory {
                         inputstream.close();
                     }
                 } catch (Throwable throwable5) {
-                    if (resource != null) {
-                        try {
-                            resource.close();
-                        } catch (Throwable throwable) {
-                            throwable5.addSuppressed(throwable);
-                        }
-                    }
-
                     throw throwable5;
-                }
-
-                if (resource != null) {
-                    resource.close();
                 }
             } catch (IllegalArgumentException | IOException | JsonParseException jsonparseexception) {
                 LOGGER.error("Couldn't parse data file {}", location, jsonparseexception);

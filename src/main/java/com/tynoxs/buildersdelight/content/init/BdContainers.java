@@ -20,7 +20,7 @@ import net.minecraftforge.registries.RegistryObject;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BdContainers {
 
-    public static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, BuildersDelight.MODID);
+    public static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.MENU_TYPES, BuildersDelight.MODID);
     public static final RegistryObject<MenuType<ContainerChisel>> CHISEL_CONTAINER = registerMenuType(ContainerChisel::new,"chisel_container");
 
     @SubscribeEvent
