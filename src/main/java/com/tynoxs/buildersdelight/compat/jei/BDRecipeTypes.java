@@ -3,6 +3,7 @@ package com.tynoxs.buildersdelight.compat.jei;
 import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.content.recipe.ChiselRecipe;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -14,7 +15,7 @@ import java.util.function.Supplier;
 public class BDRecipeTypes
 {
     private static final DeferredRegister<RecipeType<?>> REGISTER = DeferredRegister.create(
-        Registry.RECIPE_TYPE_REGISTRY, BuildersDelight.MODID
+        Registries.RECIPE_TYPE, BuildersDelight.MODID
     );
     public static final TypeWithClass<ChiselRecipe> CHISEL = register("chisel", ChiselRecipe.class);
 
