@@ -39,12 +39,12 @@ public class EntitySit extends Entity {
         {
             this.source = this.blockPosition();
         }
-        if(!this.level.isClientSide)
+        if(!this.level().isClientSide)
         {
-            if(this.getPassengers().isEmpty() || this.level.isEmptyBlock(this.source))
+            if(this.getPassengers().isEmpty() || this.level().isEmptyBlock(this.source))
             {
                 this.remove(RemovalReason.DISCARDED);
-                this.level.updateNeighbourForOutputSignal(blockPosition(), this.level.getBlockState(blockPosition()).getBlock());
+                this.level().updateNeighbourForOutputSignal(blockPosition(), this.level().getBlockState(blockPosition()).getBlock());
             }
         }
     }

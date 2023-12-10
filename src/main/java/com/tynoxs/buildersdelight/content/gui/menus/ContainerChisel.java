@@ -82,7 +82,7 @@ public class ContainerChisel extends AbstractContainerMenu {
                             ContainerChisel.this.craftVariant(this.getItem());
 
                             //play sound after chiseling
-                            Level world = pPlayer.level;
+                            Level world = pPlayer.level();
                             if (!world.isClientSide) {
                                 world.playSound(null, pPlayer, BdSounds.CHISELING_SOUND.get(), SoundSource.PLAYERS, 1f, 1f);
                             }
