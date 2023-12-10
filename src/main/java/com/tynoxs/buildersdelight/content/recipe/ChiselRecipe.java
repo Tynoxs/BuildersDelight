@@ -5,6 +5,8 @@ import com.tynoxs.buildersdelight.compat.jei.IChiselRecipe;
 import com.tynoxs.buildersdelight.compat.jei.JeiIntegration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -68,8 +70,8 @@ public class ChiselRecipe implements IChiselRecipe {
     }
 
     @Override
-    public ItemStack assemble(Container pContainer) {
-        return null;
+    public ItemStack assemble(Container pContainer, RegistryAccess registries) {
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -78,13 +80,13 @@ public class ChiselRecipe implements IChiselRecipe {
     }
 
     @Override
-    public ItemStack getResultItem() {
+    public ItemStack getResultItem(RegistryAccess registries) {
         return ItemStack.EMPTY;
     }
 
     @Override
     public ResourceLocation getId() {
-        return new ResourceLocation(BuildersDelight.MODID, Registry.ITEM.getKey(getBaseItem().getItem()).getPath());
+        return new ResourceLocation(BuildersDelight.MODID, BuiltInRegistries.ITEM.getKey(getBaseItem().getItem()).getPath());
     }
 
     @Override
