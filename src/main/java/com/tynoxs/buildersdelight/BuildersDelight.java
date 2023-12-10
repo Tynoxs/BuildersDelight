@@ -26,7 +26,7 @@ public class BuildersDelight {
 		instance = this;
 		recipeFactory = new ChiselRecipeFactory();
 		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-		BdTabs.register();
+		BdTabs.TABS.register(eventBus);
 		BdItems.ITEMS.register(eventBus);
 		BdBlocks.BLOCKS.register(eventBus);
 		BdDecoration.DECORATION.register(eventBus);

@@ -22,12 +22,19 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 public class BdBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, BuildersDelight.MODID);
+
+    /**
+     * Contains the list of block item instances.
+     */
+    private static final ConcurrentHashMap<String, RegistryObject<Item>> blockItemMap = new ConcurrentHashMap<>();
 
     public static final RegistryObject<Block> ACACIA_PLANKS_1 = registerBlock("acacia_planks_1", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)), "");
     public static final RegistryObject<Block> ACACIA_PLANKS_2 = registerBlock("acacia_planks_2", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)), "");
@@ -730,19 +737,24 @@ public class BdBlocks {
     }
 
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block, String tooltipKey) {
-        BdItems.ITEMS.register(name, () ->
+        RegistryObject<Item> item = BdItems.ITEMS.register(name, () ->
                 new BlockItem(block.get(),
-                        new Item.Properties().tab(BdTabs.TabBlocks))
+                        new Item.Properties())
         {
             public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag)
             {
                 pTooltip.add(Component.translatable("tooltip.block." + name).withStyle(ChatFormatting.GRAY));
             }
         });
+        blockItemMap.put(name, item);
     }
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
+    }
+
+    public static Map<String, RegistryObject<Item>> getBlockItemMap() {
+        return blockItemMap;
     }
 }
 

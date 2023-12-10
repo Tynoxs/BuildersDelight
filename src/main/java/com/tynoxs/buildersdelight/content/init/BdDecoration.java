@@ -13,25 +13,33 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ChainBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public class BdDecoration {
     public static final DeferredRegister<Block> DECORATION = DeferredRegister.create(ForgeRegistries.BLOCKS, BuildersDelight.MODID);
 
-    public static final RegistryObject<Block> LANTERN_1 = registerBlock("lantern_1", () -> new BlockPaperLamp(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
-    public static final RegistryObject<Block> LANTERN_2 = registerBlock("lantern_2", () -> new BlockLantern(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 10).noOcclusion()), "");
-    public static final RegistryObject<Block> LANTERN_3 = registerBlock("lantern_3", () -> new BlockLantern(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
-    public static final RegistryObject<Block> LANTERN_4 = registerBlock("lantern_4", () -> new BlockLantern(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
-    public static final RegistryObject<Block> LANTERN_5 = registerBlock("lantern_5", () -> new BlockBrazier(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
-    public static final RegistryObject<Block> LANTERN_6 = registerBlock("lantern_6", () -> new BlockCandle(BlockBehaviour.Properties.of(Material.DECORATION).strength(3.5F).noOcclusion().lightLevel((p_50886_) -> 10).sound(SoundType.LANTERN), ParticleTypes.FLAME), "");
+    /**
+     * Contains the list of decoration item instances.
+     */
+    private static final ConcurrentHashMap<String, RegistryObject<Item>> decorationItemMap = new ConcurrentHashMap<>();
+
+    public static final RegistryObject<Block> LANTERN_1 = registerBlock("lantern_1", () -> new BlockPaperLamp(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> LANTERN_2 = registerBlock("lantern_2", () -> new BlockLantern(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 10).noOcclusion()), "");
+    public static final RegistryObject<Block> LANTERN_3 = registerBlock("lantern_3", () -> new BlockLantern(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> LANTERN_4 = registerBlock("lantern_4", () -> new BlockLantern(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> LANTERN_5 = registerBlock("lantern_5", () -> new BlockBrazier(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> LANTERN_6 = registerBlock("lantern_6", () -> new BlockCandle(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).strength(3.5F).noOcclusion().lightLevel((p_50886_) -> 10).sound(SoundType.LANTERN), ParticleTypes.FLAME), "");
     public static final RegistryObject<Block> CHAIN_1 = registerBlock("chain_1", () -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
     public static final RegistryObject<Block> CHAIN_2 = registerBlock("chain_2", () -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
     public static final RegistryObject<Block> CHAIN_3 = registerBlock("chain_3", () -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
@@ -77,19 +85,24 @@ public class BdDecoration {
     }
 
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block, String tooltipKey) {
-        BdItems.ITEMS.register(name, () ->
+        RegistryObject<Item> item = BdItems.ITEMS.register(name, () ->
                 new BlockItem(block.get(),
-                        new Item.Properties().tab(BdTabs.TabDecoration))
+                        new Item.Properties())
                 {
                     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag)
                     {
                         pTooltip.add(Component.translatable("tooltip.block." + name).withStyle(ChatFormatting.GRAY));
                     }
                 });
+        decorationItemMap.put(name, item);
     }
 
     public static void register(IEventBus eventBus) {
         DECORATION.register(eventBus);
+    }
+
+    public static Map<String, RegistryObject<Item>> getDecorationItemMap() {
+        return decorationItemMap;
     }
 }
 
