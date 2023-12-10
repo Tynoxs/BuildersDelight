@@ -116,7 +116,6 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 	@Override
 	public void onClose() {
 		super.onClose();
-		Minecraft.getInstance().keyboardHandler.setSendRepeatsToGui(false);
 	}
 
 	@Override
@@ -125,6 +124,5 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 		if(toggled){
 			this.minecraft.gameMode.handleInventoryButtonClick((this.menu).containerId, 1);
 		}
-		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
 	}
 }
