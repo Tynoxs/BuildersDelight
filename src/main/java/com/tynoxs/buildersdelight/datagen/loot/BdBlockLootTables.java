@@ -1,14 +1,38 @@
 package com.tynoxs.buildersdelight.datagen.loot;
 
 import com.tynoxs.buildersdelight.content.init.BdBlocks;
-import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.state.properties.SlabType;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.RegistryObject;
 
-public class BdBlockLootTables extends BlockLoot {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.function.BiConsumer;
+
+public class BdBlockLootTables extends BlockLootSubProvider {
+    public List<Block> list = new ArrayList<>();
+
+    public BdBlockLootTables() {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), new HashMap<>());
+    }
 
     @Override
-    protected void addTables() {
+    protected void generate() {
         registerDropSelf(BdBlocks.ACACIA_FRAME_1.get());
         registerDropSelf(BdBlocks.ACACIA_FRAME_2.get());
         registerDropSelf(BdBlocks.ACACIA_FRAME_3.get());
@@ -745,6 +769,27 @@ public class BdBlockLootTables extends BlockLoot {
         this.add(p_124291_, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                 .add(applyExplosionDecay(p_124291_, LootItem.lootTableItem(p_124291_).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))
                         .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(p_124291_).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SlabBlock.TYPE, SlabType.DOUBLE))))))));
+    }
+
+    // Override and ignore the missing loot table error
+    @Override
+    public void generate(BiConsumer<ResourceLocation, LootTable.Builder> p_249322_) {
+        this.generate();
+        Set<ResourceLocation> set = new HashSet<>();
+
+        for (Block block : list) {
+            if (block.isEnabled(this.enabledFeatures)) {
+                ResourceLocation resourcelocation = block.getLootTable();
+                if (resourcelocation != BuiltInLootTables.EMPTY && set.add(resourcelocation)) {
+                    LootTable.Builder loottable$builder = this.map.remove(resourcelocation);
+                    if (loottable$builder == null) {
+                        continue;
+                    }
+
+                    p_249322_.accept(resourcelocation, loottable$builder);
+                }
+            }
+        }
     }
 
     @Override
