@@ -20,19 +20,21 @@ public class BdItems {
      */
     private static final ConcurrentHashMap<String, RegistryObject<Item>> itemMap = new ConcurrentHashMap<>();
 
-    public static final RegistryObject<Item> IRON_CHISEL = ITEMS.register("iron_chisel", () -> new BdIronChisel(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> ACACIA_FURNITURE_KIT = ITEMS.register("acacia_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
-    public static final RegistryObject<Item> BIRCH_FURNITURE_KIT = ITEMS.register("birch_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
-    public static final RegistryObject<Item> CRIMSON_FURNITURE_KIT = ITEMS.register("crimson_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
-    public static final RegistryObject<Item> DARK_OAK_FURNITURE_KIT = ITEMS.register("dark_oak_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
-    public static final RegistryObject<Item> JUNGLE_FURNITURE_KIT = ITEMS.register("jungle_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
-    public static final RegistryObject<Item> OAK_FURNITURE_KIT = ITEMS.register("oak_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
-    public static final RegistryObject<Item> SPRUCE_FURNITURE_KIT = ITEMS.register("spruce_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
-    public static final RegistryObject<Item> WARPED_FURNITURE_KIT = ITEMS.register("warped_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> IRON_CHISEL = registerItem("iron_chisel", () -> new BdIronChisel(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> ACACIA_FURNITURE_KIT = registerItem("acacia_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> BIRCH_FURNITURE_KIT = registerItem("birch_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> CRIMSON_FURNITURE_KIT = registerItem("crimson_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> DARK_OAK_FURNITURE_KIT = registerItem("dark_oak_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> JUNGLE_FURNITURE_KIT = registerItem("jungle_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> OAK_FURNITURE_KIT = registerItem("oak_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> SPRUCE_FURNITURE_KIT = registerItem("spruce_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> WARPED_FURNITURE_KIT = registerItem("warped_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
 
-    private static <T extends Item>RegistryObject<T> registerItem(String name, Supplier<T> item) {
+    private static RegistryObject<Item> registerItem(String name, Supplier<Item> item) {
         RegistryObject<Item> newItem = ITEMS.register(name, item);
         itemMap.put(name, newItem);
+
+        return newItem;
     }
 
     private static RegistryObject<Item> register(String name, Item item)
