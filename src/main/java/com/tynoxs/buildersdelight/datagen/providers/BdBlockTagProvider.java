@@ -3,18 +3,26 @@ package com.tynoxs.buildersdelight.datagen.providers;
 import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.content.init.BdBlocks;
 import com.tynoxs.buildersdelight.content.init.BdDecoration;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
-public class BdBlockTagProvider extends BlockTagsProvider {
-    public BdBlockTagProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {
-        super(gen, BuildersDelight.MODID, exFileHelper);
+import java.util.concurrent.CompletableFuture;
+
+public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
+    public BdBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider,
+        ExistingFileHelper existingFileHelper) {
+        super(output, Registries.BLOCK, provider, (block) -> block.builtInRegistryHolder().key(), BuildersDelight.MODID, existingFileHelper);
     }
 
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider provider) {
 
         this.tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(BdDecoration.ACACIA_CHAIR_1.get())
