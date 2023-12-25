@@ -52,7 +52,7 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 			RenderSystem.enableBlend();
 			RenderSystem.defaultBlendFunc();
 			RenderSystem.setShaderTexture(0, button_on);
-			graphics.blit(texture, buttonX, buttonY, 0, 0, 16, 16, 16, 16);
+			graphics.blit(button_on, buttonX, buttonY, 0, 0, 16, 16, 16, 16);
 			RenderSystem.disableBlend();
 		}
 
