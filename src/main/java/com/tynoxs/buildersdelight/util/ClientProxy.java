@@ -8,7 +8,7 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ModelEvent.BakingCompleted;
+import net.minecraftforge.client.event.ModelEvent.ModifyBakingResult;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -21,7 +21,7 @@ import java.util.Objects;
 public class ClientProxy {
 
     @SubscribeEvent
-    public static void onBake(BakingCompleted e){
+    public static void onBake(ModifyBakingResult e){
         List<Block> connectedTextureBlocks = ForgeRegistries.BLOCKS.getValues().stream().filter(IConnectedTextureBlock.class::isInstance).toList();
         for(Block block : connectedTextureBlocks){
             BakedModel model = ((IConnectedTextureBlock)block).isPane() ? new CTConnectedPaneBakedModel((IConnectedTextureBlock)block) : new CTConnectedBakedModel((IConnectedTextureBlock)block);
@@ -34,6 +34,7 @@ public class ClientProxy {
         }
     }
 
+    /*
     @SubscribeEvent
     public static void onStitch(TextureStitchEvent.Pre e){
         if(e.getAtlas().location().toString().equals("minecraft:textures/atlas/blocks.png")){
@@ -43,4 +44,5 @@ public class ClientProxy {
             }
         }
     }
+    */
 }
