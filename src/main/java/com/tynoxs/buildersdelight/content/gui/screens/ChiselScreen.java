@@ -2,12 +2,12 @@ package com.tynoxs.buildersdelight.content.gui.screens;
 
 import com.tynoxs.buildersdelight.content.gui.menus.ContainerChisel;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.Minecraft;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
@@ -29,14 +29,14 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 	private static final ResourceLocation button_on = new ResourceLocation("buildersdelight:textures/gui/chisel_all_toggle.png");
 
 	@Override
-	public void render(PoseStack ms, int mouseX, int mouseY, float partialTicks) {
-		this.renderBackground(ms);
-		super.render(ms, mouseX, mouseY, partialTicks);
-		this.renderTooltip(ms, mouseX, mouseY);
+	public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
+		this.renderBackground(graphics);
+		super.render(graphics, mouseX, mouseY, partialTicks);
+		this.renderTooltip(graphics, mouseX, mouseY);
 	}
 
 	@Override
-	protected void renderBg(PoseStack ms, float partialTicks, int pMouseX, int pMouseY) {
+	protected void renderBg(GuiGraphics graphics, float partialTicks, int pMouseX, int pMouseY) {
 		int buttonX = this.leftPos+28;
 		int buttonY = this.topPos + 72;
 
@@ -44,7 +44,7 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
 		RenderSystem.setShaderTexture(0, texture);
-		this.blit(ms, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		graphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		RenderSystem.disableBlend();
 
 		if(toggled) {
@@ -52,7 +52,7 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 			RenderSystem.enableBlend();
 			RenderSystem.defaultBlendFunc();
 			RenderSystem.setShaderTexture(0, button_on);
-			this.blit(ms, buttonX, buttonY, 0, 0, 16, 16, 16, 16);
+			graphics.blit(texture, buttonX, buttonY, 0, 0, 16, 16, 16, 16);
 			RenderSystem.disableBlend();
 		}
 
@@ -64,8 +64,8 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 				}else{
 					text = Component.translatable("container.button.chisel_all_off");
 				}
-				this.renderTooltip(ms, text, pMouseX, pMouseY);
 
+				this.renderTooltip(graphics, pMouseX, pMouseY);
 			}
 		}
 
@@ -108,15 +108,14 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 	}
 
 	@Override
-	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
-		this.font.draw(poseStack, this.title, (float)this.titleLabelX, (float)this.titleLabelY, 4210752);
-		this.font.draw(poseStack, this.playerInventoryTitle, (float)this.inventoryLabelX, (float)this.inventoryLabelY, 4210752);
+	protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
+		graphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752);
+		graphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, 4210752);
 	}
 
 	@Override
 	public void onClose() {
 		super.onClose();
-		Minecraft.getInstance().keyboardHandler.setSendRepeatsToGui(false);
 	}
 
 	@Override
@@ -125,6 +124,5 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 		if(toggled){
 			this.minecraft.gameMode.handleInventoryButtonClick((this.menu).containerId, 1);
 		}
-		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
 	}
 }

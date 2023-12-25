@@ -15,6 +15,7 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -31,7 +32,7 @@ import javax.annotation.Nullable;
 public class ChiselRecipeCategory extends BDRecipeCategory<ChiselRecipe>
 {
 	private static final DeferredRegister<RecipeType<?>> REGISTER = DeferredRegister.create(
-        Registry.RECIPE_TYPE_REGISTRY, BuildersDelight.MODID
+        Registries.RECIPE_TYPE, BuildersDelight.MODID
 	);
 
     public static final ResourceLocation UID = new ResourceLocation(BuildersDelight.MODID, "chisel");

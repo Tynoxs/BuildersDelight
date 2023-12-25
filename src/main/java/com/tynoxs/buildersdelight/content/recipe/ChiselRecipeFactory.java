@@ -3,7 +3,7 @@ package com.tynoxs.buildersdelight.content.recipe;
 import com.google.gson.*;
 import com.mojang.logging.LogUtils;
 import com.tynoxs.buildersdelight.BuildersDelight;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
@@ -78,12 +78,12 @@ public class ChiselRecipeFactory extends SimpleJsonResourceReloadListener {
         List<Item> outputItems = new ArrayList<>();
         for (Iterator<JsonElement> it = variantsArray.iterator(); it.hasNext(); ) {
             ResourceLocation variantEntry = ResourceLocation.tryParse(it.next().getAsString());
-            if (!Registry.ITEM.containsKey(variantEntry)) {
+            if (!BuiltInRegistries.ITEM.containsKey(variantEntry)) {
                 LOGGER.info("Skipping loading recipe {} cause one of it's variant (" + variantEntry+") doesn't exist", pRecipeId);
                 return null;
             }
 
-            outputItems.add(Registry.ITEM.get(variantEntry));
+            outputItems.add(BuiltInRegistries.ITEM.get(variantEntry));
         }
         return outputItems;
     }

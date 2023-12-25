@@ -18,7 +18,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
 
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -66,7 +66,7 @@ public class BdIronChisel extends BdItem {
     public CompoundTag getShareTag(ItemStack stack) {
         CompoundTag nbt = super.getShareTag(stack);
         if (nbt != null)
-            stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+            stack.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
                     .ifPresent(capability -> nbt.put("Inventory", ((ItemStackHandler) capability).serializeNBT()));
         return nbt;
     }
@@ -75,7 +75,7 @@ public class BdIronChisel extends BdItem {
     public void readShareTag(ItemStack stack, @Nullable CompoundTag nbt) {
         super.readShareTag(stack, nbt);
         if (nbt != null)
-            stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+            stack.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
                     .ifPresent(capability -> ((ItemStackHandler) capability).deserializeNBT((CompoundTag) nbt.get("Inventory")));
     }
 }

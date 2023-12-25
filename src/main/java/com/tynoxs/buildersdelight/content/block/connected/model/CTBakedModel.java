@@ -1,6 +1,6 @@
 package com.tynoxs.buildersdelight.content.block.connected.model;
 
-import com.mojang.math.Vector3f;
+import org.joml.Vector3f;
 import com.tynoxs.buildersdelight.content.block.connected.IConnectedTextureBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
@@ -66,7 +66,7 @@ public class CTBakedModel implements IDynamicBakedModel {
 
     @Override
     public ItemTransforms getTransforms(){
-        return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(Blocks.STONE)).getPath())).getTransforms();
+        return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(Blocks.STONE)), "")).getTransforms();
     }
 
     @Nonnull
