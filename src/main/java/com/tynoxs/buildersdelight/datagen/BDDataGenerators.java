@@ -22,7 +22,6 @@ public class BDDataGenerators {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
         generator.addProvider(true, new BdBlockLootTableProvider(output));
-        generator.addProvider(true, new BdDecorationLootTableProvider(output));
         generator.addProvider(true, new BdBlockStateProvider(output, BuildersDelight.MODID, existingFileHelper));
         generator.addProvider(true, new BdItemModelProvider(output, existingFileHelper));
         generator.addProvider(true, new BdBlockTagProvider(output, provider, existingFileHelper));
