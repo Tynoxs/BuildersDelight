@@ -748,7 +748,7 @@ public class BdBlocks {
         BLOCKS.register(eventBus);
     }
 
-    public static Map<String, RegistryObject<Item>> getDecorationItemMap() {
+    public static Map<String, RegistryObject<Item>> getBlockItemMap() {
         return blockItemMap;
     }
 }
