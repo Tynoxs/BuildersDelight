@@ -21,7 +21,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -29,10 +29,7 @@ import java.util.function.Supplier;
 public class BdDecoration {
     public static final DeferredRegister<Block> DECORATION = DeferredRegister.create(ForgeRegistries.BLOCKS, BuildersDelight.MODID);
 
-    /**
-     * Contains the list of decoration item instances.
-     */
-    private static final ConcurrentHashMap<String, RegistryObject<Item>> decorationItemMap = new ConcurrentHashMap<>();
+    private static final Map<String, RegistryObject<Item>> decorationItemMap = new LinkedHashMap<>();
 
     public static final RegistryObject<Block> LANTERN_1 = registerBlock("lantern_1", () -> new BlockPaperLamp(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
     public static final RegistryObject<Block> LANTERN_2 = registerBlock("lantern_2", () -> new BlockLantern(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 10).noOcclusion()), "");
@@ -78,7 +75,7 @@ public class BdDecoration {
     public static final RegistryObject<Block> WARPED_TABLE_1 = registerBlock("warped_table_1", () -> new BlockSmallTable(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)), "");
     public static final RegistryObject<Block> WARPED_TABLE_2 = registerBlock("warped_table_2", () -> new BlockSmallTable(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)), "");
 
-    private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block, String tooltipKey) {
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, String tooltipKey) {
         RegistryObject<T> toReturn = DECORATION.register(name, block);
         registerBlockItem(name, toReturn, tooltipKey);
         return toReturn;
@@ -105,4 +102,3 @@ public class BdDecoration {
         return decorationItemMap;
     }
 }
-
