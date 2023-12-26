@@ -8,17 +8,14 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.LinkedHashMap;
 import java.util.function.Supplier;
 import java.util.Map;
 
 public class BdItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, BuildersDelight.MODID);
 
-    /**
-     * Contains the list of item instances.
-     */
-    private static final ConcurrentHashMap<String, RegistryObject<Item>> itemMap = new ConcurrentHashMap<>();
+    private static final Map<String, RegistryObject<Item>> itemMap = new LinkedHashMap<>();
 
     public static final RegistryObject<Item> IRON_CHISEL = registerItem("iron_chisel", () -> new BdIronChisel(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> ACACIA_FURNITURE_KIT = registerItem("acacia_furniture_kit", () -> new BdFurnitureKit(new Item.Properties().stacksTo(64)));
