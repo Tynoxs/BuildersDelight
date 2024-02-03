@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
 public class BlockRotatable extends Block {
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final DirectionProperty FACING = DirectionalBlock.FACING;
 
     public BlockRotatable(BlockBehaviour.Properties properties) {
         super(properties);
@@ -17,7 +17,7 @@ public class BlockRotatable extends Block {
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext placeCtx) {
-        return this.defaultBlockState().setValue(FACING, placeCtx.getHorizontalDirection().getOpposite());
+        return this.defaultBlockState().setValue(FACING, placeCtx.getNearestLookingDirection());
     }
 
     public RenderShape getRenderShape(BlockState state) {
