@@ -679,7 +679,7 @@ public class BdBlocks {
     public static final RegistryObject<Block> AMETHYST_SLAB_8 = registerBlock("amethyst_slab_8", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)), "");
     public static final RegistryObject<Block> LABORATORY_1 = registerBlock("laboratory_1", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)), "");
     public static final RegistryObject<Block> LABORATORY_2 = registerBlock("laboratory_2", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)), "");
-    public static final RegistryObject<Block> LABORATORY_3 = registerBlock("laboratory_3", () -> new BlockRotatable(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)), "");
+    public static final RegistryObject<Block> LABORATORY_3 = registerBlock("laboratory_3", () -> new BlockRotatableHorizontal(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)), "");
     public static final RegistryObject<Block> WARNING_STRIPES_1 = registerBlock("warning_stripes_1", () -> new BlockRotatable(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)), "");
     public static final RegistryObject<Block> WARNING_STRIPES_2 = registerBlock("warning_stripes_2", () -> new BlockRotatable(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)), "");
     public static final RegistryObject<Block> WARNING_STRIPES_3 = registerBlock("warning_stripes_3", () -> new BlockRotatable(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)), "");
