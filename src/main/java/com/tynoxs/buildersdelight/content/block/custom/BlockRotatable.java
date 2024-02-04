@@ -17,7 +17,7 @@ public class BlockRotatable extends Block {
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext placeCtx) {
-        return this.defaultBlockState().setValue(FACING, placeCtx.getNearestLookingDirection());
+        return this.defaultBlockState().setValue(FACING, placeCtx.getHorizontalDirection().getOpposite());
     }
 
     public RenderShape getRenderShape(BlockState state) {
