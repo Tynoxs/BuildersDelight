@@ -24,7 +24,8 @@
       "model": "buildersdelight:block/laboratory_3"
     },
     "facing=down": {
-      "model": "buildersdelight:block/laboratory_3"
+      "model": "buildersdelight:block/laboratory_3",
+      "x": 180
     }
   }
 }
