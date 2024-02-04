@@ -2,8 +2,7 @@ package com.tynoxs.buildersdelight.compat.jei;
 
 import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.compat.jei.BDRecipeCategory;
-import com.tynoxs.buildersdelight.compat.jei.BDRecipeTypes;
-import com.tynoxs.buildersdelight.compat.jei.JEIRecipeTypes;
+import com.tynoxs.buildersdelight.compat.jei.JeiIntegration;
 import com.tynoxs.buildersdelight.content.init.BdItems;
 import com.tynoxs.buildersdelight.content.recipe.ChiselRecipe;
 import mezz.jei.api.constants.VanillaTypes;
@@ -38,7 +37,7 @@ public class ChiselRecipeCategory extends BDRecipeCategory<ChiselRecipe>
     public static final ResourceLocation UID = new ResourceLocation(BuildersDelight.MODID, "chisel");
 
     public ChiselRecipeCategory(IGuiHelper guiHelper) {
-        super(guiHelper, JEIRecipeTypes.CHISEL, "container.iron_chisel");
+        super(guiHelper, JeiIntegration.CHISEL_RECIPE_TYPE, "container.iron_chisel");
         ResourceLocation location = new ResourceLocation("buildersdelight:textures/gui/chisel_gui_jei.png");
         setBackground(guiHelper.createDrawable(location, 0, 0, 176, 85));
         setIcon(guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BdItems.IRON_CHISEL.get())));

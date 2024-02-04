@@ -1,22 +1,22 @@
 package com.tynoxs.buildersdelight.compat.jei;
 
 import com.tynoxs.buildersdelight.BuildersDelight;
-import com.tynoxs.buildersdelight.compat.jei.JEIRecipeTypes;
+import com.tynoxs.buildersdelight.content.recipe.ChiselRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.crafting.RecipeType;
 
 @JeiPlugin
 public class JeiIntegration implements IModPlugin {
 
-    public static RecipeType TYPE = RecipeType.register("chisel");
+    public static final RecipeType<ChiselRecipe> CHISEL_RECIPE_TYPE = RecipeType.create(BuildersDelight.MODID, "chisel", ChiselRecipe.class);
 
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(BuildersDelight.MODID, "jei");
+        return new ResourceLocation(BuildersDelight.MODID, "chisel_plugin");
     }
 
     @Override
@@ -28,7 +28,7 @@ public class JeiIntegration implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         IModPlugin.super.registerRecipes(registration);
-        registration.addRecipes(JEIRecipeTypes.CHISEL, BuildersDelight.get().getRecipeFactory().getChiselRecipes());
+        registration.addRecipes(CHISEL_RECIPE_TYPE, BuildersDelight.get().getRecipeFactory().getChiselRecipes());
 
     }
 }
