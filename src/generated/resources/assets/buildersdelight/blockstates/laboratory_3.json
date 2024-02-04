@@ -1,16 +1,31 @@
 {
   "variants": {
-    "axis=x": {
+    "facing=north": {
+      "model": "buildersdelight:block/laboratory_3_horizontal",
+      "x": 90,
+      "y": 0
+    },
+    "facing=east": {
       "model": "buildersdelight:block/laboratory_3_horizontal",
       "x": 90,
       "y": 90
     },
-    "axis=y": {
+    "facing=south": {
+      "model": "buildersdelight:block/laboratory_3_horizontal",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "buildersdelight:block/laboratory_3_horizontal",
+      "x": 90,
+      "y": 270
+    },
+    "facing=up": {
       "model": "buildersdelight:block/laboratory_3"
     },
-    "axis=z": {
-      "model": "buildersdelight:block/laboratory_3_horizontal",
-      "x": 90
+    "facing=down": {
+      "model": "buildersdelight:block/laboratory_3",
+      "x": 180
     }
   }
 }
