@@ -1,8 +1,7 @@
 package com.tynoxs.buildersdelight.content.recipe;
 
 import com.tynoxs.buildersdelight.BuildersDelight;
-import com.tynoxs.buildersdelight.compat.jei.IChiselRecipe;
-import com.tynoxs.buildersdelight.compat.jei.JeiIntegration;
+import com.tynoxs.buildersdelight.content.recipe.IChiselRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
@@ -59,45 +58,32 @@ public class ChiselRecipe implements IChiselRecipe {
     }
 
 
-    @Override
     public ItemStack getBaseItem() {
         return this.getVariants().get(0);
     }
 
-    @Override
     public boolean matches(Container pContainer, Level pLevel) {
         return false;
     }
 
-    @Override
     public ItemStack assemble(Container pContainer, RegistryAccess registries) {
         return ItemStack.EMPTY;
     }
 
-    @Override
     public boolean canCraftInDimensions(int pWidth, int pHeight) {
         return false;
     }
 
-    @Override
     public ItemStack getResultItem(RegistryAccess registries) {
         return ItemStack.EMPTY;
     }
 
-    @Override
     public ResourceLocation getId() {
         return new ResourceLocation(BuildersDelight.MODID, BuiltInRegistries.ITEM.getKey(getBaseItem().getItem()).getPath());
     }
 
-    @Override
     public RecipeSerializer<?> getSerializer() {
         return null;
     }
-
-    @Override
-    public RecipeType<?> getType() {
-        return JeiIntegration.TYPE;
-    }
-
 
 }

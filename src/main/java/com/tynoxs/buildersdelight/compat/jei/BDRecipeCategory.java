@@ -1,6 +1,5 @@
 package com.tynoxs.buildersdelight.compat.jei;
 
-import com.tynoxs.buildersdelight.BuildersDelight;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
@@ -10,7 +9,6 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.Arrays;
 import javax.annotation.Nullable;
 
 public abstract class BDRecipeCategory<T> implements IRecipeCategory<T>
