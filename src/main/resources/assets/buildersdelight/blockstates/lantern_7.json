@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "buildersdelight:block/lantern_7"
+    },
+    "hanging=true": {
+      "model": "buildersdelight:block/lantern_7_hanging"
+    }
+  }
+}

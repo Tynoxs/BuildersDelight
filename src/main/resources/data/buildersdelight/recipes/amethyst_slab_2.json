@@ -1,0 +1,16 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:amethyst_block_2"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:amethyst_slab_2",
+    "count": 6
+  }
+}

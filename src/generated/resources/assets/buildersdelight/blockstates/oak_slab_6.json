@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/oak_slab_6"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/oak_planks_6"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/oak_slab_6_top"
+    }
+  }
+}

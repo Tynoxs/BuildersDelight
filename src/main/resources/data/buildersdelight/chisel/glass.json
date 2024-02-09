@@ -1,0 +1,12 @@
+{
+  "variants": [
+	"minecraft:glass",
+	"buildersdelight:glass_1",
+    "buildersdelight:glass_2",
+    "buildersdelight:glass_3",
+	"buildersdelight:glass_4",
+	"buildersdelight:glass_5",
+	"buildersdelight:glass_6",
+	"buildersdelight:glass_7"
+  ]
+}

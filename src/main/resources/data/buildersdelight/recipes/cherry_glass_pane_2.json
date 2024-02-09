@@ -1,0 +1,17 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000",
+	"000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:cherry_glass_2"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:cherry_glass_pane_2",
+    "count": 16
+  }
+}

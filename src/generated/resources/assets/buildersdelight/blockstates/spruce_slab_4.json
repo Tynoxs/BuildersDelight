@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/spruce_slab_4"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/spruce_planks_4"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/spruce_slab_4_top"
+    }
+  }
+}

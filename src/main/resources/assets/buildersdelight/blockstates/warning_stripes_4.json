@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "buildersdelight:block/warning_stripes_4",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "buildersdelight:block/warning_stripes_4"
+    },
+    "facing=south": {
+      "model": "buildersdelight:block/warning_stripes_4",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "buildersdelight:block/warning_stripes_4",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "buildersdelight:block/gilded_nether_bricks_4_top",
+    "side": "buildersdelight:block/gilded_nether_bricks_4"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "buildersdelight",
+  "ingredients": [
+    {
+      "item": "minecraft:gilded_blackstone"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "buildersdelight:gilded_blackstone_1"
+  }
+}

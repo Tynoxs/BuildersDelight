@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/crimson_slab_1"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/crimson_planks_1"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/crimson_slab_1_top"
+    }
+  }
+}

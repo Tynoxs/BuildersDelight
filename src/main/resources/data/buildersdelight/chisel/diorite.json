@@ -1,0 +1,13 @@
+{
+  "variants": [
+	"minecraft:diorite",
+	"minecraft:polished_diorite",
+    "buildersdelight:diorite_1",
+    "buildersdelight:diorite_2",
+    "buildersdelight:diorite_3",
+    "buildersdelight:diorite_4",
+    "buildersdelight:diorite_5",
+    "buildersdelight:diorite_6",
+    "buildersdelight:diorite_7"
+  ]
+}

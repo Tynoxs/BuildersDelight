@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "buildersdelight:block/tuff_5",
+    "side": "buildersdelight:block/tuff_5",
+    "top": "buildersdelight:block/tuff_5"
+  }
+}

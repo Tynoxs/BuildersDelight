@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "buildersdelight:block/diorite_3",
+    "side": "buildersdelight:block/diorite_3",
+    "top": "buildersdelight:block/diorite_3"
+  }
+}

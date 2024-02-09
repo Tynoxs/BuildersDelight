@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/birch_slab_3"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/birch_planks_3"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/birch_slab_3_top"
+    }
+  }
+}

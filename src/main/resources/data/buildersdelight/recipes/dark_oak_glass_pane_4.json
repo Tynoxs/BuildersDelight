@@ -1,0 +1,17 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000",
+	"000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:dark_oak_glass_4"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:dark_oak_glass_pane_4",
+    "count": 16
+  }
+}

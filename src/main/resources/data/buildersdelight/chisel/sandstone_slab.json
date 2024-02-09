@@ -1,0 +1,13 @@
+{
+  "variants": [
+	"minecraft:sandstone_slab",
+	"minecraft:cut_sandstone_slab",
+	"minecraft:smooth_sandstone_slab",
+    "buildersdelight:sandstone_slab_1",
+    "buildersdelight:sandstone_slab_2",
+    "buildersdelight:sandstone_slab_3",
+    "buildersdelight:sandstone_slab_4",
+    "buildersdelight:sandstone_slab_5",
+	"buildersdelight:sandstone_slab_6"
+  ]
+}

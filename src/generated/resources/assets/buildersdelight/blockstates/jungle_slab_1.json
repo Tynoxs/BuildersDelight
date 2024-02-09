@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/jungle_slab_1"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/jungle_planks_1"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/jungle_slab_1_top"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": [
+	"minecraft:granite_stairs",
+	"minecraft:polished_granite_stairs",
+    "buildersdelight:granite_stairs_1",
+    "buildersdelight:granite_stairs_2",
+    "buildersdelight:granite_stairs_3",
+    "buildersdelight:granite_stairs_4",
+    "buildersdelight:granite_stairs_5",
+    "buildersdelight:granite_stairs_6",
+    "buildersdelight:granite_stairs_7"
+  ]
+}

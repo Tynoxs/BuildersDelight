@@ -1,0 +1,7 @@
+{
+  "parent": "buildersdelight:block/glass_pane",
+  "textures": {
+    "glass": "buildersdelight:block/birch_glass_6",
+    "side": "buildersdelight:block/birch_glass_pane_6_top"
+  }
+}

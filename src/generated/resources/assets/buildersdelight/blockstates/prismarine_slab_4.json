@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/prismarine_slab_4"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/prismarine_4"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/prismarine_slab_4_top"
+    }
+  }
+}

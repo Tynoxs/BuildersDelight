@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+	"minecraft:oak_planks",
+    "buildersdelight:oak_planks_1",
+    "buildersdelight:oak_planks_2",
+    "buildersdelight:oak_planks_3",
+    "buildersdelight:oak_planks_4",
+    "buildersdelight:oak_planks_5",
+    "buildersdelight:oak_planks_6",
+    "buildersdelight:oak_planks_7"
+  ]
+}

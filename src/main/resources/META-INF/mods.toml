@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All rights reserved"
+issueTrackerURL="https://github.com/Tynoxs/BuildersDelight/issues"
+[[mods]]
+modId="buildersdelight"
+version="1.2"
+displayName="Builder's Delight"
+displayURL="https://curseforge.com/minecraft/mc-mods/builders-delight-forge"
+updateJSONURL="https://github.com/Tynoxs/BuildersDelight/raw/1.18.2/update.json"
+logoFile="logo.png"
+credits=""
+authors="Tynoxs"
+description="A mod that aims to add some more variety to minecraft by adding new blocks & items, and also trying to keep the vanilla feeling."
+
+[[dependencies.buildersdelight]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.buildersdelight]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,)"
+ordering="NONE"
+side="BOTH"

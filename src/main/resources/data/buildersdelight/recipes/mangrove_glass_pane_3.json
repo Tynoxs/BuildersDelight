@@ -1,0 +1,17 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000",
+	"000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:mangrove_glass_3"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:mangrove_glass_pane_3",
+    "count": 16
+  }
+}

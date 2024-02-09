@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "buildersdelight:block/amethyst_block_4_top",
+    "side": "buildersdelight:block/amethyst_block_4"
+  }
+}

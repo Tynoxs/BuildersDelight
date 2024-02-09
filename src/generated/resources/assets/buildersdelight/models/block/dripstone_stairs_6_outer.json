@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "buildersdelight:block/dripstone_6",
+    "side": "buildersdelight:block/dripstone_6",
+    "top": "buildersdelight:block/dripstone_6"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "buildersdelight:block/crimson_planks_1",
+    "side": "buildersdelight:block/crimson_planks_1",
+    "top": "buildersdelight:block/crimson_planks_1"
+  }
+}

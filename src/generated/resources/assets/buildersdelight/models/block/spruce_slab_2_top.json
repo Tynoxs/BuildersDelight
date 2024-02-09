@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "buildersdelight:block/spruce_planks_2",
+    "side": "buildersdelight:block/spruce_planks_2",
+    "top": "buildersdelight:block/spruce_planks_2"
+  }
+}

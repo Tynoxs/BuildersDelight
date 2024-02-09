@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/dripstone_slab_3"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/dripstone_3"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/dripstone_slab_3_top"
+    }
+  }
+}

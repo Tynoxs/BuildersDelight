@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "buildersdelight:block/industrial_7_on",
+    "particle": "buildersdelight:block/industrial_7_on"
+  }
+}

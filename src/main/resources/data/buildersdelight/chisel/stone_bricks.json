@@ -1,0 +1,13 @@
+{
+  "variants": [
+	"minecraft:stone",
+	"minecraft:stone_bricks",
+    "buildersdelight:stone_bricks_1",
+    "buildersdelight:stone_bricks_2",
+    "buildersdelight:stone_bricks_3",
+    "buildersdelight:stone_bricks_4",
+    "buildersdelight:stone_bricks_5",
+    "buildersdelight:stone_bricks_6",
+    "buildersdelight:stone_bricks_7"
+  ]
+}

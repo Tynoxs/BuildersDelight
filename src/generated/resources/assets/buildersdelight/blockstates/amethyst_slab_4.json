@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/amethyst_slab_4"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/amethyst_block_4"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/amethyst_slab_4_top"
+    }
+  }
+}

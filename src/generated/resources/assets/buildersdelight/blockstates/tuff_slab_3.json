@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/tuff_slab_3"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/tuff_3"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/tuff_slab_3_top"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": [
+	"minecraft:deepslate",
+	"minecraft:polished_deepslate",
+	"minecraft:deepslate_bricks",
+	"minecraft:cracked_deepslate_bricks",
+	"minecraft:deepslate_tiles",
+	"minecraft:cracked_deepslate_tiles",
+	"minecraft:chiseled_deepslate",
+    "buildersdelight:deepslate_1",
+    "buildersdelight:deepslate_2",
+    "buildersdelight:deepslate_3",
+    "buildersdelight:deepslate_4",
+    "buildersdelight:deepslate_5"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:prismarine_1"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:prismarine_slab_1",
+    "count": 6
+  }
+}

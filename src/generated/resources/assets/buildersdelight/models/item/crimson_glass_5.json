@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "buildersdelight:block/crimson_glass_5_top",
+    "side": "buildersdelight:block/crimson_glass_5"
+  }
+}

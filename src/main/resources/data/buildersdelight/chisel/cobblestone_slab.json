@@ -1,0 +1,12 @@
+{
+  "variants": [
+	"minecraft:cobblestone_slab",
+    "buildersdelight:cobblestone_slab_1",
+    "buildersdelight:cobblestone_slab_2",
+    "buildersdelight:cobblestone_slab_3",
+    "buildersdelight:cobblestone_slab_4",
+    "buildersdelight:cobblestone_slab_5",
+    "buildersdelight:cobblestone_slab_6",
+    "buildersdelight:cobblestone_slab_7"
+  ]
+}

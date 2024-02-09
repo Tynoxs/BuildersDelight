@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/stone_brick_slab_3"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/stone_bricks_3"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/stone_brick_slab_3_top"
+    }
+  }
+}

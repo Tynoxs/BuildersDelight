@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "buildersdelight:block/mangrove_frame_4"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "buildersdelight:root",
+  "display": {
+    "icon": {
+      "item": "buildersdelight:iron_chisel"
+    },
+    "title": {
+      "translate": "advancements.iron_chisel.title"
+    },
+    "description": {
+      "translate": "advancements.iron_chisel.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "unlock": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "unlock"
+    ]
+  ]
+}

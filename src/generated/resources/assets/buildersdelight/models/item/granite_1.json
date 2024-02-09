@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "buildersdelight:block/granite_1_top",
+    "side": "buildersdelight:block/granite_1"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "010",
+    "101",
+    "010"
+  ],
+  "key": {
+    "0": {
+      "tag": "forge:stone"
+    },
+    "1": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:industrial_1",
+    "count": 16
+  }
+}

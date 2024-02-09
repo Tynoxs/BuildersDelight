@@ -1,0 +1,18 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  0",
+    " 00",
+	"000"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:amethyst_block"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:amethyst_stairs_8",
+    "count": 4
+  }
+}

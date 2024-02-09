@@ -1,0 +1,16 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:mangrove_planks_5"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:mangrove_slab_5",
+    "count": 6
+  }
+}

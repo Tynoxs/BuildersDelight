@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "buildersdelight:block/dark_oak_glass_7",
+    "side": "buildersdelight:block/dark_oak_glass_7",
+    "top": "buildersdelight:block/dark_oak_glass_7_top"
+  }
+}
