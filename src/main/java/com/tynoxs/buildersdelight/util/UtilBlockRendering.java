@@ -13,9 +13,13 @@ public class UtilBlockRendering {
     public static void register() {
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.ACACIA_TABLE_2.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.BIRCH_TABLE_2.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.BAMBOO_TABLE_1.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.BAMBOO_TABLE_2.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.CHERRY_TABLE_2.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.CRIMSON_TABLE_2.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.DARK_OAK_TABLE_2.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.JUNGLE_TABLE_2.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.MANGROVE_TABLE_2.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.OAK_TABLE_2.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.SPRUCE_TABLE_2.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.WARPED_TABLE_2.get(), RenderType.cutout());
@@ -65,6 +69,40 @@ public class UtilBlockRendering {
         ItemBlockRenderTypes.setRenderLayer(BdBlocks.BIRCH_GLASS_PANE_6.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BdBlocks.BIRCH_GLASS_PANE_7.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdBlocks.BIRCH_GLASS_PANE_8.get(), RenderType.translucent());
+
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_1.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_2.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_4.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_5.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_6.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_7.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_8.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_PANE_1.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_PANE_2.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_PANE_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_PANE_4.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_PANE_5.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_PANE_6.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_PANE_7.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.BAMBOO_GLASS_PANE_8.get(), RenderType.translucent());
+
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_1.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_2.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_4.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_5.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_6.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_7.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_8.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_PANE_1.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_PANE_2.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_PANE_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_PANE_4.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_PANE_5.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_PANE_6.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_PANE_7.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.CHERRY_GLASS_PANE_8.get(), RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(BdBlocks.CRIMSON_GLASS_1.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdBlocks.CRIMSON_GLASS_2.get(), RenderType.cutout());
@@ -134,6 +172,23 @@ public class UtilBlockRendering {
         ItemBlockRenderTypes.setRenderLayer(BdBlocks.JUNGLE_GLASS_PANE_6.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(BdBlocks.JUNGLE_GLASS_PANE_7.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdBlocks.JUNGLE_GLASS_PANE_8.get(), RenderType.translucent());
+
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_1.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_2.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_4.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_5.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_6.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_7.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_8.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_PANE_1.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_PANE_2.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_PANE_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_PANE_4.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_PANE_5.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_PANE_6.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_PANE_7.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdBlocks.MANGROVE_GLASS_PANE_8.get(), RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(BdBlocks.OAK_GLASS_1.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdBlocks.OAK_GLASS_2.get(), RenderType.cutout());

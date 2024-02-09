@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+	"minecraft:mangrove_planks",
+    "buildersdelight:mangrove_planks_1",
+    "buildersdelight:mangrove_planks_2",
+    "buildersdelight:mangrove_planks_3",
+    "buildersdelight:mangrove_planks_4",
+    "buildersdelight:mangrove_planks_5",
+    "buildersdelight:mangrove_planks_6",
+    "buildersdelight:mangrove_planks_7"
+  ]
+}

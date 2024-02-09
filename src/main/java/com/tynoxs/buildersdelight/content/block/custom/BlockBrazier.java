@@ -3,10 +3,9 @@ package com.tynoxs.buildersdelight.content.block.custom;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-
-import java.util.Random;
 
 public class BlockBrazier extends BlockLantern {
 
@@ -14,7 +13,7 @@ public class BlockBrazier extends BlockLantern {
         super(properties);
     }
 
-    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
+    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
         double d0, d1, d2;
         Direction dir1 = stateIn.getValue(FACING);
 

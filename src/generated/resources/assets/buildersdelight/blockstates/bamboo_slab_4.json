@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/bamboo_slab_4"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/bamboo_planks_4"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/bamboo_slab_4_top"
+    }
+  }
+}

@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "buildersdelight:amethyst_block_1",
     "buildersdelight:amethyst_block_2",
@@ -263,11 +262,13 @@
     "buildersdelight:sandstone_3",
     "buildersdelight:sandstone_4",
     "buildersdelight:sandstone_5",
+    "buildersdelight:sandstone_6",
     "buildersdelight:sandstone_slab_1",
     "buildersdelight:sandstone_slab_2",
     "buildersdelight:sandstone_slab_3",
     "buildersdelight:sandstone_slab_4",
     "buildersdelight:sandstone_slab_5",
+    "buildersdelight:sandstone_slab_6",
     "buildersdelight:sandstone_stairs_1",
     "buildersdelight:sandstone_stairs_2",
     "buildersdelight:sandstone_stairs_3",

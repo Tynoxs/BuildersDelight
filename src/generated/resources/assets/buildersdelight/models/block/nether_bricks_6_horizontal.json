@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column_horizontal",
   "textures": {
-    "side": "buildersdelight:block/nether_bricks_6",
-    "end": "buildersdelight:block/nether_bricks_6_top"
+    "end": "buildersdelight:block/nether_bricks_6_top",
+    "side": "buildersdelight:block/nether_bricks_6"
   }
 }

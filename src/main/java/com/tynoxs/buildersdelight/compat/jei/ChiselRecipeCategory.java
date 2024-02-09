@@ -1,14 +1,9 @@
 package com.tynoxs.buildersdelight.compat.jei;
 
-import com.tynoxs.buildersdelight.BuildersDelight;
-import com.tynoxs.buildersdelight.compat.jei.BDRecipeCategory;
-import com.tynoxs.buildersdelight.compat.jei.JeiIntegration;
 import com.tynoxs.buildersdelight.content.init.BdItems;
 import com.tynoxs.buildersdelight.content.recipe.ChiselRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -16,7 +11,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.Arrays;
-
 
 public class ChiselRecipeCategory extends BDRecipeCategory<ChiselRecipe>
 {

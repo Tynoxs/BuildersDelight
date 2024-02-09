@@ -1,0 +1,16 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:bamboo_planks_2"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:bamboo_slab_2",
+    "count": 6
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "variant=variant_1": { "model": "buildersdelight:block/bamboo_table_2_v1" },
+    "variant=variant_2": { "model": "buildersdelight:block/bamboo_table_2_v2" }
+  }
+}

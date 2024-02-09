@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "buildersdelight:block/mangrove_planks_7",
+    "side": "buildersdelight:block/mangrove_planks_7",
+    "top": "buildersdelight:block/mangrove_planks_7"
+  }
+}

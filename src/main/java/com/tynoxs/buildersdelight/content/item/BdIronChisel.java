@@ -1,11 +1,12 @@
 package com.tynoxs.buildersdelight.content.item;
 
-import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.content.gui.menus.ContainerChisel;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.nbt.CompoundTag;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -46,6 +47,7 @@ public class BdIronChisel extends BdItem {
         ItemStack stack = player.getItemInHand(hand);
 
         if(!world.isClientSide){
+            world.playSound(null, player, SoundEvents.ARMOR_EQUIP_LEATHER, SoundSource.PLAYERS, 1f, 1f);
             NetworkHooks.openScreen((ServerPlayer)player, new MenuProvider() {
                 @Override
                 public Component getDisplayName(){

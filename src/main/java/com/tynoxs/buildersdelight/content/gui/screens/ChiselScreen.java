@@ -6,7 +6,6 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
-import net.minecraft.client.Minecraft;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
@@ -22,11 +21,13 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 		this.inventoryLabelY = this.imageHeight - 64;
 		this.imageWidth = 200;
 		this.imageHeight = 200;
-
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("buildersdelight:textures/gui/chisel_gui.png");
-	private static final ResourceLocation button_on = new ResourceLocation("buildersdelight:textures/gui/chisel_all_toggle.png");
+	private static final ResourceLocation chisel_all_button = new ResourceLocation("buildersdelight:textures/gui/chisel_all_button.png");
+	private static final ResourceLocation chisel_hover_button = new ResourceLocation("buildersdelight:textures/gui/chisel_hover_button.png");
+	private static final ResourceLocation right_arrow = new ResourceLocation("buildersdelight:textures/gui/right_arrow.png");
+	private static final ResourceLocation down_arrow = new ResourceLocation("buildersdelight:textures/gui/down_arrow.png");
 
 	@Override
 	public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
@@ -38,7 +39,7 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 	@Override
 	protected void renderBg(GuiGraphics graphics, float partialTicks, int pMouseX, int pMouseY) {
 		int buttonX = this.leftPos+28;
-		int buttonY = this.topPos + 72;
+		int buttonY = this.topPos+72;
 
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
@@ -47,32 +48,41 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 		graphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		RenderSystem.disableBlend();
 
-		if(toggled) {
-			RenderSystem.setShaderColor(1, 1, 1, 1);
-			RenderSystem.enableBlend();
-			RenderSystem.defaultBlendFunc();
-			RenderSystem.setShaderTexture(0, button_on);
-			graphics.blit(button_on, buttonX, buttonY, 0, 0, 16, 16, 16, 16);
+		//Display arrow towards variant slots, if item in slot 0
+		if(!this.menu.getSlot(0).getItem().isEmpty()) {
+			RenderSystem.setShaderTexture(0, right_arrow);
+			graphics.blit(right_arrow, this.leftPos+46, this.topPos+22, 0, 0, 8, 8, 8, 8);
 			RenderSystem.disableBlend();
 		}
 
-		if(pMouseX > buttonX && pMouseX <  buttonX+16) {
-			if (pMouseY > buttonY && pMouseY < buttonY + 16) {
-				Component text;
-				if(toggled){
-					text = Component.translatable("container.button.chisel_all_on");
-				}else{
-					text = Component.translatable("container.button.chisel_all_off");
-				}
-
-				this.renderTooltip(graphics, pMouseX, pMouseY);
-			}
+		//Display arrow towards player inventory, if item in slot 1
+		if(!this.menu.getSlot(1).getItem().isEmpty()) {
+			RenderSystem.setShaderTexture(0, down_arrow);
+			graphics.blit(down_arrow, this.leftPos+32, this.topPos+36, 0, 0, 8, 8, 8, 8);
+			RenderSystem.disableBlend();
 		}
 
+		//Highlight button when hovering
+		if (isButtonHovered(pMouseX, pMouseY)) {
+			RenderSystem.setShaderTexture(0, chisel_hover_button);
+			graphics.blit(chisel_hover_button, buttonX, buttonY, 0, 0, 16, 16, 16, 16);
+			RenderSystem.disableBlend();
+		}
+
+		//Light up chisel all button
+		if (toggled) {
+			RenderSystem.setShaderTexture(0, chisel_all_button);
+			graphics.blit(chisel_all_button, buttonX, buttonY, 0, 0, 16, 16, 16, 16);
+			RenderSystem.disableBlend();
+		}
 
 	}
 
-
+	private boolean isButtonHovered(int mouseX, int mouseY) {
+		int buttonX = this.leftPos + 28;
+		int buttonY = this.topPos + 72;
+		return mouseX >= buttonX && mouseX < buttonX + 16 && mouseY >= buttonY && mouseY < buttonY + 16;
+	}
 
 	@Override
 	public boolean keyPressed(int key, int b, int c) {
@@ -91,7 +101,7 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 	@Override
 	public boolean mouseClicked(double pMouseX, double pMouseY, int pButton) {
 		int buttonX = this.leftPos+28;
-		int buttonY = this.topPos + 72;
+		int buttonY = this.topPos+72;
 		if(pMouseX > buttonX && pMouseX <  buttonX+16){
 			if(pMouseY > buttonY && pMouseY <  buttonY+16) {
 				toggled = !toggled;
@@ -101,16 +111,8 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 					this.minecraft.gameMode.handleInventoryButtonClick((this.menu).containerId, 0);
 				}
 			}
-
 		}
 		return super.mouseClicked(pMouseX, pMouseY, pButton);
-
-	}
-
-	@Override
-	protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
-		graphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752);
-		graphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, 4210752);
 	}
 
 	@Override

@@ -3,7 +3,6 @@ package com.tynoxs.buildersdelight.content.recipe;
 import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.content.recipe.IChiselRecipe;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.Container;
@@ -85,5 +84,4 @@ public class ChiselRecipe implements IChiselRecipe {
     public RecipeSerializer<?> getSerializer() {
         return null;
     }
-
 }

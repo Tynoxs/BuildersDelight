@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "buildersdelight:block/cobblestone_slab_2_top"
-    },
     "type=bottom": {
       "model": "buildersdelight:block/cobblestone_slab_2"
     },
     "type=double": {
       "model": "buildersdelight:block/cobblestone_2"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/cobblestone_slab_2_top"
     }
   }
 }

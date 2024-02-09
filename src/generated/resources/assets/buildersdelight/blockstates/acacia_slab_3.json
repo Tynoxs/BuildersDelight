@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "buildersdelight:block/acacia_slab_3_top"
-    },
     "type=bottom": {
       "model": "buildersdelight:block/acacia_slab_3"
     },
     "type=double": {
       "model": "buildersdelight:block/acacia_planks_3"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/acacia_slab_3_top"
     }
   }
 }

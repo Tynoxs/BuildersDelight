@@ -11,8 +11,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
-import net.minecraft.world.item.Item;
-
 public class BdTabs {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, BuildersDelight.MODID);
     public static final RegistryObject<CreativeModeTab> TabBlocks = TABS.register("blocks", () -> CreativeModeTab.builder()

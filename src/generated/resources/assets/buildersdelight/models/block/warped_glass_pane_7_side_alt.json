@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_side_alt",
+  "textures": {
+    "edge": "buildersdelight:block/warped_glass_pane_7_top",
+    "pane": "buildersdelight:block/warped_glass_7"
+  }
+}

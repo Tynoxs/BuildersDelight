@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/inner_stairs",
   "textures": {
-    "side": "buildersdelight:block/birch_planks_5",
     "bottom": "buildersdelight:block/birch_planks_5",
+    "side": "buildersdelight:block/birch_planks_5",
     "top": "buildersdelight:block/birch_planks_5"
   }
 }

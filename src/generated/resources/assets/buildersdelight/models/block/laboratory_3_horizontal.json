@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column_horizontal",
   "textures": {
-    "side": "buildersdelight:block/laboratory_3",
-    "end": "buildersdelight:block/laboratory_3_top"
+    "end": "buildersdelight:block/laboratory_3_top",
+    "side": "buildersdelight:block/laboratory_3"
   }
 }

@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/outer_stairs",
   "textures": {
-    "side": "buildersdelight:block/diorite_3",
     "bottom": "buildersdelight:block/diorite_3",
+    "side": "buildersdelight:block/diorite_3",
     "top": "buildersdelight:block/diorite_3"
   }
 }

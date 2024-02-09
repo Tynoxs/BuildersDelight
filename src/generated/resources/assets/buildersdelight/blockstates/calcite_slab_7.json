@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "buildersdelight:block/calcite_slab_7_top"
-    },
     "type=bottom": {
       "model": "buildersdelight:block/calcite_slab_7"
     },
     "type=double": {
       "model": "buildersdelight:block/calcite_7"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/calcite_slab_7_top"
     }
   }
 }

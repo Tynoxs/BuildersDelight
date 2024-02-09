@@ -35,6 +35,11 @@ public class BdDecorationLootTables extends BlockLootSubProvider {
         registerDropSelf(BdDecoration.BIRCH_TABLE_1.get());
         registerDropSelf(BdDecoration.BIRCH_TABLE_2.get());
 
+        registerDropSelf(BdDecoration.CHERRY_CHAIR_1.get());
+        registerDropSelf(BdDecoration.CHERRY_CHAIR_2.get());
+        registerDropSelf(BdDecoration.CHERRY_TABLE_1.get());
+        registerDropSelf(BdDecoration.CHERRY_TABLE_2.get());
+
         registerDropSelf(BdDecoration.CRIMSON_CHAIR_1.get());
         registerDropSelf(BdDecoration.CRIMSON_CHAIR_2.get());
         registerDropSelf(BdDecoration.CRIMSON_TABLE_1.get());
@@ -49,6 +54,11 @@ public class BdDecorationLootTables extends BlockLootSubProvider {
         registerDropSelf(BdDecoration.JUNGLE_CHAIR_2.get());
         registerDropSelf(BdDecoration.JUNGLE_TABLE_1.get());
         registerDropSelf(BdDecoration.JUNGLE_TABLE_2.get());
+
+        registerDropSelf(BdDecoration.MANGROVE_CHAIR_1.get());
+        registerDropSelf(BdDecoration.MANGROVE_CHAIR_2.get());
+        registerDropSelf(BdDecoration.MANGROVE_TABLE_1.get());
+        registerDropSelf(BdDecoration.MANGROVE_TABLE_2.get());
 
         registerDropSelf(BdDecoration.OAK_CHAIR_1.get());
         registerDropSelf(BdDecoration.OAK_CHAIR_2.get());

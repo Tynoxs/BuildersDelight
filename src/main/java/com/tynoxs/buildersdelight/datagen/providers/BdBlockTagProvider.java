@@ -4,25 +4,22 @@ import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.content.init.BdBlocks;
 import com.tynoxs.buildersdelight.content.init.BdDecoration;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
-    public BdBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider,
-        ExistingFileHelper existingFileHelper) {
-        super(output, Registries.BLOCK, provider, (block) -> block.builtInRegistryHolder().key(), BuildersDelight.MODID, existingFileHelper);
+public class BdBlockTagProvider extends BlockTagsProvider {
+    public BdBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
+                                @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, lookupProvider, BuildersDelight.MODID, existingFileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.Provider pProvider) {
 
         this.tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(BdDecoration.ACACIA_CHAIR_1.get())
@@ -54,6 +51,35 @@ public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
                 .add(BdBlocks.ACACIA_PLANKS_6.get())
                 .add(BdBlocks.ACACIA_PLANKS_7.get())
 
+                .add(BdDecoration.BAMBOO_CHAIR_1.get())
+                .add(BdDecoration.BAMBOO_CHAIR_2.get())
+                .add(BdDecoration.BAMBOO_TABLE_1.get())
+                .add(BdDecoration.BAMBOO_TABLE_2.get())
+
+                .add(BdBlocks.BAMBOO_SLAB_1.get())
+                .add(BdBlocks.BAMBOO_SLAB_2.get())
+                .add(BdBlocks.BAMBOO_SLAB_3.get())
+                .add(BdBlocks.BAMBOO_SLAB_4.get())
+                .add(BdBlocks.BAMBOO_SLAB_5.get())
+                .add(BdBlocks.BAMBOO_SLAB_6.get())
+                .add(BdBlocks.BAMBOO_SLAB_7.get())
+
+                .add(BdBlocks.BAMBOO_STAIRS_1.get())
+                .add(BdBlocks.BAMBOO_STAIRS_2.get())
+                .add(BdBlocks.BAMBOO_STAIRS_3.get())
+                .add(BdBlocks.BAMBOO_STAIRS_4.get())
+                .add(BdBlocks.BAMBOO_STAIRS_5.get())
+                .add(BdBlocks.BAMBOO_STAIRS_6.get())
+                .add(BdBlocks.BAMBOO_STAIRS_7.get())
+
+                .add(BdBlocks.BAMBOO_PLANKS_1.get())
+                .add(BdBlocks.BAMBOO_PLANKS_2.get())
+                .add(BdBlocks.BAMBOO_PLANKS_3.get())
+                .add(BdBlocks.BAMBOO_PLANKS_4.get())
+                .add(BdBlocks.BAMBOO_PLANKS_5.get())
+                .add(BdBlocks.BAMBOO_PLANKS_6.get())
+                .add(BdBlocks.BAMBOO_PLANKS_7.get())
+
                 .add(BdDecoration.BIRCH_CHAIR_1.get())
                 .add(BdDecoration.BIRCH_CHAIR_2.get())
                 .add(BdDecoration.BIRCH_TABLE_1.get())
@@ -82,6 +108,35 @@ public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
                 .add(BdBlocks.BIRCH_PLANKS_5.get())
                 .add(BdBlocks.BIRCH_PLANKS_6.get())
                 .add(BdBlocks.BIRCH_PLANKS_7.get())
+
+                .add(BdDecoration.CHERRY_CHAIR_1.get())
+                .add(BdDecoration.CHERRY_CHAIR_2.get())
+                .add(BdDecoration.CHERRY_TABLE_1.get())
+                .add(BdDecoration.CHERRY_TABLE_2.get())
+
+                .add(BdBlocks.CHERRY_SLAB_1.get())
+                .add(BdBlocks.CHERRY_SLAB_2.get())
+                .add(BdBlocks.CHERRY_SLAB_3.get())
+                .add(BdBlocks.CHERRY_SLAB_4.get())
+                .add(BdBlocks.CHERRY_SLAB_5.get())
+                .add(BdBlocks.CHERRY_SLAB_6.get())
+                .add(BdBlocks.CHERRY_SLAB_7.get())
+
+                .add(BdBlocks.CHERRY_STAIRS_1.get())
+                .add(BdBlocks.CHERRY_STAIRS_2.get())
+                .add(BdBlocks.CHERRY_STAIRS_3.get())
+                .add(BdBlocks.CHERRY_STAIRS_4.get())
+                .add(BdBlocks.CHERRY_STAIRS_5.get())
+                .add(BdBlocks.CHERRY_STAIRS_6.get())
+                .add(BdBlocks.CHERRY_STAIRS_7.get())
+
+                .add(BdBlocks.CHERRY_PLANKS_1.get())
+                .add(BdBlocks.CHERRY_PLANKS_2.get())
+                .add(BdBlocks.CHERRY_PLANKS_3.get())
+                .add(BdBlocks.CHERRY_PLANKS_4.get())
+                .add(BdBlocks.CHERRY_PLANKS_5.get())
+                .add(BdBlocks.CHERRY_PLANKS_6.get())
+                .add(BdBlocks.CHERRY_PLANKS_7.get())
 
                 .add(BdDecoration.CRIMSON_CHAIR_1.get())
                 .add(BdDecoration.CRIMSON_CHAIR_2.get())
@@ -169,6 +224,35 @@ public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
                 .add(BdBlocks.JUNGLE_PLANKS_5.get())
                 .add(BdBlocks.JUNGLE_PLANKS_6.get())
                 .add(BdBlocks.JUNGLE_PLANKS_7.get())
+
+                .add(BdDecoration.MANGROVE_CHAIR_1.get())
+                .add(BdDecoration.MANGROVE_CHAIR_2.get())
+                .add(BdDecoration.MANGROVE_TABLE_1.get())
+                .add(BdDecoration.MANGROVE_TABLE_2.get())
+
+                .add(BdBlocks.MANGROVE_SLAB_1.get())
+                .add(BdBlocks.MANGROVE_SLAB_2.get())
+                .add(BdBlocks.MANGROVE_SLAB_3.get())
+                .add(BdBlocks.MANGROVE_SLAB_4.get())
+                .add(BdBlocks.MANGROVE_SLAB_5.get())
+                .add(BdBlocks.MANGROVE_SLAB_6.get())
+                .add(BdBlocks.MANGROVE_SLAB_7.get())
+
+                .add(BdBlocks.MANGROVE_STAIRS_1.get())
+                .add(BdBlocks.MANGROVE_STAIRS_2.get())
+                .add(BdBlocks.MANGROVE_STAIRS_3.get())
+                .add(BdBlocks.MANGROVE_STAIRS_4.get())
+                .add(BdBlocks.MANGROVE_STAIRS_5.get())
+                .add(BdBlocks.MANGROVE_STAIRS_6.get())
+                .add(BdBlocks.MANGROVE_STAIRS_7.get())
+
+                .add(BdBlocks.MANGROVE_PLANKS_1.get())
+                .add(BdBlocks.MANGROVE_PLANKS_2.get())
+                .add(BdBlocks.MANGROVE_PLANKS_3.get())
+                .add(BdBlocks.MANGROVE_PLANKS_4.get())
+                .add(BdBlocks.MANGROVE_PLANKS_5.get())
+                .add(BdBlocks.MANGROVE_PLANKS_6.get())
+                .add(BdBlocks.MANGROVE_PLANKS_7.get())
 
                 .add(BdDecoration.OAK_CHAIR_1.get())
                 .add(BdDecoration.OAK_CHAIR_2.get())
@@ -560,12 +644,14 @@ public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
                 .add(BdBlocks.SANDSTONE_3.get())
                 .add(BdBlocks.SANDSTONE_4.get())
                 .add(BdBlocks.SANDSTONE_5.get())
+                .add(BdBlocks.SANDSTONE_6.get())
 
                 .add(BdBlocks.SANDSTONE_SLAB_1.get())
                 .add(BdBlocks.SANDSTONE_SLAB_2.get())
                 .add(BdBlocks.SANDSTONE_SLAB_3.get())
                 .add(BdBlocks.SANDSTONE_SLAB_4.get())
                 .add(BdBlocks.SANDSTONE_SLAB_5.get())
+                .add(BdBlocks.SANDSTONE_SLAB_6.get())
 
                 .add(BdBlocks.SANDSTONE_STAIRS_1.get())
                 .add(BdBlocks.SANDSTONE_STAIRS_2.get())
@@ -652,6 +738,24 @@ public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
                 .add(BdBlocks.BIRCH_FRAME_7.get())
                 .add(BdBlocks.BIRCH_FRAME_8.get())
 
+                .add(BdBlocks.BAMBOO_FRAME_1.get())
+                .add(BdBlocks.BAMBOO_FRAME_2.get())
+                .add(BdBlocks.BAMBOO_FRAME_3.get())
+                .add(BdBlocks.BAMBOO_FRAME_4.get())
+                .add(BdBlocks.BAMBOO_FRAME_5.get())
+                .add(BdBlocks.BAMBOO_FRAME_6.get())
+                .add(BdBlocks.BAMBOO_FRAME_7.get())
+                .add(BdBlocks.BAMBOO_FRAME_8.get())
+
+                .add(BdBlocks.CHERRY_FRAME_1.get())
+                .add(BdBlocks.CHERRY_FRAME_2.get())
+                .add(BdBlocks.CHERRY_FRAME_3.get())
+                .add(BdBlocks.CHERRY_FRAME_4.get())
+                .add(BdBlocks.CHERRY_FRAME_5.get())
+                .add(BdBlocks.CHERRY_FRAME_6.get())
+                .add(BdBlocks.CHERRY_FRAME_7.get())
+                .add(BdBlocks.CHERRY_FRAME_8.get())
+
                 .add(BdBlocks.CRIMSON_FRAME_1.get())
                 .add(BdBlocks.CRIMSON_FRAME_2.get())
                 .add(BdBlocks.CRIMSON_FRAME_3.get())
@@ -678,6 +782,15 @@ public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
                 .add(BdBlocks.JUNGLE_FRAME_6.get())
                 .add(BdBlocks.JUNGLE_FRAME_7.get())
                 .add(BdBlocks.JUNGLE_FRAME_8.get())
+
+                .add(BdBlocks.MANGROVE_FRAME_1.get())
+                .add(BdBlocks.MANGROVE_FRAME_2.get())
+                .add(BdBlocks.MANGROVE_FRAME_3.get())
+                .add(BdBlocks.MANGROVE_FRAME_4.get())
+                .add(BdBlocks.MANGROVE_FRAME_5.get())
+                .add(BdBlocks.MANGROVE_FRAME_6.get())
+                .add(BdBlocks.MANGROVE_FRAME_7.get())
+                .add(BdBlocks.MANGROVE_FRAME_8.get())
 
                 .add(BdBlocks.OAK_FRAME_1.get())
                 .add(BdBlocks.OAK_FRAME_2.get())
@@ -723,6 +836,22 @@ public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
                 .add(BdBlocks.BIRCH_PLANKS_6.get())
                 .add(BdBlocks.BIRCH_PLANKS_7.get())
 
+                .add(BdBlocks.BAMBOO_PLANKS_1.get())
+                .add(BdBlocks.BAMBOO_PLANKS_2.get())
+                .add(BdBlocks.BAMBOO_PLANKS_3.get())
+                .add(BdBlocks.BAMBOO_PLANKS_4.get())
+                .add(BdBlocks.BAMBOO_PLANKS_5.get())
+                .add(BdBlocks.BAMBOO_PLANKS_6.get())
+                .add(BdBlocks.BAMBOO_PLANKS_7.get())
+
+                .add(BdBlocks.CHERRY_PLANKS_1.get())
+                .add(BdBlocks.CHERRY_PLANKS_2.get())
+                .add(BdBlocks.CHERRY_PLANKS_3.get())
+                .add(BdBlocks.CHERRY_PLANKS_4.get())
+                .add(BdBlocks.CHERRY_PLANKS_5.get())
+                .add(BdBlocks.CHERRY_PLANKS_6.get())
+                .add(BdBlocks.CHERRY_PLANKS_7.get())
+
                 .add(BdBlocks.CRIMSON_PLANKS_1.get())
                 .add(BdBlocks.CRIMSON_PLANKS_2.get())
                 .add(BdBlocks.CRIMSON_PLANKS_3.get())
@@ -746,6 +875,14 @@ public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
                 .add(BdBlocks.JUNGLE_PLANKS_5.get())
                 .add(BdBlocks.JUNGLE_PLANKS_6.get())
                 .add(BdBlocks.JUNGLE_PLANKS_7.get())
+
+                .add(BdBlocks.MANGROVE_PLANKS_1.get())
+                .add(BdBlocks.MANGROVE_PLANKS_2.get())
+                .add(BdBlocks.MANGROVE_PLANKS_3.get())
+                .add(BdBlocks.MANGROVE_PLANKS_4.get())
+                .add(BdBlocks.MANGROVE_PLANKS_5.get())
+                .add(BdBlocks.MANGROVE_PLANKS_6.get())
+                .add(BdBlocks.MANGROVE_PLANKS_7.get())
 
                 .add(BdBlocks.OAK_PLANKS_1.get())
                 .add(BdBlocks.OAK_PLANKS_2.get())
@@ -788,6 +925,22 @@ public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
                 .add(BdBlocks.BIRCH_STAIRS_6.get())
                 .add(BdBlocks.BIRCH_STAIRS_7.get())
 
+                .add(BdBlocks.BAMBOO_STAIRS_1.get())
+                .add(BdBlocks.BAMBOO_STAIRS_2.get())
+                .add(BdBlocks.BAMBOO_STAIRS_3.get())
+                .add(BdBlocks.BAMBOO_STAIRS_4.get())
+                .add(BdBlocks.BAMBOO_STAIRS_5.get())
+                .add(BdBlocks.BAMBOO_STAIRS_6.get())
+                .add(BdBlocks.BAMBOO_STAIRS_7.get())
+
+                .add(BdBlocks.CHERRY_STAIRS_1.get())
+                .add(BdBlocks.CHERRY_STAIRS_2.get())
+                .add(BdBlocks.CHERRY_STAIRS_3.get())
+                .add(BdBlocks.CHERRY_STAIRS_4.get())
+                .add(BdBlocks.CHERRY_STAIRS_5.get())
+                .add(BdBlocks.CHERRY_STAIRS_6.get())
+                .add(BdBlocks.CHERRY_STAIRS_7.get())
+
                 .add(BdBlocks.CRIMSON_STAIRS_1.get())
                 .add(BdBlocks.CRIMSON_STAIRS_2.get())
                 .add(BdBlocks.CRIMSON_STAIRS_3.get())
@@ -811,6 +964,14 @@ public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
                 .add(BdBlocks.JUNGLE_STAIRS_5.get())
                 .add(BdBlocks.JUNGLE_STAIRS_6.get())
                 .add(BdBlocks.JUNGLE_STAIRS_7.get())
+
+                .add(BdBlocks.MANGROVE_STAIRS_1.get())
+                .add(BdBlocks.MANGROVE_STAIRS_2.get())
+                .add(BdBlocks.MANGROVE_STAIRS_3.get())
+                .add(BdBlocks.MANGROVE_STAIRS_4.get())
+                .add(BdBlocks.MANGROVE_STAIRS_5.get())
+                .add(BdBlocks.MANGROVE_STAIRS_6.get())
+                .add(BdBlocks.MANGROVE_STAIRS_7.get())
 
                 .add(BdBlocks.OAK_STAIRS_1.get())
                 .add(BdBlocks.OAK_STAIRS_2.get())
@@ -853,6 +1014,22 @@ public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
                 .add(BdBlocks.BIRCH_SLAB_6.get())
                 .add(BdBlocks.BIRCH_SLAB_7.get())
 
+                .add(BdBlocks.BAMBOO_STAIRS_1.get())
+                .add(BdBlocks.BAMBOO_STAIRS_2.get())
+                .add(BdBlocks.BAMBOO_STAIRS_3.get())
+                .add(BdBlocks.BAMBOO_STAIRS_4.get())
+                .add(BdBlocks.BAMBOO_STAIRS_5.get())
+                .add(BdBlocks.BAMBOO_STAIRS_6.get())
+                .add(BdBlocks.BAMBOO_STAIRS_7.get())
+
+                .add(BdBlocks.CHERRY_SLAB_1.get())
+                .add(BdBlocks.CHERRY_SLAB_2.get())
+                .add(BdBlocks.CHERRY_SLAB_3.get())
+                .add(BdBlocks.CHERRY_SLAB_4.get())
+                .add(BdBlocks.CHERRY_SLAB_5.get())
+                .add(BdBlocks.CHERRY_SLAB_6.get())
+                .add(BdBlocks.CHERRY_SLAB_7.get())
+
                 .add(BdBlocks.CRIMSON_SLAB_1.get())
                 .add(BdBlocks.CRIMSON_SLAB_2.get())
                 .add(BdBlocks.CRIMSON_SLAB_3.get())
@@ -876,6 +1053,14 @@ public class BdBlockTagProvider extends IntrinsicHolderTagsProvider<Block> {
                 .add(BdBlocks.JUNGLE_SLAB_5.get())
                 .add(BdBlocks.JUNGLE_SLAB_6.get())
                 .add(BdBlocks.JUNGLE_SLAB_7.get())
+
+                .add(BdBlocks.MANGROVE_SLAB_1.get())
+                .add(BdBlocks.MANGROVE_SLAB_2.get())
+                .add(BdBlocks.MANGROVE_SLAB_3.get())
+                .add(BdBlocks.MANGROVE_SLAB_4.get())
+                .add(BdBlocks.MANGROVE_SLAB_5.get())
+                .add(BdBlocks.MANGROVE_SLAB_6.get())
+                .add(BdBlocks.MANGROVE_SLAB_7.get())
 
                 .add(BdBlocks.OAK_SLAB_1.get())
                 .add(BdBlocks.OAK_SLAB_2.get())

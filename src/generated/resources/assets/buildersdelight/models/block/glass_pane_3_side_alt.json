@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_side_alt",
+  "textures": {
+    "edge": "buildersdelight:block/glass_pane_3_top",
+    "pane": "buildersdelight:block/glass_3"
+  }
+}

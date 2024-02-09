@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "buildersdelight:block/diorite_slab_7_top"
-    },
     "type=bottom": {
       "model": "buildersdelight:block/diorite_slab_7"
     },
     "type=double": {
       "model": "buildersdelight:block/diorite_7"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/diorite_slab_7_top"
     }
   }
 }

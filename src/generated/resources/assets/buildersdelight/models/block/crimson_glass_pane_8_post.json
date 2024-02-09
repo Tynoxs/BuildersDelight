@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "edge": "buildersdelight:block/crimson_glass_pane_8_top",
+    "pane": "buildersdelight:block/crimson_glass_8"
+  }
+}

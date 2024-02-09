@@ -35,7 +35,6 @@ public class ContainerChisel extends AbstractContainerMenu {
 
     private Inventory pPlayerInventory;
 
-    //This GUI gets opened by right-clicking the BdItems.iron_chisel
     public ContainerChisel(int id, Inventory pPlayerInventory, final ContainerLevelAccess access, SimpleContainer pContainer) {
         super(BdContainers.CHISEL_CONTAINER.get(), id);
         this.chisel = pContainer;

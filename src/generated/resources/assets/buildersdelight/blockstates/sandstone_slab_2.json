@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "buildersdelight:block/sandstone_slab_2_top"
-    },
     "type=bottom": {
       "model": "buildersdelight:block/sandstone_slab_2"
     },
     "type=double": {
       "model": "buildersdelight:block/sandstone_2"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/sandstone_slab_2_top"
     }
   }
 }

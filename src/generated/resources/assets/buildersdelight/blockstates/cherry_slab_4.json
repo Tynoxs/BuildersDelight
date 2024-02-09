@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/cherry_slab_4"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/cherry_planks_4"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/cherry_slab_4_top"
+    }
+  }
+}

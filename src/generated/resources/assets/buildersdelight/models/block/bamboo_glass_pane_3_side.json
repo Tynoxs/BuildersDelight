@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_side",
+  "textures": {
+    "edge": "buildersdelight:block/bamboo_glass_pane_3_top",
+    "pane": "buildersdelight:block/bamboo_glass_3"
+  }
+}

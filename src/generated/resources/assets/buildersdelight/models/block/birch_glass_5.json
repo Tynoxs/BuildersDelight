@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "buildersdelight:block/birch_glass_5",
+    "side": "buildersdelight:block/birch_glass_5",
+    "top": "buildersdelight:block/birch_glass_5_top"
+  }
+}

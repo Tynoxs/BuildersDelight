@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "buildersdelight:block/andesite_slab_1_top"
-    },
     "type=bottom": {
       "model": "buildersdelight:block/andesite_slab_1"
     },
     "type=double": {
       "model": "buildersdelight:block/andesite_1"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/andesite_slab_1_top"
     }
   }
 }

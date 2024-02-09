@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "buildersdelight:block/mangrove_slab_6"
+    },
+    "type=double": {
+      "model": "buildersdelight:block/mangrove_planks_6"
+    },
+    "type=top": {
+      "model": "buildersdelight:block/mangrove_slab_6_top"
+    }
+  }
+}
