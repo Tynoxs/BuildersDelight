@@ -109,18 +109,40 @@ public class ContainerChisel extends AbstractContainerMenu {
     }
 
     private void updateVariants(ItemStack input) {
-        if(input == ItemStack.EMPTY){
-            for(int i = 2; i < 30; i++){
-                slots.get(i).set(input);
+        if (input.isEmpty()) {
+            // Clear the result slots when input is empty
+            for (int i = 2; i < 30; i++) {
+                slots.get(i).set(ItemStack.EMPTY);
+            }
+            this.broadcastChanges();
+            return;
+        }
+
+        List<ItemStack> recipe = recipeFactory.getVariants(input);
+        boolean isValidInput = false;
+
+        // Check if input is a valid item to craft a variant
+        for (ItemStack variant : recipe) {
+            if (variant.is(input.getItem())) {
+                isValidInput = true;
+                break;
             }
         }
-        List<ItemStack> recipe = recipeFactory.getVariants(input);
 
-        int slotIndex =2;
-        for(ItemStack variant :recipe){
-            slots.get(slotIndex).set(variant);
-            slotIndex+=1;
+        // Clear the result slots if input is not valid
+        if (!isValidInput) {
+            for (int i = 2; i < 30; i++) {
+                slots.get(i).set(ItemStack.EMPTY);
+            }
+        } else {
+            // Set the result slots with valid variants
+            int slotIndex = 2;
+            for (ItemStack variant : recipe) {
+                slots.get(slotIndex).set(variant);
+                slotIndex += 1;
+            }
         }
+
         this.broadcastChanges();
     }
 
