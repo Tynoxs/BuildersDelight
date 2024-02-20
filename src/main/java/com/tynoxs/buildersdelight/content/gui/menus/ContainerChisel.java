@@ -77,7 +77,7 @@ public class ContainerChisel extends AbstractContainerMenu {
                     }
                     @Override
                     public boolean mayPickup(Player pPlayer) {
-                        if(!ContainerChisel.this.resultSlot.hasItem()){
+                        if(!ContainerChisel.this.resultSlot.hasItem() && this.hasItem()){
                             ContainerChisel.this.craftVariant(this.getItem());
 
                             //play sound after chiseling
