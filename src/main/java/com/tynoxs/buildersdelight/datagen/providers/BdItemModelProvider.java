@@ -142,7 +142,7 @@ public class BdItemModelProvider extends ItemModelProvider {
         blockItem(BdBlocks.BAMBOO_FRAME_7);
         blockItem(BdBlocks.BAMBOO_FRAME_8);
         blockItem(BdBlocks.BAMBOO_GLASS_1);
-        blockItem(BdBlocks.BAMBOO_GLASS_2);
+        logItem(BdBlocks.BAMBOO_GLASS_2);
         blockItem(BdBlocks.BAMBOO_GLASS_3);
         blockItem(BdBlocks.BAMBOO_GLASS_4);
         logItem(BdBlocks.BAMBOO_GLASS_5);
@@ -191,7 +191,7 @@ public class BdItemModelProvider extends ItemModelProvider {
         blockItem(BdBlocks.BIRCH_FRAME_7);
         blockItem(BdBlocks.BIRCH_FRAME_8);
         blockItem(BdBlocks.BIRCH_GLASS_1);
-        blockItem(BdBlocks.BIRCH_GLASS_2);
+        logItem(BdBlocks.BIRCH_GLASS_2);
         blockItem(BdBlocks.BIRCH_GLASS_3);
         blockItem(BdBlocks.BIRCH_GLASS_4);
         logItem(BdBlocks.BIRCH_GLASS_5);
@@ -295,7 +295,7 @@ public class BdItemModelProvider extends ItemModelProvider {
         blockItem(BdBlocks.CHERRY_FRAME_7);
         blockItem(BdBlocks.CHERRY_FRAME_8);
         blockItem(BdBlocks.CHERRY_GLASS_1);
-        blockItem(BdBlocks.CHERRY_GLASS_2);
+        logItem(BdBlocks.CHERRY_GLASS_2);
         blockItem(BdBlocks.CHERRY_GLASS_3);
         blockItem(BdBlocks.CHERRY_GLASS_4);
         logItem(BdBlocks.CHERRY_GLASS_5);
@@ -365,7 +365,7 @@ public class BdItemModelProvider extends ItemModelProvider {
         blockItem(BdBlocks.CRIMSON_FRAME_7);
         blockItem(BdBlocks.CRIMSON_FRAME_8);
         blockItem(BdBlocks.CRIMSON_GLASS_1);
-        blockItem(BdBlocks.CRIMSON_GLASS_2);
+        logItem(BdBlocks.CRIMSON_GLASS_2);
         blockItem(BdBlocks.CRIMSON_GLASS_3);
         blockItem(BdBlocks.CRIMSON_GLASS_4);
         logItem(BdBlocks.CRIMSON_GLASS_5);
@@ -414,7 +414,7 @@ public class BdItemModelProvider extends ItemModelProvider {
         blockItem(BdBlocks.DARK_OAK_FRAME_7);
         blockItem(BdBlocks.DARK_OAK_FRAME_8);
         blockItem(BdBlocks.DARK_OAK_GLASS_1);
-        blockItem(BdBlocks.DARK_OAK_GLASS_2);
+        logItem(BdBlocks.DARK_OAK_GLASS_2);
         blockItem(BdBlocks.DARK_OAK_GLASS_3);
         blockItem(BdBlocks.DARK_OAK_GLASS_4);
         logItem(BdBlocks.DARK_OAK_GLASS_5);
@@ -581,7 +581,7 @@ public class BdItemModelProvider extends ItemModelProvider {
         blockItem(BdBlocks.JUNGLE_FRAME_7);
         blockItem(BdBlocks.JUNGLE_FRAME_8);
         blockItem(BdBlocks.JUNGLE_GLASS_1);
-        blockItem(BdBlocks.JUNGLE_GLASS_2);
+        logItem(BdBlocks.JUNGLE_GLASS_2);
         blockItem(BdBlocks.JUNGLE_GLASS_3);
         blockItem(BdBlocks.JUNGLE_GLASS_4);
         logItem(BdBlocks.JUNGLE_GLASS_5);
@@ -639,7 +639,7 @@ public class BdItemModelProvider extends ItemModelProvider {
         blockItem(BdBlocks.MANGROVE_FRAME_7);
         blockItem(BdBlocks.MANGROVE_FRAME_8);
         blockItem(BdBlocks.MANGROVE_GLASS_1);
-        blockItem(BdBlocks.MANGROVE_GLASS_2);
+        logItem(BdBlocks.MANGROVE_GLASS_2);
         blockItem(BdBlocks.MANGROVE_GLASS_3);
         blockItem(BdBlocks.MANGROVE_GLASS_4);
         logItem(BdBlocks.MANGROVE_GLASS_5);
@@ -688,7 +688,7 @@ public class BdItemModelProvider extends ItemModelProvider {
         blockItem(BdBlocks.OAK_FRAME_7);
         blockItem(BdBlocks.OAK_FRAME_8);
         blockItem(BdBlocks.OAK_GLASS_1);
-        blockItem(BdBlocks.OAK_GLASS_2);
+        logItem(BdBlocks.OAK_GLASS_2);
         blockItem(BdBlocks.OAK_GLASS_3);
         blockItem(BdBlocks.OAK_GLASS_4);
         logItem(BdBlocks.OAK_GLASS_5);
@@ -779,7 +779,7 @@ public class BdItemModelProvider extends ItemModelProvider {
         blockItem(BdBlocks.SPRUCE_FRAME_7);
         blockItem(BdBlocks.SPRUCE_FRAME_8);
         blockItem(BdBlocks.SPRUCE_GLASS_1);
-        blockItem(BdBlocks.SPRUCE_GLASS_2);
+        logItem(BdBlocks.SPRUCE_GLASS_2);
         blockItem(BdBlocks.SPRUCE_GLASS_3);
         blockItem(BdBlocks.SPRUCE_GLASS_4);
         logItem(BdBlocks.SPRUCE_GLASS_5);
@@ -872,7 +872,7 @@ public class BdItemModelProvider extends ItemModelProvider {
         blockItem(BdBlocks.WARPED_FRAME_7);
         blockItem(BdBlocks.WARPED_FRAME_8);
         blockItem(BdBlocks.WARPED_GLASS_1);
-        blockItem(BdBlocks.WARPED_GLASS_2);
+        logItem(BdBlocks.WARPED_GLASS_2);
         blockItem(BdBlocks.WARPED_GLASS_3);
         blockItem(BdBlocks.WARPED_GLASS_4);
         logItem(BdBlocks.WARPED_GLASS_5);

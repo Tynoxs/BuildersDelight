@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "buildersdelight:block/birch_glass_2"
+    "end": "buildersdelight:block/birch_glass_2_top",
+    "side": "buildersdelight:block/birch_glass_2"
   }
 }
