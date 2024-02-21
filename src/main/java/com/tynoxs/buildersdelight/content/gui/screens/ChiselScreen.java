@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.world.item.ItemStack;
 
 public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 
@@ -26,8 +27,9 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 	private static final ResourceLocation texture = new ResourceLocation("buildersdelight:textures/gui/chisel_gui.png");
 	private static final ResourceLocation chisel_all_button = new ResourceLocation("buildersdelight:textures/gui/chisel_all_button.png");
 	private static final ResourceLocation chisel_hover_button = new ResourceLocation("buildersdelight:textures/gui/chisel_hover_button.png");
-	private static final ResourceLocation right_arrow = new ResourceLocation("buildersdelight:textures/gui/right_arrow.png");
-	private static final ResourceLocation down_arrow = new ResourceLocation("buildersdelight:textures/gui/down_arrow.png");
+	private static final ResourceLocation right_arrow_green = new ResourceLocation("buildersdelight:textures/gui/right_arrow_green.png");
+	private static final ResourceLocation right_arrow_red = new ResourceLocation("buildersdelight:textures/gui/right_arrow_red.png");
+	private static final ResourceLocation down_arrow_green = new ResourceLocation("buildersdelight:textures/gui/down_arrow_green.png");
 
 	@Override
 	public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
@@ -41,6 +43,10 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 		int buttonX = this.leftPos+28;
 		int buttonY = this.topPos+72;
 
+		ItemStack slot0ItemStack = this.menu.getSlot(0).getItem();
+		ItemStack slot1ItemStack = this.menu.getSlot(1).getItem();
+		boolean hasResults = ContainerChisel.hasResults;
+
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
@@ -49,16 +55,24 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 		RenderSystem.disableBlend();
 
 		//Display arrow towards variant slots, if item in slot 0
-		if(!this.menu.getSlot(0).getItem().isEmpty()) {
-			RenderSystem.setShaderTexture(0, right_arrow);
-			graphics.blit(right_arrow, this.leftPos+46, this.topPos+22, 0, 0, 8, 8, 8, 8);
+		if (!slot0ItemStack.isEmpty()) {
+			ResourceLocation arrowTexture;
+
+			if (hasResults) {
+				arrowTexture = right_arrow_green;
+			} else {
+				arrowTexture = right_arrow_red;
+			}
+
+			RenderSystem.setShaderTexture(0, arrowTexture);
+			graphics.blit(arrowTexture, this.leftPos + 46, this.topPos + 22, 0, 0, 8, 8, 8, 8);
 			RenderSystem.disableBlend();
 		}
 
 		//Display arrow towards player inventory, if item in slot 1
-		if(!this.menu.getSlot(1).getItem().isEmpty()) {
-			RenderSystem.setShaderTexture(0, down_arrow);
-			graphics.blit(down_arrow, this.leftPos+32, this.topPos+36, 0, 0, 8, 8, 8, 8);
+		if(!slot1ItemStack.isEmpty()) {
+			RenderSystem.setShaderTexture(0, down_arrow_green);
+			graphics.blit(down_arrow_green, this.leftPos+32, this.topPos+36, 0, 0, 8, 8, 8, 8);
 			RenderSystem.disableBlend();
 		}
 
