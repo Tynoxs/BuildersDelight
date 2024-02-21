@@ -40,8 +40,8 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 
 	@Override
 	protected void renderBg(GuiGraphics graphics, float partialTicks, int pMouseX, int pMouseY) {
-		int buttonX = this.leftPos+28;
-		int buttonY = this.topPos+72;
+		int buttonX = this.leftPos + 28;
+		int buttonY = this.topPos + 72;
 
 		ItemStack slot0ItemStack = this.menu.getSlot(0).getItem();
 		ItemStack slot1ItemStack = this.menu.getSlot(1).getItem();
@@ -50,46 +50,50 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
+
+		// Render background texture
 		RenderSystem.setShaderTexture(0, texture);
 		graphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		RenderSystem.disableBlend();
 
-		//Display arrow towards variant slots, if item in slot 0
-		if (!slot0ItemStack.isEmpty()) {
-			ResourceLocation arrowTexture;
+		// Display arrow towards variant slots, if item in slot 0
+		renderArrow(graphics, slot0ItemStack, hasResults, right_arrow_green, right_arrow_red, 46, 22);
 
-			if (hasResults) {
-				arrowTexture = right_arrow_green;
-			} else {
-				arrowTexture = right_arrow_red;
-			}
+		// Display arrow towards player inventory, if item in slot 1
+		renderArrow(graphics, slot1ItemStack, true, down_arrow_green, down_arrow_green, 32, 36);
 
-			RenderSystem.setShaderTexture(0, arrowTexture);
-			graphics.blit(arrowTexture, this.leftPos + 46, this.topPos + 22, 0, 0, 8, 8, 8, 8);
-			RenderSystem.disableBlend();
-		}
+		// Highlight button when hovering
+		renderHoveredButton(graphics, pMouseX, pMouseY, buttonX, buttonY, chisel_hover_button);
 
-		//Display arrow towards player inventory, if item in slot 1
-		if(!slot1ItemStack.isEmpty()) {
-			RenderSystem.setShaderTexture(0, down_arrow_green);
-			graphics.blit(down_arrow_green, this.leftPos+32, this.topPos+36, 0, 0, 8, 8, 8, 8);
-			RenderSystem.disableBlend();
-		}
-
-		//Highlight button when hovering
-		if (isButtonHovered(pMouseX, pMouseY)) {
-			RenderSystem.setShaderTexture(0, chisel_hover_button);
-			graphics.blit(chisel_hover_button, buttonX, buttonY, 0, 0, 16, 16, 16, 16);
-			RenderSystem.disableBlend();
-		}
-
-		//Light up chisel all button
+		// Light up chisel all button
 		if (toggled) {
-			RenderSystem.setShaderTexture(0, chisel_all_button);
-			graphics.blit(chisel_all_button, buttonX, buttonY, 0, 0, 16, 16, 16, 16);
+			renderButton(graphics, buttonX, buttonY, chisel_all_button);
+		}
+	}
+
+
+	// Helper method to render arrows
+	private void renderArrow(GuiGraphics graphics, ItemStack itemStack, boolean condition, ResourceLocation trueTexture, ResourceLocation falseTexture, int posX, int posY) {
+		if (!itemStack.isEmpty()) {
+			ResourceLocation arrowTexture = condition ? trueTexture : falseTexture;
+			RenderSystem.setShaderTexture(0, arrowTexture);
+			graphics.blit(arrowTexture, this.leftPos + posX, this.topPos + posY, 0, 0, 8, 8, 8, 8);
 			RenderSystem.disableBlend();
 		}
+	}
 
+	// Helper method to render hovered button
+	private void renderHoveredButton(GuiGraphics graphics, int pMouseX, int pMouseY, int buttonX, int buttonY, ResourceLocation buttonTexture) {
+		if (isButtonHovered(pMouseX, pMouseY)) {
+			renderButton(graphics, buttonX, buttonY, buttonTexture);
+		}
+	}
+
+	// Helper method to render a button
+	private void renderButton(GuiGraphics graphics, int buttonX, int buttonY, ResourceLocation buttonTexture) {
+		RenderSystem.setShaderTexture(0, buttonTexture);
+		graphics.blit(buttonTexture, buttonX, buttonY, 0, 0, 16, 16, 16, 16);
+		RenderSystem.disableBlend();
 	}
 
 	private boolean isButtonHovered(int mouseX, int mouseY) {
