@@ -27,6 +27,7 @@ public class ContainerChisel extends AbstractContainerMenu {
 
     private ChiselRecipeFactory recipeFactory = ChiselRecipeFactory.get();
     private boolean toggle;
+    public static boolean hasResults = false;
 
     public ContainerChisel(int id, Inventory inv, FriendlyByteBuf friendlyByteBuf) {
         this(id, inv, ContainerLevelAccess.NULL, new SimpleContainer(30));
@@ -134,6 +135,9 @@ public class ContainerChisel extends AbstractContainerMenu {
             for (int i = 2; i < 30; i++) {
                 slots.get(i).set(ItemStack.EMPTY);
             }
+
+            hasResults = false;
+
         } else {
             // Set the result slots with valid variants
             int slotIndex = 2;
@@ -141,6 +145,9 @@ public class ContainerChisel extends AbstractContainerMenu {
                 slots.get(slotIndex).set(variant);
                 slotIndex += 1;
             }
+
+            hasResults = true;
+
         }
 
         this.broadcastChanges();
