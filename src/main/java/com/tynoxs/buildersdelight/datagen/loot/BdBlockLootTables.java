@@ -554,6 +554,8 @@ public class BdBlockLootTables extends BlockLootSubProvider {
         registerDropSelf(BdBlocks.BRICKS_5.get());
         registerDropSelf(BdBlocks.BRICKS_6.get());
         registerDropSelf(BdBlocks.BRICKS_7.get());
+        registerDropSelf(BdBlocks.BRICKS_8.get());
+        registerDropSelf(BdBlocks.BRICKS_9.get());
         registerDropSelf(BdBlocks.BRICK_STAIRS_1.get());
         registerDropSelf(BdBlocks.BRICK_STAIRS_2.get());
         registerDropSelf(BdBlocks.BRICK_STAIRS_3.get());
@@ -561,6 +563,8 @@ public class BdBlockLootTables extends BlockLootSubProvider {
         registerDropSelf(BdBlocks.BRICK_STAIRS_5.get());
         registerDropSelf(BdBlocks.BRICK_STAIRS_6.get());
         registerDropSelf(BdBlocks.BRICK_STAIRS_7.get());
+        registerDropSelf(BdBlocks.BRICK_STAIRS_8.get());
+        registerDropSelf(BdBlocks.BRICK_STAIRS_9.get());
         registerSlabItemTable(BdBlocks.BRICK_SLAB_1.get());
         registerSlabItemTable(BdBlocks.BRICK_SLAB_2.get());
         registerSlabItemTable(BdBlocks.BRICK_SLAB_3.get());
@@ -568,6 +572,8 @@ public class BdBlockLootTables extends BlockLootSubProvider {
         registerSlabItemTable(BdBlocks.BRICK_SLAB_5.get());
         registerSlabItemTable(BdBlocks.BRICK_SLAB_6.get());
         registerSlabItemTable(BdBlocks.BRICK_SLAB_7.get());
+        registerSlabItemTable(BdBlocks.BRICK_SLAB_8.get());
+        registerSlabItemTable(BdBlocks.BRICK_SLAB_9.get());
 
         registerDropSelf(BdBlocks.CALCITE_2.get());
         registerDropSelf(BdBlocks.CALCITE_3.get());

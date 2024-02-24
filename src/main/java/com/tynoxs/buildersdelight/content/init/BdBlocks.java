@@ -62,7 +62,7 @@ public class BdBlocks {
     public static final RegistryObject<Block> ACACIA_FRAME_8 = registerBlock("acacia_frame_8", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
     public static final RegistryObject<Block> ACACIA_GLASS_1 = registerBlock("acacia_glass_1", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> ACACIA_GLASS_2 = registerBlock("acacia_glass_2", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
-    public static final RegistryObject<Block> ACACIA_GLASS_3 = registerBlock("acacia_glass_3", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
+    public static final RegistryObject<Block> ACACIA_GLASS_3 = registerBlock("acacia_glass_3", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> ACACIA_GLASS_4 = registerBlock("acacia_glass_4", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> ACACIA_GLASS_5 = registerBlock("acacia_glass_5", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> ACACIA_GLASS_6 = registerBlock("acacia_glass_6", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
@@ -107,7 +107,7 @@ public class BdBlocks {
     public static final RegistryObject<Block> BIRCH_FRAME_8 = registerBlock("birch_frame_8", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
     public static final RegistryObject<Block> BIRCH_GLASS_1 = registerBlock("birch_glass_1", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> BIRCH_GLASS_2 = registerBlock("birch_glass_2", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
-    public static final RegistryObject<Block> BIRCH_GLASS_3 = registerBlock("birch_glass_3", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
+    public static final RegistryObject<Block> BIRCH_GLASS_3 = registerBlock("birch_glass_3", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> BIRCH_GLASS_4 = registerBlock("birch_glass_4", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> BIRCH_GLASS_5 = registerBlock("birch_glass_5", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> BIRCH_GLASS_6 = registerBlock("birch_glass_6", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
@@ -152,7 +152,7 @@ public class BdBlocks {
     public static final RegistryObject<Block> BAMBOO_FRAME_8 = registerBlock("bamboo_frame_8", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
     public static final RegistryObject<Block> BAMBOO_GLASS_1 = registerBlock("bamboo_glass_1", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> BAMBOO_GLASS_2 = registerBlock("bamboo_glass_2", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
-    public static final RegistryObject<Block> BAMBOO_GLASS_3 = registerBlock("bamboo_glass_3", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
+    public static final RegistryObject<Block> BAMBOO_GLASS_3 = registerBlock("bamboo_glass_3", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> BAMBOO_GLASS_4 = registerBlock("bamboo_glass_4", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> BAMBOO_GLASS_5 = registerBlock("bamboo_glass_5", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> BAMBOO_GLASS_6 = registerBlock("bamboo_glass_6", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
@@ -197,7 +197,7 @@ public class BdBlocks {
     public static final RegistryObject<Block> CHERRY_FRAME_8 = registerBlock("cherry_frame_8", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
     public static final RegistryObject<Block> CHERRY_GLASS_1 = registerBlock("cherry_glass_1", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> CHERRY_GLASS_2 = registerBlock("cherry_glass_2", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
-    public static final RegistryObject<Block> CHERRY_GLASS_3 = registerBlock("cherry_glass_3", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
+    public static final RegistryObject<Block> CHERRY_GLASS_3 = registerBlock("cherry_glass_3", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> CHERRY_GLASS_4 = registerBlock("cherry_glass_4", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> CHERRY_GLASS_5 = registerBlock("cherry_glass_5", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> CHERRY_GLASS_6 = registerBlock("cherry_glass_6", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
@@ -242,7 +242,7 @@ public class BdBlocks {
     public static final RegistryObject<Block> CRIMSON_FRAME_8 = registerBlock("crimson_frame_8", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
     public static final RegistryObject<Block> CRIMSON_GLASS_1 = registerBlock("crimson_glass_1", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> CRIMSON_GLASS_2 = registerBlock("crimson_glass_2", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
-    public static final RegistryObject<Block> CRIMSON_GLASS_3 = registerBlock("crimson_glass_3", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
+    public static final RegistryObject<Block> CRIMSON_GLASS_3 = registerBlock("crimson_glass_3", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> CRIMSON_GLASS_4 = registerBlock("crimson_glass_4", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> CRIMSON_GLASS_5 = registerBlock("crimson_glass_5", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> CRIMSON_GLASS_6 = registerBlock("crimson_glass_6", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
@@ -287,7 +287,7 @@ public class BdBlocks {
     public static final RegistryObject<Block> DARK_OAK_FRAME_8 = registerBlock("dark_oak_frame_8", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
     public static final RegistryObject<Block> DARK_OAK_GLASS_1 = registerBlock("dark_oak_glass_1", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> DARK_OAK_GLASS_2 = registerBlock("dark_oak_glass_2", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
-    public static final RegistryObject<Block> DARK_OAK_GLASS_3 = registerBlock("dark_oak_glass_3", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
+    public static final RegistryObject<Block> DARK_OAK_GLASS_3 = registerBlock("dark_oak_glass_3", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> DARK_OAK_GLASS_4 = registerBlock("dark_oak_glass_4", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> DARK_OAK_GLASS_5 = registerBlock("dark_oak_glass_5", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> DARK_OAK_GLASS_6 = registerBlock("dark_oak_glass_6", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
@@ -332,7 +332,7 @@ public class BdBlocks {
     public static final RegistryObject<Block> JUNGLE_FRAME_8 = registerBlock("jungle_frame_8", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
     public static final RegistryObject<Block> JUNGLE_GLASS_1 = registerBlock("jungle_glass_1", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> JUNGLE_GLASS_2 = registerBlock("jungle_glass_2", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
-    public static final RegistryObject<Block> JUNGLE_GLASS_3 = registerBlock("jungle_glass_3", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
+    public static final RegistryObject<Block> JUNGLE_GLASS_3 = registerBlock("jungle_glass_3", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> JUNGLE_GLASS_4 = registerBlock("jungle_glass_4", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> JUNGLE_GLASS_5 = registerBlock("jungle_glass_5", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> JUNGLE_GLASS_6 = registerBlock("jungle_glass_6", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
@@ -377,7 +377,7 @@ public class BdBlocks {
     public static final RegistryObject<Block> OAK_FRAME_8 = registerBlock("oak_frame_8", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
     public static final RegistryObject<Block> OAK_GLASS_1 = registerBlock("oak_glass_1", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> OAK_GLASS_2 = registerBlock("oak_glass_2", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
-    public static final RegistryObject<Block> OAK_GLASS_3 = registerBlock("oak_glass_3", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
+    public static final RegistryObject<Block> OAK_GLASS_3 = registerBlock("oak_glass_3", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> OAK_GLASS_4 = registerBlock("oak_glass_4", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> OAK_GLASS_5 = registerBlock("oak_glass_5", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> OAK_GLASS_6 = registerBlock("oak_glass_6", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
@@ -422,7 +422,7 @@ public class BdBlocks {
     public static final RegistryObject<Block> MANGROVE_FRAME_8 = registerBlock("mangrove_frame_8", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
     public static final RegistryObject<Block> MANGROVE_GLASS_1 = registerBlock("mangrove_glass_1", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> MANGROVE_GLASS_2 = registerBlock("mangrove_glass_2", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
-    public static final RegistryObject<Block> MANGROVE_GLASS_3 = registerBlock("mangrove_glass_3", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
+    public static final RegistryObject<Block> MANGROVE_GLASS_3 = registerBlock("mangrove_glass_3", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> MANGROVE_GLASS_4 = registerBlock("mangrove_glass_4", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> MANGROVE_GLASS_5 = registerBlock("mangrove_glass_5", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> MANGROVE_GLASS_6 = registerBlock("mangrove_glass_6", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
@@ -467,7 +467,7 @@ public class BdBlocks {
     public static final RegistryObject<Block> SPRUCE_FRAME_8 = registerBlock("spruce_frame_8", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
     public static final RegistryObject<Block> SPRUCE_GLASS_1 = registerBlock("spruce_glass_1", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> SPRUCE_GLASS_2 = registerBlock("spruce_glass_2", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
-    public static final RegistryObject<Block> SPRUCE_GLASS_3 = registerBlock("spruce_glass_3", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
+    public static final RegistryObject<Block> SPRUCE_GLASS_3 = registerBlock("spruce_glass_3", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> SPRUCE_GLASS_4 = registerBlock("spruce_glass_4", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> SPRUCE_GLASS_5 = registerBlock("spruce_glass_5", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> SPRUCE_GLASS_6 = registerBlock("spruce_glass_6", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
@@ -512,7 +512,7 @@ public class BdBlocks {
     public static final RegistryObject<Block> WARPED_FRAME_8 = registerBlock("warped_frame_8", () -> new BlockFlammable(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
     public static final RegistryObject<Block> WARPED_GLASS_1 = registerBlock("warped_glass_1", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> WARPED_GLASS_2 = registerBlock("warped_glass_2", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
-    public static final RegistryObject<Block> WARPED_GLASS_3 = registerBlock("warped_glass_3", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
+    public static final RegistryObject<Block> WARPED_GLASS_3 = registerBlock("warped_glass_3", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> WARPED_GLASS_4 = registerBlock("warped_glass_4", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> WARPED_GLASS_5 = registerBlock("warped_glass_5", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
     public static final RegistryObject<Block> WARPED_GLASS_6 = registerBlock("warped_glass_6", () -> new BlockGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)), "");
@@ -653,6 +653,8 @@ public class BdBlocks {
     public static final RegistryObject<Block> BRICKS_5 = registerBlock("bricks_5", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)), "");
     public static final RegistryObject<Block> BRICKS_6 = registerBlock("bricks_6", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)), "");
     public static final RegistryObject<Block> BRICKS_7 = registerBlock("bricks_7", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)), "");
+    public static final RegistryObject<Block> BRICKS_8 = registerBlock("bricks_8", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)), "");
+    public static final RegistryObject<Block> BRICKS_9 = registerBlock("bricks_9", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)), "");
     public static final RegistryObject<Block> BRICK_STAIRS_1 = registerBlock("brick_stairs_1", () -> new StairBlock(Blocks.BRICK_STAIRS.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BRICK_STAIRS)), "");
     public static final RegistryObject<Block> BRICK_STAIRS_2 = registerBlock("brick_stairs_2", () -> new StairBlock(Blocks.BRICK_STAIRS.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BRICK_STAIRS)), "");
     public static final RegistryObject<Block> BRICK_STAIRS_3 = registerBlock("brick_stairs_3", () -> new StairBlock(Blocks.BRICK_STAIRS.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BRICK_STAIRS)), "");
@@ -660,6 +662,8 @@ public class BdBlocks {
     public static final RegistryObject<Block> BRICK_STAIRS_5 = registerBlock("brick_stairs_5", () -> new StairBlock(Blocks.BRICK_STAIRS.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BRICK_STAIRS)), "");
     public static final RegistryObject<Block> BRICK_STAIRS_6 = registerBlock("brick_stairs_6", () -> new StairBlock(Blocks.BRICK_STAIRS.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BRICK_STAIRS)), "");
     public static final RegistryObject<Block> BRICK_STAIRS_7 = registerBlock("brick_stairs_7", () -> new StairBlock(Blocks.BRICK_STAIRS.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BRICK_STAIRS)), "");
+    public static final RegistryObject<Block> BRICK_STAIRS_8 = registerBlock("brick_stairs_8", () -> new StairBlock(Blocks.BRICK_STAIRS.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BRICK_STAIRS)), "");
+    public static final RegistryObject<Block> BRICK_STAIRS_9 = registerBlock("brick_stairs_9", () -> new StairBlock(Blocks.BRICK_STAIRS.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.BRICK_STAIRS)), "");
     public static final RegistryObject<Block> BRICK_SLAB_1 = registerBlock("brick_slab_1", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_SLAB)), "");
     public static final RegistryObject<Block> BRICK_SLAB_2 = registerBlock("brick_slab_2", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_SLAB)), "");
     public static final RegistryObject<Block> BRICK_SLAB_3 = registerBlock("brick_slab_3", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_SLAB)), "");
@@ -667,6 +671,8 @@ public class BdBlocks {
     public static final RegistryObject<Block> BRICK_SLAB_5 = registerBlock("brick_slab_5", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_SLAB)), "");
     public static final RegistryObject<Block> BRICK_SLAB_6 = registerBlock("brick_slab_6", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_SLAB)), "");
     public static final RegistryObject<Block> BRICK_SLAB_7 = registerBlock("brick_slab_7", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_SLAB)), "");
+    public static final RegistryObject<Block> BRICK_SLAB_8 = registerBlock("brick_slab_8", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_SLAB)), "");
+    public static final RegistryObject<Block> BRICK_SLAB_9 = registerBlock("brick_slab_9", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_SLAB)), "");
     public static final RegistryObject<Block> SANDSTONE_1 = registerBlock("sandstone_1", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)), "");
     public static final RegistryObject<Block> SANDSTONE_2 = registerBlock("sandstone_2", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)), "");
     public static final RegistryObject<Block> SANDSTONE_3 = registerBlock("sandstone_3", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)), "");

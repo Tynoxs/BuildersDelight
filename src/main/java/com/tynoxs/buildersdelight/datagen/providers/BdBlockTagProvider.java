@@ -407,6 +407,8 @@ public class BdBlockTagProvider extends BlockTagsProvider {
                 .add(BdBlocks.BRICKS_5.get())
                 .add(BdBlocks.BRICKS_6.get())
                 .add(BdBlocks.BRICKS_7.get())
+                .add(BdBlocks.BRICKS_8.get())
+                .add(BdBlocks.BRICKS_9.get())
 
                 .add(BdBlocks.BRICK_SLAB_1.get())
                 .add(BdBlocks.BRICK_SLAB_2.get())
@@ -415,6 +417,8 @@ public class BdBlockTagProvider extends BlockTagsProvider {
                 .add(BdBlocks.BRICK_SLAB_5.get())
                 .add(BdBlocks.BRICK_SLAB_6.get())
                 .add(BdBlocks.BRICK_SLAB_7.get())
+                .add(BdBlocks.BRICK_SLAB_8.get())
+                .add(BdBlocks.BRICK_SLAB_9.get())
 
                 .add(BdBlocks.BRICK_STAIRS_1.get())
                 .add(BdBlocks.BRICK_STAIRS_2.get())
@@ -423,6 +427,8 @@ public class BdBlockTagProvider extends BlockTagsProvider {
                 .add(BdBlocks.BRICK_STAIRS_5.get())
                 .add(BdBlocks.BRICK_STAIRS_6.get())
                 .add(BdBlocks.BRICK_STAIRS_7.get())
+                .add(BdBlocks.BRICK_STAIRS_8.get())
+                .add(BdBlocks.BRICK_STAIRS_9.get())
 
                 .add(BdBlocks.CALCITE_2.get())
                 .add(BdBlocks.CALCITE_3.get())

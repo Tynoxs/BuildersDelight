@@ -1,0 +1,16 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "000"
+  ],
+  "key": {
+    "0": {
+      "item": "buildersdelight:bricks_9"
+    }
+  },
+  "result": {
+    "item": "buildersdelight:brick_slab_9",
+    "count": 6
+  }
+}

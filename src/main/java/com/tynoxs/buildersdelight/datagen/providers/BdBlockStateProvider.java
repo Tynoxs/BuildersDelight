@@ -25,7 +25,7 @@ public class BdBlockStateProvider extends BlockStateProvider {
         simpleBlock(BdBlocks.ACACIA_FRAME_8.get());
         simpleBlock(BdBlocks.ACACIA_GLASS_1.get());
         horizontalBlock(BdBlocks.ACACIA_GLASS_2.get(), blockTexture(BdBlocks.ACACIA_GLASS_2.get()), blockTexture(BdBlocks.ACACIA_GLASS_2.get()), new ResourceLocation(blockTexture(BdBlocks.ACACIA_GLASS_2.get()) + "_top"));
-        simpleBlock(BdBlocks.ACACIA_GLASS_3.get());
+        horizontalBlock(BdBlocks.ACACIA_GLASS_3.get(), blockTexture(BdBlocks.ACACIA_GLASS_3.get()), blockTexture(BdBlocks.ACACIA_GLASS_3.get()), new ResourceLocation(blockTexture(BdBlocks.ACACIA_GLASS_3.get()) + "_top"));
         simpleBlock(BdBlocks.ACACIA_GLASS_4.get());
         horizontalBlock(BdBlocks.ACACIA_GLASS_5.get(), blockTexture(BdBlocks.ACACIA_GLASS_5.get()), blockTexture(BdBlocks.ACACIA_GLASS_5.get()), new ResourceLocation(blockTexture(BdBlocks.ACACIA_GLASS_5.get()) + "_top"));
         horizontalBlock(BdBlocks.ACACIA_GLASS_6.get(), blockTexture(BdBlocks.ACACIA_GLASS_6.get()), blockTexture(BdBlocks.ACACIA_GLASS_6.get()), new ResourceLocation(blockTexture(BdBlocks.ACACIA_GLASS_6.get()) + "_top"));
@@ -71,7 +71,7 @@ public class BdBlockStateProvider extends BlockStateProvider {
         simpleBlock(BdBlocks.BIRCH_FRAME_8.get());
         simpleBlock(BdBlocks.BIRCH_GLASS_1.get());
         horizontalBlock(BdBlocks.BIRCH_GLASS_2.get(), blockTexture(BdBlocks.BIRCH_GLASS_2.get()), blockTexture(BdBlocks.BIRCH_GLASS_2.get()), new ResourceLocation(blockTexture(BdBlocks.BIRCH_GLASS_2.get()) + "_top"));
-        simpleBlock(BdBlocks.BIRCH_GLASS_3.get());
+        horizontalBlock(BdBlocks.BIRCH_GLASS_3.get(), blockTexture(BdBlocks.BIRCH_GLASS_3.get()), blockTexture(BdBlocks.BIRCH_GLASS_3.get()), new ResourceLocation(blockTexture(BdBlocks.BIRCH_GLASS_3.get()) + "_top"));
         simpleBlock(BdBlocks.BIRCH_GLASS_4.get());
         horizontalBlock(BdBlocks.BIRCH_GLASS_5.get(), blockTexture(BdBlocks.BIRCH_GLASS_5.get()), blockTexture(BdBlocks.BIRCH_GLASS_5.get()), new ResourceLocation(blockTexture(BdBlocks.BIRCH_GLASS_5.get()) + "_top"));
         horizontalBlock(BdBlocks.BIRCH_GLASS_6.get(), blockTexture(BdBlocks.BIRCH_GLASS_6.get()), blockTexture(BdBlocks.BIRCH_GLASS_6.get()), new ResourceLocation(blockTexture(BdBlocks.BIRCH_GLASS_6.get()) + "_top"));
@@ -117,7 +117,7 @@ public class BdBlockStateProvider extends BlockStateProvider {
         simpleBlock(BdBlocks.BAMBOO_FRAME_8.get());
         simpleBlock(BdBlocks.BAMBOO_GLASS_1.get());
         horizontalBlock(BdBlocks.BAMBOO_GLASS_2.get(), blockTexture(BdBlocks.BAMBOO_GLASS_2.get()), blockTexture(BdBlocks.BAMBOO_GLASS_2.get()), new ResourceLocation(blockTexture(BdBlocks.BAMBOO_GLASS_2.get()) + "_top"));
-        simpleBlock(BdBlocks.BAMBOO_GLASS_3.get());
+        horizontalBlock(BdBlocks.BAMBOO_GLASS_3.get(), blockTexture(BdBlocks.BAMBOO_GLASS_3.get()), blockTexture(BdBlocks.BAMBOO_GLASS_3.get()), new ResourceLocation(blockTexture(BdBlocks.BAMBOO_GLASS_3.get()) + "_top"));
         simpleBlock(BdBlocks.BAMBOO_GLASS_4.get());
         horizontalBlock(BdBlocks.BAMBOO_GLASS_5.get(), blockTexture(BdBlocks.BAMBOO_GLASS_5.get()), blockTexture(BdBlocks.BAMBOO_GLASS_5.get()), new ResourceLocation(blockTexture(BdBlocks.BAMBOO_GLASS_5.get()) + "_top"));
         horizontalBlock(BdBlocks.BAMBOO_GLASS_6.get(), blockTexture(BdBlocks.BAMBOO_GLASS_6.get()), blockTexture(BdBlocks.BAMBOO_GLASS_6.get()), new ResourceLocation(blockTexture(BdBlocks.BAMBOO_GLASS_6.get()) + "_top"));
@@ -163,7 +163,7 @@ public class BdBlockStateProvider extends BlockStateProvider {
         simpleBlock(BdBlocks.CHERRY_FRAME_8.get());
         simpleBlock(BdBlocks.CHERRY_GLASS_1.get());
         horizontalBlock(BdBlocks.CHERRY_GLASS_2.get(), blockTexture(BdBlocks.CHERRY_GLASS_2.get()), blockTexture(BdBlocks.CHERRY_GLASS_2.get()), new ResourceLocation(blockTexture(BdBlocks.CHERRY_GLASS_2.get()) + "_top"));
-        simpleBlock(BdBlocks.CHERRY_GLASS_3.get());
+        horizontalBlock(BdBlocks.CHERRY_GLASS_3.get(), blockTexture(BdBlocks.CHERRY_GLASS_3.get()), blockTexture(BdBlocks.CHERRY_GLASS_3.get()), new ResourceLocation(blockTexture(BdBlocks.CHERRY_GLASS_3.get()) + "_top"));
         simpleBlock(BdBlocks.CHERRY_GLASS_4.get());
         horizontalBlock(BdBlocks.CHERRY_GLASS_5.get(), blockTexture(BdBlocks.CHERRY_GLASS_5.get()), blockTexture(BdBlocks.CHERRY_GLASS_5.get()), new ResourceLocation(blockTexture(BdBlocks.CHERRY_GLASS_5.get()) + "_top"));
         horizontalBlock(BdBlocks.CHERRY_GLASS_6.get(), blockTexture(BdBlocks.CHERRY_GLASS_6.get()), blockTexture(BdBlocks.CHERRY_GLASS_6.get()), new ResourceLocation(blockTexture(BdBlocks.CHERRY_GLASS_6.get()) + "_top"));
@@ -209,7 +209,7 @@ public class BdBlockStateProvider extends BlockStateProvider {
         simpleBlock(BdBlocks.CRIMSON_FRAME_8.get());
         simpleBlock(BdBlocks.CRIMSON_GLASS_1.get());
         horizontalBlock(BdBlocks.CRIMSON_GLASS_2.get(), blockTexture(BdBlocks.CRIMSON_GLASS_2.get()), blockTexture(BdBlocks.CRIMSON_GLASS_2.get()), new ResourceLocation(blockTexture(BdBlocks.CRIMSON_GLASS_2.get()) + "_top"));
-        simpleBlock(BdBlocks.CRIMSON_GLASS_3.get());
+        horizontalBlock(BdBlocks.CRIMSON_GLASS_3.get(), blockTexture(BdBlocks.CRIMSON_GLASS_3.get()), blockTexture(BdBlocks.CRIMSON_GLASS_3.get()), new ResourceLocation(blockTexture(BdBlocks.CRIMSON_GLASS_3.get()) + "_top"));
         simpleBlock(BdBlocks.CRIMSON_GLASS_4.get());
         horizontalBlock(BdBlocks.CRIMSON_GLASS_5.get(), blockTexture(BdBlocks.CRIMSON_GLASS_5.get()), blockTexture(BdBlocks.CRIMSON_GLASS_5.get()), new ResourceLocation(blockTexture(BdBlocks.CRIMSON_GLASS_5.get()) + "_top"));
         horizontalBlock(BdBlocks.CRIMSON_GLASS_6.get(), blockTexture(BdBlocks.CRIMSON_GLASS_6.get()), blockTexture(BdBlocks.CRIMSON_GLASS_6.get()), new ResourceLocation(blockTexture(BdBlocks.CRIMSON_GLASS_6.get()) + "_top"));
@@ -255,7 +255,7 @@ public class BdBlockStateProvider extends BlockStateProvider {
         simpleBlock(BdBlocks.DARK_OAK_FRAME_8.get());
         simpleBlock(BdBlocks.DARK_OAK_GLASS_1.get());
         horizontalBlock(BdBlocks.DARK_OAK_GLASS_2.get(), blockTexture(BdBlocks.DARK_OAK_GLASS_2.get()), blockTexture(BdBlocks.DARK_OAK_GLASS_2.get()), new ResourceLocation(blockTexture(BdBlocks.DARK_OAK_GLASS_2.get()) + "_top"));
-        simpleBlock(BdBlocks.DARK_OAK_GLASS_3.get());
+        horizontalBlock(BdBlocks.DARK_OAK_GLASS_3.get(), blockTexture(BdBlocks.DARK_OAK_GLASS_3.get()), blockTexture(BdBlocks.DARK_OAK_GLASS_3.get()), new ResourceLocation(blockTexture(BdBlocks.DARK_OAK_GLASS_3.get()) + "_top"));
         simpleBlock(BdBlocks.DARK_OAK_GLASS_4.get());
         horizontalBlock(BdBlocks.DARK_OAK_GLASS_5.get(), blockTexture(BdBlocks.DARK_OAK_GLASS_5.get()), blockTexture(BdBlocks.DARK_OAK_GLASS_5.get()), new ResourceLocation(blockTexture(BdBlocks.DARK_OAK_GLASS_5.get()) + "_top"));
         horizontalBlock(BdBlocks.DARK_OAK_GLASS_6.get(), blockTexture(BdBlocks.DARK_OAK_GLASS_6.get()), blockTexture(BdBlocks.DARK_OAK_GLASS_6.get()), new ResourceLocation(blockTexture(BdBlocks.DARK_OAK_GLASS_6.get()) + "_top"));
@@ -301,7 +301,7 @@ public class BdBlockStateProvider extends BlockStateProvider {
         simpleBlock(BdBlocks.JUNGLE_FRAME_8.get());
         simpleBlock(BdBlocks.JUNGLE_GLASS_1.get());
         horizontalBlock(BdBlocks.JUNGLE_GLASS_2.get(), blockTexture(BdBlocks.JUNGLE_GLASS_2.get()), blockTexture(BdBlocks.JUNGLE_GLASS_2.get()), new ResourceLocation(blockTexture(BdBlocks.JUNGLE_GLASS_2.get()) + "_top"));
-        simpleBlock(BdBlocks.JUNGLE_GLASS_3.get());
+        horizontalBlock(BdBlocks.JUNGLE_GLASS_3.get(), blockTexture(BdBlocks.JUNGLE_GLASS_3.get()), blockTexture(BdBlocks.JUNGLE_GLASS_3.get()), new ResourceLocation(blockTexture(BdBlocks.JUNGLE_GLASS_3.get()) + "_top"));
         simpleBlock(BdBlocks.JUNGLE_GLASS_4.get());
         horizontalBlock(BdBlocks.JUNGLE_GLASS_5.get(), blockTexture(BdBlocks.JUNGLE_GLASS_5.get()), blockTexture(BdBlocks.JUNGLE_GLASS_5.get()), new ResourceLocation(blockTexture(BdBlocks.JUNGLE_GLASS_5.get()) + "_top"));
         horizontalBlock(BdBlocks.JUNGLE_GLASS_6.get(), blockTexture(BdBlocks.JUNGLE_GLASS_6.get()), blockTexture(BdBlocks.JUNGLE_GLASS_6.get()), new ResourceLocation(blockTexture(BdBlocks.JUNGLE_GLASS_6.get()) + "_top"));
@@ -347,7 +347,7 @@ public class BdBlockStateProvider extends BlockStateProvider {
         simpleBlock(BdBlocks.MANGROVE_FRAME_8.get());
         simpleBlock(BdBlocks.MANGROVE_GLASS_1.get());
         horizontalBlock(BdBlocks.MANGROVE_GLASS_2.get(), blockTexture(BdBlocks.MANGROVE_GLASS_2.get()), blockTexture(BdBlocks.MANGROVE_GLASS_2.get()), new ResourceLocation(blockTexture(BdBlocks.MANGROVE_GLASS_2.get()) + "_top"));
-        simpleBlock(BdBlocks.MANGROVE_GLASS_3.get());
+        horizontalBlock(BdBlocks.MANGROVE_GLASS_3.get(), blockTexture(BdBlocks.MANGROVE_GLASS_3.get()), blockTexture(BdBlocks.MANGROVE_GLASS_3.get()), new ResourceLocation(blockTexture(BdBlocks.MANGROVE_GLASS_3.get()) + "_top"));
         simpleBlock(BdBlocks.MANGROVE_GLASS_4.get());
         horizontalBlock(BdBlocks.MANGROVE_GLASS_5.get(), blockTexture(BdBlocks.MANGROVE_GLASS_5.get()), blockTexture(BdBlocks.MANGROVE_GLASS_5.get()), new ResourceLocation(blockTexture(BdBlocks.MANGROVE_GLASS_5.get()) + "_top"));
         horizontalBlock(BdBlocks.MANGROVE_GLASS_6.get(), blockTexture(BdBlocks.MANGROVE_GLASS_6.get()), blockTexture(BdBlocks.MANGROVE_GLASS_6.get()), new ResourceLocation(blockTexture(BdBlocks.MANGROVE_GLASS_6.get()) + "_top"));
@@ -393,7 +393,7 @@ public class BdBlockStateProvider extends BlockStateProvider {
         simpleBlock(BdBlocks.OAK_FRAME_8.get());
         simpleBlock(BdBlocks.OAK_GLASS_1.get());
         horizontalBlock(BdBlocks.OAK_GLASS_2.get(), blockTexture(BdBlocks.OAK_GLASS_2.get()), blockTexture(BdBlocks.OAK_GLASS_2.get()), new ResourceLocation(blockTexture(BdBlocks.OAK_GLASS_2.get()) + "_top"));
-        simpleBlock(BdBlocks.OAK_GLASS_3.get());
+        horizontalBlock(BdBlocks.OAK_GLASS_3.get(), blockTexture(BdBlocks.OAK_GLASS_3.get()), blockTexture(BdBlocks.OAK_GLASS_3.get()), new ResourceLocation(blockTexture(BdBlocks.OAK_GLASS_3.get()) + "_top"));
         simpleBlock(BdBlocks.OAK_GLASS_4.get());
         horizontalBlock(BdBlocks.OAK_GLASS_5.get(), blockTexture(BdBlocks.OAK_GLASS_5.get()), blockTexture(BdBlocks.OAK_GLASS_5.get()), new ResourceLocation(blockTexture(BdBlocks.OAK_GLASS_5.get()) + "_top"));
         horizontalBlock(BdBlocks.OAK_GLASS_6.get(), blockTexture(BdBlocks.OAK_GLASS_6.get()), blockTexture(BdBlocks.OAK_GLASS_6.get()), new ResourceLocation(blockTexture(BdBlocks.OAK_GLASS_6.get()) + "_top"));
@@ -439,7 +439,7 @@ public class BdBlockStateProvider extends BlockStateProvider {
         simpleBlock(BdBlocks.SPRUCE_FRAME_8.get());
         simpleBlock(BdBlocks.SPRUCE_GLASS_1.get());
         horizontalBlock(BdBlocks.SPRUCE_GLASS_2.get(), blockTexture(BdBlocks.SPRUCE_GLASS_2.get()), blockTexture(BdBlocks.SPRUCE_GLASS_2.get()), new ResourceLocation(blockTexture(BdBlocks.SPRUCE_GLASS_2.get()) + "_top"));
-        simpleBlock(BdBlocks.SPRUCE_GLASS_3.get());
+        horizontalBlock(BdBlocks.SPRUCE_GLASS_3.get(), blockTexture(BdBlocks.SPRUCE_GLASS_3.get()), blockTexture(BdBlocks.SPRUCE_GLASS_3.get()), new ResourceLocation(blockTexture(BdBlocks.SPRUCE_GLASS_3.get()) + "_top"));
         simpleBlock(BdBlocks.SPRUCE_GLASS_4.get());
         horizontalBlock(BdBlocks.SPRUCE_GLASS_5.get(), blockTexture(BdBlocks.SPRUCE_GLASS_5.get()), blockTexture(BdBlocks.SPRUCE_GLASS_5.get()), new ResourceLocation(blockTexture(BdBlocks.SPRUCE_GLASS_5.get()) + "_top"));
         horizontalBlock(BdBlocks.SPRUCE_GLASS_6.get(), blockTexture(BdBlocks.SPRUCE_GLASS_6.get()), blockTexture(BdBlocks.SPRUCE_GLASS_6.get()), new ResourceLocation(blockTexture(BdBlocks.SPRUCE_GLASS_6.get()) + "_top"));
@@ -485,7 +485,7 @@ public class BdBlockStateProvider extends BlockStateProvider {
         simpleBlock(BdBlocks.WARPED_FRAME_8.get());
         simpleBlock(BdBlocks.WARPED_GLASS_1.get());
         horizontalBlock(BdBlocks.WARPED_GLASS_2.get(), blockTexture(BdBlocks.WARPED_GLASS_2.get()), blockTexture(BdBlocks.WARPED_GLASS_2.get()), new ResourceLocation(blockTexture(BdBlocks.WARPED_GLASS_2.get()) + "_top"));
-        simpleBlock(BdBlocks.WARPED_GLASS_3.get());
+        horizontalBlock(BdBlocks.WARPED_GLASS_3.get(), blockTexture(BdBlocks.WARPED_GLASS_3.get()), blockTexture(BdBlocks.WARPED_GLASS_3.get()), new ResourceLocation(blockTexture(BdBlocks.WARPED_GLASS_3.get()) + "_top"));
         simpleBlock(BdBlocks.WARPED_GLASS_4.get());
         horizontalBlock(BdBlocks.WARPED_GLASS_5.get(), blockTexture(BdBlocks.WARPED_GLASS_5.get()), blockTexture(BdBlocks.WARPED_GLASS_5.get()), new ResourceLocation(blockTexture(BdBlocks.WARPED_GLASS_5.get()) + "_top"));
         horizontalBlock(BdBlocks.WARPED_GLASS_6.get(), blockTexture(BdBlocks.WARPED_GLASS_6.get()), blockTexture(BdBlocks.WARPED_GLASS_6.get()), new ResourceLocation(blockTexture(BdBlocks.WARPED_GLASS_6.get()) + "_top"));
@@ -669,6 +669,8 @@ public class BdBlockStateProvider extends BlockStateProvider {
         simpleBlock(BdBlocks.BRICKS_5.get());
         simpleBlock(BdBlocks.BRICKS_6.get());
         simpleBlock(BdBlocks.BRICKS_7.get());
+        simpleBlock(BdBlocks.BRICKS_8.get());
+        simpleBlock(BdBlocks.BRICKS_9.get());
         slabBlock((SlabBlock) BdBlocks.BRICK_SLAB_1.get(), blockTexture(BdBlocks.BRICKS_1.get()), blockTexture(BdBlocks.BRICKS_1.get()));
         slabBlock((SlabBlock) BdBlocks.BRICK_SLAB_2.get(), blockTexture(BdBlocks.BRICKS_2.get()), blockTexture(BdBlocks.BRICKS_2.get()));
         slabBlock((SlabBlock) BdBlocks.BRICK_SLAB_3.get(), blockTexture(BdBlocks.BRICKS_3.get()), blockTexture(BdBlocks.BRICKS_3.get()));
@@ -676,6 +678,8 @@ public class BdBlockStateProvider extends BlockStateProvider {
         slabBlock((SlabBlock) BdBlocks.BRICK_SLAB_5.get(), blockTexture(BdBlocks.BRICKS_5.get()), blockTexture(BdBlocks.BRICKS_5.get()));
         slabBlock((SlabBlock) BdBlocks.BRICK_SLAB_6.get(), blockTexture(BdBlocks.BRICKS_6.get()), blockTexture(BdBlocks.BRICKS_6.get()));
         slabBlock((SlabBlock) BdBlocks.BRICK_SLAB_7.get(), blockTexture(BdBlocks.BRICKS_7.get()), blockTexture(BdBlocks.BRICKS_7.get()));
+        slabBlock((SlabBlock) BdBlocks.BRICK_SLAB_8.get(), blockTexture(BdBlocks.BRICKS_8.get()), blockTexture(BdBlocks.BRICKS_8.get()));
+        slabBlock((SlabBlock) BdBlocks.BRICK_SLAB_9.get(), blockTexture(BdBlocks.BRICKS_9.get()), blockTexture(BdBlocks.BRICKS_9.get()));
         stairsBlock((StairBlock) BdBlocks.BRICK_STAIRS_1.get(), blockTexture(BdBlocks.BRICKS_1.get()));
         stairsBlock((StairBlock) BdBlocks.BRICK_STAIRS_2.get(), blockTexture(BdBlocks.BRICKS_2.get()));
         stairsBlock((StairBlock) BdBlocks.BRICK_STAIRS_3.get(), blockTexture(BdBlocks.BRICKS_3.get()));
@@ -683,6 +687,8 @@ public class BdBlockStateProvider extends BlockStateProvider {
         stairsBlock((StairBlock) BdBlocks.BRICK_STAIRS_5.get(), blockTexture(BdBlocks.BRICKS_5.get()));
         stairsBlock((StairBlock) BdBlocks.BRICK_STAIRS_6.get(), blockTexture(BdBlocks.BRICKS_6.get()));
         stairsBlock((StairBlock) BdBlocks.BRICK_STAIRS_7.get(), blockTexture(BdBlocks.BRICKS_7.get()));
+        stairsBlock((StairBlock) BdBlocks.BRICK_STAIRS_8.get(), blockTexture(BdBlocks.BRICKS_8.get()));
+        stairsBlock((StairBlock) BdBlocks.BRICK_STAIRS_9.get(), blockTexture(BdBlocks.BRICKS_9.get()));
 
         simpleBlock(BdBlocks.SANDSTONE_1.get());
         simpleBlock(BdBlocks.SANDSTONE_2.get());
