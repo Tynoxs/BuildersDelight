@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "buildersdelight:block/dark_oak_glass_3",
+      "y": 90
+    },
+    "facing=north": {
       "model": "buildersdelight:block/dark_oak_glass_3"
+    },
+    "facing=south": {
+      "model": "buildersdelight:block/dark_oak_glass_3",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "buildersdelight:block/dark_oak_glass_3",
+      "y": 270
     }
   }
 }
