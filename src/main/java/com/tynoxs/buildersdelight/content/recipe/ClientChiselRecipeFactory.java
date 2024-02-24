@@ -7,7 +7,6 @@ import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackResources;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.*;

@@ -1,7 +1,6 @@
 package com.tynoxs.buildersdelight.datagen.loot;
 
 import com.tynoxs.buildersdelight.content.init.BdBlocks;
-import com.tynoxs.buildersdelight.content.init.BdDecoration;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.resources.ResourceLocation;

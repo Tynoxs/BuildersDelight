@@ -1,24 +1,11 @@
 package com.tynoxs.buildersdelight.content.item;
 
-import com.tynoxs.buildersdelight.content.gui.menus.ContainerChisel;
 import net.minecraft.advancements.Advancement;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.network.NetworkHooks;
-
-import javax.annotation.Nullable;
 
 public class BdFurnitureKit extends BdItem {
     public BdFurnitureKit(Properties properties) {
