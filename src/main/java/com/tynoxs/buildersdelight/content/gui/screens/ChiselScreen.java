@@ -62,7 +62,7 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 		// Display arrow towards player inventory, if item in slot 1
 		renderArrow(graphics, slot1ItemStack, true, down_arrow_green, down_arrow_green, 32, 36);
 
-		// Highlight button when hovering
+		// Highlight chisel all button when hovering
 		renderHoveredButton(graphics, pMouseX, pMouseY, buttonX, buttonY, chisel_hover_button);
 
 		// Light up chisel all button
@@ -71,8 +71,7 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 		}
 	}
 
-
-	// Helper method to render arrows
+	// Helper method - arrows
 	private void renderArrow(GuiGraphics graphics, ItemStack itemStack, boolean condition, ResourceLocation trueTexture, ResourceLocation falseTexture, int posX, int posY) {
 		if (!itemStack.isEmpty()) {
 			ResourceLocation arrowTexture = condition ? trueTexture : falseTexture;
@@ -82,14 +81,14 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 		}
 	}
 
-	// Helper method to render hovered button
+	// Helper method - chisel all button hovered
 	private void renderHoveredButton(GuiGraphics graphics, int pMouseX, int pMouseY, int buttonX, int buttonY, ResourceLocation buttonTexture) {
 		if (isButtonHovered(pMouseX, pMouseY)) {
 			renderButton(graphics, buttonX, buttonY, buttonTexture);
 		}
 	}
 
-	// Helper method to render a button
+	// Helper method - chisel all button
 	private void renderButton(GuiGraphics graphics, int buttonX, int buttonY, ResourceLocation buttonTexture) {
 		RenderSystem.setShaderTexture(0, buttonTexture);
 		graphics.blit(buttonTexture, buttonX, buttonY, 0, 0, 16, 16, 16, 16);
