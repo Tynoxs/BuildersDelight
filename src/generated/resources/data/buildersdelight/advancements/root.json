@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "has_iron_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:iron_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "buildersdelight:textures/block/dark_oak_planks_6.png",
+    "description": {
+      "translate": "advancements.buildersdelight.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "buildersdelight:spruce_planks_7"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.buildersdelight.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_iron_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

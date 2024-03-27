@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "buildersdelight:spruce_glass_pane_3"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_woodtype_glass": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "buildersdelight:spruce_glass_3"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_woodtype_glass",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "buildersdelight:spruce_glass_pane_3"
+    ]
+  },
+  "sends_telemetry_event": false
+}

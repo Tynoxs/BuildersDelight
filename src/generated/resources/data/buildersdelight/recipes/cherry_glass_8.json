@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "tag": "buildersdelight:glass"
+    },
+    "1": {
+      "tag": "buildersdelight:cherry_planks"
+    }
+  },
+  "pattern": [
+    "000",
+    "010",
+    "000"
+  ],
+  "result": {
+    "count": 8,
+    "item": "buildersdelight:cherry_glass_8"
+  },
+  "show_notification": true
+}

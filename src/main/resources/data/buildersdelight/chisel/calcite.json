@@ -1,12 +1,12 @@
 {
   "variants": [
 	"minecraft:calcite",
+    "buildersdelight:calcite_1",
     "buildersdelight:calcite_2",
     "buildersdelight:calcite_3",
     "buildersdelight:calcite_4",
     "buildersdelight:calcite_5",
     "buildersdelight:calcite_6",
-    "buildersdelight:calcite_7",
-	"buildersdelight:calcite_8"
+	"buildersdelight:calcite_7"
   ]
 }

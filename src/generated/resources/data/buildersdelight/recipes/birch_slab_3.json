@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "item": "buildersdelight:birch_planks_3"
+    }
+  },
+  "pattern": [
+    "000"
+  ],
+  "result": {
+    "count": 6,
+    "item": "buildersdelight:birch_slab_3"
+  },
+  "show_notification": true
+}

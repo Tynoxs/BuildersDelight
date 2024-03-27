@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "item": "buildersdelight:crimson_planks_5"
+    }
+  },
+  "pattern": [
+    "000"
+  ],
+  "result": {
+    "count": 6,
+    "item": "buildersdelight:crimson_slab_5"
+  },
+  "show_notification": true
+}

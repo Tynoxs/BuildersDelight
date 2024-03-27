@@ -1,6 +1,7 @@
 package com.tynoxs.buildersdelight.content.item;
 
 import com.tynoxs.buildersdelight.content.gui.menus.ContainerChisel;
+import com.tynoxs.buildersdelight.content.init.BdConfig;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.nbt.CompoundTag;
 
@@ -26,6 +27,7 @@ import net.minecraftforge.network.NetworkHooks;
 import javax.annotation.Nullable;
 
 public class BdIronChisel extends BdItem {
+
     public BdIronChisel(Properties properties) {
         super(properties);
     }
@@ -46,21 +48,26 @@ public class BdIronChisel extends BdItem {
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        if(!world.isClientSide){
-            world.playSound(null, player, SoundEvents.ARMOR_EQUIP_LEATHER, SoundSource.PLAYERS, 1f, 1f);
-            NetworkHooks.openScreen((ServerPlayer)player, new MenuProvider() {
+        if (!world.isClientSide) {
+            if (BdConfig.shouldPlayGuiOpenSound.get()) {
+                world.playSound(null, player, SoundEvents.ARMOR_EQUIP_LEATHER, SoundSource.PLAYERS, 1f, 1f);
+            }
+
+            NetworkHooks.openScreen((ServerPlayer) player, new MenuProvider() {
                 @Override
-                public Component getDisplayName(){
+                public Component getDisplayName() {
                     return Component.translatable("container.iron_chisel");
                 }
 
                 @Nullable
                 @Override
-                public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player){
-                    return new ContainerChisel(id, inventory, new FriendlyByteBuf(null));
+                public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+                    ContainerChisel containerChisel = new ContainerChisel(id, inventory, new FriendlyByteBuf(null));
+                    return containerChisel;
                 }
             }, buffer -> buffer.writeBoolean(hand == InteractionHand.MAIN_HAND));
         }
+
         return InteractionResultHolder.sidedSuccess(stack, world.isClientSide);
     }
 

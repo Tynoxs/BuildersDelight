@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "buildersdelight:block/warning_stripes_5",
+    "side": "buildersdelight:block/warning_stripes_5",
+    "top": "buildersdelight:block/warning_stripes_5"
+  }
+}

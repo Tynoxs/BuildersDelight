@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "buildersdelight:item/waxed_exposed_chain_3"
+  }
+}

@@ -1,9 +1,11 @@
 package com.tynoxs.buildersdelight.content.gui.menus;
 
+import com.tynoxs.buildersdelight.content.init.BdConfig;
 import com.tynoxs.buildersdelight.content.init.BdContainers;
 import com.tynoxs.buildersdelight.content.init.BdSounds;
 import com.tynoxs.buildersdelight.content.recipe.ChiselRecipeFactory;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -20,6 +22,7 @@ import java.util.List;
 @Mod.EventBusSubscriber
 public class ContainerChisel extends AbstractContainerMenu {
     private final ContainerLevelAccess access;
+
     private final Slot inputSlot;
     private final Slot resultSlot;
 
@@ -81,9 +84,9 @@ public class ContainerChisel extends AbstractContainerMenu {
                         if(!ContainerChisel.this.resultSlot.hasItem() && this.hasItem()){
                             ContainerChisel.this.craftVariant(this.getItem());
 
-                            //play sound after chiseling
+                            //play sound after chiseling, if config = true
                             Level world = pPlayer.level();
-                            if (!world.isClientSide) {
+                            if (!world.isClientSide && BdConfig.shouldPlayChiselingSound.get()) {
                                 world.playSound(null, pPlayer, BdSounds.CHISELING_SOUND.get(), SoundSource.PLAYERS, 1f, 1f);
                             }
                         }
@@ -97,14 +100,14 @@ public class ContainerChisel extends AbstractContainerMenu {
         }
 
         //Player inv slots
-        for(int k = 0; k < 3; ++k) {
-            for(int i1 = 0; i1 < 9; ++i1) {
+        for (int k = 0; k < 3; ++k) {
+            for (int i1 = 0; i1 < 9; ++i1) {
                 this.addSlot(new Slot(pPlayerInventory, i1 + k * 9 + 9, 20 + i1 * 18, 114 + k * 18));
             }
         }
 
         //Hotbar slots
-        for(int l = 0; l < 9; ++l) {
+        for (int l = 0; l < 9; ++l) {
             this.addSlot(new Slot(pPlayerInventory, l, 20 + l * 18, 172));
         }
     }
@@ -180,9 +183,11 @@ public class ContainerChisel extends AbstractContainerMenu {
     public ItemStack quickMoveStack(Player player, int pIndex) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.slots.get(pIndex);
+
         if (slot != null && slot.hasItem()) {
             ItemStack itemstack1 = slot.getItem();
             itemstack = itemstack1.copy();
+
             if (pIndex < 2) {
                 if (!this.moveItemStackTo(itemstack1, 9, 45, true)) {
                     return ItemStack.EMPTY;

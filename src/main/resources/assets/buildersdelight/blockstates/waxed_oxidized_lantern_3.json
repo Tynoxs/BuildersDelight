@@ -1,0 +1,25 @@
+{
+  "variants": {
+	"face=floor": {
+      "model": "buildersdelight:block/oxidized_lantern_3"
+    },
+    "face=ceiling": {
+      "model": "buildersdelight:block/oxidized_lantern_3_hanging"
+    },
+	"face=wall,facing=north": {
+      "model": "buildersdelight:block/oxidized_lantern_3_wall"
+    },
+    "face=wall,facing=east": {
+      "model": "buildersdelight:block/oxidized_lantern_3_wall",
+      "y": 90
+    },
+    "face=wall,facing=south": {
+      "model": "buildersdelight:block/oxidized_lantern_3_wall",
+      "y": 180
+    },
+    "face=wall,facing=west": {
+      "model": "buildersdelight:block/oxidized_lantern_3_wall",
+      "y": 270
+    }
+  }
+}

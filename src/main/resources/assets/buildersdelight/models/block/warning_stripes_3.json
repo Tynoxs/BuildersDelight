@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "buildersdelight:block/warning_stripes_3",
-    "particle": "buildersdelight:block/warning_stripes_3"
-  }
-}

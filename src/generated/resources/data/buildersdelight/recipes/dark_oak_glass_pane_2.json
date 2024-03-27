@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "item": "buildersdelight:dark_oak_glass_2"
+    }
+  },
+  "pattern": [
+    "000",
+    "000"
+  ],
+  "result": {
+    "count": 8,
+    "item": "buildersdelight:dark_oak_glass_pane_2"
+  },
+  "show_notification": true
+}

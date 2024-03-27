@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "tag": "buildersdelight:dark_oak_planks"
+    },
+    "1": {
+      "tag": "minecraft:wool"
+    },
+    "2": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "202",
+    "010",
+    "202"
+  ],
+  "result": {
+    "item": "buildersdelight:dark_oak_frame_7"
+  },
+  "show_notification": true
+}

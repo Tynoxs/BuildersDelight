@@ -574,13 +574,13 @@ public class BdBlockLootTables extends BlockLootSubProvider {
         registerSlabItemTable(BdBlocks.BRICK_SLAB_8.get());
         registerSlabItemTable(BdBlocks.BRICK_SLAB_9.get());
 
+        registerDropSelf(BdBlocks.CALCITE_1.get());
         registerDropSelf(BdBlocks.CALCITE_2.get());
         registerDropSelf(BdBlocks.CALCITE_3.get());
         registerDropSelf(BdBlocks.CALCITE_4.get());
         registerDropSelf(BdBlocks.CALCITE_5.get());
         registerDropSelf(BdBlocks.CALCITE_6.get());
         registerDropSelf(BdBlocks.CALCITE_7.get());
-        registerDropSelf(BdBlocks.CALCITE_8.get());
         registerDropSelf(BdBlocks.CALCITE_STAIRS_1.get());
         registerDropSelf(BdBlocks.CALCITE_STAIRS_2.get());
         registerDropSelf(BdBlocks.CALCITE_STAIRS_3.get());
@@ -751,6 +751,7 @@ public class BdBlockLootTables extends BlockLootSubProvider {
         registerDropSelf(BdBlocks.LABORATORY_1.get());
         registerDropSelf(BdBlocks.LABORATORY_2.get());
         registerDropSelf(BdBlocks.LABORATORY_3.get());
+        registerDropSelf(BdBlocks.LABORATORY_4.get());
 
         registerDropSelf(BdBlocks.NETHER_BRICKS_1.get());
         registerDropSelf(BdBlocks.NETHER_BRICKS_2.get());

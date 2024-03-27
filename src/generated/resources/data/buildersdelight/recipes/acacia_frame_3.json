@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "tag": "buildersdelight:acacia_planks"
+    },
+    "1": {
+      "tag": "minecraft:wool"
+    },
+    "2": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "202",
+    "010",
+    "202"
+  ],
+  "result": {
+    "item": "buildersdelight:acacia_frame_3"
+  },
+  "show_notification": true
+}

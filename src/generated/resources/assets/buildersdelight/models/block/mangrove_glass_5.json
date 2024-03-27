@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:block/orientable",
+  "parent": "minecraft:block/cube_top",
   "textures": {
-    "front": "buildersdelight:block/mangrove_glass_5",
     "side": "buildersdelight:block/mangrove_glass_5",
     "top": "buildersdelight:block/mangrove_glass_5_top"
   }

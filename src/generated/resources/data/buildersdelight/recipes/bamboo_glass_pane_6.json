@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "item": "buildersdelight:bamboo_glass_6"
+    }
+  },
+  "pattern": [
+    "000",
+    "000"
+  ],
+  "result": {
+    "count": 8,
+    "item": "buildersdelight:bamboo_glass_pane_6"
+  },
+  "show_notification": true
+}

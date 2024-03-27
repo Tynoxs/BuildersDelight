@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "buildersdelight:block/laboratory_4"
+    },
+    "lit=true": {
+      "model": "buildersdelight:block/laboratory_4_lit"
+    }
+  }
+}

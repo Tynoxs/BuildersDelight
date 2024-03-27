@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "item": "buildersdelight:mangrove_planks_4"
+    }
+  },
+  "pattern": [
+    "000"
+  ],
+  "result": {
+    "count": 6,
+    "item": "buildersdelight:mangrove_slab_4"
+  },
+  "show_notification": true
+}

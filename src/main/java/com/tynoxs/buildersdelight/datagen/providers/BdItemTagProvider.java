@@ -6,459 +6,162 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.common.Tags.Items;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 public class BdItemTagProvider extends ItemTagsProvider {
+
     public BdItemTagProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> future,
                              CompletableFuture<TagLookup<Block>> completableFuture, @Nullable ExistingFileHelper existingFileHelper) {
         super(packOutput, future, completableFuture, BuildersDelight.MODID, existingFileHelper);
     }
 
+    private int getMaxBlockNumber(String blockType) {
+        return BdBlockCount.BLOCK_COUNTS.getOrDefault(blockType, 0);
+    }
+
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        addItemByName();
+    }
 
-        this.tag(ItemTags.LOGS_THAT_BURN)
-                .add(BdBlocks.ACACIA_PLANKS_1.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_2.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_3.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_4.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_5.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_6.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_7.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_1.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_2.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_3.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_4.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_5.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_6.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_7.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_1.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_2.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_3.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_4.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_5.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_6.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_7.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_1.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_2.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_3.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_4.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_5.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_6.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_7.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_1.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_2.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_3.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_4.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_5.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_6.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_7.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_1.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_2.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_3.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_4.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_5.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_6.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_7.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_1.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_2.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_3.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_4.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_5.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_6.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_7.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_1.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_2.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_3.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_4.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_5.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_6.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_7.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_1.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_2.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_3.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_4.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_5.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_6.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_7.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_1.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_2.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_3.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_4.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_5.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_6.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_7.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_1.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_2.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_3.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_4.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_5.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_6.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_7.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_1.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_2.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_3.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_4.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_5.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_6.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_7.get().asItem());
+    private void addItemByName() {
+        for (String blockType : BdBlockCount.BLOCK_COUNTS.keySet()) {
+            int maxBlockNumber = getMaxBlockNumber(blockType);
 
-        this.tag(ItemTags.PLANKS)
-                .add(BdBlocks.ACACIA_PLANKS_1.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_2.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_3.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_4.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_5.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_6.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_7.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_1.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_2.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_3.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_4.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_5.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_6.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_7.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_1.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_2.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_3.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_4.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_5.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_6.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_7.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_1.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_2.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_3.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_4.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_5.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_6.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_7.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_1.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_2.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_3.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_4.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_5.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_6.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_7.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_1.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_2.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_3.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_4.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_5.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_6.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_7.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_1.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_2.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_3.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_4.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_5.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_6.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_7.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_1.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_2.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_3.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_4.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_5.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_6.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_7.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_1.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_2.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_3.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_4.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_5.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_6.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_7.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_1.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_2.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_3.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_4.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_5.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_6.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_7.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_1.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_2.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_3.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_4.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_5.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_6.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_7.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_1.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_2.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_3.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_4.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_5.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_6.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_7.get().asItem());
+            for (int i = 1; i <= maxBlockNumber; i++) {
+                String registryName = blockType.toLowerCase() + "_" + i;
+                RegistryObject<Item> itemRegistryObject = BdBlocks.getBlockItemMap().get(registryName);
 
-        this.tag(ItemTags.PLANKS)
-                .add(BdBlocks.ACACIA_PLANKS_1.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_2.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_3.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_4.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_5.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_6.get().asItem())
-                .add(BdBlocks.ACACIA_PLANKS_7.get().asItem())
+                if (itemRegistryObject != null) {
+                    addTagsForBlockType(blockType, itemRegistryObject.get());
+                }
+            }
+        }
+    }
 
-                .add(BdBlocks.BIRCH_PLANKS_1.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_2.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_3.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_4.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_5.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_6.get().asItem())
-                .add(BdBlocks.BIRCH_PLANKS_7.get().asItem())
+    private void addTagsForBlockType(String blockType, Item item) {
+        Map<String, Consumer<Item>> tagMappings = createTagMappings();
+        tagMappings.getOrDefault(blockType, (unused) -> {}).accept(item);
+    }
 
-                .add(BdBlocks.BAMBOO_PLANKS_1.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_2.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_3.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_4.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_5.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_6.get().asItem())
-                .add(BdBlocks.BAMBOO_PLANKS_7.get().asItem())
+    private Map<String, Consumer<Item>> createTagMappings() {
+        Map<String, Consumer<Item>> tagMappings = new HashMap<>();
 
-                .add(BdBlocks.CHERRY_PLANKS_1.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_2.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_3.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_4.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_5.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_6.get().asItem())
-                .add(BdBlocks.CHERRY_PLANKS_7.get().asItem())
+        tagMappings.put("COBBLESTONE", this::tagCobblestone);
+        tagMappings.put("GLASS", this::tagGlass);
+        tagMappings.put("GLASS_PANE", this::tagGlassPanes);
+        tagMappings.put("ANDESITE", this::tagStone);
+        tagMappings.put("DIORITE", this::tagStone);
+        tagMappings.put("GRANITE", this::tagStone);
 
-                .add(BdBlocks.CRIMSON_PLANKS_1.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_2.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_3.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_4.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_5.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_6.get().asItem())
-                .add(BdBlocks.CRIMSON_PLANKS_7.get().asItem())
+        tagMappings.put("ACACIA_PLANKS", this::tagPlanks);
+        tagMappings.put("BAMBOO_PLANKS", this::tagPlanks);
+        tagMappings.put("BIRCH_PLANKS", this::tagPlanks);
+        tagMappings.put("CHERRY_PLANKS", this::tagPlanks);
+        tagMappings.put("CRIMSON_PLANKS", this::tagPlanks);
+        tagMappings.put("DARK_OAK_PLANKS", this::tagPlanks);
+        tagMappings.put("JUNGLE_PLANKS", this::tagPlanks);
+        tagMappings.put("MANGROVE_PLANKS", this::tagPlanks);
+        tagMappings.put("OAK_PLANKS", this::tagPlanks);
+        tagMappings.put("SPRUCE_PLANKS", this::tagPlanks);
+        tagMappings.put("WARPED_PLANKS", this::tagPlanks);
 
-                .add(BdBlocks.DARK_OAK_PLANKS_1.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_2.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_3.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_4.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_5.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_6.get().asItem())
-                .add(BdBlocks.DARK_OAK_PLANKS_7.get().asItem())
+        tagMappings.put("ACACIA_STAIRS", this::tagWoodenStairs);
+        tagMappings.put("BAMBOO_STAIRS", this::tagWoodenStairs);
+        tagMappings.put("BIRCH_STAIRS", this::tagWoodenStairs);
+        tagMappings.put("CHERRY_STAIRS", this::tagWoodenStairs);
+        tagMappings.put("CRIMSON_STAIRS", this::tagWoodenStairs);
+        tagMappings.put("DARK_OAK_STAIRS", this::tagWoodenStairs);
+        tagMappings.put("JUNGLE_STAIRS", this::tagWoodenStairs);
+        tagMappings.put("MANGROVE_STAIRS", this::tagWoodenStairs);
+        tagMappings.put("OAK_STAIRS", this::tagWoodenStairs);
+        tagMappings.put("SPRUCE_STAIRS", this::tagWoodenStairs);
+        tagMappings.put("WARPED_STAIRS", this::tagWoodenStairs);
 
-                .add(BdBlocks.JUNGLE_PLANKS_1.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_2.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_3.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_4.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_5.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_6.get().asItem())
-                .add(BdBlocks.JUNGLE_PLANKS_7.get().asItem())
+        tagMappings.put("ACACIA_SLAB", this::tagWoodenSlabs);
+        tagMappings.put("BAMBOO_SLAB", this::tagWoodenSlabs);
+        tagMappings.put("BIRCH_SLAB", this::tagWoodenSlabs);
+        tagMappings.put("CHERRY_SLAB", this::tagWoodenSlabs);
+        tagMappings.put("CRIMSON_SLAB", this::tagWoodenSlabs);
+        tagMappings.put("DARK_OAK_SLAB", this::tagWoodenSlabs);
+        tagMappings.put("JUNGLE_SLAB", this::tagWoodenSlabs);
+        tagMappings.put("MANGROVE_SLAB", this::tagWoodenSlabs);
+        tagMappings.put("OAK_SLAB", this::tagWoodenSlabs);
+        tagMappings.put("SPRUCE_SLAB", this::tagWoodenSlabs);
+        tagMappings.put("WARPED_SLAB", this::tagWoodenSlabs);
 
-                .add(BdBlocks.MANGROVE_PLANKS_1.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_2.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_3.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_4.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_5.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_6.get().asItem())
-                .add(BdBlocks.MANGROVE_PLANKS_7.get().asItem())
+        tagMappings.put("ACACIA_GLASS", this::tagGlass);
+        tagMappings.put("BAMBOO_GLASS", this::tagGlass);
+        tagMappings.put("BIRCH_GLASS", this::tagGlass);
+        tagMappings.put("CHERRY_GLASS", this::tagGlass);
+        tagMappings.put("CRIMSON_GLASS", this::tagGlass);
+        tagMappings.put("DARK_OAK_GLASS", this::tagGlass);
+        tagMappings.put("JUNGLE_GLASS", this::tagGlass);
+        tagMappings.put("MANGROVE_GLASS", this::tagGlass);
+        tagMappings.put("OAK_GLASS", this::tagGlass);
+        tagMappings.put("SPRUCE_GLASS", this::tagGlass);
+        tagMappings.put("WARPED_GLASS", this::tagGlass);
 
-                .add(BdBlocks.OAK_PLANKS_1.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_2.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_3.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_4.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_5.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_6.get().asItem())
-                .add(BdBlocks.OAK_PLANKS_7.get().asItem())
+        tagMappings.put("ACACIA_GLASS_PANE", this::tagGlassPanes);
+        tagMappings.put("BAMBOO_GLASS_PANE", this::tagGlassPanes);
+        tagMappings.put("BIRCH_GLASS_PANE", this::tagGlassPanes);
+        tagMappings.put("CHERRY_GLASS_PANE", this::tagGlassPanes);
+        tagMappings.put("CRIMSON_GLASS_PANE", this::tagGlassPanes);
+        tagMappings.put("DARK_OAK_GLASS_PANE", this::tagGlassPanes);
+        tagMappings.put("JUNGLE_GLASS_PANE", this::tagGlassPanes);
+        tagMappings.put("MANGROVE_GLASS_PANE", this::tagGlassPanes);
+        tagMappings.put("OAK_GLASS_PANE", this::tagGlassPanes);
+        tagMappings.put("SPRUCE_GLASS_PANE", this::tagGlassPanes);
+        tagMappings.put("WARPED_GLASS_PANE", this::tagGlassPanes);
 
-                .add(BdBlocks.SPRUCE_PLANKS_1.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_2.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_3.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_4.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_5.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_6.get().asItem())
-                .add(BdBlocks.SPRUCE_PLANKS_7.get().asItem())
+        tagMappings.put("SANDSTONE", this::addSandstoneTags);
 
-                .add(BdBlocks.WARPED_PLANKS_1.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_2.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_3.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_4.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_5.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_6.get().asItem())
-                .add(BdBlocks.WARPED_PLANKS_7.get().asItem());
+        return tagMappings;
+    }
 
-        this.tag(ItemTags.WOODEN_STAIRS)
-                .add(BdBlocks.ACACIA_STAIRS_1.get().asItem())
-                .add(BdBlocks.ACACIA_STAIRS_2.get().asItem())
-                .add(BdBlocks.ACACIA_STAIRS_3.get().asItem())
-                .add(BdBlocks.ACACIA_STAIRS_4.get().asItem())
-                .add(BdBlocks.ACACIA_STAIRS_5.get().asItem())
-                .add(BdBlocks.ACACIA_STAIRS_6.get().asItem())
-                .add(BdBlocks.ACACIA_STAIRS_7.get().asItem())
+    private void tagCobblestone(Item item) {
+        this.tag(Items.COBBLESTONE).add(item);
+        this.tag(ItemTags.STONE_TOOL_MATERIALS).add(item);
+    }
 
-                .add(BdBlocks.BIRCH_STAIRS_1.get().asItem())
-                .add(BdBlocks.BIRCH_STAIRS_2.get().asItem())
-                .add(BdBlocks.BIRCH_STAIRS_3.get().asItem())
-                .add(BdBlocks.BIRCH_STAIRS_4.get().asItem())
-                .add(BdBlocks.BIRCH_STAIRS_5.get().asItem())
-                .add(BdBlocks.BIRCH_STAIRS_6.get().asItem())
-                .add(BdBlocks.BIRCH_STAIRS_7.get().asItem())
+    private void tagGlass(Item item) {
+        this.tag(Items.GLASS).add(item);
+        this.tag(Items.GLASS_COLORLESS).add(item);
+    }
 
-                .add(BdBlocks.BAMBOO_STAIRS_1.get().asItem())
-                .add(BdBlocks.BAMBOO_STAIRS_2.get().asItem())
-                .add(BdBlocks.BAMBOO_STAIRS_3.get().asItem())
-                .add(BdBlocks.BAMBOO_STAIRS_4.get().asItem())
-                .add(BdBlocks.BAMBOO_STAIRS_5.get().asItem())
-                .add(BdBlocks.BAMBOO_STAIRS_6.get().asItem())
-                .add(BdBlocks.BAMBOO_STAIRS_7.get().asItem())
+    private void tagGlassPanes(Item item) {
+        this.tag(Items.GLASS_PANES).add(item);
+        this.tag(Items.GLASS_PANES_COLORLESS).add(item);
+    }
 
-                .add(BdBlocks.CHERRY_STAIRS_1.get().asItem())
-                .add(BdBlocks.CHERRY_STAIRS_2.get().asItem())
-                .add(BdBlocks.CHERRY_STAIRS_3.get().asItem())
-                .add(BdBlocks.CHERRY_STAIRS_4.get().asItem())
-                .add(BdBlocks.CHERRY_STAIRS_5.get().asItem())
-                .add(BdBlocks.CHERRY_STAIRS_6.get().asItem())
-                .add(BdBlocks.CHERRY_STAIRS_7.get().asItem())
+    private void tagStone(Item item) {
+        this.tag(Items.STONE).add(item);
+    }
 
-                .add(BdBlocks.CRIMSON_STAIRS_1.get().asItem())
-                .add(BdBlocks.CRIMSON_STAIRS_2.get().asItem())
-                .add(BdBlocks.CRIMSON_STAIRS_3.get().asItem())
-                .add(BdBlocks.CRIMSON_STAIRS_4.get().asItem())
-                .add(BdBlocks.CRIMSON_STAIRS_5.get().asItem())
-                .add(BdBlocks.CRIMSON_STAIRS_6.get().asItem())
-                .add(BdBlocks.CRIMSON_STAIRS_7.get().asItem())
+    private void tagPlanks(Item item) {
+        this.tag(ItemTags.PLANKS).add(item);
+    }
 
-                .add(BdBlocks.DARK_OAK_STAIRS_1.get().asItem())
-                .add(BdBlocks.DARK_OAK_STAIRS_2.get().asItem())
-                .add(BdBlocks.DARK_OAK_STAIRS_3.get().asItem())
-                .add(BdBlocks.DARK_OAK_STAIRS_4.get().asItem())
-                .add(BdBlocks.DARK_OAK_STAIRS_5.get().asItem())
-                .add(BdBlocks.DARK_OAK_STAIRS_6.get().asItem())
-                .add(BdBlocks.DARK_OAK_STAIRS_7.get().asItem())
+    private void tagWoodenStairs(Item item) {
+        this.tag(ItemTags.WOODEN_STAIRS).add(item);
+    }
 
-                .add(BdBlocks.JUNGLE_STAIRS_1.get().asItem())
-                .add(BdBlocks.JUNGLE_STAIRS_2.get().asItem())
-                .add(BdBlocks.JUNGLE_STAIRS_3.get().asItem())
-                .add(BdBlocks.JUNGLE_STAIRS_4.get().asItem())
-                .add(BdBlocks.JUNGLE_STAIRS_5.get().asItem())
-                .add(BdBlocks.JUNGLE_STAIRS_6.get().asItem())
-                .add(BdBlocks.JUNGLE_STAIRS_7.get().asItem())
+    private void tagWoodenSlabs(Item item) {
+        this.tag(ItemTags.WOODEN_SLABS).add(item);
+    }
 
-                .add(BdBlocks.MANGROVE_STAIRS_1.get().asItem())
-                .add(BdBlocks.MANGROVE_STAIRS_2.get().asItem())
-                .add(BdBlocks.MANGROVE_STAIRS_3.get().asItem())
-                .add(BdBlocks.MANGROVE_STAIRS_4.get().asItem())
-                .add(BdBlocks.MANGROVE_STAIRS_5.get().asItem())
-                .add(BdBlocks.MANGROVE_STAIRS_6.get().asItem())
-                .add(BdBlocks.MANGROVE_STAIRS_7.get().asItem())
-
-                .add(BdBlocks.OAK_STAIRS_1.get().asItem())
-                .add(BdBlocks.OAK_STAIRS_2.get().asItem())
-                .add(BdBlocks.OAK_STAIRS_3.get().asItem())
-                .add(BdBlocks.OAK_STAIRS_4.get().asItem())
-                .add(BdBlocks.OAK_STAIRS_5.get().asItem())
-                .add(BdBlocks.OAK_STAIRS_6.get().asItem())
-                .add(BdBlocks.OAK_STAIRS_7.get().asItem())
-
-                .add(BdBlocks.SPRUCE_STAIRS_1.get().asItem())
-                .add(BdBlocks.SPRUCE_STAIRS_2.get().asItem())
-                .add(BdBlocks.SPRUCE_STAIRS_3.get().asItem())
-                .add(BdBlocks.SPRUCE_STAIRS_4.get().asItem())
-                .add(BdBlocks.SPRUCE_STAIRS_5.get().asItem())
-                .add(BdBlocks.SPRUCE_STAIRS_6.get().asItem())
-                .add(BdBlocks.SPRUCE_STAIRS_7.get().asItem())
-
-                .add(BdBlocks.WARPED_STAIRS_1.get().asItem())
-                .add(BdBlocks.WARPED_STAIRS_2.get().asItem())
-                .add(BdBlocks.WARPED_STAIRS_3.get().asItem())
-                .add(BdBlocks.WARPED_STAIRS_4.get().asItem())
-                .add(BdBlocks.WARPED_STAIRS_5.get().asItem())
-                .add(BdBlocks.WARPED_STAIRS_6.get().asItem())
-                .add(BdBlocks.WARPED_STAIRS_7.get().asItem());
-
-        this.tag(ItemTags.WOODEN_SLABS)
-                .add(BdBlocks.ACACIA_SLAB_1.get().asItem())
-                .add(BdBlocks.ACACIA_SLAB_2.get().asItem())
-                .add(BdBlocks.ACACIA_SLAB_3.get().asItem())
-                .add(BdBlocks.ACACIA_SLAB_4.get().asItem())
-                .add(BdBlocks.ACACIA_SLAB_5.get().asItem())
-                .add(BdBlocks.ACACIA_SLAB_6.get().asItem())
-                .add(BdBlocks.ACACIA_SLAB_7.get().asItem())
-
-                .add(BdBlocks.BIRCH_SLAB_1.get().asItem())
-                .add(BdBlocks.BIRCH_SLAB_2.get().asItem())
-                .add(BdBlocks.BIRCH_SLAB_3.get().asItem())
-                .add(BdBlocks.BIRCH_SLAB_4.get().asItem())
-                .add(BdBlocks.BIRCH_SLAB_5.get().asItem())
-                .add(BdBlocks.BIRCH_SLAB_6.get().asItem())
-                .add(BdBlocks.BIRCH_SLAB_7.get().asItem())
-
-                .add(BdBlocks.BAMBOO_STAIRS_1.get().asItem())
-                .add(BdBlocks.BAMBOO_STAIRS_2.get().asItem())
-                .add(BdBlocks.BAMBOO_STAIRS_3.get().asItem())
-                .add(BdBlocks.BAMBOO_STAIRS_4.get().asItem())
-                .add(BdBlocks.BAMBOO_STAIRS_5.get().asItem())
-                .add(BdBlocks.BAMBOO_STAIRS_6.get().asItem())
-                .add(BdBlocks.BAMBOO_STAIRS_7.get().asItem())
-
-                .add(BdBlocks.CHERRY_SLAB_1.get().asItem())
-                .add(BdBlocks.CHERRY_SLAB_2.get().asItem())
-                .add(BdBlocks.CHERRY_SLAB_3.get().asItem())
-                .add(BdBlocks.CHERRY_SLAB_4.get().asItem())
-                .add(BdBlocks.CHERRY_SLAB_5.get().asItem())
-                .add(BdBlocks.CHERRY_SLAB_6.get().asItem())
-                .add(BdBlocks.CHERRY_SLAB_7.get().asItem())
-
-                .add(BdBlocks.CRIMSON_SLAB_1.get().asItem())
-                .add(BdBlocks.CRIMSON_SLAB_2.get().asItem())
-                .add(BdBlocks.CRIMSON_SLAB_3.get().asItem())
-                .add(BdBlocks.CRIMSON_SLAB_4.get().asItem())
-                .add(BdBlocks.CRIMSON_SLAB_5.get().asItem())
-                .add(BdBlocks.CRIMSON_SLAB_6.get().asItem())
-                .add(BdBlocks.CRIMSON_SLAB_7.get().asItem())
-
-                .add(BdBlocks.DARK_OAK_SLAB_1.get().asItem())
-                .add(BdBlocks.DARK_OAK_SLAB_2.get().asItem())
-                .add(BdBlocks.DARK_OAK_SLAB_3.get().asItem())
-                .add(BdBlocks.DARK_OAK_SLAB_4.get().asItem())
-                .add(BdBlocks.DARK_OAK_SLAB_5.get().asItem())
-                .add(BdBlocks.DARK_OAK_SLAB_6.get().asItem())
-                .add(BdBlocks.DARK_OAK_SLAB_7.get().asItem())
-
-                .add(BdBlocks.JUNGLE_SLAB_1.get().asItem())
-                .add(BdBlocks.JUNGLE_SLAB_2.get().asItem())
-                .add(BdBlocks.JUNGLE_SLAB_3.get().asItem())
-                .add(BdBlocks.JUNGLE_SLAB_4.get().asItem())
-                .add(BdBlocks.JUNGLE_SLAB_5.get().asItem())
-                .add(BdBlocks.JUNGLE_SLAB_6.get().asItem())
-                .add(BdBlocks.JUNGLE_SLAB_7.get().asItem())
-
-                .add(BdBlocks.MANGROVE_SLAB_1.get().asItem())
-                .add(BdBlocks.MANGROVE_SLAB_2.get().asItem())
-                .add(BdBlocks.MANGROVE_SLAB_3.get().asItem())
-                .add(BdBlocks.MANGROVE_SLAB_4.get().asItem())
-                .add(BdBlocks.MANGROVE_SLAB_5.get().asItem())
-                .add(BdBlocks.MANGROVE_SLAB_6.get().asItem())
-                .add(BdBlocks.MANGROVE_SLAB_7.get().asItem())
-
-                .add(BdBlocks.OAK_SLAB_1.get().asItem())
-                .add(BdBlocks.OAK_SLAB_2.get().asItem())
-                .add(BdBlocks.OAK_SLAB_3.get().asItem())
-                .add(BdBlocks.OAK_SLAB_4.get().asItem())
-                .add(BdBlocks.OAK_SLAB_5.get().asItem())
-                .add(BdBlocks.OAK_SLAB_6.get().asItem())
-                .add(BdBlocks.OAK_SLAB_7.get().asItem())
-
-                .add(BdBlocks.SPRUCE_SLAB_1.get().asItem())
-                .add(BdBlocks.SPRUCE_SLAB_2.get().asItem())
-                .add(BdBlocks.SPRUCE_SLAB_3.get().asItem())
-                .add(BdBlocks.SPRUCE_SLAB_4.get().asItem())
-                .add(BdBlocks.SPRUCE_SLAB_5.get().asItem())
-                .add(BdBlocks.SPRUCE_SLAB_6.get().asItem())
-                .add(BdBlocks.SPRUCE_SLAB_7.get().asItem())
-
-                .add(BdBlocks.WARPED_SLAB_1.get().asItem())
-                .add(BdBlocks.WARPED_SLAB_2.get().asItem())
-                .add(BdBlocks.WARPED_SLAB_3.get().asItem())
-                .add(BdBlocks.WARPED_SLAB_4.get().asItem())
-                .add(BdBlocks.WARPED_SLAB_5.get().asItem())
-                .add(BdBlocks.WARPED_SLAB_6.get().asItem())
-                .add(BdBlocks.WARPED_SLAB_7.get().asItem());
+    private void addSandstoneTags(Item item) {
+        this.tag(Items.SANDSTONE).add(item);
     }
 
     @Override

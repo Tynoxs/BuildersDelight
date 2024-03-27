@@ -78,15 +78,31 @@ public class BdDecorationLootTables extends BlockLootSubProvider {
         registerDropSelf(BdDecoration.CHAIN_1.get());
         registerDropSelf(BdDecoration.CHAIN_2.get());
         registerDropSelf(BdDecoration.CHAIN_3.get());
+        registerDropSelf(BdDecoration.EXPOSED_CHAIN_3.get());
+        registerDropSelf(BdDecoration.WEATHERED_CHAIN_3.get());
+        registerDropSelf(BdDecoration.OXIDIZED_CHAIN_3.get());
+        registerDropSelf(BdDecoration.WAXED_CHAIN_3.get());
+        registerDropSelf(BdDecoration.WAXED_EXPOSED_CHAIN_3.get());
+        registerDropSelf(BdDecoration.WAXED_WEATHERED_CHAIN_3.get());
+        registerDropSelf(BdDecoration.WAXED_OXIDIZED_CHAIN_3.get());
         registerDropSelf(BdDecoration.CHAIN_4.get());
         registerDropSelf(BdDecoration.CHAIN_5.get());
 
         registerDropSelf(BdDecoration.LANTERN_1.get());
         registerDropSelf(BdDecoration.LANTERN_2.get());
         registerDropSelf(BdDecoration.LANTERN_3.get());
+        registerDropSelf(BdDecoration.EXPOSED_LANTERN_3.get());
+        registerDropSelf(BdDecoration.WEATHERED_LANTERN_3.get());
+        registerDropSelf(BdDecoration.OXIDIZED_LANTERN_3.get());
+        registerDropSelf(BdDecoration.WAXED_LANTERN_3.get());
+        registerDropSelf(BdDecoration.WAXED_EXPOSED_LANTERN_3.get());
+        registerDropSelf(BdDecoration.WAXED_WEATHERED_LANTERN_3.get());
+        registerDropSelf(BdDecoration.WAXED_OXIDIZED_LANTERN_3.get());
         registerDropSelf(BdDecoration.LANTERN_4.get());
         registerDropSelf(BdDecoration.LANTERN_5.get());
         registerDropSelf(BdDecoration.LANTERN_6.get());
+        registerDropSelf(BdDecoration.LANTERN_7.get());
+        registerDropSelf(BdDecoration.LANTERN_8.get());
     }
 
     public void registerDropSelf(Block block) {

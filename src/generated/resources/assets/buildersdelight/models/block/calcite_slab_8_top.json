@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/slab_top",
   "textures": {
-    "bottom": "buildersdelight:block/calcite_8",
-    "side": "buildersdelight:block/calcite_8",
-    "top": "buildersdelight:block/calcite_8"
+    "bottom": "minecraft:block/calcite",
+    "side": "minecraft:block/calcite",
+    "top": "minecraft:block/calcite"
   }
 }

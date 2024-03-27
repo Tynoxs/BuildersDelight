@@ -1,61 +1,118 @@
 {
   "variants": {
-    "face=ceiling,facing=east": {
+    "state=off,face=ceiling,facing=east": {
       "model": "buildersdelight:block/industrial_flat_2",
       "y": 270,
       "x": 180
     },
-    "face=ceiling,facing=north": {
+    "state=off,face=ceiling,facing=north": {
       "model": "buildersdelight:block/industrial_flat_2",
       "y": 180,
       "x": 180
     },
-    "face=ceiling,facing=south": {
+    "state=off,face=ceiling,facing=south": {
       "model": "buildersdelight:block/industrial_flat_2",
       "x": 180
     },
-    "face=ceiling,facing=west": {
+    "state=off,face=ceiling,facing=west": {
       "model": "buildersdelight:block/industrial_flat_2",
       "y": 90,
       "x": 180
     },
-    "face=floor,facing=east": {
+    "state=off,face=floor,facing=east": {
       "model": "buildersdelight:block/industrial_flat_2",
       "y": 90
     },
-    "face=floor,facing=north": {
+    "state=off,face=floor,facing=north": {
       "model": "buildersdelight:block/industrial_flat_2"
     },
-    "face=floor,facing=south": {
+    "state=off,face=floor,facing=south": {
       "model": "buildersdelight:block/industrial_flat_2",
       "y": 180
     },
-    "face=floor,facing=west": {
+    "state=off,face=floor,facing=west": {
       "model": "buildersdelight:block/industrial_flat_2",
       "y": 270
     },
-    "face=wall,facing=east": {
+    "state=off,face=wall,facing=east": {
       "model": "buildersdelight:block/industrial_flat_2",
       "y": 90,
       "x": 90,
       "uvlock": true
     },
-    "face=wall,facing=north": {
+    "state=off,face=wall,facing=north": {
       "model": "buildersdelight:block/industrial_flat_2",
       "x": 90,
       "uvlock": true
     },
-    "face=wall,facing=south": {
+    "state=off,face=wall,facing=south": {
       "model": "buildersdelight:block/industrial_flat_2",
       "y": 180,
       "x": 90,
       "uvlock": true
     },
-	"face=wall,facing=west": {
+	"state=off,face=wall,facing=west": {
       "model": "buildersdelight:block/industrial_flat_2",
       "y": 270,
       "x": 90,
       "uvlock": true
-    }   
+    },
+    "state=on,face=ceiling,facing=east": {
+      "model": "buildersdelight:block/industrial_flat_2_on",
+      "y": 270,
+      "x": 180
+    },
+    "state=on,face=ceiling,facing=north": {
+      "model": "buildersdelight:block/industrial_flat_2_on",
+      "y": 180,
+      "x": 180
+    },
+    "state=on,face=ceiling,facing=south": {
+      "model": "buildersdelight:block/industrial_flat_2_on",
+      "x": 180
+    },
+    "state=on,face=ceiling,facing=west": {
+      "model": "buildersdelight:block/industrial_flat_2_on",
+      "y": 90,
+      "x": 180
+    },
+    "state=on,face=floor,facing=east": {
+      "model": "buildersdelight:block/industrial_flat_2_on",
+      "y": 90
+    },
+    "state=on,face=floor,facing=north": {
+      "model": "buildersdelight:block/industrial_flat_2_on"
+    },
+    "state=on,face=floor,facing=south": {
+      "model": "buildersdelight:block/industrial_flat_2_on",
+      "y": 180
+    },
+    "state=on,face=floor,facing=west": {
+      "model": "buildersdelight:block/industrial_flat_2_on",
+      "y": 270
+    },
+    "state=on,face=wall,facing=east": {
+      "model": "buildersdelight:block/industrial_flat_2_on",
+      "y": 90,
+      "x": 90,
+      "uvlock": true
+    },
+    "state=on,face=wall,facing=north": {
+      "model": "buildersdelight:block/industrial_flat_2_on",
+      "x": 90,
+      "uvlock": true
+    },
+    "state=on,face=wall,facing=south": {
+      "model": "buildersdelight:block/industrial_flat_2_on",
+      "y": 180,
+      "x": 90,
+      "uvlock": true
+    },
+    "state=on,face=wall,facing=west": {
+      "model": "buildersdelight:block/industrial_flat_2_on",
+      "y": 270,
+      "x": 90,
+      "uvlock": true
+    }
 	}
 }

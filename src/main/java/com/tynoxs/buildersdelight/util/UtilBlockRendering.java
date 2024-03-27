@@ -27,13 +27,29 @@ public class UtilBlockRendering {
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.LANTERN_1.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.LANTERN_2.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.LANTERN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.EXPOSED_LANTERN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.WEATHERED_LANTERN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.OXIDIZED_LANTERN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.WAXED_LANTERN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.WAXED_EXPOSED_LANTERN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.WAXED_WEATHERED_LANTERN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.WAXED_OXIDIZED_LANTERN_3.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.LANTERN_4.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.LANTERN_5.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.LANTERN_6.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.LANTERN_7.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.LANTERN_8.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.CHAIN_1.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.CHAIN_2.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.CHAIN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.EXPOSED_CHAIN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.WEATHERED_CHAIN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.OXIDIZED_CHAIN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.WAXED_CHAIN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.WAXED_EXPOSED_CHAIN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.WAXED_WEATHERED_CHAIN_3.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BdDecoration.WAXED_OXIDIZED_CHAIN_3.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BdDecoration.CHAIN_4.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(BdBlocks.ACACIA_GLASS_1.get(), RenderType.cutout());

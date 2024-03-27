@@ -1,10 +1,25 @@
 {
   "variants": {
-    "hanging=false": {
+    "face=floor": {
       "model": "buildersdelight:block/lantern_7"
     },
-    "hanging=true": {
+    "face=ceiling": {
       "model": "buildersdelight:block/lantern_7_hanging"
+    },
+    "face=wall,facing=north": {
+      "model": "buildersdelight:block/lantern_7_wall"
+    },
+    "face=wall,facing=east": {
+      "model": "buildersdelight:block/lantern_7_wall",
+      "y": 90
+    },
+    "face=wall,facing=south": {
+      "model": "buildersdelight:block/lantern_7_wall",
+      "y": 180
+    },
+    "face=wall,facing=west": {
+      "model": "buildersdelight:block/lantern_7_wall",
+      "y": 270
     }
   }
 }

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "buildersdelight:jungle_glass_pane_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_woodtype_glass": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "buildersdelight:jungle_glass_1"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_woodtype_glass",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "buildersdelight:jungle_glass_pane_1"
+    ]
+  },
+  "sends_telemetry_event": false
+}

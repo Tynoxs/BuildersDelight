@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "buildersdelight:block/weathered_chain_3",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "buildersdelight:block/weathered_chain_3"
+    },
+    "axis=z": {
+      "model": "buildersdelight:block/weathered_chain_3",
+      "x": 90
+    }
+  }
+}

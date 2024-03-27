@@ -3,6 +3,10 @@ package com.tynoxs.buildersdelight.content.block.custom;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -12,36 +16,22 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.AttachFace;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
-import java.util.Random;
-import java.util.function.ToIntFunction;
 
 public class BlockFlatFaceLight extends BlockFlatFace {
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
-    protected static final VoxelShape CEILING_AABB_X = Block.box(0.0D, 15.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape CEILING_AABB_Z = Block.box(0.0D, 15.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape FLOOR_AABB_X = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
-    protected static final VoxelShape FLOOR_AABB_Z = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
-    protected static final VoxelShape NORTH_AABB = Block.box(0.0D, 0.0D, 15.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape SOUTH_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 1.0D);
-    protected static final VoxelShape WEST_AABB = Block.box(15.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    protected static final VoxelShape EAST_AABB = Block.box(0.0D, 0.0D, 0.0D, 1.0D, 16.0D, 16.0D);
 
     public BlockFlatFaceLight(BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(FACE, AttachFace.FLOOR).setValue(LIT, Boolean.FALSE).setValue(WATERLOGGED, Boolean.valueOf(false)));
-    }
-
-    private static ToIntFunction<BlockState> litBlockEmission() {
-        return (p_50763_) -> p_50763_.getValue(BlockStateProperties.LIT) ? 15 : 0;
     }
 
     @Nullable
@@ -67,19 +57,36 @@ public class BlockFlatFaceLight extends BlockFlatFace {
     public void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos1, boolean b) {
         if (!level.isClientSide) {
             boolean flag = blockState.getValue(LIT);
-            if (flag != level.hasNeighborSignal(blockPos)) {
-                if (flag) {
-                    level.scheduleTick(blockPos, this, 4);
+            boolean hasSignal = level.hasNeighborSignal(blockPos);
+
+            if (flag != hasSignal) {
+                if (hasSignal) {
+                    level.setBlock(blockPos, blockState.setValue(LIT, true), 2);
                 } else {
-                    level.setBlock(blockPos, blockState.cycle(LIT), 2);
+                    level.scheduleTick(blockPos, this, 4);
                 }
             }
         }
     }
 
-    public void tick(BlockState p_55661_, ServerLevel serverLevel, BlockPos blockPos, Random random) {
-        if (p_55661_.getValue(LIT) && !serverLevel.hasNeighborSignal(blockPos)) {
-            serverLevel.setBlock(blockPos, p_55661_.cycle(LIT), 2);
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (!level.isClientSide && player.getAbilities().mayBuild) {
+            boolean isLit = state.getValue(LIT);
+
+            level.setBlock(pos, state.setValue(LIT, !isLit), 2);
+
+            if (!isLit) {
+                level.setBlock(pos, state.setValue(LIT, true), 2);
+            }
+        }
+
+        return InteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    public void tick(BlockState blockState, ServerLevel world, BlockPos blockPos, RandomSource random) {
+        if (blockState.getValue(LIT) && !world.hasNeighborSignal(blockPos)) {
+            world.setBlock(blockPos, blockState.cycle(LIT), 2);
         }
     }
 

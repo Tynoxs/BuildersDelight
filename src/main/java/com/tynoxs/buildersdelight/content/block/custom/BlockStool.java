@@ -41,6 +41,6 @@ public class BlockStool extends Block  {
     @Override
     public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult result)
     {
-        return EntitySit.create(level, blockPos, 0.4, player);
+        return EntitySit.create(level, blockPos, 0.3, player);
     }
 }

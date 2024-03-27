@@ -42,13 +42,12 @@ public class BlockSmallTable extends Block {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (player.getAbilities().mayBuild && player.getItemInHand(hand).isEmpty()) {
+        if (!level.isClientSide && player.getAbilities().mayBuild) {
             TableTexture newTexture = (state.getValue(VARIANT) == TableTexture.VARIANT_1) ? TableTexture.VARIANT_2 : TableTexture.VARIANT_1;
             level.setBlock(pos, state.setValue(VARIANT, newTexture), 3);
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        } else {
-            return InteractionResult.PASS;
         }
+
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

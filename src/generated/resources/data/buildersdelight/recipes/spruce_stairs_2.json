@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "item": "buildersdelight:spruce_planks_2"
+    }
+  },
+  "pattern": [
+    "  0",
+    " 00",
+    "000"
+  ],
+  "result": {
+    "count": 4,
+    "item": "buildersdelight:spruce_stairs_2"
+  },
+  "show_notification": true
+}

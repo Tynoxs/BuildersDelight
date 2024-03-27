@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "state=off": {
+      "model": "buildersdelight:block/industrial_2"
+    },
+    "state=on": {
+      "model": "buildersdelight:block/industrial_2_on"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "parent": "buildersdelight:root",
+  "criteria": {
+    "has_iron_chisel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "buildersdelight:iron_chisel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.iron_chisel.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "buildersdelight:iron_chisel"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.iron_chisel.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_iron_chisel"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

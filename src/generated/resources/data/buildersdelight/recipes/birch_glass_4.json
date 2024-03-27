@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "tag": "buildersdelight:glass"
+    },
+    "1": {
+      "tag": "buildersdelight:birch_planks"
+    }
+  },
+  "pattern": [
+    "000",
+    "010",
+    "000"
+  ],
+  "result": {
+    "count": 8,
+    "item": "buildersdelight:birch_glass_4"
+  },
+  "show_notification": true
+}

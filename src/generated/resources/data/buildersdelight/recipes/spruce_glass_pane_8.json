@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "item": "buildersdelight:spruce_glass_8"
+    }
+  },
+  "pattern": [
+    "000",
+    "000"
+  ],
+  "result": {
+    "count": 8,
+    "item": "buildersdelight:spruce_glass_pane_8"
+  },
+  "show_notification": true
+}

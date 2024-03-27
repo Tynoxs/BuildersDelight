@@ -1,0 +1,38 @@
+{
+  "parent": "buildersdelight:root",
+  "criteria": {
+    "has_furniture_kit": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "buildersdelight:spruce_furniture_kit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.furniture_kit.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "buildersdelight:spruce_furniture_kit"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.furniture_kit.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_furniture_kit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

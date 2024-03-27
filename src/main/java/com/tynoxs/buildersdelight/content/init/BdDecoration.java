@@ -1,17 +1,18 @@
 package com.tynoxs.buildersdelight.content.init;
 
 import com.tynoxs.buildersdelight.BuildersDelight;
-import com.tynoxs.buildersdelight.content.block.custom.*;
 
+import com.tynoxs.buildersdelight.content.block.custom.*;
+import com.tynoxs.buildersdelight.content.block.custom.BlockChair;
+import com.tynoxs.buildersdelight.content.block.custom.BlockSmallTable;
+import com.tynoxs.buildersdelight.content.block.custom.BlockStool;
+import com.tynoxs.buildersdelight.content.block.custom.lantern.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ChainBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -33,13 +34,29 @@ public class BdDecoration {
 
     public static final RegistryObject<Block> LANTERN_1 = registerBlock("lantern_1", () -> new BlockPaperLamp(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
     public static final RegistryObject<Block> LANTERN_2 = registerBlock("lantern_2", () -> new BlockLantern(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 10).noOcclusion()), "");
-    public static final RegistryObject<Block> LANTERN_3 = registerBlock("lantern_3", () -> new BlockLantern(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> LANTERN_3 = registerBlock("lantern_3", () -> new BlockWeatheringLantern(WeatheringCopper.WeatherState.UNAFFECTED, BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> EXPOSED_LANTERN_3 = registerBlock("exposed_lantern_3", () -> new BlockWeatheringLantern(WeatheringCopper.WeatherState.EXPOSED, BlockBehaviour.Properties.copy(Blocks.EXPOSED_COPPER).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> WEATHERED_LANTERN_3 = registerBlock("weathered_lantern_3", () -> new BlockWeatheringLantern(WeatheringCopper.WeatherState.WEATHERED, BlockBehaviour.Properties.copy(Blocks.WEATHERED_COPPER).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> OXIDIZED_LANTERN_3 = registerBlock("oxidized_lantern_3", () -> new BlockWeatheringLantern(WeatheringCopper.WeatherState.OXIDIZED, BlockBehaviour.Properties.copy(Blocks.OXIDIZED_COPPER).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> WAXED_LANTERN_3 = registerBlock("waxed_lantern_3", () -> new BlockLantern(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> WAXED_EXPOSED_LANTERN_3 = registerBlock("waxed_exposed_lantern_3", () -> new BlockLantern(BlockBehaviour.Properties.copy(Blocks.EXPOSED_COPPER).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> WAXED_WEATHERED_LANTERN_3 = registerBlock("waxed_weathered_lantern_3", () -> new BlockLantern(BlockBehaviour.Properties.copy(Blocks.WEATHERED_COPPER).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> WAXED_OXIDIZED_LANTERN_3 = registerBlock("waxed_oxidized_lantern_3", () -> new BlockLantern(BlockBehaviour.Properties.copy(Blocks.OXIDIZED_COPPER).mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
     public static final RegistryObject<Block> LANTERN_4 = registerBlock("lantern_4", () -> new BlockLantern(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
     public static final RegistryObject<Block> LANTERN_5 = registerBlock("lantern_5", () -> new BlockBrazier(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
-    public static final RegistryObject<Block> LANTERN_6 = registerBlock("lantern_6", () -> new BlockCandle(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).strength(3.5F).noOcclusion().lightLevel((p_50886_) -> 10).sound(SoundType.LANTERN), ParticleTypes.FLAME), "");
+    public static final RegistryObject<Block> LANTERN_6 = registerBlock("lantern_6", () -> new BlockCandle(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).strength(3.5F).noOcclusion().lightLevel((state) -> state.getValue(BlockTikiTorch.LIT) ? 10 : 0).sound(SoundType.LANTERN), ParticleTypes.FLAME), "");
+    public static final RegistryObject<Block> LANTERN_7 = registerBlock("lantern_7", () -> new BlockLantern(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion()), "");
+    public static final RegistryObject<Block> LANTERN_8 = registerBlock("lantern_8", () -> new BlockTikiTorch(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).strength(0.8F).noOcclusion().lightLevel((state) -> state.getValue(BlockTikiTorch.LIT) ? 10 : 0).sound(SoundType.WOOD), ParticleTypes.FLAME), "");
     public static final RegistryObject<Block> CHAIN_1 = registerBlock("chain_1", () -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
     public static final RegistryObject<Block> CHAIN_2 = registerBlock("chain_2", () -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), "");
-    public static final RegistryObject<Block> CHAIN_3 = registerBlock("chain_3", () -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
+    public static final RegistryObject<Block> CHAIN_3 = registerBlock("chain_3", () -> new BlockWeatheringChain(WeatheringCopper.WeatherState.UNAFFECTED, BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
+    public static final RegistryObject<Block> EXPOSED_CHAIN_3 = registerBlock("exposed_chain_3", () -> new BlockWeatheringChain(WeatheringCopper.WeatherState.EXPOSED, BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
+    public static final RegistryObject<Block> WEATHERED_CHAIN_3 = registerBlock("weathered_chain_3", () -> new BlockWeatheringChain(WeatheringCopper.WeatherState.WEATHERED, BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
+    public static final RegistryObject<Block> OXIDIZED_CHAIN_3 = registerBlock("oxidized_chain_3", () -> new BlockWeatheringChain(WeatheringCopper.WeatherState.OXIDIZED, BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
+    public static final RegistryObject<Block> WAXED_CHAIN_3 = registerBlock("waxed_chain_3", () -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
+    public static final RegistryObject<Block> WAXED_EXPOSED_CHAIN_3 = registerBlock("waxed_exposed_chain_3", () -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
+    public static final RegistryObject<Block> WAXED_WEATHERED_CHAIN_3 = registerBlock("waxed_weathered_chain_3", () -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
+    public static final RegistryObject<Block> WAXED_OXIDIZED_CHAIN_3 = registerBlock("waxed_oxidized_chain_3", () -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
     public static final RegistryObject<Block> CHAIN_4 = registerBlock("chain_4", () -> new BlockLargeChain(BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
     public static final RegistryObject<Block> CHAIN_5 = registerBlock("chain_5", () -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.CHAIN)), "");
     public static final RegistryObject<Block> ACACIA_CHAIR_1 = registerBlock("acacia_chair_1", () -> new BlockChair(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)), "");

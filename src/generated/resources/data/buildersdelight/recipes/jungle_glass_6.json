@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "tag": "buildersdelight:glass"
+    },
+    "1": {
+      "tag": "buildersdelight:jungle_planks"
+    }
+  },
+  "pattern": [
+    "000",
+    "010",
+    "000"
+  ],
+  "result": {
+    "count": 8,
+    "item": "buildersdelight:jungle_glass_6"
+  },
+  "show_notification": true
+}

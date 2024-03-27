@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "item": "buildersdelight:jungle_planks_7"
+    }
+  },
+  "pattern": [
+    "  0",
+    " 00",
+    "000"
+  ],
+  "result": {
+    "count": 4,
+    "item": "buildersdelight:jungle_stairs_7"
+  },
+  "show_notification": true
+}

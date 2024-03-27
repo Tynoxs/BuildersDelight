@@ -25,5 +25,4 @@ public class BlockFlammable extends Block {
     public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
         return 5;
     }
-
 }

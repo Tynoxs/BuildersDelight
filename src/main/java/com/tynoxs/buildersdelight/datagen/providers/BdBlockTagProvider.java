@@ -6,1090 +6,231 @@ import com.tynoxs.buildersdelight.content.init.BdDecoration;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 public class BdBlockTagProvider extends BlockTagsProvider {
     public BdBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
-                                @Nullable ExistingFileHelper existingFileHelper) {
+                              @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, BuildersDelight.MODID, existingFileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider pProvider) {
+    protected void addTags(HolderLookup.@NotNull Provider pProvider) {
+        Map<String, List<Consumer<RegistryObject<Item>>>> tagMappings = createTagMappings();
+        Map<String, RegistryObject<Item>> allBlockItems = getAllBlockItems();
 
-        this.tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(BdDecoration.ACACIA_CHAIR_1.get())
-                .add(BdDecoration.ACACIA_CHAIR_2.get())
-                .add(BdDecoration.ACACIA_TABLE_1.get())
-                .add(BdDecoration.ACACIA_TABLE_2.get())
-
-                .add(BdBlocks.ACACIA_SLAB_1.get())
-                .add(BdBlocks.ACACIA_SLAB_2.get())
-                .add(BdBlocks.ACACIA_SLAB_3.get())
-                .add(BdBlocks.ACACIA_SLAB_4.get())
-                .add(BdBlocks.ACACIA_SLAB_5.get())
-                .add(BdBlocks.ACACIA_SLAB_6.get())
-                .add(BdBlocks.ACACIA_SLAB_7.get())
-
-                .add(BdBlocks.ACACIA_STAIRS_1.get())
-                .add(BdBlocks.ACACIA_STAIRS_2.get())
-                .add(BdBlocks.ACACIA_STAIRS_3.get())
-                .add(BdBlocks.ACACIA_STAIRS_4.get())
-                .add(BdBlocks.ACACIA_STAIRS_5.get())
-                .add(BdBlocks.ACACIA_STAIRS_6.get())
-                .add(BdBlocks.ACACIA_STAIRS_7.get())
-
-                .add(BdBlocks.ACACIA_PLANKS_1.get())
-                .add(BdBlocks.ACACIA_PLANKS_2.get())
-                .add(BdBlocks.ACACIA_PLANKS_3.get())
-                .add(BdBlocks.ACACIA_PLANKS_4.get())
-                .add(BdBlocks.ACACIA_PLANKS_5.get())
-                .add(BdBlocks.ACACIA_PLANKS_6.get())
-                .add(BdBlocks.ACACIA_PLANKS_7.get())
-
-                .add(BdDecoration.BAMBOO_CHAIR_1.get())
-                .add(BdDecoration.BAMBOO_CHAIR_2.get())
-                .add(BdDecoration.BAMBOO_TABLE_1.get())
-                .add(BdDecoration.BAMBOO_TABLE_2.get())
-
-                .add(BdBlocks.BAMBOO_SLAB_1.get())
-                .add(BdBlocks.BAMBOO_SLAB_2.get())
-                .add(BdBlocks.BAMBOO_SLAB_3.get())
-                .add(BdBlocks.BAMBOO_SLAB_4.get())
-                .add(BdBlocks.BAMBOO_SLAB_5.get())
-                .add(BdBlocks.BAMBOO_SLAB_6.get())
-                .add(BdBlocks.BAMBOO_SLAB_7.get())
-
-                .add(BdBlocks.BAMBOO_STAIRS_1.get())
-                .add(BdBlocks.BAMBOO_STAIRS_2.get())
-                .add(BdBlocks.BAMBOO_STAIRS_3.get())
-                .add(BdBlocks.BAMBOO_STAIRS_4.get())
-                .add(BdBlocks.BAMBOO_STAIRS_5.get())
-                .add(BdBlocks.BAMBOO_STAIRS_6.get())
-                .add(BdBlocks.BAMBOO_STAIRS_7.get())
-
-                .add(BdBlocks.BAMBOO_PLANKS_1.get())
-                .add(BdBlocks.BAMBOO_PLANKS_2.get())
-                .add(BdBlocks.BAMBOO_PLANKS_3.get())
-                .add(BdBlocks.BAMBOO_PLANKS_4.get())
-                .add(BdBlocks.BAMBOO_PLANKS_5.get())
-                .add(BdBlocks.BAMBOO_PLANKS_6.get())
-                .add(BdBlocks.BAMBOO_PLANKS_7.get())
-
-                .add(BdDecoration.BIRCH_CHAIR_1.get())
-                .add(BdDecoration.BIRCH_CHAIR_2.get())
-                .add(BdDecoration.BIRCH_TABLE_1.get())
-                .add(BdDecoration.BIRCH_TABLE_2.get())
-
-                .add(BdBlocks.BIRCH_SLAB_1.get())
-                .add(BdBlocks.BIRCH_SLAB_2.get())
-                .add(BdBlocks.BIRCH_SLAB_3.get())
-                .add(BdBlocks.BIRCH_SLAB_4.get())
-                .add(BdBlocks.BIRCH_SLAB_5.get())
-                .add(BdBlocks.BIRCH_SLAB_6.get())
-                .add(BdBlocks.BIRCH_SLAB_7.get())
-
-                .add(BdBlocks.BIRCH_STAIRS_1.get())
-                .add(BdBlocks.BIRCH_STAIRS_2.get())
-                .add(BdBlocks.BIRCH_STAIRS_3.get())
-                .add(BdBlocks.BIRCH_STAIRS_4.get())
-                .add(BdBlocks.BIRCH_STAIRS_5.get())
-                .add(BdBlocks.BIRCH_STAIRS_6.get())
-                .add(BdBlocks.BIRCH_STAIRS_7.get())
-
-                .add(BdBlocks.BIRCH_PLANKS_1.get())
-                .add(BdBlocks.BIRCH_PLANKS_2.get())
-                .add(BdBlocks.BIRCH_PLANKS_3.get())
-                .add(BdBlocks.BIRCH_PLANKS_4.get())
-                .add(BdBlocks.BIRCH_PLANKS_5.get())
-                .add(BdBlocks.BIRCH_PLANKS_6.get())
-                .add(BdBlocks.BIRCH_PLANKS_7.get())
-
-                .add(BdDecoration.CHERRY_CHAIR_1.get())
-                .add(BdDecoration.CHERRY_CHAIR_2.get())
-                .add(BdDecoration.CHERRY_TABLE_1.get())
-                .add(BdDecoration.CHERRY_TABLE_2.get())
-
-                .add(BdBlocks.CHERRY_SLAB_1.get())
-                .add(BdBlocks.CHERRY_SLAB_2.get())
-                .add(BdBlocks.CHERRY_SLAB_3.get())
-                .add(BdBlocks.CHERRY_SLAB_4.get())
-                .add(BdBlocks.CHERRY_SLAB_5.get())
-                .add(BdBlocks.CHERRY_SLAB_6.get())
-                .add(BdBlocks.CHERRY_SLAB_7.get())
-
-                .add(BdBlocks.CHERRY_STAIRS_1.get())
-                .add(BdBlocks.CHERRY_STAIRS_2.get())
-                .add(BdBlocks.CHERRY_STAIRS_3.get())
-                .add(BdBlocks.CHERRY_STAIRS_4.get())
-                .add(BdBlocks.CHERRY_STAIRS_5.get())
-                .add(BdBlocks.CHERRY_STAIRS_6.get())
-                .add(BdBlocks.CHERRY_STAIRS_7.get())
-
-                .add(BdBlocks.CHERRY_PLANKS_1.get())
-                .add(BdBlocks.CHERRY_PLANKS_2.get())
-                .add(BdBlocks.CHERRY_PLANKS_3.get())
-                .add(BdBlocks.CHERRY_PLANKS_4.get())
-                .add(BdBlocks.CHERRY_PLANKS_5.get())
-                .add(BdBlocks.CHERRY_PLANKS_6.get())
-                .add(BdBlocks.CHERRY_PLANKS_7.get())
-
-                .add(BdDecoration.CRIMSON_CHAIR_1.get())
-                .add(BdDecoration.CRIMSON_CHAIR_2.get())
-                .add(BdDecoration.CRIMSON_TABLE_1.get())
-                .add(BdDecoration.CRIMSON_TABLE_2.get())
-
-                .add(BdBlocks.CRIMSON_SLAB_1.get())
-                .add(BdBlocks.CRIMSON_SLAB_2.get())
-                .add(BdBlocks.CRIMSON_SLAB_3.get())
-                .add(BdBlocks.CRIMSON_SLAB_4.get())
-                .add(BdBlocks.CRIMSON_SLAB_5.get())
-                .add(BdBlocks.CRIMSON_SLAB_6.get())
-                .add(BdBlocks.CRIMSON_SLAB_7.get())
-
-                .add(BdBlocks.CRIMSON_STAIRS_1.get())
-                .add(BdBlocks.CRIMSON_STAIRS_2.get())
-                .add(BdBlocks.CRIMSON_STAIRS_3.get())
-                .add(BdBlocks.CRIMSON_STAIRS_4.get())
-                .add(BdBlocks.CRIMSON_STAIRS_5.get())
-                .add(BdBlocks.CRIMSON_STAIRS_6.get())
-                .add(BdBlocks.CRIMSON_STAIRS_7.get())
-
-                .add(BdBlocks.CRIMSON_PLANKS_1.get())
-                .add(BdBlocks.CRIMSON_PLANKS_2.get())
-                .add(BdBlocks.CRIMSON_PLANKS_3.get())
-                .add(BdBlocks.CRIMSON_PLANKS_4.get())
-                .add(BdBlocks.CRIMSON_PLANKS_5.get())
-                .add(BdBlocks.CRIMSON_PLANKS_6.get())
-                .add(BdBlocks.CRIMSON_PLANKS_7.get())
-
-                .add(BdDecoration.DARK_OAK_CHAIR_1.get())
-                .add(BdDecoration.DARK_OAK_CHAIR_2.get())
-                .add(BdDecoration.DARK_OAK_TABLE_1.get())
-                .add(BdDecoration.DARK_OAK_TABLE_2.get())
-
-                .add(BdBlocks.DARK_OAK_SLAB_1.get())
-                .add(BdBlocks.DARK_OAK_SLAB_2.get())
-                .add(BdBlocks.DARK_OAK_SLAB_3.get())
-                .add(BdBlocks.DARK_OAK_SLAB_4.get())
-                .add(BdBlocks.DARK_OAK_SLAB_5.get())
-                .add(BdBlocks.DARK_OAK_SLAB_6.get())
-                .add(BdBlocks.DARK_OAK_SLAB_7.get())
-
-                .add(BdBlocks.DARK_OAK_STAIRS_1.get())
-                .add(BdBlocks.DARK_OAK_STAIRS_2.get())
-                .add(BdBlocks.DARK_OAK_STAIRS_3.get())
-                .add(BdBlocks.DARK_OAK_STAIRS_4.get())
-                .add(BdBlocks.DARK_OAK_STAIRS_5.get())
-                .add(BdBlocks.DARK_OAK_STAIRS_6.get())
-                .add(BdBlocks.DARK_OAK_STAIRS_7.get())
-
-                .add(BdBlocks.DARK_OAK_PLANKS_1.get())
-                .add(BdBlocks.DARK_OAK_PLANKS_2.get())
-                .add(BdBlocks.DARK_OAK_PLANKS_3.get())
-                .add(BdBlocks.DARK_OAK_PLANKS_4.get())
-                .add(BdBlocks.DARK_OAK_PLANKS_5.get())
-                .add(BdBlocks.DARK_OAK_PLANKS_6.get())
-                .add(BdBlocks.DARK_OAK_PLANKS_7.get())
-
-                .add(BdDecoration.JUNGLE_CHAIR_1.get())
-                .add(BdDecoration.JUNGLE_CHAIR_2.get())
-                .add(BdDecoration.JUNGLE_TABLE_1.get())
-                .add(BdDecoration.JUNGLE_TABLE_2.get())
-
-                .add(BdBlocks.JUNGLE_SLAB_1.get())
-                .add(BdBlocks.JUNGLE_SLAB_2.get())
-                .add(BdBlocks.JUNGLE_SLAB_3.get())
-                .add(BdBlocks.JUNGLE_SLAB_4.get())
-                .add(BdBlocks.JUNGLE_SLAB_5.get())
-                .add(BdBlocks.JUNGLE_SLAB_6.get())
-                .add(BdBlocks.JUNGLE_SLAB_7.get())
-
-                .add(BdBlocks.JUNGLE_STAIRS_1.get())
-                .add(BdBlocks.JUNGLE_STAIRS_2.get())
-                .add(BdBlocks.JUNGLE_STAIRS_3.get())
-                .add(BdBlocks.JUNGLE_STAIRS_4.get())
-                .add(BdBlocks.JUNGLE_STAIRS_5.get())
-                .add(BdBlocks.JUNGLE_STAIRS_6.get())
-                .add(BdBlocks.JUNGLE_STAIRS_7.get())
-
-                .add(BdBlocks.JUNGLE_PLANKS_1.get())
-                .add(BdBlocks.JUNGLE_PLANKS_2.get())
-                .add(BdBlocks.JUNGLE_PLANKS_3.get())
-                .add(BdBlocks.JUNGLE_PLANKS_4.get())
-                .add(BdBlocks.JUNGLE_PLANKS_5.get())
-                .add(BdBlocks.JUNGLE_PLANKS_6.get())
-                .add(BdBlocks.JUNGLE_PLANKS_7.get())
-
-                .add(BdDecoration.MANGROVE_CHAIR_1.get())
-                .add(BdDecoration.MANGROVE_CHAIR_2.get())
-                .add(BdDecoration.MANGROVE_TABLE_1.get())
-                .add(BdDecoration.MANGROVE_TABLE_2.get())
-
-                .add(BdBlocks.MANGROVE_SLAB_1.get())
-                .add(BdBlocks.MANGROVE_SLAB_2.get())
-                .add(BdBlocks.MANGROVE_SLAB_3.get())
-                .add(BdBlocks.MANGROVE_SLAB_4.get())
-                .add(BdBlocks.MANGROVE_SLAB_5.get())
-                .add(BdBlocks.MANGROVE_SLAB_6.get())
-                .add(BdBlocks.MANGROVE_SLAB_7.get())
-
-                .add(BdBlocks.MANGROVE_STAIRS_1.get())
-                .add(BdBlocks.MANGROVE_STAIRS_2.get())
-                .add(BdBlocks.MANGROVE_STAIRS_3.get())
-                .add(BdBlocks.MANGROVE_STAIRS_4.get())
-                .add(BdBlocks.MANGROVE_STAIRS_5.get())
-                .add(BdBlocks.MANGROVE_STAIRS_6.get())
-                .add(BdBlocks.MANGROVE_STAIRS_7.get())
-
-                .add(BdBlocks.MANGROVE_PLANKS_1.get())
-                .add(BdBlocks.MANGROVE_PLANKS_2.get())
-                .add(BdBlocks.MANGROVE_PLANKS_3.get())
-                .add(BdBlocks.MANGROVE_PLANKS_4.get())
-                .add(BdBlocks.MANGROVE_PLANKS_5.get())
-                .add(BdBlocks.MANGROVE_PLANKS_6.get())
-                .add(BdBlocks.MANGROVE_PLANKS_7.get())
-
-                .add(BdDecoration.OAK_CHAIR_1.get())
-                .add(BdDecoration.OAK_CHAIR_2.get())
-                .add(BdDecoration.OAK_TABLE_1.get())
-                .add(BdDecoration.OAK_TABLE_2.get())
-
-                .add(BdBlocks.OAK_SLAB_1.get())
-                .add(BdBlocks.OAK_SLAB_2.get())
-                .add(BdBlocks.OAK_SLAB_3.get())
-                .add(BdBlocks.OAK_SLAB_4.get())
-                .add(BdBlocks.OAK_SLAB_5.get())
-                .add(BdBlocks.OAK_SLAB_6.get())
-                .add(BdBlocks.OAK_SLAB_7.get())
-
-                .add(BdBlocks.OAK_STAIRS_1.get())
-                .add(BdBlocks.OAK_STAIRS_2.get())
-                .add(BdBlocks.OAK_STAIRS_3.get())
-                .add(BdBlocks.OAK_STAIRS_4.get())
-                .add(BdBlocks.OAK_STAIRS_5.get())
-                .add(BdBlocks.OAK_STAIRS_6.get())
-                .add(BdBlocks.OAK_STAIRS_7.get())
-
-                .add(BdBlocks.OAK_PLANKS_1.get())
-                .add(BdBlocks.OAK_PLANKS_2.get())
-                .add(BdBlocks.OAK_PLANKS_3.get())
-                .add(BdBlocks.OAK_PLANKS_4.get())
-                .add(BdBlocks.OAK_PLANKS_5.get())
-                .add(BdBlocks.OAK_PLANKS_6.get())
-                .add(BdBlocks.OAK_PLANKS_7.get())
-
-                .add(BdDecoration.SPRUCE_CHAIR_1.get())
-                .add(BdDecoration.SPRUCE_CHAIR_2.get())
-                .add(BdDecoration.SPRUCE_TABLE_1.get())
-                .add(BdDecoration.SPRUCE_TABLE_2.get())
-
-                .add(BdBlocks.SPRUCE_SLAB_1.get())
-                .add(BdBlocks.SPRUCE_SLAB_2.get())
-                .add(BdBlocks.SPRUCE_SLAB_3.get())
-                .add(BdBlocks.SPRUCE_SLAB_4.get())
-                .add(BdBlocks.SPRUCE_SLAB_5.get())
-                .add(BdBlocks.SPRUCE_SLAB_6.get())
-                .add(BdBlocks.SPRUCE_SLAB_7.get())
-
-                .add(BdBlocks.SPRUCE_STAIRS_1.get())
-                .add(BdBlocks.SPRUCE_STAIRS_2.get())
-                .add(BdBlocks.SPRUCE_STAIRS_3.get())
-                .add(BdBlocks.SPRUCE_STAIRS_4.get())
-                .add(BdBlocks.SPRUCE_STAIRS_5.get())
-                .add(BdBlocks.SPRUCE_STAIRS_6.get())
-                .add(BdBlocks.SPRUCE_STAIRS_7.get())
-
-                .add(BdBlocks.SPRUCE_PLANKS_1.get())
-                .add(BdBlocks.SPRUCE_PLANKS_2.get())
-                .add(BdBlocks.SPRUCE_PLANKS_3.get())
-                .add(BdBlocks.SPRUCE_PLANKS_4.get())
-                .add(BdBlocks.SPRUCE_PLANKS_5.get())
-                .add(BdBlocks.SPRUCE_PLANKS_6.get())
-                .add(BdBlocks.SPRUCE_PLANKS_7.get())
-
-                .add(BdDecoration.WARPED_CHAIR_1.get())
-                .add(BdDecoration.WARPED_CHAIR_2.get())
-                .add(BdDecoration.WARPED_TABLE_1.get())
-                .add(BdDecoration.WARPED_TABLE_2.get())
-
-                .add(BdBlocks.WARPED_SLAB_1.get())
-                .add(BdBlocks.WARPED_SLAB_2.get())
-                .add(BdBlocks.WARPED_SLAB_3.get())
-                .add(BdBlocks.WARPED_SLAB_4.get())
-                .add(BdBlocks.WARPED_SLAB_5.get())
-                .add(BdBlocks.WARPED_SLAB_6.get())
-                .add(BdBlocks.WARPED_SLAB_7.get())
-
-                .add(BdBlocks.WARPED_STAIRS_1.get())
-                .add(BdBlocks.WARPED_STAIRS_2.get())
-                .add(BdBlocks.WARPED_STAIRS_3.get())
-                .add(BdBlocks.WARPED_STAIRS_4.get())
-                .add(BdBlocks.WARPED_STAIRS_5.get())
-                .add(BdBlocks.WARPED_STAIRS_6.get())
-                .add(BdBlocks.WARPED_STAIRS_7.get())
-
-                .add(BdBlocks.WARPED_PLANKS_1.get())
-                .add(BdBlocks.WARPED_PLANKS_2.get())
-                .add(BdBlocks.WARPED_PLANKS_3.get())
-                .add(BdBlocks.WARPED_PLANKS_4.get())
-                .add(BdBlocks.WARPED_PLANKS_5.get())
-                .add(BdBlocks.WARPED_PLANKS_6.get())
-                .add(BdBlocks.WARPED_PLANKS_7.get())
-        ;
+        this.tag(BdTags.Blocks.GLASS)
+                .addTags(Tags.Blocks.GLASS)
+                .addTags(Tags.Blocks.GLASS_COLORLESS);
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(BdBlocks.AMETHYST_BLOCK_1.get())
-                .add(BdBlocks.AMETHYST_BLOCK_2.get())
-                .add(BdBlocks.AMETHYST_BLOCK_3.get())
-                .add(BdBlocks.AMETHYST_BLOCK_4.get())
-                .add(BdBlocks.AMETHYST_BLOCK_5.get())
-                .add(BdBlocks.AMETHYST_BLOCK_6.get())
-                .add(BdBlocks.AMETHYST_BLOCK_7.get())
-
-                .add(BdBlocks.AMETHYST_SLAB_1.get())
-                .add(BdBlocks.AMETHYST_SLAB_2.get())
-                .add(BdBlocks.AMETHYST_SLAB_3.get())
-                .add(BdBlocks.AMETHYST_SLAB_4.get())
-                .add(BdBlocks.AMETHYST_SLAB_5.get())
-                .add(BdBlocks.AMETHYST_SLAB_6.get())
-                .add(BdBlocks.AMETHYST_SLAB_7.get())
-                .add(BdBlocks.AMETHYST_SLAB_8.get())
-
-                .add(BdBlocks.AMETHYST_STAIRS_1.get())
-                .add(BdBlocks.AMETHYST_STAIRS_2.get())
-                .add(BdBlocks.AMETHYST_STAIRS_3.get())
-                .add(BdBlocks.AMETHYST_STAIRS_4.get())
-                .add(BdBlocks.AMETHYST_STAIRS_5.get())
-                .add(BdBlocks.AMETHYST_STAIRS_6.get())
-                .add(BdBlocks.AMETHYST_STAIRS_7.get())
-                .add(BdBlocks.AMETHYST_STAIRS_8.get())
-
-                .add(BdBlocks.ANDESITE_1.get())
-                .add(BdBlocks.ANDESITE_2.get())
-                .add(BdBlocks.ANDESITE_3.get())
-                .add(BdBlocks.ANDESITE_4.get())
-                .add(BdBlocks.ANDESITE_5.get())
-                .add(BdBlocks.ANDESITE_6.get())
-                .add(BdBlocks.ANDESITE_7.get())
-
-                .add(BdBlocks.ANDESITE_SLAB_1.get())
-                .add(BdBlocks.ANDESITE_SLAB_2.get())
-                .add(BdBlocks.ANDESITE_SLAB_3.get())
-                .add(BdBlocks.ANDESITE_SLAB_4.get())
-                .add(BdBlocks.ANDESITE_SLAB_5.get())
-                .add(BdBlocks.ANDESITE_SLAB_6.get())
-                .add(BdBlocks.ANDESITE_SLAB_7.get())
-
-                .add(BdBlocks.ANDESITE_STAIRS_1.get())
-                .add(BdBlocks.ANDESITE_STAIRS_2.get())
-                .add(BdBlocks.ANDESITE_STAIRS_3.get())
-                .add(BdBlocks.ANDESITE_STAIRS_4.get())
-                .add(BdBlocks.ANDESITE_STAIRS_5.get())
-                .add(BdBlocks.ANDESITE_STAIRS_6.get())
-                .add(BdBlocks.ANDESITE_STAIRS_7.get())
-
-                .add(BdBlocks.BLACKSTONE_1.get())
-                .add(BdBlocks.BLACKSTONE_2.get())
-                .add(BdBlocks.BLACKSTONE_3.get())
-                .add(BdBlocks.BLACKSTONE_4.get())
-                .add(BdBlocks.BLACKSTONE_5.get())
-                .add(BdBlocks.BLACKSTONE_6.get())
-
-                .add(BdBlocks.BRICKS_1.get())
-                .add(BdBlocks.BRICKS_2.get())
-                .add(BdBlocks.BRICKS_3.get())
-                .add(BdBlocks.BRICKS_4.get())
-                .add(BdBlocks.BRICKS_5.get())
-                .add(BdBlocks.BRICKS_6.get())
-                .add(BdBlocks.BRICKS_7.get())
-                .add(BdBlocks.BRICKS_8.get())
-                .add(BdBlocks.BRICKS_9.get())
-
-                .add(BdBlocks.BRICK_SLAB_1.get())
-                .add(BdBlocks.BRICK_SLAB_2.get())
-                .add(BdBlocks.BRICK_SLAB_3.get())
-                .add(BdBlocks.BRICK_SLAB_4.get())
-                .add(BdBlocks.BRICK_SLAB_5.get())
-                .add(BdBlocks.BRICK_SLAB_6.get())
-                .add(BdBlocks.BRICK_SLAB_7.get())
-                .add(BdBlocks.BRICK_SLAB_8.get())
-                .add(BdBlocks.BRICK_SLAB_9.get())
-
-                .add(BdBlocks.BRICK_STAIRS_1.get())
-                .add(BdBlocks.BRICK_STAIRS_2.get())
-                .add(BdBlocks.BRICK_STAIRS_3.get())
-                .add(BdBlocks.BRICK_STAIRS_4.get())
-                .add(BdBlocks.BRICK_STAIRS_5.get())
-                .add(BdBlocks.BRICK_STAIRS_6.get())
-                .add(BdBlocks.BRICK_STAIRS_7.get())
-                .add(BdBlocks.BRICK_STAIRS_8.get())
-                .add(BdBlocks.BRICK_STAIRS_9.get())
-
-                .add(BdBlocks.CALCITE_2.get())
-                .add(BdBlocks.CALCITE_3.get())
-                .add(BdBlocks.CALCITE_4.get())
-                .add(BdBlocks.CALCITE_5.get())
-                .add(BdBlocks.CALCITE_6.get())
-                .add(BdBlocks.CALCITE_7.get())
-                .add(BdBlocks.CALCITE_8.get())
-
-                .add(BdBlocks.CALCITE_SLAB_1.get())
-                .add(BdBlocks.CALCITE_SLAB_2.get())
-                .add(BdBlocks.CALCITE_SLAB_3.get())
-                .add(BdBlocks.CALCITE_SLAB_4.get())
-                .add(BdBlocks.CALCITE_SLAB_5.get())
-                .add(BdBlocks.CALCITE_SLAB_6.get())
-                .add(BdBlocks.CALCITE_SLAB_7.get())
-                .add(BdBlocks.CALCITE_SLAB_8.get())
-
-                .add(BdBlocks.CALCITE_STAIRS_1.get())
-                .add(BdBlocks.CALCITE_STAIRS_2.get())
-                .add(BdBlocks.CALCITE_STAIRS_3.get())
-                .add(BdBlocks.CALCITE_STAIRS_4.get())
-                .add(BdBlocks.CALCITE_STAIRS_5.get())
-                .add(BdBlocks.CALCITE_STAIRS_6.get())
-                .add(BdBlocks.CALCITE_STAIRS_7.get())
-                .add(BdBlocks.CALCITE_STAIRS_8.get())
-
-                .add(BdDecoration.CHAIN_1.get())
-                .add(BdDecoration.CHAIN_2.get())
-                .add(BdDecoration.CHAIN_3.get())
-                .add(BdDecoration.CHAIN_4.get())
-                .add(BdDecoration.CHAIN_5.get())
-
-                .add(BdBlocks.COBBLESTONE_1.get())
-                .add(BdBlocks.COBBLESTONE_2.get())
-                .add(BdBlocks.COBBLESTONE_3.get())
-                .add(BdBlocks.COBBLESTONE_4.get())
-                .add(BdBlocks.COBBLESTONE_5.get())
-                .add(BdBlocks.COBBLESTONE_6.get())
-                .add(BdBlocks.COBBLESTONE_7.get())
-
-                .add(BdBlocks.COBBLESTONE_SLAB_1.get())
-                .add(BdBlocks.COBBLESTONE_SLAB_2.get())
-                .add(BdBlocks.COBBLESTONE_SLAB_3.get())
-                .add(BdBlocks.COBBLESTONE_SLAB_4.get())
-                .add(BdBlocks.COBBLESTONE_SLAB_5.get())
-                .add(BdBlocks.COBBLESTONE_SLAB_6.get())
-                .add(BdBlocks.COBBLESTONE_SLAB_7.get())
-
-                .add(BdBlocks.COBBLESTONE_STAIRS_1.get())
-                .add(BdBlocks.COBBLESTONE_STAIRS_2.get())
-                .add(BdBlocks.COBBLESTONE_STAIRS_3.get())
-                .add(BdBlocks.COBBLESTONE_STAIRS_4.get())
-                .add(BdBlocks.COBBLESTONE_STAIRS_5.get())
-                .add(BdBlocks.COBBLESTONE_STAIRS_6.get())
-                .add(BdBlocks.COBBLESTONE_STAIRS_7.get())
-
-                .add(BdBlocks.DEEPSLATE_1.get())
-                .add(BdBlocks.DEEPSLATE_2.get())
-                .add(BdBlocks.DEEPSLATE_3.get())
-                .add(BdBlocks.DEEPSLATE_4.get())
-                .add(BdBlocks.DEEPSLATE_5.get())
-
-                .add(BdBlocks.DEEPSLATE_SLAB_1.get())
-                .add(BdBlocks.DEEPSLATE_SLAB_2.get())
-                .add(BdBlocks.DEEPSLATE_SLAB_3.get())
-                .add(BdBlocks.DEEPSLATE_SLAB_4.get())
-                .add(BdBlocks.DEEPSLATE_SLAB_5.get())
-
-                .add(BdBlocks.DEEPSLATE_STAIRS_1.get())
-                .add(BdBlocks.DEEPSLATE_STAIRS_2.get())
-                .add(BdBlocks.DEEPSLATE_STAIRS_3.get())
-                .add(BdBlocks.DEEPSLATE_STAIRS_4.get())
-                .add(BdBlocks.DEEPSLATE_STAIRS_5.get())
-
-                .add(BdBlocks.DIORITE_1.get())
-                .add(BdBlocks.DIORITE_2.get())
-                .add(BdBlocks.DIORITE_3.get())
-                .add(BdBlocks.DIORITE_4.get())
-                .add(BdBlocks.DIORITE_5.get())
-                .add(BdBlocks.DIORITE_6.get())
-                .add(BdBlocks.DIORITE_7.get())
-
-                .add(BdBlocks.DIORITE_SLAB_1.get())
-                .add(BdBlocks.DIORITE_SLAB_2.get())
-                .add(BdBlocks.DIORITE_SLAB_3.get())
-                .add(BdBlocks.DIORITE_SLAB_4.get())
-                .add(BdBlocks.DIORITE_SLAB_5.get())
-                .add(BdBlocks.DIORITE_SLAB_6.get())
-                .add(BdBlocks.DIORITE_SLAB_7.get())
-
-                .add(BdBlocks.DIORITE_STAIRS_1.get())
-                .add(BdBlocks.DIORITE_STAIRS_2.get())
-                .add(BdBlocks.DIORITE_STAIRS_3.get())
-                .add(BdBlocks.DIORITE_STAIRS_4.get())
-                .add(BdBlocks.DIORITE_STAIRS_5.get())
-                .add(BdBlocks.DIORITE_STAIRS_6.get())
-                .add(BdBlocks.DIORITE_STAIRS_7.get())
-
-                .add(BdBlocks.DRIPSTONE_1.get())
-                .add(BdBlocks.DRIPSTONE_2.get())
-                .add(BdBlocks.DRIPSTONE_3.get())
-                .add(BdBlocks.DRIPSTONE_4.get())
-                .add(BdBlocks.DRIPSTONE_5.get())
-                .add(BdBlocks.DRIPSTONE_6.get())
-                .add(BdBlocks.DRIPSTONE_7.get())
-
-                .add(BdBlocks.DRIPSTONE_SLAB_1.get())
-                .add(BdBlocks.DRIPSTONE_SLAB_2.get())
-                .add(BdBlocks.DRIPSTONE_SLAB_3.get())
-                .add(BdBlocks.DRIPSTONE_SLAB_4.get())
-                .add(BdBlocks.DRIPSTONE_SLAB_5.get())
-                .add(BdBlocks.DRIPSTONE_SLAB_6.get())
-                .add(BdBlocks.DRIPSTONE_SLAB_7.get())
-                .add(BdBlocks.DRIPSTONE_SLAB_8.get())
-
-                .add(BdBlocks.DRIPSTONE_STAIRS_1.get())
-                .add(BdBlocks.DRIPSTONE_STAIRS_2.get())
-                .add(BdBlocks.DRIPSTONE_STAIRS_3.get())
-                .add(BdBlocks.DRIPSTONE_STAIRS_4.get())
-                .add(BdBlocks.DRIPSTONE_STAIRS_5.get())
-                .add(BdBlocks.DRIPSTONE_STAIRS_6.get())
-                .add(BdBlocks.DRIPSTONE_STAIRS_7.get())
-                .add(BdBlocks.DRIPSTONE_STAIRS_8.get())
-
-                .add(BdBlocks.GILDED_BLACKSTONE_1.get())
-                .add(BdBlocks.GILDED_BLACKSTONE_2.get())
-                .add(BdBlocks.GILDED_BLACKSTONE_3.get())
-                .add(BdBlocks.GILDED_BLACKSTONE_4.get())
-
-                .add(BdBlocks.GILDED_NETHER_BRICKS_1.get())
-                .add(BdBlocks.GILDED_NETHER_BRICKS_2.get())
-                .add(BdBlocks.GILDED_NETHER_BRICKS_3.get())
-                .add(BdBlocks.GILDED_NETHER_BRICKS_4.get())
-
-                .add(BdBlocks.GRANITE_1.get())
-                .add(BdBlocks.GRANITE_2.get())
-                .add(BdBlocks.GRANITE_3.get())
-                .add(BdBlocks.GRANITE_4.get())
-                .add(BdBlocks.GRANITE_5.get())
-                .add(BdBlocks.GRANITE_6.get())
-                .add(BdBlocks.GRANITE_7.get())
-
-                .add(BdBlocks.GRANITE_SLAB_1.get())
-                .add(BdBlocks.GRANITE_SLAB_2.get())
-                .add(BdBlocks.GRANITE_SLAB_3.get())
-                .add(BdBlocks.GRANITE_SLAB_4.get())
-                .add(BdBlocks.GRANITE_SLAB_5.get())
-                .add(BdBlocks.GRANITE_SLAB_6.get())
-                .add(BdBlocks.GRANITE_SLAB_7.get())
-
-                .add(BdBlocks.GRANITE_STAIRS_1.get())
-                .add(BdBlocks.GRANITE_STAIRS_2.get())
-                .add(BdBlocks.GRANITE_STAIRS_3.get())
-                .add(BdBlocks.GRANITE_STAIRS_4.get())
-                .add(BdBlocks.GRANITE_STAIRS_5.get())
-                .add(BdBlocks.GRANITE_STAIRS_6.get())
-                .add(BdBlocks.GRANITE_STAIRS_7.get())
-
-                .add(BdBlocks.INDUSTRIAL_1.get())
-                .add(BdBlocks.INDUSTRIAL_2.get())
-                .add(BdBlocks.INDUSTRIAL_3.get())
-                .add(BdBlocks.INDUSTRIAL_4.get())
-                .add(BdBlocks.INDUSTRIAL_5.get())
-                .add(BdBlocks.INDUSTRIAL_6.get())
-                .add(BdBlocks.INDUSTRIAL_7.get())
-                .add(BdBlocks.INDUSTRIAL_8.get())
-
-                .add(BdBlocks.INDUSTRIAL_FLAT_1.get())
-                .add(BdBlocks.INDUSTRIAL_FLAT_2.get())
-                .add(BdBlocks.INDUSTRIAL_FLAT_3.get())
-                .add(BdBlocks.INDUSTRIAL_FLAT_4.get())
-                .add(BdBlocks.INDUSTRIAL_FLAT_5.get())
-                .add(BdBlocks.INDUSTRIAL_FLAT_6.get())
-                .add(BdBlocks.INDUSTRIAL_FLAT_7.get())
-                .add(BdBlocks.INDUSTRIAL_FLAT_8.get())
-
-                .add(BdBlocks.LABORATORY_1.get())
-                .add(BdBlocks.LABORATORY_2.get())
-                .add(BdBlocks.LABORATORY_3.get())
-
-                .add(BdDecoration.LANTERN_1.get())
-                .add(BdDecoration.LANTERN_2.get())
-                .add(BdDecoration.LANTERN_3.get())
-                .add(BdDecoration.LANTERN_4.get())
-                .add(BdDecoration.LANTERN_5.get())
-                .add(BdDecoration.LANTERN_6.get())
-
-                .add(BdBlocks.NETHER_BRICKS_1.get())
-                .add(BdBlocks.NETHER_BRICKS_2.get())
-                .add(BdBlocks.NETHER_BRICKS_3.get())
-                .add(BdBlocks.NETHER_BRICKS_4.get())
-                .add(BdBlocks.NETHER_BRICKS_5.get())
-                .add(BdBlocks.NETHER_BRICKS_6.get())
-
-                .add(BdBlocks.PRISMARINE_1.get())
-                .add(BdBlocks.PRISMARINE_2.get())
-                .add(BdBlocks.PRISMARINE_3.get())
-                .add(BdBlocks.PRISMARINE_4.get())
-                .add(BdBlocks.PRISMARINE_5.get())
-                .add(BdBlocks.PRISMARINE_6.get())
-
-                .add(BdBlocks.PRISMARINE_SLAB_1.get())
-                .add(BdBlocks.PRISMARINE_SLAB_2.get())
-                .add(BdBlocks.PRISMARINE_SLAB_3.get())
-                .add(BdBlocks.PRISMARINE_SLAB_4.get())
-                .add(BdBlocks.PRISMARINE_SLAB_5.get())
-                .add(BdBlocks.PRISMARINE_SLAB_6.get())
-
-                .add(BdBlocks.PRISMARINE_STAIRS_1.get())
-                .add(BdBlocks.PRISMARINE_STAIRS_2.get())
-                .add(BdBlocks.PRISMARINE_STAIRS_3.get())
-                .add(BdBlocks.PRISMARINE_STAIRS_4.get())
-                .add(BdBlocks.PRISMARINE_STAIRS_5.get())
-                .add(BdBlocks.PRISMARINE_STAIRS_6.get())
-
-                .add(BdBlocks.SANDSTONE_1.get())
-                .add(BdBlocks.SANDSTONE_2.get())
-                .add(BdBlocks.SANDSTONE_3.get())
-                .add(BdBlocks.SANDSTONE_4.get())
-                .add(BdBlocks.SANDSTONE_5.get())
-                .add(BdBlocks.SANDSTONE_6.get())
-
-                .add(BdBlocks.SANDSTONE_SLAB_1.get())
-                .add(BdBlocks.SANDSTONE_SLAB_2.get())
-                .add(BdBlocks.SANDSTONE_SLAB_3.get())
-                .add(BdBlocks.SANDSTONE_SLAB_4.get())
-                .add(BdBlocks.SANDSTONE_SLAB_5.get())
-                .add(BdBlocks.SANDSTONE_SLAB_6.get())
-
-                .add(BdBlocks.SANDSTONE_STAIRS_1.get())
-                .add(BdBlocks.SANDSTONE_STAIRS_2.get())
-                .add(BdBlocks.SANDSTONE_STAIRS_3.get())
-                .add(BdBlocks.SANDSTONE_STAIRS_4.get())
-                .add(BdBlocks.SANDSTONE_STAIRS_5.get())
-                .add(BdBlocks.SANDSTONE_STAIRS_6.get())
-
-                .add(BdBlocks.STONE_BRICKS_1.get())
-                .add(BdBlocks.STONE_BRICKS_2.get())
-                .add(BdBlocks.STONE_BRICKS_3.get())
-                .add(BdBlocks.STONE_BRICKS_4.get())
-                .add(BdBlocks.STONE_BRICKS_5.get())
-                .add(BdBlocks.STONE_BRICKS_6.get())
-                .add(BdBlocks.STONE_BRICKS_7.get())
-
-                .add(BdBlocks.STONE_BRICK_SLAB_1.get())
-                .add(BdBlocks.STONE_BRICK_SLAB_2.get())
-                .add(BdBlocks.STONE_BRICK_SLAB_3.get())
-                .add(BdBlocks.STONE_BRICK_SLAB_4.get())
-                .add(BdBlocks.STONE_BRICK_SLAB_5.get())
-                .add(BdBlocks.STONE_BRICK_SLAB_6.get())
-                .add(BdBlocks.STONE_BRICK_SLAB_7.get())
-
-                .add(BdBlocks.STONE_BRICK_STAIRS_1.get())
-                .add(BdBlocks.STONE_BRICK_STAIRS_2.get())
-                .add(BdBlocks.STONE_BRICK_STAIRS_3.get())
-                .add(BdBlocks.STONE_BRICK_STAIRS_4.get())
-                .add(BdBlocks.STONE_BRICK_STAIRS_5.get())
-                .add(BdBlocks.STONE_BRICK_STAIRS_6.get())
-                .add(BdBlocks.STONE_BRICK_STAIRS_7.get())
-
-                .add(BdBlocks.TUFF_1.get())
-                .add(BdBlocks.TUFF_2.get())
-                .add(BdBlocks.TUFF_3.get())
-                .add(BdBlocks.TUFF_4.get())
-                .add(BdBlocks.TUFF_5.get())
-                .add(BdBlocks.TUFF_6.get())
-                .add(BdBlocks.TUFF_7.get())
-
-                .add(BdBlocks.TUFF_SLAB_1.get())
-                .add(BdBlocks.TUFF_SLAB_2.get())
-                .add(BdBlocks.TUFF_SLAB_3.get())
-                .add(BdBlocks.TUFF_SLAB_4.get())
-                .add(BdBlocks.TUFF_SLAB_5.get())
-                .add(BdBlocks.TUFF_SLAB_6.get())
-                .add(BdBlocks.TUFF_SLAB_7.get())
-                .add(BdBlocks.TUFF_SLAB_8.get())
-
-                .add(BdBlocks.TUFF_STAIRS_1.get())
-                .add(BdBlocks.TUFF_STAIRS_2.get())
-                .add(BdBlocks.TUFF_STAIRS_3.get())
-                .add(BdBlocks.TUFF_STAIRS_4.get())
-                .add(BdBlocks.TUFF_STAIRS_5.get())
-                .add(BdBlocks.TUFF_STAIRS_6.get())
-                .add(BdBlocks.TUFF_STAIRS_7.get())
-                .add(BdBlocks.TUFF_STAIRS_8.get())
-
-                .add(BdBlocks.WARNING_STRIPES_1.get())
-                .add(BdBlocks.WARNING_STRIPES_2.get())
-                .add(BdBlocks.WARNING_STRIPES_3.get())
-                .add(BdBlocks.WARNING_STRIPES_4.get())
-                .add(BdBlocks.WARNING_STRIPES_5.get())
-                .add(BdBlocks.WARNING_STRIPES_6.get())
-                .add(BdBlocks.WARNING_STRIPES_7.get())
-                .add(BdBlocks.WARNING_STRIPES_8.get());
-
-        this.tag(BlockTags.MINEABLE_WITH_HOE)
-                .add(BdBlocks.ACACIA_FRAME_1.get())
-                .add(BdBlocks.ACACIA_FRAME_2.get())
-                .add(BdBlocks.ACACIA_FRAME_3.get())
-                .add(BdBlocks.ACACIA_FRAME_4.get())
-                .add(BdBlocks.ACACIA_FRAME_5.get())
-                .add(BdBlocks.ACACIA_FRAME_6.get())
-                .add(BdBlocks.ACACIA_FRAME_7.get())
-                .add(BdBlocks.ACACIA_FRAME_8.get())
-
-                .add(BdBlocks.BIRCH_FRAME_1.get())
-                .add(BdBlocks.BIRCH_FRAME_2.get())
-                .add(BdBlocks.BIRCH_FRAME_3.get())
-                .add(BdBlocks.BIRCH_FRAME_4.get())
-                .add(BdBlocks.BIRCH_FRAME_5.get())
-                .add(BdBlocks.BIRCH_FRAME_6.get())
-                .add(BdBlocks.BIRCH_FRAME_7.get())
-                .add(BdBlocks.BIRCH_FRAME_8.get())
-
-                .add(BdBlocks.BAMBOO_FRAME_1.get())
-                .add(BdBlocks.BAMBOO_FRAME_2.get())
-                .add(BdBlocks.BAMBOO_FRAME_3.get())
-                .add(BdBlocks.BAMBOO_FRAME_4.get())
-                .add(BdBlocks.BAMBOO_FRAME_5.get())
-                .add(BdBlocks.BAMBOO_FRAME_6.get())
-                .add(BdBlocks.BAMBOO_FRAME_7.get())
-                .add(BdBlocks.BAMBOO_FRAME_8.get())
-
-                .add(BdBlocks.CHERRY_FRAME_1.get())
-                .add(BdBlocks.CHERRY_FRAME_2.get())
-                .add(BdBlocks.CHERRY_FRAME_3.get())
-                .add(BdBlocks.CHERRY_FRAME_4.get())
-                .add(BdBlocks.CHERRY_FRAME_5.get())
-                .add(BdBlocks.CHERRY_FRAME_6.get())
-                .add(BdBlocks.CHERRY_FRAME_7.get())
-                .add(BdBlocks.CHERRY_FRAME_8.get())
-
-                .add(BdBlocks.CRIMSON_FRAME_1.get())
-                .add(BdBlocks.CRIMSON_FRAME_2.get())
-                .add(BdBlocks.CRIMSON_FRAME_3.get())
-                .add(BdBlocks.CRIMSON_FRAME_4.get())
-                .add(BdBlocks.CRIMSON_FRAME_5.get())
-                .add(BdBlocks.CRIMSON_FRAME_6.get())
-                .add(BdBlocks.CRIMSON_FRAME_7.get())
-                .add(BdBlocks.CRIMSON_FRAME_8.get())
-
-                .add(BdBlocks.DARK_OAK_FRAME_1.get())
-                .add(BdBlocks.DARK_OAK_FRAME_2.get())
-                .add(BdBlocks.DARK_OAK_FRAME_3.get())
-                .add(BdBlocks.DARK_OAK_FRAME_4.get())
-                .add(BdBlocks.DARK_OAK_FRAME_5.get())
-                .add(BdBlocks.DARK_OAK_FRAME_6.get())
-                .add(BdBlocks.DARK_OAK_FRAME_7.get())
-                .add(BdBlocks.DARK_OAK_FRAME_8.get())
-
-                .add(BdBlocks.JUNGLE_FRAME_1.get())
-                .add(BdBlocks.JUNGLE_FRAME_2.get())
-                .add(BdBlocks.JUNGLE_FRAME_3.get())
-                .add(BdBlocks.JUNGLE_FRAME_4.get())
-                .add(BdBlocks.JUNGLE_FRAME_5.get())
-                .add(BdBlocks.JUNGLE_FRAME_6.get())
-                .add(BdBlocks.JUNGLE_FRAME_7.get())
-                .add(BdBlocks.JUNGLE_FRAME_8.get())
-
-                .add(BdBlocks.MANGROVE_FRAME_1.get())
-                .add(BdBlocks.MANGROVE_FRAME_2.get())
-                .add(BdBlocks.MANGROVE_FRAME_3.get())
-                .add(BdBlocks.MANGROVE_FRAME_4.get())
-                .add(BdBlocks.MANGROVE_FRAME_5.get())
-                .add(BdBlocks.MANGROVE_FRAME_6.get())
-                .add(BdBlocks.MANGROVE_FRAME_7.get())
-                .add(BdBlocks.MANGROVE_FRAME_8.get())
-
-                .add(BdBlocks.OAK_FRAME_1.get())
-                .add(BdBlocks.OAK_FRAME_2.get())
-                .add(BdBlocks.OAK_FRAME_3.get())
-                .add(BdBlocks.OAK_FRAME_4.get())
-                .add(BdBlocks.OAK_FRAME_5.get())
-                .add(BdBlocks.OAK_FRAME_6.get())
-                .add(BdBlocks.OAK_FRAME_7.get())
-                .add(BdBlocks.OAK_FRAME_8.get())
-
-                .add(BdBlocks.SPRUCE_FRAME_1.get())
-                .add(BdBlocks.SPRUCE_FRAME_2.get())
-                .add(BdBlocks.SPRUCE_FRAME_3.get())
-                .add(BdBlocks.SPRUCE_FRAME_4.get())
-                .add(BdBlocks.SPRUCE_FRAME_5.get())
-                .add(BdBlocks.SPRUCE_FRAME_6.get())
-                .add(BdBlocks.SPRUCE_FRAME_7.get())
-                .add(BdBlocks.SPRUCE_FRAME_8.get())
-
-                .add(BdBlocks.WARPED_FRAME_1.get())
-                .add(BdBlocks.WARPED_FRAME_2.get())
-                .add(BdBlocks.WARPED_FRAME_3.get())
-                .add(BdBlocks.WARPED_FRAME_4.get())
-                .add(BdBlocks.WARPED_FRAME_5.get())
-                .add(BdBlocks.WARPED_FRAME_6.get())
-                .add(BdBlocks.WARPED_FRAME_7.get())
-                .add(BdBlocks.WARPED_FRAME_8.get());
-
-        this.tag(BlockTags.PLANKS)
-                .add(BdBlocks.ACACIA_PLANKS_1.get())
-                .add(BdBlocks.ACACIA_PLANKS_2.get())
-                .add(BdBlocks.ACACIA_PLANKS_3.get())
-                .add(BdBlocks.ACACIA_PLANKS_4.get())
-                .add(BdBlocks.ACACIA_PLANKS_5.get())
-                .add(BdBlocks.ACACIA_PLANKS_6.get())
-                .add(BdBlocks.ACACIA_PLANKS_7.get())
-
-                .add(BdBlocks.BIRCH_PLANKS_1.get())
-                .add(BdBlocks.BIRCH_PLANKS_2.get())
-                .add(BdBlocks.BIRCH_PLANKS_3.get())
-                .add(BdBlocks.BIRCH_PLANKS_4.get())
-                .add(BdBlocks.BIRCH_PLANKS_5.get())
-                .add(BdBlocks.BIRCH_PLANKS_6.get())
-                .add(BdBlocks.BIRCH_PLANKS_7.get())
-
-                .add(BdBlocks.BAMBOO_PLANKS_1.get())
-                .add(BdBlocks.BAMBOO_PLANKS_2.get())
-                .add(BdBlocks.BAMBOO_PLANKS_3.get())
-                .add(BdBlocks.BAMBOO_PLANKS_4.get())
-                .add(BdBlocks.BAMBOO_PLANKS_5.get())
-                .add(BdBlocks.BAMBOO_PLANKS_6.get())
-                .add(BdBlocks.BAMBOO_PLANKS_7.get())
-
-                .add(BdBlocks.CHERRY_PLANKS_1.get())
-                .add(BdBlocks.CHERRY_PLANKS_2.get())
-                .add(BdBlocks.CHERRY_PLANKS_3.get())
-                .add(BdBlocks.CHERRY_PLANKS_4.get())
-                .add(BdBlocks.CHERRY_PLANKS_5.get())
-                .add(BdBlocks.CHERRY_PLANKS_6.get())
-                .add(BdBlocks.CHERRY_PLANKS_7.get())
-
-                .add(BdBlocks.CRIMSON_PLANKS_1.get())
-                .add(BdBlocks.CRIMSON_PLANKS_2.get())
-                .add(BdBlocks.CRIMSON_PLANKS_3.get())
-                .add(BdBlocks.CRIMSON_PLANKS_4.get())
-                .add(BdBlocks.CRIMSON_PLANKS_5.get())
-                .add(BdBlocks.CRIMSON_PLANKS_6.get())
-                .add(BdBlocks.CRIMSON_PLANKS_7.get())
-
-                .add(BdBlocks.DARK_OAK_PLANKS_1.get())
-                .add(BdBlocks.DARK_OAK_PLANKS_2.get())
-                .add(BdBlocks.DARK_OAK_PLANKS_3.get())
-                .add(BdBlocks.DARK_OAK_PLANKS_4.get())
-                .add(BdBlocks.DARK_OAK_PLANKS_5.get())
-                .add(BdBlocks.DARK_OAK_PLANKS_6.get())
-                .add(BdBlocks.DARK_OAK_PLANKS_7.get())
-
-                .add(BdBlocks.JUNGLE_PLANKS_1.get())
-                .add(BdBlocks.JUNGLE_PLANKS_2.get())
-                .add(BdBlocks.JUNGLE_PLANKS_3.get())
-                .add(BdBlocks.JUNGLE_PLANKS_4.get())
-                .add(BdBlocks.JUNGLE_PLANKS_5.get())
-                .add(BdBlocks.JUNGLE_PLANKS_6.get())
-                .add(BdBlocks.JUNGLE_PLANKS_7.get())
-
-                .add(BdBlocks.MANGROVE_PLANKS_1.get())
-                .add(BdBlocks.MANGROVE_PLANKS_2.get())
-                .add(BdBlocks.MANGROVE_PLANKS_3.get())
-                .add(BdBlocks.MANGROVE_PLANKS_4.get())
-                .add(BdBlocks.MANGROVE_PLANKS_5.get())
-                .add(BdBlocks.MANGROVE_PLANKS_6.get())
-                .add(BdBlocks.MANGROVE_PLANKS_7.get())
-
-                .add(BdBlocks.OAK_PLANKS_1.get())
-                .add(BdBlocks.OAK_PLANKS_2.get())
-                .add(BdBlocks.OAK_PLANKS_3.get())
-                .add(BdBlocks.OAK_PLANKS_4.get())
-                .add(BdBlocks.OAK_PLANKS_5.get())
-                .add(BdBlocks.OAK_PLANKS_6.get())
-                .add(BdBlocks.OAK_PLANKS_7.get())
-
-                .add(BdBlocks.SPRUCE_PLANKS_1.get())
-                .add(BdBlocks.SPRUCE_PLANKS_2.get())
-                .add(BdBlocks.SPRUCE_PLANKS_3.get())
-                .add(BdBlocks.SPRUCE_PLANKS_4.get())
-                .add(BdBlocks.SPRUCE_PLANKS_5.get())
-                .add(BdBlocks.SPRUCE_PLANKS_6.get())
-                .add(BdBlocks.SPRUCE_PLANKS_7.get())
-
-                .add(BdBlocks.WARPED_PLANKS_1.get())
-                .add(BdBlocks.WARPED_PLANKS_2.get())
-                .add(BdBlocks.WARPED_PLANKS_3.get())
-                .add(BdBlocks.WARPED_PLANKS_4.get())
-                .add(BdBlocks.WARPED_PLANKS_5.get())
-                .add(BdBlocks.WARPED_PLANKS_6.get())
-                .add(BdBlocks.WARPED_PLANKS_7.get());
-
-        this.tag(BlockTags.WOODEN_STAIRS)
-                .add(BdBlocks.ACACIA_STAIRS_1.get())
-                .add(BdBlocks.ACACIA_STAIRS_2.get())
-                .add(BdBlocks.ACACIA_STAIRS_3.get())
-                .add(BdBlocks.ACACIA_STAIRS_4.get())
-                .add(BdBlocks.ACACIA_STAIRS_5.get())
-                .add(BdBlocks.ACACIA_STAIRS_6.get())
-                .add(BdBlocks.ACACIA_STAIRS_7.get())
-
-                .add(BdBlocks.BIRCH_STAIRS_1.get())
-                .add(BdBlocks.BIRCH_STAIRS_2.get())
-                .add(BdBlocks.BIRCH_STAIRS_3.get())
-                .add(BdBlocks.BIRCH_STAIRS_4.get())
-                .add(BdBlocks.BIRCH_STAIRS_5.get())
-                .add(BdBlocks.BIRCH_STAIRS_6.get())
-                .add(BdBlocks.BIRCH_STAIRS_7.get())
-
-                .add(BdBlocks.BAMBOO_STAIRS_1.get())
-                .add(BdBlocks.BAMBOO_STAIRS_2.get())
-                .add(BdBlocks.BAMBOO_STAIRS_3.get())
-                .add(BdBlocks.BAMBOO_STAIRS_4.get())
-                .add(BdBlocks.BAMBOO_STAIRS_5.get())
-                .add(BdBlocks.BAMBOO_STAIRS_6.get())
-                .add(BdBlocks.BAMBOO_STAIRS_7.get())
-
-                .add(BdBlocks.CHERRY_STAIRS_1.get())
-                .add(BdBlocks.CHERRY_STAIRS_2.get())
-                .add(BdBlocks.CHERRY_STAIRS_3.get())
-                .add(BdBlocks.CHERRY_STAIRS_4.get())
-                .add(BdBlocks.CHERRY_STAIRS_5.get())
-                .add(BdBlocks.CHERRY_STAIRS_6.get())
-                .add(BdBlocks.CHERRY_STAIRS_7.get())
-
-                .add(BdBlocks.CRIMSON_STAIRS_1.get())
-                .add(BdBlocks.CRIMSON_STAIRS_2.get())
-                .add(BdBlocks.CRIMSON_STAIRS_3.get())
-                .add(BdBlocks.CRIMSON_STAIRS_4.get())
-                .add(BdBlocks.CRIMSON_STAIRS_5.get())
-                .add(BdBlocks.CRIMSON_STAIRS_6.get())
-                .add(BdBlocks.CRIMSON_STAIRS_7.get())
-
-                .add(BdBlocks.DARK_OAK_STAIRS_1.get())
-                .add(BdBlocks.DARK_OAK_STAIRS_2.get())
-                .add(BdBlocks.DARK_OAK_STAIRS_3.get())
-                .add(BdBlocks.DARK_OAK_STAIRS_4.get())
-                .add(BdBlocks.DARK_OAK_STAIRS_5.get())
-                .add(BdBlocks.DARK_OAK_STAIRS_6.get())
-                .add(BdBlocks.DARK_OAK_STAIRS_7.get())
-
-                .add(BdBlocks.JUNGLE_STAIRS_1.get())
-                .add(BdBlocks.JUNGLE_STAIRS_2.get())
-                .add(BdBlocks.JUNGLE_STAIRS_3.get())
-                .add(BdBlocks.JUNGLE_STAIRS_4.get())
-                .add(BdBlocks.JUNGLE_STAIRS_5.get())
-                .add(BdBlocks.JUNGLE_STAIRS_6.get())
-                .add(BdBlocks.JUNGLE_STAIRS_7.get())
-
-                .add(BdBlocks.MANGROVE_STAIRS_1.get())
-                .add(BdBlocks.MANGROVE_STAIRS_2.get())
-                .add(BdBlocks.MANGROVE_STAIRS_3.get())
-                .add(BdBlocks.MANGROVE_STAIRS_4.get())
-                .add(BdBlocks.MANGROVE_STAIRS_5.get())
-                .add(BdBlocks.MANGROVE_STAIRS_6.get())
-                .add(BdBlocks.MANGROVE_STAIRS_7.get())
-
-                .add(BdBlocks.OAK_STAIRS_1.get())
-                .add(BdBlocks.OAK_STAIRS_2.get())
-                .add(BdBlocks.OAK_STAIRS_3.get())
-                .add(BdBlocks.OAK_STAIRS_4.get())
-                .add(BdBlocks.OAK_STAIRS_5.get())
-                .add(BdBlocks.OAK_STAIRS_6.get())
-                .add(BdBlocks.OAK_STAIRS_7.get())
-
-                .add(BdBlocks.SPRUCE_STAIRS_1.get())
-                .add(BdBlocks.SPRUCE_STAIRS_2.get())
-                .add(BdBlocks.SPRUCE_STAIRS_3.get())
-                .add(BdBlocks.SPRUCE_STAIRS_4.get())
-                .add(BdBlocks.SPRUCE_STAIRS_5.get())
-                .add(BdBlocks.SPRUCE_STAIRS_6.get())
-                .add(BdBlocks.SPRUCE_STAIRS_7.get())
-
-                .add(BdBlocks.WARPED_STAIRS_1.get())
-                .add(BdBlocks.WARPED_STAIRS_2.get())
-                .add(BdBlocks.WARPED_STAIRS_3.get())
-                .add(BdBlocks.WARPED_STAIRS_4.get())
-                .add(BdBlocks.WARPED_STAIRS_5.get())
-                .add(BdBlocks.WARPED_STAIRS_6.get())
-                .add(BdBlocks.WARPED_STAIRS_7.get());
-
-        this.tag(BlockTags.WOODEN_SLABS)
-                .add(BdBlocks.ACACIA_SLAB_1.get())
-                .add(BdBlocks.ACACIA_SLAB_2.get())
-                .add(BdBlocks.ACACIA_SLAB_3.get())
-                .add(BdBlocks.ACACIA_SLAB_4.get())
-                .add(BdBlocks.ACACIA_SLAB_5.get())
-                .add(BdBlocks.ACACIA_SLAB_6.get())
-                .add(BdBlocks.ACACIA_SLAB_7.get())
-
-                .add(BdBlocks.BIRCH_SLAB_1.get())
-                .add(BdBlocks.BIRCH_SLAB_2.get())
-                .add(BdBlocks.BIRCH_SLAB_3.get())
-                .add(BdBlocks.BIRCH_SLAB_4.get())
-                .add(BdBlocks.BIRCH_SLAB_5.get())
-                .add(BdBlocks.BIRCH_SLAB_6.get())
-                .add(BdBlocks.BIRCH_SLAB_7.get())
-
-                .add(BdBlocks.BAMBOO_STAIRS_1.get())
-                .add(BdBlocks.BAMBOO_STAIRS_2.get())
-                .add(BdBlocks.BAMBOO_STAIRS_3.get())
-                .add(BdBlocks.BAMBOO_STAIRS_4.get())
-                .add(BdBlocks.BAMBOO_STAIRS_5.get())
-                .add(BdBlocks.BAMBOO_STAIRS_6.get())
-                .add(BdBlocks.BAMBOO_STAIRS_7.get())
-
-                .add(BdBlocks.CHERRY_SLAB_1.get())
-                .add(BdBlocks.CHERRY_SLAB_2.get())
-                .add(BdBlocks.CHERRY_SLAB_3.get())
-                .add(BdBlocks.CHERRY_SLAB_4.get())
-                .add(BdBlocks.CHERRY_SLAB_5.get())
-                .add(BdBlocks.CHERRY_SLAB_6.get())
-                .add(BdBlocks.CHERRY_SLAB_7.get())
-
-                .add(BdBlocks.CRIMSON_SLAB_1.get())
-                .add(BdBlocks.CRIMSON_SLAB_2.get())
-                .add(BdBlocks.CRIMSON_SLAB_3.get())
-                .add(BdBlocks.CRIMSON_SLAB_4.get())
-                .add(BdBlocks.CRIMSON_SLAB_5.get())
-                .add(BdBlocks.CRIMSON_SLAB_6.get())
-                .add(BdBlocks.CRIMSON_SLAB_7.get())
-
-                .add(BdBlocks.DARK_OAK_SLAB_1.get())
-                .add(BdBlocks.DARK_OAK_SLAB_2.get())
-                .add(BdBlocks.DARK_OAK_SLAB_3.get())
-                .add(BdBlocks.DARK_OAK_SLAB_4.get())
-                .add(BdBlocks.DARK_OAK_SLAB_5.get())
-                .add(BdBlocks.DARK_OAK_SLAB_6.get())
-                .add(BdBlocks.DARK_OAK_SLAB_7.get())
-
-                .add(BdBlocks.JUNGLE_SLAB_1.get())
-                .add(BdBlocks.JUNGLE_SLAB_2.get())
-                .add(BdBlocks.JUNGLE_SLAB_3.get())
-                .add(BdBlocks.JUNGLE_SLAB_4.get())
-                .add(BdBlocks.JUNGLE_SLAB_5.get())
-                .add(BdBlocks.JUNGLE_SLAB_6.get())
-                .add(BdBlocks.JUNGLE_SLAB_7.get())
-
-                .add(BdBlocks.MANGROVE_SLAB_1.get())
-                .add(BdBlocks.MANGROVE_SLAB_2.get())
-                .add(BdBlocks.MANGROVE_SLAB_3.get())
-                .add(BdBlocks.MANGROVE_SLAB_4.get())
-                .add(BdBlocks.MANGROVE_SLAB_5.get())
-                .add(BdBlocks.MANGROVE_SLAB_6.get())
-                .add(BdBlocks.MANGROVE_SLAB_7.get())
-
-                .add(BdBlocks.OAK_SLAB_1.get())
-                .add(BdBlocks.OAK_SLAB_2.get())
-                .add(BdBlocks.OAK_SLAB_3.get())
-                .add(BdBlocks.OAK_SLAB_4.get())
-                .add(BdBlocks.OAK_SLAB_5.get())
-                .add(BdBlocks.OAK_SLAB_6.get())
-                .add(BdBlocks.OAK_SLAB_7.get())
-
-                .add(BdBlocks.SPRUCE_SLAB_1.get())
-                .add(BdBlocks.SPRUCE_SLAB_2.get())
-                .add(BdBlocks.SPRUCE_SLAB_3.get())
-                .add(BdBlocks.SPRUCE_SLAB_4.get())
-                .add(BdBlocks.SPRUCE_SLAB_5.get())
-                .add(BdBlocks.SPRUCE_SLAB_6.get())
-                .add(BdBlocks.SPRUCE_SLAB_7.get())
-
-                .add(BdBlocks.WARPED_SLAB_1.get())
-                .add(BdBlocks.WARPED_SLAB_2.get())
-                .add(BdBlocks.WARPED_SLAB_3.get())
-                .add(BdBlocks.WARPED_SLAB_4.get())
-                .add(BdBlocks.WARPED_SLAB_5.get())
-                .add(BdBlocks.WARPED_SLAB_6.get())
-                .add(BdBlocks.WARPED_SLAB_7.get());
+                .add(BdDecoration.EXPOSED_LANTERN_3.get(),
+                    BdDecoration.WEATHERED_LANTERN_3.get(),
+                    BdDecoration.OXIDIZED_LANTERN_3.get(),
+                    BdDecoration.WAXED_LANTERN_3.get(),
+                    BdDecoration.WAXED_EXPOSED_LANTERN_3.get(),
+                    BdDecoration.WAXED_WEATHERED_LANTERN_3.get(),
+                    BdDecoration.WAXED_OXIDIZED_LANTERN_3.get(),
+
+                    BdDecoration.EXPOSED_CHAIN_3.get(),
+                    BdDecoration.WEATHERED_CHAIN_3.get(),
+                    BdDecoration.OXIDIZED_CHAIN_3.get(),
+                    BdDecoration.WAXED_CHAIN_3.get(),
+                    BdDecoration.WAXED_EXPOSED_CHAIN_3.get(),
+                    BdDecoration.WAXED_WEATHERED_CHAIN_3.get(),
+                    BdDecoration.WAXED_OXIDIZED_CHAIN_3.get()
+                );
+
+        this.tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(BdDecoration.LANTERN_8.get()
+                );
+
+        BdBlockCount.BLOCK_COUNTS.forEach((blockType, maxBlockNumber) -> {
+            for (int i = 1; i <= maxBlockNumber; i++) {
+                String registryName = blockType.toLowerCase() + "_" + i;
+                RegistryObject<Item> itemRegistryObject = allBlockItems.get(registryName);
+
+                if (itemRegistryObject != null) {
+                    tagMappings.getOrDefault(blockType, Collections.emptyList())
+                            .forEach(consumer -> consumer.accept(itemRegistryObject));
+                }
+            }
+        });
+    }
+
+    private Map<String, RegistryObject<Item>> getAllBlockItems() {
+        Map<String, RegistryObject<Item>> allBlockItems = new HashMap<>();
+        allBlockItems.putAll(BdBlocks.getBlockItemMap());
+        allBlockItems.putAll(BdDecoration.getDecorationItemMap());
+
+        return allBlockItems;
+    }
+
+    private Map<String, List<Consumer<RegistryObject<Item>>>> createTagMappings() {
+        Map<String, List<Consumer<RegistryObject<Item>>>> tagMappings = new HashMap<>();
+
+        tagMappings.put("ACACIA_CHAIR", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("ACACIA_TABLE", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("BAMBOO_CHAIR", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("BAMBOO_TABLE", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("BIRCH_CHAIR", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("BIRCH_TABLE", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("CHERRY_CHAIR", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("CHERRY_TABLE", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("CRIMSON_CHAIR", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("CRIMSON_TABLE", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("DARK_OAK_CHAIR", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("DARK_OAK_TABLE", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("JUNGLE_CHAIR", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("JUNGLE_TABLE", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("MANGROVE_CHAIR", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("MANGROVE_TABLE", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("OAK_CHAIR", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("OAK_TABLE", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("SPRUCE_CHAIR", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("SPRUCE_TABLE", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("WARPED_CHAIR", Collections.singletonList(this::tagMineableWithAxe));
+        tagMappings.put("WARPED_TABLE", Collections.singletonList(this::tagMineableWithAxe));
+
+        tagMappings.put("ACACIA_FRAME", Collections.singletonList(this::tagMineableWithHoe));
+        tagMappings.put("BAMBOO_FRAME", Collections.singletonList(this::tagMineableWithHoe));
+        tagMappings.put("BIRCH_FRAME", Collections.singletonList(this::tagMineableWithHoe));
+        tagMappings.put("CHERRY_FRAME", Collections.singletonList(this::tagMineableWithHoe));
+        tagMappings.put("CRIMSON_FRAME", Collections.singletonList(this::tagMineableWithHoe));
+        tagMappings.put("DARK_OAK_FRAME", Collections.singletonList(this::tagMineableWithHoe));
+        tagMappings.put("JUNGLE_FRAME", Collections.singletonList(this::tagMineableWithHoe));
+        tagMappings.put("MANGROVE_FRAME", Collections.singletonList(this::tagMineableWithHoe));
+        tagMappings.put("OAK_FRAME", Collections.singletonList(this::tagMineableWithHoe));
+        tagMappings.put("SPRUCE_FRAME", Collections.singletonList(this::tagMineableWithHoe));
+        tagMappings.put("WARPED_FRAME", Collections.singletonList(this::tagMineableWithHoe));
+
+        tagMappings.put("ACACIA_PLANKS", Arrays.asList(this::tagPlanks, this::tagMineableWithAxe));
+        tagMappings.put("BAMBOO_PLANKS", Arrays.asList(this::tagPlanks, this::tagMineableWithAxe));
+        tagMappings.put("BIRCH_PLANKS", Arrays.asList(this::tagPlanks, this::tagMineableWithAxe));
+        tagMappings.put("CHERRY_PLANKS", Arrays.asList(this::tagPlanks, this::tagMineableWithAxe));
+        tagMappings.put("CRIMSON_PLANKS", Arrays.asList(this::tagPlanks, this::tagMineableWithAxe));
+        tagMappings.put("DARK_OAK_PLANKS", Arrays.asList(this::tagPlanks, this::tagMineableWithAxe));
+        tagMappings.put("JUNGLE_PLANKS", Arrays.asList(this::tagPlanks, this::tagMineableWithAxe));
+        tagMappings.put("MANGROVE_PLANKS", Arrays.asList(this::tagPlanks, this::tagMineableWithAxe));
+        tagMappings.put("OAK_PLANKS", Arrays.asList(this::tagPlanks, this::tagMineableWithAxe));
+        tagMappings.put("SPRUCE_PLANKS", Arrays.asList(this::tagPlanks, this::tagMineableWithAxe));
+        tagMappings.put("WARPED_PLANKS", Arrays.asList(this::tagPlanks, this::tagMineableWithAxe));
+
+        tagMappings.put("ACACIA_STAIRS", Arrays.asList(this::tagWoodenStairs, this::tagMineableWithAxe));
+        tagMappings.put("BAMBOO_STAIRS", Arrays.asList(this::tagWoodenStairs, this::tagMineableWithAxe));
+        tagMappings.put("BIRCH_STAIRS", Arrays.asList(this::tagWoodenStairs, this::tagMineableWithAxe));
+        tagMappings.put("CHERRY_STAIRS", Arrays.asList(this::tagWoodenStairs, this::tagMineableWithAxe));
+        tagMappings.put("CRIMSON_STAIRS", Arrays.asList(this::tagWoodenStairs, this::tagMineableWithAxe));
+        tagMappings.put("DARK_OAK_STAIRS", Arrays.asList(this::tagWoodenStairs, this::tagMineableWithAxe));
+        tagMappings.put("JUNGLE_STAIRS", Arrays.asList(this::tagWoodenStairs, this::tagMineableWithAxe));
+        tagMappings.put("MANGROVE_STAIRS", Arrays.asList(this::tagWoodenStairs, this::tagMineableWithAxe));
+        tagMappings.put("OAK_STAIRS", Arrays.asList(this::tagWoodenStairs, this::tagMineableWithAxe));
+        tagMappings.put("SPRUCE_STAIRS", Arrays.asList(this::tagWoodenStairs, this::tagMineableWithAxe));
+        tagMappings.put("WARPED_STAIRS", Arrays.asList(this::tagWoodenStairs, this::tagMineableWithAxe));
+
+        tagMappings.put("ACACIA_SLAB", Arrays.asList(this::tagWoodenSlabs, this::tagMineableWithAxe));
+        tagMappings.put("BAMBOO_SLAB", Arrays.asList(this::tagWoodenSlabs, this::tagMineableWithAxe));
+        tagMappings.put("BIRCH_SLAB", Arrays.asList(this::tagWoodenSlabs, this::tagMineableWithAxe));
+        tagMappings.put("CHERRY_SLAB", Arrays.asList(this::tagWoodenSlabs, this::tagMineableWithAxe));
+        tagMappings.put("CRIMSON_SLAB", Arrays.asList(this::tagWoodenSlabs, this::tagMineableWithAxe));
+        tagMappings.put("DARK_OAK_SLAB", Arrays.asList(this::tagWoodenSlabs, this::tagMineableWithAxe));
+        tagMappings.put("JUNGLE_SLAB", Arrays.asList(this::tagWoodenSlabs, this::tagMineableWithAxe));
+        tagMappings.put("MANGROVE_SLAB", Arrays.asList(this::tagWoodenSlabs, this::tagMineableWithAxe));
+        tagMappings.put("OAK_SLAB", Arrays.asList(this::tagWoodenSlabs, this::tagMineableWithAxe));
+        tagMappings.put("SPRUCE_SLAB", Arrays.asList(this::tagWoodenSlabs, this::tagMineableWithAxe));
+        tagMappings.put("WARPED_SLAB", Arrays.asList(this::tagWoodenSlabs, this::tagMineableWithAxe));
+
+        tagMappings.put("AMETHYST_BLOCK", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("AMETHYST_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("AMETHYST_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("ANDESITE", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("ANDESITE_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("ANDESITE_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("DIORITE", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("DIORITE_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("DIORITE_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("COBBLESTONE", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("COBBLESTONE_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("COBBLESTONE_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("GRANITE", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("GRANITE_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("GRANITE_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("CALCITE", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("CALCITE_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("CALCITE_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("DEEPSLATE", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("DEEPSLATE_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("DEEPSLATE_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("DRIPSTONE", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("DRIPSTONE_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("DRIPSTONE_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("PRISMARINE", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("PRISMARINE_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("PRISMARINE_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("SANDSTONE", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("SANDSTONE_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("SANDSTONE_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("TUFF", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("TUFF_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("TUFF_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("BRICKS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("BRICK_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("BRICK_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("STONE_BRICKS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("STONE_BRICK_SLAB", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("STONE_BRICK_STAIRS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("BLACKSTONE", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("NETHER_BRICKS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("GILDED_BLACKSTONE", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("GILDED_NETHER_BRICKS", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("INDUSTRIAL", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("INDUSTRIAL_FLAT", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("LABORATORY", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("WARNING_STRIPES", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("CHAIN", Collections.singletonList(this::tagMineableWithPickaxe));
+        tagMappings.put("LANTERN", Collections.singletonList(this::tagMineableWithPickaxe));
+
+        return tagMappings;
+    }
+
+    private void tagMineableWithAxe(RegistryObject<Item> itemRegistryObject) {
+        BlockItem blockItem = (BlockItem) itemRegistryObject.get();
+        this.tag(BlockTags.MINEABLE_WITH_AXE).add(blockItem.getBlock());
+    }
+
+    private void tagMineableWithPickaxe(RegistryObject<Item> itemRegistryObject) {
+        BlockItem blockItem = (BlockItem) itemRegistryObject.get();
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(blockItem.getBlock());
+    }
+
+    private void tagMineableWithHoe(RegistryObject<Item> itemRegistryObject) {
+        BlockItem blockItem = (BlockItem) itemRegistryObject.get();
+        this.tag(BlockTags.MINEABLE_WITH_HOE).add(blockItem.getBlock());
+    }
+
+    private void tagPlanks(RegistryObject<Item> itemRegistryObject) {
+        BlockItem blockItem = (BlockItem) itemRegistryObject.get();
+        this.tag(BlockTags.PLANKS).add(blockItem.getBlock());
+    }
+
+    private void tagWoodenStairs(RegistryObject<Item> itemRegistryObject) {
+        BlockItem blockItem = (BlockItem) itemRegistryObject.get();
+        this.tag(BlockTags.WOODEN_STAIRS).add(blockItem.getBlock());
+    }
+
+    private void tagWoodenSlabs(RegistryObject<Item> itemRegistryObject) {
+        BlockItem blockItem = (BlockItem) itemRegistryObject.get();
+        this.tag(BlockTags.WOODEN_SLABS).add(blockItem.getBlock());
     }
 }

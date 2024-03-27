@@ -4,7 +4,7 @@
       "model": "buildersdelight:block/calcite_slab_1"
     },
     "type=double": {
-      "model": "minecraft:block/calcite"
+      "model": "buildersdelight:block/calcite_1"
     },
     "type=top": {
       "model": "buildersdelight:block/calcite_slab_1_top"

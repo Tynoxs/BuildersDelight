@@ -1,0 +1,164 @@
+package com.tynoxs.buildersdelight.datagen.providers;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class BdBlockCount {
+    public static final Map<String, Integer> BLOCK_COUNTS = new HashMap<>();
+
+    static {
+        BLOCK_COUNTS.put("AMETHYST_BLOCK", 7);
+        BLOCK_COUNTS.put("AMETHYST_SLAB", 8);
+        BLOCK_COUNTS.put("AMETHYST_STAIRS", 8);
+        BLOCK_COUNTS.put("ANDESITE", 7);
+        BLOCK_COUNTS.put("ANDESITE_SLAB", 7);
+        BLOCK_COUNTS.put("ANDESITE_STAIRS", 7);
+        BLOCK_COUNTS.put("COBBLESTONE", 7);
+        BLOCK_COUNTS.put("COBBLESTONE_SLAB", 7);
+        BLOCK_COUNTS.put("COBBLESTONE_STAIRS", 7);
+        BLOCK_COUNTS.put("DIORITE", 7);
+        BLOCK_COUNTS.put("DIORITE_SLAB", 7);
+        BLOCK_COUNTS.put("DIORITE_STAIRS", 7);
+        BLOCK_COUNTS.put("GRANITE", 7);
+        BLOCK_COUNTS.put("GRANITE_SLAB", 7);
+        BLOCK_COUNTS.put("GRANITE_STAIRS", 7);
+        BLOCK_COUNTS.put("SANDSTONE", 6);
+        BLOCK_COUNTS.put("SANDSTONE_SLAB", 6);
+        BLOCK_COUNTS.put("SANDSTONE_STAIRS", 6);
+        BLOCK_COUNTS.put("PRISMARINE", 6);
+        BLOCK_COUNTS.put("PRISMARINE_SLAB", 6);
+        BLOCK_COUNTS.put("PRISMARINE_STAIRS", 6);
+        BLOCK_COUNTS.put("TUFF", 7);
+        BLOCK_COUNTS.put("TUFF_SLAB", 8);
+        BLOCK_COUNTS.put("TUFF_STAIRS", 8);
+        BLOCK_COUNTS.put("DRIPSTONE", 7);
+        BLOCK_COUNTS.put("DRIPSTONE_SLAB", 8);
+        BLOCK_COUNTS.put("DRIPSTONE_STAIRS", 8);
+        BLOCK_COUNTS.put("DEEPSLATE", 5);
+        BLOCK_COUNTS.put("DEEPSLATE_SLAB", 5);
+        BLOCK_COUNTS.put("DEEPSLATE_STAIRS", 5);
+        BLOCK_COUNTS.put("STONE_BRICKS", 7);
+        BLOCK_COUNTS.put("STONE_BRICK_SLAB", 7);
+        BLOCK_COUNTS.put("STONE_BRICK_STAIRS", 7);
+        BLOCK_COUNTS.put("BRICKS", 9);
+        BLOCK_COUNTS.put("BRICK_SLAB", 9);
+        BLOCK_COUNTS.put("BRICK_STAIRS", 9);
+        BLOCK_COUNTS.put("CALCITE", 7);
+        BLOCK_COUNTS.put("CALCITE_SLAB", 8);
+        BLOCK_COUNTS.put("CALCITE_STAIRS", 8);
+        BLOCK_COUNTS.put("NETHER_BRICKS", 6);
+        BLOCK_COUNTS.put("BLACKSTONE", 6);
+        BLOCK_COUNTS.put("WARNING_STRIPES", 8);
+        BLOCK_COUNTS.put("INDUSTRIAL", 8);
+        BLOCK_COUNTS.put("INDUSTRIAL_FLAT", 8);
+        BLOCK_COUNTS.put("LABORATORY", 4);
+        BLOCK_COUNTS.put("GILDED_NETHER_BRICKS", 3);
+        BLOCK_COUNTS.put("GILDED_BLACKSTONE", 3);
+
+        BLOCK_COUNTS.put("GLASS", 7);
+        BLOCK_COUNTS.put("GLASS_PANE", 7);
+
+        BLOCK_COUNTS.put("LANTERN", 8);
+        BLOCK_COUNTS.put("CHAIN", 5);
+
+        BLOCK_COUNTS.put("ACACIA_CHAIR", 2);
+        BLOCK_COUNTS.put("ACACIA_TABLE", 2);
+        BLOCK_COUNTS.put("BAMBOO_CHAIR", 2);
+        BLOCK_COUNTS.put("BAMBOO_TABLE", 2);
+        BLOCK_COUNTS.put("BIRCH_CHAIR", 2);
+        BLOCK_COUNTS.put("BIRCH_TABLE", 2);
+        BLOCK_COUNTS.put("CHERRY_CHAIR", 2);
+        BLOCK_COUNTS.put("CHERRY_TABLE", 2);
+        BLOCK_COUNTS.put("CRIMSON_CHAIR", 2);
+        BLOCK_COUNTS.put("CRIMSON_TABLE", 2);
+        BLOCK_COUNTS.put("DARK_OAK_CHAIR", 2);
+        BLOCK_COUNTS.put("DARK_OAK_TABLE", 2);
+        BLOCK_COUNTS.put("JUNGLE_CHAIR", 2);
+        BLOCK_COUNTS.put("JUNGLE_TABLE", 2);
+        BLOCK_COUNTS.put("MANGROVE_CHAIR", 2);
+        BLOCK_COUNTS.put("MANGROVE_TABLE", 2);
+        BLOCK_COUNTS.put("OAK_CHAIR", 2);
+        BLOCK_COUNTS.put("OAK_TABLE", 2);
+        BLOCK_COUNTS.put("SPRUCE_CHAIR", 2);
+        BLOCK_COUNTS.put("SPRUCE_TABLE", 2);
+        BLOCK_COUNTS.put("WARPED_CHAIR", 2);
+        BLOCK_COUNTS.put("WARPED_TABLE", 2);
+
+        BLOCK_COUNTS.put("ACACIA_GLASS", 8);
+        BLOCK_COUNTS.put("ACACIA_FRAME", 8);
+        BLOCK_COUNTS.put("ACACIA_GLASS_PANE", 8);
+        BLOCK_COUNTS.put("ACACIA_PLANKS", 7);
+        BLOCK_COUNTS.put("ACACIA_STAIRS", 7);
+        BLOCK_COUNTS.put("ACACIA_SLAB", 7);
+
+        BLOCK_COUNTS.put("BAMBOO_GLASS", 8);
+        BLOCK_COUNTS.put("BAMBOO_FRAME", 8);
+        BLOCK_COUNTS.put("BAMBOO_GLASS_PANE", 8);
+        BLOCK_COUNTS.put("BAMBOO_PLANKS", 7);
+        BLOCK_COUNTS.put("BAMBOO_STAIRS", 7);
+        BLOCK_COUNTS.put("BAMBOO_SLAB", 7);
+
+        BLOCK_COUNTS.put("BIRCH_GLASS", 8);
+        BLOCK_COUNTS.put("BIRCH_FRAME", 8);
+        BLOCK_COUNTS.put("BIRCH_GLASS_PANE", 8);
+        BLOCK_COUNTS.put("BIRCH_PLANKS", 7);
+        BLOCK_COUNTS.put("BIRCH_STAIRS", 7);
+        BLOCK_COUNTS.put("BIRCH_SLAB", 7);
+
+        BLOCK_COUNTS.put("CHERRY_GLASS", 8);
+        BLOCK_COUNTS.put("CHERRY_FRAME", 8);
+        BLOCK_COUNTS.put("CHERRY_GLASS_PANE", 8);
+        BLOCK_COUNTS.put("CHERRY_PLANKS", 7);
+        BLOCK_COUNTS.put("CHERRY_STAIRS", 7);
+        BLOCK_COUNTS.put("CHERRY_SLAB", 7);
+
+        BLOCK_COUNTS.put("CRIMSON_GLASS", 8);
+        BLOCK_COUNTS.put("CRIMSON_FRAME", 8);
+        BLOCK_COUNTS.put("CRIMSON_GLASS_PANE", 8);
+        BLOCK_COUNTS.put("CRIMSON_PLANKS", 7);
+        BLOCK_COUNTS.put("CRIMSON_STAIRS", 7);
+        BLOCK_COUNTS.put("CRIMSON_SLAB", 7);
+
+        BLOCK_COUNTS.put("DARK_OAK_GLASS", 8);
+        BLOCK_COUNTS.put("DARK_OAK_FRAME", 8);
+        BLOCK_COUNTS.put("DARK_OAK_GLASS_PANE", 8);
+        BLOCK_COUNTS.put("DARK_OAK_PLANKS", 7);
+        BLOCK_COUNTS.put("DARK_OAK_STAIRS", 7);
+        BLOCK_COUNTS.put("DARK_OAK_SLAB", 7);
+
+        BLOCK_COUNTS.put("JUNGLE_GLASS", 8);
+        BLOCK_COUNTS.put("JUNGLE_FRAME", 8);
+        BLOCK_COUNTS.put("JUNGLE_GLASS_PANE", 8);
+        BLOCK_COUNTS.put("JUNGLE_PLANKS", 7);
+        BLOCK_COUNTS.put("JUNGLE_STAIRS", 7);
+        BLOCK_COUNTS.put("JUNGLE_SLAB", 7);
+
+        BLOCK_COUNTS.put("MANGROVE_GLASS", 8);
+        BLOCK_COUNTS.put("MANGROVE_FRAME", 8);
+        BLOCK_COUNTS.put("MANGROVE_GLASS_PANE", 8);
+        BLOCK_COUNTS.put("MANGROVE_PLANKS", 7);
+        BLOCK_COUNTS.put("MANGROVE_STAIRS", 7);
+        BLOCK_COUNTS.put("MANGROVE_SLAB", 7);
+
+        BLOCK_COUNTS.put("OAK_GLASS", 8);
+        BLOCK_COUNTS.put("OAK_FRAME", 8);
+        BLOCK_COUNTS.put("OAK_GLASS_PANE", 8);
+        BLOCK_COUNTS.put("OAK_PLANKS", 7);
+        BLOCK_COUNTS.put("OAK_STAIRS", 7);
+        BLOCK_COUNTS.put("OAK_SLAB", 7);
+
+        BLOCK_COUNTS.put("SPRUCE_GLASS", 8);
+        BLOCK_COUNTS.put("SPRUCE_FRAME", 8);
+        BLOCK_COUNTS.put("SPRUCE_GLASS_PANE", 8);
+        BLOCK_COUNTS.put("SPRUCE_PLANKS", 7);
+        BLOCK_COUNTS.put("SPRUCE_STAIRS", 7);
+        BLOCK_COUNTS.put("SPRUCE_SLAB", 7);
+
+        BLOCK_COUNTS.put("WARPED_GLASS", 8);
+        BLOCK_COUNTS.put("WARPED_FRAME", 8);
+        BLOCK_COUNTS.put("WARPED_GLASS_PANE", 8);
+        BLOCK_COUNTS.put("WARPED_PLANKS", 7);
+        BLOCK_COUNTS.put("WARPED_STAIRS", 7);
+        BLOCK_COUNTS.put("WARPED_SLAB", 7);
+    };
+}

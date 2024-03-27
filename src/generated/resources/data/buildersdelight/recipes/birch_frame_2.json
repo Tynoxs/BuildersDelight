@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "tag": "buildersdelight:birch_planks"
+    },
+    "1": {
+      "tag": "minecraft:wool"
+    },
+    "2": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "202",
+    "010",
+    "202"
+  ],
+  "result": {
+    "item": "buildersdelight:birch_frame_2"
+  },
+  "show_notification": true
+}
