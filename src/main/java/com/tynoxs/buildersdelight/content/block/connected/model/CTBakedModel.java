@@ -17,7 +17,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.IDynamicBakedModel;
 import net.neoforged.neoforge.client.model.data.ModelData;
 import net.neoforged.neoforge.client.model.geometry.IGeometryBakingContext;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -86,18 +85,18 @@ public class CTBakedModel implements IDynamicBakedModel {
         if (asItem) {
             // From inventory or as item, different texture path.
             return Minecraft.getInstance().getTextureAtlas(TextureAtlas.LOCATION_BLOCKS).apply(
-                new ResourceLocation(modelLocation.getNamespace(), "block/connected/" + modelLocation.getPath())
+                ResourceLocation.fromNamespaceAndPath(modelLocation.getNamespace(), "block/connected/" + modelLocation.getPath())
             );
         }
 
         return Minecraft.getInstance().getTextureAtlas(TextureAtlas.LOCATION_BLOCKS).apply(
-            new ResourceLocation(modelLocation.getNamespace(), modelLocation.getPath().replaceFirst("block/", "block/connected/"))
+            ResourceLocation.fromNamespaceAndPath(modelLocation.getNamespace(), modelLocation.getPath().replaceFirst("block/", "block/connected/"))
         );
     }
 
     protected BakedQuad createQuad(@Nullable BlockState state, Direction side, ModelData modelData){
         BlockElementFace face = new BlockElementFace(side.getOpposite(), 0, "", new BlockFaceUV(this.getUV(side, modelData), 0));
-        return BAKERY.bakeQuad(new Vector3f(0, 0, 0), new Vector3f(16, 16, 16), face, getTexture(state == null), side, BlockModelRotation.X0_Y0, null, true, null);
+        return BAKERY.bakeQuad(new Vector3f(0, 0, 0), new Vector3f(16, 16, 16), face, getTexture(state == null), side, BlockModelRotation.X0_Y0, null, true);
     }
 
     protected float[] getUV(Direction side, ModelData modelData){

@@ -19,7 +19,7 @@ public class JeiIntegration implements IModPlugin {
 
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(BuildersDelight.MODID, "chisel_plugin");
+        return ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "chisel_plugin");
     }
 
     @Override

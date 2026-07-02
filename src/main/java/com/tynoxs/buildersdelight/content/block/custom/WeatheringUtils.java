@@ -27,15 +27,15 @@ public class WeatheringUtils {
                             ).put(
                                     BdDecoration.WEATHERED_LANTERN_3.get(),
                                     BdDecoration.OXIDIZED_LANTERN_3.get()
-                            ).put(
-                                    BdDecoration.CHAIN_3.get(),
-                                    BdDecoration.EXPOSED_CHAIN_3.get()
-                            ).put(
-                                    BdDecoration.EXPOSED_CHAIN_3.get(),
-                                    BdDecoration.WEATHERED_CHAIN_3.get()
-                            ).put(
-                                    BdDecoration.WEATHERED_CHAIN_3.get(),
-                                    BdDecoration.OXIDIZED_CHAIN_3.get()
+                        //    ).put(
+                        //             BdDecoration.CHAIN_3.get(),
+                        //             BdDecoration.EXPOSED_CHAIN_3.get()
+                        //     ).put(
+                        //             BdDecoration.EXPOSED_CHAIN_3.get(),
+                        //             BdDecoration.WEATHERED_CHAIN_3.get()
+                        //     ).put(
+                        //             BdDecoration.WEATHERED_CHAIN_3.get(),
+                        //             BdDecoration.OXIDIZED_CHAIN_3.get()
                             )
                             .build()
             );

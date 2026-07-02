@@ -21,10 +21,10 @@ import java.util.function.Function;
 
 public class CTBlockModelLoader implements IGeometryLoader<CTBlockModelLoader.CTModelGeometry> {
 
-    public static final ResourceLocation GENERATOR_LOADER = new ResourceLocation(BuildersDelight.MODID, "connectedblockloader");
+    public static final ResourceLocation GENERATOR_LOADER = ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "connectedblockloader");
 
     public static void register(ModelEvent.RegisterGeometryLoaders event) {
-        event.register("connectedblockloader", new CTBlockModelLoader());
+        event.register(GENERATOR_LOADER, new CTBlockModelLoader());
     }
 
     @Override
@@ -34,8 +34,8 @@ public class CTBlockModelLoader implements IGeometryLoader<CTBlockModelLoader.CT
 
     public static class CTModelGeometry implements IUnbakedGeometry<CTModelGeometry> {
         @Override
-        public BakedModel bake(IGeometryBakingContext context, ModelBaker baker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides, ResourceLocation modelLocation) {
-            return new CTConnectedBakedModel(context, modelLocation);
+        public BakedModel bake(IGeometryBakingContext context, ModelBaker baker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides) {
+            return new CTConnectedBakedModel(context, GENERATOR_LOADER);
         }
     }
 }

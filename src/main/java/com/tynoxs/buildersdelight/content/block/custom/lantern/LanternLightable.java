@@ -6,6 +6,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -16,6 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
 
 public abstract class LanternLightable extends Block implements SimpleWaterloggedBlock {
     public ParticleOptions flameParticle;
@@ -29,23 +32,21 @@ public abstract class LanternLightable extends Block implements SimpleWaterlogge
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand hand, net.minecraft.world.phys.BlockHitResult hit) {
-        ItemStack itemstack = player.getItemInHand(hand);
+    protected ItemInteractionResult useItemOn(ItemStack itemstack, BlockState state, Level worldIn,
+            BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (itemstack.getItem() == Items.FLINT_AND_STEEL && !state.getValue(LIT) && !state.getValue(WATERLOGGED)) {
             worldIn.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
             worldIn.setBlockAndUpdate(pos, state.setValue(LIT, true));
             if (!player.getAbilities().instabuild) {
-                itemstack.hurtAndBreak(1, player, (entity) -> {
-                    entity.broadcastBreakEvent(hand);
-                });
+                itemstack.hurtAndBreak(1, player, itemstack.getEquipmentSlot());
             }
-            return InteractionResult.SUCCESS;
+            return ItemInteractionResult.SUCCESS;
         } else if (itemstack.isEmpty() && state.getValue(LIT)) {
             worldIn.playSound(null, pos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);
             worldIn.setBlockAndUpdate(pos, state.setValue(LIT, false));
-            return InteractionResult.SUCCESS;
+            return ItemInteractionResult.SUCCESS;
         }
-        return InteractionResult.PASS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     public FluidState getFluidState(BlockState state) {

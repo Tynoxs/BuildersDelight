@@ -8,6 +8,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -19,6 +20,8 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+
+import com.mojang.serialization.MapCodec;
 
 import javax.annotation.Nullable;
 
@@ -32,6 +35,8 @@ public class BlockFlatFace extends FaceAttachedHorizontalDirectionalBlock implem
     protected static final VoxelShape SOUTH_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 1.0D);
     protected static final VoxelShape WEST_AABB = Block.box(15.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
     protected static final VoxelShape EAST_AABB = Block.box(0.0D, 0.0D, 0.0D, 1.0D, 16.0D, 16.0D);
+
+    public static final MapCodec<BlockFlatFace> CODEC = simpleCodec(BlockFlatFace::new);
 
     public BlockFlatFace(BlockBehaviour.Properties properties) {
         super(properties);
@@ -93,5 +98,10 @@ public class BlockFlatFace extends FaceAttachedHorizontalDirectionalBlock implem
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
         blockStateBuilder.add(FACING, FACE, WATERLOGGED);
+    }
+
+    @Override
+    protected MapCodec<? extends FaceAttachedHorizontalDirectionalBlock> codec() {
+        return CODEC;
     }
 }

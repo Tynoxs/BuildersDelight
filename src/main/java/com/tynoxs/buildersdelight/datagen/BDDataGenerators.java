@@ -9,15 +9,16 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.common.data.ForgeAdvancementProvider;
+import net.neoforged.neoforge.common.data.internal.NeoForgeAdvancementProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-@Mod.EventBusSubscriber(modid = BuildersDelight.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = BuildersDelight.MODID)
 public class BDDataGenerators {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
@@ -26,9 +27,9 @@ public class BDDataGenerators {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeServer(), new BdRecipes(packOutput));
+        generator.addProvider(event.includeServer(), new BdRecipes(packOutput, lookupProvider));
 
-        generator.addProvider(event.includeServer(), BdBlockLootTableProvider.create(packOutput));
+        generator.addProvider(event.includeServer(), BdBlockLootTableProvider.create(packOutput, lookupProvider));
 
         BlockTagsProvider blockTagsProvider = new BdBlockTagProvider(packOutput, lookupProvider, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTagsProvider);
@@ -39,7 +40,7 @@ public class BDDataGenerators {
 
         generator.addProvider(event.includeClient(), new BdItemModelProvider(packOutput, existingFileHelper));
 
-        generator.addProvider(event.includeClient(), new ForgeAdvancementProvider(packOutput, lookupProvider, existingFileHelper, List.of(new BdAdvancementProvider())));
+        generator.addProvider(event.includeClient(), new NeoForgeAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
 
         generator.addProvider(event.includeClient(), new EnglishLangGen(packOutput, "en_us"));
         generator.addProvider(event.includeClient(), new GermanLangGen(packOutput, "de_de"));

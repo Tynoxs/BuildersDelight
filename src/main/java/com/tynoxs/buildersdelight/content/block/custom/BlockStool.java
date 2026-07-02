@@ -43,7 +43,7 @@ public class BlockStool extends Block  {
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult result)
+    public @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult result)
     {
         return EntitySit.create(level, blockPos, 0.3, player);
     }

@@ -84,7 +84,7 @@ public class BlockChair extends BlockStool {
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result)
+    public @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult result)
     {
         return EntitySit.create(level, pos, 0.4, player);
     }

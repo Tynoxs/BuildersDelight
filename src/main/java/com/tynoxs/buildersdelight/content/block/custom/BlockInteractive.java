@@ -34,7 +34,7 @@ public class BlockInteractive extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         if (!level.isClientSide && player.getAbilities().mayBuild) {
             BlockInteractiveState newState = (state.getValue(STATE) == BlockInteractiveState.OFF) ? BlockInteractiveState.ON : BlockInteractiveState.OFF;
             level.setBlock(pos, state.setValue(STATE, newState), 3);

@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
-public class BlockGlassBlock extends GlassBlock {
+public class BlockGlassBlock extends TransparentBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
     public BlockGlassBlock(BlockBehaviour.Properties properties) {

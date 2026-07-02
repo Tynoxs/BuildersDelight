@@ -21,6 +21,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
+import com.mojang.serialization.MapCodec;
+import com.tynoxs.buildersdelight.content.block.custom.BlockFlatFace;
+
 import javax.annotation.Nullable;
 
 public class BlockLantern extends FaceAttachedHorizontalDirectionalBlock implements SimpleWaterloggedBlock {
@@ -31,6 +34,8 @@ public class BlockLantern extends FaceAttachedHorizontalDirectionalBlock impleme
     protected static final VoxelShape MOUNTED_SOUTH = Block.box(3, 0, 0, 13, 16, 13);
     protected static final VoxelShape MOUNTED_WEST = Block.box(3, 0, 3, 16, 16, 13);
     protected static final VoxelShape MOUNTED_EAST = Block.box(0, 0, 3, 13, 16, 13);
+
+    public static final MapCodec<BlockLantern> CODEC = simpleCodec(BlockLantern::new);
 
     public BlockLantern(BlockBehaviour.Properties properties) {
         super(properties);
@@ -89,5 +94,10 @@ public class BlockLantern extends FaceAttachedHorizontalDirectionalBlock impleme
 
     public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
         blockStateBuilder.add(FACING, FACE, WATERLOGGED);
+    }
+
+    @Override
+    protected MapCodec<? extends FaceAttachedHorizontalDirectionalBlock> codec() {
+        return CODEC;
     }
 }

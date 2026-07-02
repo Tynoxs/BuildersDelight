@@ -12,11 +12,11 @@ public class BdTags {
     public static class Items {
 
         static TagKey<Item> tag(String name) {
-            return ItemTags.create(new ResourceLocation(BuildersDelight.MODID, name));
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, name));
         }
 
         private static TagKey<Item> forgeTag(String name) {
-            return ItemTags.create(new ResourceLocation("forge", name));
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
         }
     }
 
@@ -36,11 +36,11 @@ public class BdTags {
         public static final TagKey<Block> GLASS = tag("glass");
 
         private static TagKey<Block> tag(String name) {
-            return BlockTags.create(new ResourceLocation(BuildersDelight.MODID, name));
+            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, name));
         }
 
         private static TagKey<Block> forgeTag(String name) {
-            return BlockTags.create(new ResourceLocation("forge", name));
+            return BlockTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
         }
     }
 }

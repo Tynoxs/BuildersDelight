@@ -41,7 +41,7 @@ public class BlockSmallTable extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         if (!level.isClientSide && player.getAbilities().mayBuild) {
             TableTexture newTexture = (state.getValue(VARIANT) == TableTexture.VARIANT_1) ? TableTexture.VARIANT_2 : TableTexture.VARIANT_1;
             level.setBlock(pos, state.setValue(VARIANT, newTexture), 3);

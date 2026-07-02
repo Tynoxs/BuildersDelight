@@ -3,9 +3,10 @@ package com.tynoxs.buildersdelight.datagen.providers;
 import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.content.init.BdBlocks;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -16,27 +17,28 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.crafting.conditions.IConditionBuilder;
+import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class BdRecipes extends RecipeProvider implements IConditionBuilder {
     String[] woodTypes = {"acacia", "bamboo", "birch", "cherry", "crimson", "dark_oak", "jungle", "mangrove", "oak", "spruce", "warped"};
     String[] rockTypes = {"andesite", "granite", "diorite", "cobblestone", "stone_bricks"};
 
-    public BdRecipes(PackOutput pOutput) {
-        super(pOutput);
+    public BdRecipes(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> feature) {
+        super(pOutput, feature);
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
+    protected void buildRecipes(RecipeOutput pWriter) {
         registerFrameAndGlassRecipes(pWriter);
         registerStairsAndSlabRecipes(pWriter);
     }
 
-    private void registerFrameAndGlassRecipes(Consumer<FinishedRecipe> pWriter) {
+    private void registerFrameAndGlassRecipes(RecipeOutput pWriter) {
         Set<String> generatedIds = new HashSet<>();
 
         for (String woodType : woodTypes) {
@@ -57,7 +59,7 @@ public class BdRecipes extends RecipeProvider implements IConditionBuilder {
         }
     }
 
-    private void registerStairsAndSlabRecipes(Consumer<FinishedRecipe> pWriter) {
+    private void registerStairsAndSlabRecipes(RecipeOutput pWriter) {
         Set<String> generatedIds = new HashSet<>();
 
         for (String woodType : woodTypes) {
@@ -76,7 +78,7 @@ public class BdRecipes extends RecipeProvider implements IConditionBuilder {
         }
     }
 
-    private void generateFrameRecipe(Consumer<FinishedRecipe> pWriter, String woodType, int number, int plankNumber) {
+    private void generateFrameRecipe(RecipeOutput pWriter, String woodType, int number, int plankNumber) {
         String frameName = woodType + "_frame_" + number;
         String plankName = woodType + "_planks_" + plankNumber;
 
@@ -104,7 +106,7 @@ public class BdRecipes extends RecipeProvider implements IConditionBuilder {
         });
     }
 
-    private void generateStairsRecipe(Consumer<FinishedRecipe> pWriter, String woodType, int plankNumber) {
+    private void generateStairsRecipe(RecipeOutput pWriter, String woodType, int plankNumber) {
         String plankName = woodType + "_planks_" + plankNumber;
         String stairsName = woodType + "_stairs_" + plankNumber;
 
@@ -129,7 +131,7 @@ public class BdRecipes extends RecipeProvider implements IConditionBuilder {
         });
     }
 
-    private void generateSlabRecipe(Consumer<FinishedRecipe> pWriter, String woodType, int plankNumber) {
+    private void generateSlabRecipe(RecipeOutput pWriter, String woodType, int plankNumber) {
         String plankName = woodType + "_planks_" + plankNumber;
         String slabName = woodType + "_slab_" + plankNumber;
 
@@ -152,7 +154,7 @@ public class BdRecipes extends RecipeProvider implements IConditionBuilder {
         });
     }
 
-    private void generateGlassRecipe(Consumer<FinishedRecipe> pWriter, String woodType, int number, int plankNumber) {
+    private void generateGlassRecipe(RecipeOutput pWriter, String woodType, int number, int plankNumber) {
         String plankName = woodType + "_planks_" + plankNumber;
         String glassName = woodType + "_glass_" + number;
         String glassPaneName = woodType + "_glass_pane_" + number;
@@ -172,8 +174,8 @@ public class BdRecipes extends RecipeProvider implements IConditionBuilder {
                             .pattern("000")
                             .define('0', BdTags.Items.tag("glass"))
                             .define('1', woodPlanksTag)
-                            .unlockedBy("has_glass", has(Tags.Items.GLASS))
-                            .unlockedBy("has_glass_colorless", has(Tags.Items.GLASS_COLORLESS))
+                            .unlockedBy("has_glass", has(Tags.Items.GLASS_BLOCKS))
+                            .unlockedBy("has_glass_colorless", has(Tags.Items.GLASS_BLOCKS_COLORLESS))
                             .save(pWriter, getRecipeId(glassName));
                 }
             }
@@ -211,6 +213,6 @@ public class BdRecipes extends RecipeProvider implements IConditionBuilder {
     }
 
     private ResourceLocation getRecipeId(String name) {
-        return new ResourceLocation(BuildersDelight.MODID, name);
+        return ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, name);
     }
 }

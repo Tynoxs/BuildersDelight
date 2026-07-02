@@ -3,15 +3,17 @@ package com.tynoxs.buildersdelight.datagen.providers;
 import com.tynoxs.buildersdelight.content.block.custom.BlockInteractive;
 import com.tynoxs.buildersdelight.content.init.BdBlocks;
 import com.tynoxs.buildersdelight.datagen.blockstate.BdBlockStateCreator;
+import com.tynoxs.buildersdelight.datagen.providers.BdBlockStateProvider.CTBlockLoaderBuilder;
 import com.tynoxs.buildersdelight.content.block.connected.model.CTBlockModelLoader;
 import com.tynoxs.buildersdelight.content.block.connected.model.CTPaneModelLoader;
+
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.CustomLoaderBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 
 public class BdBlockStateProvider extends BdBlockStateCreator {
     public BdBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -879,19 +881,19 @@ public class BdBlockStateProvider extends BdBlockStateCreator {
 
     public static class CTBlockLoaderBuilder extends CustomLoaderBuilder<BlockModelBuilder> {
         public CTBlockLoaderBuilder(ResourceLocation loader, BlockModelBuilder parent, ExistingFileHelper existingFileHelper) {
-            super(loader, parent, existingFileHelper);
+            super(loader, parent, existingFileHelper, false);
         }
     }
 
     protected BlockModelBuilder registerCustomBlockLoader(Block block) {
-        return models().getBuilder(ForgeRegistries.BLOCKS.getKey(block).getPath())
+        return models().getBuilder(BuiltInRegistries.BLOCK_TYPE.getKey(block.CODEC).getPath())
             .parent(models().getExistingFile(mcLoc("cube")))
             .customLoader((builder, helper) -> new CTBlockLoaderBuilder(CTBlockModelLoader.GENERATOR_LOADER, builder, helper))
             .end();
     }
 
     protected BlockModelBuilder registerCustomPaneLoader(Block block) {
-        return models().getBuilder(ForgeRegistries.BLOCKS.getKey(block).getPath())
+        return models().getBuilder(BuiltInRegistries.BLOCK_TYPE.getKey(block.CODEC).getPath())
             .parent(models().getExistingFile(mcLoc("cube")))
             .customLoader((builder, helper) -> new CTBlockLoaderBuilder(CTPaneModelLoader.GENERATOR_LOADER, builder, helper))
             .end();
