@@ -8,9 +8,9 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.common.Tags.Items;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.Tags.Items;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;

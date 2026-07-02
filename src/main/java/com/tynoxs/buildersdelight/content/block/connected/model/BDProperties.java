@@ -1,8 +1,8 @@
 package com.tynoxs.buildersdelight.content.block.connected.model;
 
 import net.minecraft.core.Direction;
-import net.minecraftforge.client.model.data.ModelData;
-import net.minecraftforge.client.model.data.ModelProperty;
+import net.neoforged.neoforge.client.model.data.ModelData;
+import net.neoforged.neoforge.client.model.data.ModelProperty;
 
 import java.util.Map;
 

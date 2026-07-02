@@ -8,10 +8,10 @@ import com.tynoxs.buildersdelight.content.block.connected.model.CTPaneModelLoade
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.minecraftforge.client.model.generators.BlockModelBuilder;
-import net.minecraftforge.client.model.generators.CustomLoaderBuilder;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
+import net.neoforged.neoforge.client.model.generators.CustomLoaderBuilder;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.ForgeRegistries;
 
 public class BdBlockStateProvider extends BdBlockStateCreator {
     public BdBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {

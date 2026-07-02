@@ -2,7 +2,7 @@ package com.tynoxs.buildersdelight.datagen.lang;
 
 import com.tynoxs.buildersdelight.BuildersDelight;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 
 import java.util.HashSet;
 import java.util.Set;
