@@ -23,7 +23,7 @@ public class BlockWeatheringChain extends ChainBlock implements IWeatheringBlock
     }
 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        this.randomTick(state, level, pos, random);
+        super.randomTick(state, level, pos, random);
     }
 
     public boolean isRandomlyTicking(BlockState state) {

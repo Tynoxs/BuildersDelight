@@ -23,7 +23,7 @@ public class BlockWeatheringLantern extends BlockLantern implements IWeatheringB
     }
 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        this.randomTick(state, level, pos, random);
+        super.randomTick(state, level, pos, random);
     }
 
     public boolean isRandomlyTicking(BlockState state) {
