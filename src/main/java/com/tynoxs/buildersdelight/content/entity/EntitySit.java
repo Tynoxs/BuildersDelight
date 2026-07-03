@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.network.syncher.SynchedEntityData.Builder;
 import net.minecraft.server.level.ServerEntity;
 import net.minecraft.world.InteractionResult;
@@ -52,6 +53,9 @@ public class EntitySit extends Entity {
     }
 
     @Override
+    protected void defineSynchedData(SynchedEntityData.Builder p_333664_) {}
+
+    @Override
     protected void readAdditionalSaveData(CompoundTag compound) {}
 
     @Override
@@ -63,11 +67,12 @@ public class EntitySit extends Entity {
         return true;
     }
 
-    // @Override
-    // public Packet<ClientGamePacketListener> getAddEntityPacket(ServerEntity p_352110_)
-    // {
-    //     return NetworkHooks.getEntitySpawningPacket(this);
-    // }
+    @Override
+    public Packet<ClientGamePacketListener> getAddEntityPacket(ServerEntity p_352110_)
+    {
+        return super.getAddEntityPacket(p_352110_);
+        //return NetworkHooks.getEntitySpawningPacket(this);
+    }
 
     public static InteractionResult create(Level level, BlockPos pos, double yOffset, Player player)
     {
@@ -83,11 +88,5 @@ public class EntitySit extends Entity {
             }
         }
         return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected void defineSynchedData(Builder p_326003_) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'defineSynchedData'");
     }
 }
