@@ -2,23 +2,22 @@ name: Release
 
 on:
   push:
-    branches:
-      - '**'
     tags:
       - 'v*'
 
 permissions:
   contents: write
-  pull-requests: write
+
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
 
       - uses: actions/setup-java@v4
         with:
@@ -26,176 +25,29 @@ jobs:
           java-version: 21
           cache: gradle
 
-      - run: chmod +x gradlew
 
       - name: Build
-        run: ./gradlew build --no-daemon
-
-      - name: Upload mod jar
-        uses: actions/upload-artifact@v4
-        with:
-          name: mod-jar
-          path: build/libs/*.jar
-
-  create-tag:
-    if: |
-      github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-
-    outputs:
-      tag: ${{ steps.version.outputs.tag }}
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-
-      - name: Detect version
-        id: version
-        shell: bash
         run: |
-          VERSION=$(grep -E '^## ?(\[)?v?[0-9]+\.[0-9]+\.[0-9]+' CHANGES.md \
-            | head -1 \
-            | sed -E 's/^## ?\[?([^]]+)\]?.*/\1/' \
-            || true)
-
-          if [ -z "$VERSION" ]; then
-            echo "No version found in CHANGES.md"
-            exit 1
-          fi
-
-          TAG="v$VERSION"
-
-          echo "Detected version: $TAG"
-
-          if git tag --list | grep -qx "$TAG"; then
-            echo "Tag already exists: $TAG"
-            echo "exists=true" >> $GITHUB_OUTPUT
-            echo "tag=$TAG" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
-          echo "exists=false" >> $GITHUB_OUTPUT
-          echo "tag=$TAG" >> $GITHUB_OUTPUT
-
-
-      - name: Create tag
-        if: steps.version.outputs.exists != 'true'
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-
-          git tag ${{ steps.version.outputs.tag }}
-
-          git push origin ${{ steps.version.outputs.tag }}
-
-
-  check-release:
-    needs: build
-    if: github.event_name == 'push' && !(github.ref == format('refs/heads/{0}', github.event.repository.default_branch))
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Check new changelog version
-        id: changelog
-        shell: bash
-        run: |
-            if [ ! -f CHANGES.md ]; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-            exit 0
-            fi
-
-            VERSION=$(grep '^## v' CHANGES.md | head -1 | sed 's/## //' || true)
-
-            if [ -z "$VERSION" ]; then
-            echo "No version found in CHANGES.md"
-            echo "exists=true" >> $GITHUB_OUTPUT
-            exit 0
-            fi
-
-            echo "Detected version: $VERSION"
-
-            if git tag | grep -q "^$VERSION$"; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-            else
-            echo "exists=false" >> $GITHUB_OUTPUT
-            echo "version=$VERSION" >> $GITHUB_OUTPUT
-            fi
-
-
-      - name: Create PR
-        if: steps.changelog.outputs.exists == 'false'
-        uses: peter-evans/create-pull-request@v7
-        with:
-          title: "Release ${{ steps.changelog.outputs.version }}"
-          draft: true
-          body: |
-            Automated release PR.
-
-            Version:
-            ${{ steps.changelog.outputs.version }}
-
-            Changelog:
-            ```md
-            $(awk '/^## ${{ steps.changelog.outputs.version }}/,/^## /' CHANGES.md)
-            ```
-
-          branch: release/${{ steps.changelog.outputs.version }}
-          base: ${{ github.event.repository.default_branch }}
-
-
-  release:
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: [build, create-tag]
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-
-      - name: Download built jar
-        uses: actions/download-artifact@v4
-        with:
-          name: mod-jar
-          path: build/libs
+          chmod +x gradlew
+          ./gradlew build --no-daemon
 
 
       - name: Generate release notes
         shell: bash
         run: |
-          TAG=${GITHUB_REF_NAME}
-          PREVIOUS=$(git describe --tags --abbrev=0 "$TAG^" 2>/dev/null || echo "")
+          VERSION=${GITHUB_REF_NAME#v}
 
-          awk -v tag="$TAG" '
+          awk -v tag="$VERSION" '
           $0 ~ "^## "tag"$" {flag=1; next}
           /^## / && flag {exit}
           flag {print}
           ' CHANGES.md > RELEASE.md
 
-    
-      - name: Get release name
-        id: release_name
-        run: |
-          echo "name=${GITHUB_REF_NAME#v} release" >> $GITHUB_OUTPUT
 
       - name: Create Draft Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name }}
-          name: ${{ steps.release_name.outputs.name }}
+          name: "${{ github.ref_name }} release"
           draft: true
           body_path: RELEASE.md
           files: |
