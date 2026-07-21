@@ -189,7 +189,7 @@ jobs:
       - name: Get release name
         id: release_name
         run: |
-          echo "name=${{ needs.create-tag.outputs.tag }}" | sed 's/^v//' | xargs -I{} echo "name={} release" >> $GITHUB_OUTPUT
+          echo "name=${{ needs.create-tag.outputs.tag }}" | sed 's/^v//' | xargs -I{} echo "{} Release" >> $GITHUB_OUTPUT
 
       - name: Create Draft Release
         uses: softprops/action-gh-release@v2
