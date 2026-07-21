@@ -29,6 +29,52 @@ jobs:
       - run: chmod +x gradlew
       - run: ./gradlew build --no-daemon
 
+  create-tag:
+    needs: build
+    if: |
+      github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+
+      - name: Detect version
+        id: version
+        shell: bash
+        run: |
+          VERSION=$(grep '^## v' CHANGES.md | head -1 | sed 's/## //' || true)
+
+          if [ -z "$VERSION" ]; then
+            echo "No version found"
+            exit 1
+          fi
+
+          if git tag | grep -q "^$VERSION$"; then
+            echo "Tag already exists"
+            exit 1
+          fi
+
+          echo "tag=$VERSION" >> $GITHUB_OUTPUT
+
+
+      - name: Create tag
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git tag ${{ steps.version.outputs.tag }}
+
+          git push origin ${{ steps.version.outputs.tag }}
+
 
   check-release:
     needs: build
@@ -44,14 +90,27 @@ jobs:
         id: changelog
         shell: bash
         run: |
-          VERSION=$(grep '^## v' CHANGES.md | head -1 | sed 's/## //')
-
-          if git tag | grep -q "^$VERSION$"; then
+            if [ ! -f CHANGES.md ]; then
             echo "exists=true" >> $GITHUB_OUTPUT
-          else
+            exit 0
+            fi
+
+            VERSION=$(grep '^## v' CHANGES.md | head -1 | sed 's/## //' || true)
+
+            if [ -z "$VERSION" ]; then
+            echo "No version found in CHANGES.md"
+            echo "exists=true" >> $GITHUB_OUTPUT
+            exit 0
+            fi
+
+            echo "Detected version: $VERSION"
+
+            if git tag | grep -q "^$VERSION$"; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            else
             echo "exists=false" >> $GITHUB_OUTPUT
             echo "version=$VERSION" >> $GITHUB_OUTPUT
-          fi
+            fi
 
 
       - name: Create PR
@@ -59,6 +118,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           title: "Release ${{ steps.changelog.outputs.version }}"
+          draft: true
           body: |
             Automated release PR.
 
@@ -129,5 +189,6 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           body_path: RELEASE.md
+          draft: true
           files: |
             build/libs/*.jar
