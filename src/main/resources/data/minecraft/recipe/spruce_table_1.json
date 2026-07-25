@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 1,
   "ingredient": {
     "item": "buildersdelight:spruce_furniture_kit"
   },
-  "result": "buildersdelight:spruce_table_1"
+  "result": {
+    "count": 1,
+    "id": "buildersdelight:spruce_table_1"
+  }
 }
