@@ -8,10 +8,10 @@
   ],
   "key": {
     "0": {
-      "tag": "forge:stone"
+      "tag": "c:stones"
     },
     "1": {
-      "tag": "forge:ingots/iron"
+      "tag": "c:ingots/iron"
     }
   },
   "result": {
