@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "buildersdelight:cherry_furniture_kit"
+  },
+  "result": {
+    "count": 1,
+    "id": "buildersdelight:cherry_chair_2"
+  }
+}

@@ -12,19 +12,19 @@ import net.minecraft.client.resources.model.Material;
 import net.minecraft.client.resources.model.ModelBaker;
 import net.minecraft.client.resources.model.ModelState;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.event.ModelEvent;
-import net.minecraftforge.client.model.geometry.IGeometryBakingContext;
-import net.minecraftforge.client.model.geometry.IGeometryLoader;
-import net.minecraftforge.client.model.geometry.IUnbakedGeometry;
+import net.neoforged.neoforge.client.event.ModelEvent;
+import net.neoforged.neoforge.client.model.geometry.IGeometryBakingContext;
+import net.neoforged.neoforge.client.model.geometry.IGeometryLoader;
+import net.neoforged.neoforge.client.model.geometry.IUnbakedGeometry;
 
 import java.util.function.Function;
 
 public class CTPaneModelLoader implements IGeometryLoader<CTPaneModelLoader.CTModelGeometry> {
 
-    public static final ResourceLocation GENERATOR_LOADER = new ResourceLocation(BuildersDelight.MODID, "connectedpaneloader");
+    public static final ResourceLocation GENERATOR_LOADER = ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "connectedpaneloader");
 
     public static void register(ModelEvent.RegisterGeometryLoaders event) {
-        event.register("connectedpaneloader", new CTPaneModelLoader());
+        event.register(GENERATOR_LOADER, new CTPaneModelLoader());
     }
 
     @Override
@@ -34,8 +34,8 @@ public class CTPaneModelLoader implements IGeometryLoader<CTPaneModelLoader.CTMo
 
     public static class CTModelGeometry implements IUnbakedGeometry<CTModelGeometry> {
         @Override
-        public BakedModel bake(IGeometryBakingContext context, ModelBaker baker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides, ResourceLocation modelLocation) {
-            return new CTConnectedPaneBakedModel(context, modelLocation);
+        public BakedModel bake(IGeometryBakingContext context, ModelBaker baker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides) {
+            return new CTConnectedPaneBakedModel(context, GENERATOR_LOADER);
         }
     }
 }

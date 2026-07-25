@@ -16,7 +16,7 @@ public class ChiselRecipeCategory extends BDRecipeCategory<ChiselRecipe>
 {
     public ChiselRecipeCategory(IGuiHelper guiHelper) {
         super(guiHelper, JeiIntegration.CHISEL_RECIPE_TYPE, "container.iron_chisel");
-        ResourceLocation location = new ResourceLocation("buildersdelight:textures/gui/chisel_gui_jei.png");
+        ResourceLocation location = ResourceLocation.fromNamespaceAndPath("buildersdelight", "textures/gui/chisel_gui_jei.png");
         setBackground(guiHelper.createDrawable(location, 0, 0, 176, 85));
         setIcon(guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BdItems.IRON_CHISEL.get())));
     }

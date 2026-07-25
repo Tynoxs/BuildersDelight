@@ -8,16 +8,18 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredItem;
+
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class BdBlockTagProvider extends BlockTagsProvider {
     public BdBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
@@ -27,12 +29,12 @@ public class BdBlockTagProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
-        Map<String, List<Consumer<RegistryObject<Item>>>> tagMappings = createTagMappings();
-        Map<String, RegistryObject<Item>> allBlockItems = getAllBlockItems();
+        Map<String, List<Consumer<Supplier<Item>>>> tagMappings = createTagMappings();
+        Map<String, Supplier<Item>> allBlockItems = getAllBlockItems();
 
         this.tag(BdTags.Blocks.GLASS)
-                .addTags(Tags.Blocks.GLASS)
-                .addTags(Tags.Blocks.GLASS_COLORLESS);
+                .addTags(Tags.Blocks.GLASS_BLOCKS)
+                .addTags(Tags.Blocks.GLASS_BLOCKS_COLORLESS);
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(BdDecoration.EXPOSED_LANTERN_3.get(),
@@ -59,26 +61,26 @@ public class BdBlockTagProvider extends BlockTagsProvider {
         BdBlockCount.BLOCK_COUNTS.forEach((blockType, maxBlockNumber) -> {
             for (int i = 1; i <= maxBlockNumber; i++) {
                 String registryName = blockType.toLowerCase() + "_" + i;
-                RegistryObject<Item> itemRegistryObject = allBlockItems.get(registryName);
+                Supplier<Item> itemSupplier = allBlockItems.get(registryName);
 
-                if (itemRegistryObject != null) {
+                if (itemSupplier != null) {
                     tagMappings.getOrDefault(blockType, Collections.emptyList())
-                            .forEach(consumer -> consumer.accept(itemRegistryObject));
+                            .forEach(consumer -> consumer.accept(itemSupplier));
                 }
             }
         });
     }
 
-    private Map<String, RegistryObject<Item>> getAllBlockItems() {
-        Map<String, RegistryObject<Item>> allBlockItems = new HashMap<>();
+    private Map<String, Supplier<Item>> getAllBlockItems() {
+        Map<String, Supplier<Item>> allBlockItems = new HashMap<>();
         allBlockItems.putAll(BdBlocks.getBlockItemMap());
         allBlockItems.putAll(BdDecoration.getDecorationItemMap());
 
         return allBlockItems;
     }
 
-    private Map<String, List<Consumer<RegistryObject<Item>>>> createTagMappings() {
-        Map<String, List<Consumer<RegistryObject<Item>>>> tagMappings = new HashMap<>();
+    private Map<String, List<Consumer<Supplier<Item>>>> createTagMappings() {
+        Map<String, List<Consumer<Supplier<Item>>>> tagMappings = new HashMap<>();
 
         tagMappings.put("ACACIA_CHAIR", Collections.singletonList(this::tagMineableWithAxe));
         tagMappings.put("ACACIA_TABLE", Collections.singletonList(this::tagMineableWithAxe));
@@ -204,33 +206,33 @@ public class BdBlockTagProvider extends BlockTagsProvider {
         return tagMappings;
     }
 
-    private void tagMineableWithAxe(RegistryObject<Item> itemRegistryObject) {
-        BlockItem blockItem = (BlockItem) itemRegistryObject.get();
+    private void tagMineableWithAxe(Supplier<Item> itemSupplier) {
+        BlockItem blockItem = (BlockItem) itemSupplier.get();
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(blockItem.getBlock());
     }
 
-    private void tagMineableWithPickaxe(RegistryObject<Item> itemRegistryObject) {
-        BlockItem blockItem = (BlockItem) itemRegistryObject.get();
+    private void tagMineableWithPickaxe(Supplier<Item> itemDeferredItem) {
+        BlockItem blockItem = (BlockItem) itemDeferredItem.get();
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(blockItem.getBlock());
     }
 
-    private void tagMineableWithHoe(RegistryObject<Item> itemRegistryObject) {
-        BlockItem blockItem = (BlockItem) itemRegistryObject.get();
+    private void tagMineableWithHoe(Supplier<Item> itemDeferredItem) {
+        BlockItem blockItem = (BlockItem) itemDeferredItem.get();
         this.tag(BlockTags.MINEABLE_WITH_HOE).add(blockItem.getBlock());
     }
 
-    private void tagPlanks(RegistryObject<Item> itemRegistryObject) {
-        BlockItem blockItem = (BlockItem) itemRegistryObject.get();
+    private void tagPlanks(Supplier<Item> itemDeferredItem) {
+        BlockItem blockItem = (BlockItem) itemDeferredItem.get();
         this.tag(BlockTags.PLANKS).add(blockItem.getBlock());
     }
 
-    private void tagWoodenStairs(RegistryObject<Item> itemRegistryObject) {
-        BlockItem blockItem = (BlockItem) itemRegistryObject.get();
+    private void tagWoodenStairs(Supplier<Item> itemDeferredItem) {
+        BlockItem blockItem = (BlockItem) itemDeferredItem.get();
         this.tag(BlockTags.WOODEN_STAIRS).add(blockItem.getBlock());
     }
 
-    private void tagWoodenSlabs(RegistryObject<Item> itemRegistryObject) {
-        BlockItem blockItem = (BlockItem) itemRegistryObject.get();
+    private void tagWoodenSlabs(Supplier<Item> itemDeferredItem) {
+        BlockItem blockItem = (BlockItem) itemDeferredItem.get();
         this.tag(BlockTags.WOODEN_SLABS).add(blockItem.getBlock());
     }
 }

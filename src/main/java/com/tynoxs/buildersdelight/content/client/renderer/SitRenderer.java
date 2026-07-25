@@ -22,5 +22,5 @@ public class SitRenderer extends EntityRenderer<EntitySit>
     }
 
     @Override
-    protected void renderNameTag(EntitySit entity, Component component, PoseStack stack, MultiBufferSource source, int light) {}
+    protected void renderNameTag(EntitySit entity, Component component, PoseStack stack, MultiBufferSource source, int light, float f) {}
 }

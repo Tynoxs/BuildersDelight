@@ -49,7 +49,7 @@ public class BlockLamp extends RedstoneLampBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
         if (!world.isClientSide && player.getAbilities().mayBuild) {
             boolean isLit = state.getValue(LIT);
 

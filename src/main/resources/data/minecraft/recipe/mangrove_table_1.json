@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "buildersdelight:mangrove_furniture_kit"
+  },
+  "result": {
+    "count": 1,
+    "id": "buildersdelight:mangrove_table_1"
+  }
+}

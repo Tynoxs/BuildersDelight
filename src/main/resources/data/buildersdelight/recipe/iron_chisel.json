@@ -1,0 +1,23 @@
+{
+  "group": "buildersdelight",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 01",
+	" 20"
+  ],
+  "key": {
+    "0": {
+      "tag": "c:strings"
+    },
+	"1": {
+      "tag": "c:ingots/iron"
+    },
+    "2": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "buildersdelight:iron_chisel",
+    "count": 1
+  }
+}

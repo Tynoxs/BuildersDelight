@@ -5,7 +5,7 @@ import com.tynoxs.buildersdelight.content.init.BdBlocks;
 import com.tynoxs.buildersdelight.content.init.BdDecoration;
 import com.tynoxs.buildersdelight.content.init.BdItems;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 
 import java.util.HashSet;
 import java.util.Set;

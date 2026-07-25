@@ -1,5 +1,6 @@
 package com.tynoxs.buildersdelight.content.gui.menus;
 
+import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.content.init.BdConfig;
 import com.tynoxs.buildersdelight.content.init.BdContainers;
 import com.tynoxs.buildersdelight.content.init.BdSounds;
@@ -15,11 +16,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mod.EventBusSubscriber
+//@EventBusSubscriber(modid = BuildersDelight.MODID)
 public class ContainerChisel extends AbstractContainerMenu {
     private final ContainerLevelAccess access;
 

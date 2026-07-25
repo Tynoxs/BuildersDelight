@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "buildersdelight:dark_oak_furniture_kit"
+  },
+  "result": {
+    "count": 1,
+    "id": "buildersdelight:dark_oak_chair_2"
+  }
+}

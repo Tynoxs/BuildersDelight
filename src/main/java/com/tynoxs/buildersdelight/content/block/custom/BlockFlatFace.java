@@ -8,6 +8,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -19,6 +20,8 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+
+import com.mojang.serialization.MapCodec;
 
 import javax.annotation.Nullable;
 
@@ -33,15 +36,19 @@ public class BlockFlatFace extends FaceAttachedHorizontalDirectionalBlock implem
     protected static final VoxelShape WEST_AABB = Block.box(15.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
     protected static final VoxelShape EAST_AABB = Block.box(0.0D, 0.0D, 0.0D, 1.0D, 16.0D, 16.0D);
 
+    public static final MapCodec<BlockFlatFace> CODEC = simpleCodec(BlockFlatFace::new);
+
     public BlockFlatFace(BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACE, AttachFace.FLOOR).setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
 
+    @Override
     public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
         return true;
     }
 
+    @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
         FluidState fluidstate = blockPlaceContext.getLevel().getFluidState(blockPlaceContext.getClickedPos());
@@ -62,6 +69,7 @@ public class BlockFlatFace extends FaceAttachedHorizontalDirectionalBlock implem
         return null;
     }
 
+    @Override
     public @NotNull VoxelShape getShape(BlockState blockState, @NotNull BlockGetter blockGetter, @NotNull BlockPos blockPos, @NotNull CollisionContext collisionContext) {
         Direction direction = blockState.getValue(FACING);
         switch(blockState.getValue(FACE)) {
@@ -87,11 +95,18 @@ public class BlockFlatFace extends FaceAttachedHorizontalDirectionalBlock implem
         }
     }
 
+    @Override
     public FluidState getFluidState(BlockState blockState) {
         return blockState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(blockState);
     }
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
         blockStateBuilder.add(FACING, FACE, WATERLOGGED);
+    }
+
+    @Override
+    protected MapCodec<? extends FaceAttachedHorizontalDirectionalBlock> codec() {
+        return CODEC;
     }
 }

@@ -36,12 +36,13 @@ public class ClientChiselRecipeFactory {
     }
 
     public void loadClientRecipes(){
-        ReloadableResourceManager resourceManager = new ReloadableResourceManager(PackType.SERVER_DATA);
-        List<PackResources> list = minecraft.getResourcePackRepository().openAllSelected();
-        ReloadInstance reloadInstance = resourceManager.createReload(Util.backgroundExecutor(),minecraft, RESOURCE_RELOAD_INITIAL_TASK,  list);
-        while(!reloadInstance.isDone()){
+        //ReloadableResourceManager resourceManager = new ReloadableResourceManager(PackType.SERVER_DATA);
+        ResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
+        // List<PackResources> list = minecraft.getResourcePackRepository().openAllSelected();
+        // ReloadInstance reloadInstance = resourceManager.createReload(Util.backgroundExecutor(), minecraft, RESOURCE_RELOAD_INITIAL_TASK, list);
+        // while(!reloadInstance.isDone()){
 
-        }
+        // }
 
         recipeFactory.clear();
 

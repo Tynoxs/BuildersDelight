@@ -8,15 +8,16 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.common.Tags.Items;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.common.Tags.Items;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class BdItemTagProvider extends ItemTagsProvider {
 
@@ -40,7 +41,7 @@ public class BdItemTagProvider extends ItemTagsProvider {
 
             for (int i = 1; i <= maxBlockNumber; i++) {
                 String registryName = blockType.toLowerCase() + "_" + i;
-                RegistryObject<Item> itemRegistryObject = BdBlocks.getBlockItemMap().get(registryName);
+                Supplier<Item> itemRegistryObject = BdBlocks.getBlockItemMap().get(registryName);
 
                 if (itemRegistryObject != null) {
                     addTagsForBlockType(blockType, itemRegistryObject.get());
@@ -130,13 +131,13 @@ public class BdItemTagProvider extends ItemTagsProvider {
     }
 
     private void tagCobblestone(Item item) {
-        this.tag(Items.COBBLESTONE).add(item);
+        this.tag(Items.COBBLESTONES).add(item);
         this.tag(ItemTags.STONE_TOOL_MATERIALS).add(item);
     }
 
     private void tagGlass(Item item) {
-        this.tag(Items.GLASS).add(item);
-        this.tag(Items.GLASS_COLORLESS).add(item);
+        this.tag(Items.GLASS_BLOCKS).add(item);
+        this.tag(Items.GLASS_BLOCKS_COLORLESS).add(item);
     }
 
     private void tagGlassPanes(Item item) {
@@ -145,7 +146,7 @@ public class BdItemTagProvider extends ItemTagsProvider {
     }
 
     private void tagStone(Item item) {
-        this.tag(Items.STONE).add(item);
+        this.tag(Items.STONES).add(item);
     }
 
     private void tagPlanks(Item item) {
@@ -161,7 +162,7 @@ public class BdItemTagProvider extends ItemTagsProvider {
     }
 
     private void addSandstoneTags(Item item) {
-        this.tag(Items.SANDSTONE).add(item);
+        this.tag(Items.SANDSTONE_BLOCKS).add(item);
     }
 
     @Override

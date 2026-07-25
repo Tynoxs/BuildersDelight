@@ -1,16 +1,16 @@
 package com.tynoxs.buildersdelight.content.init;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class BdConfig {
-    public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-    public static final ForgeConfigSpec SPEC;
+    public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+    public static final ModConfigSpec SPEC;
 
-    public static final ForgeConfigSpec.ConfigValue<Boolean> playGuiOpenSound;
-    public static final ForgeConfigSpec.ConfigValue<Boolean> playChiselingSound;
+    public static final ModConfigSpec.ConfigValue<Boolean> playGuiOpenSound;
+    public static final ModConfigSpec.ConfigValue<Boolean> playChiselingSound;
 
-    public static ForgeConfigSpec.ConfigValue<Boolean> shouldPlayGuiOpenSound;
-    public static ForgeConfigSpec.ConfigValue<Boolean> shouldPlayChiselingSound;
+    public static ModConfigSpec.ConfigValue<Boolean> shouldPlayGuiOpenSound;
+    public static ModConfigSpec.ConfigValue<Boolean> shouldPlayChiselingSound;
 
 
 

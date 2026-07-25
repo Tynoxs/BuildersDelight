@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "buildersdelight:bamboo_furniture_kit"
+  },
+  "result": {
+    "count": 1,
+    "id": "buildersdelight:bamboo_chair_2"
+  }
+}

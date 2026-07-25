@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "buildersdelight:warped_furniture_kit"
+  },
+  "result": {
+    "count": 1,
+    "id": "buildersdelight:warped_chair_2"
+  }
+}

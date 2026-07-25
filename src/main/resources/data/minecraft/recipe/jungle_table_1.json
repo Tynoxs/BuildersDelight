@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "buildersdelight:jungle_furniture_kit"
+  },
+  "result": {
+    "count": 1,
+    "id": "buildersdelight:jungle_table_1"
+  }
+}

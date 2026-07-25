@@ -24,16 +24,16 @@ public class ChiselScreen extends AbstractContainerScreen<ContainerChisel> {
 		this.imageHeight = 200;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("buildersdelight:textures/gui/chisel_gui.png");
-	private static final ResourceLocation chisel_all_button = new ResourceLocation("buildersdelight:textures/gui/chisel_all_button.png");
-	private static final ResourceLocation chisel_hover_button = new ResourceLocation("buildersdelight:textures/gui/chisel_hover_button.png");
-	private static final ResourceLocation right_arrow_green = new ResourceLocation("buildersdelight:textures/gui/right_arrow_green.png");
-	private static final ResourceLocation right_arrow_red = new ResourceLocation("buildersdelight:textures/gui/right_arrow_red.png");
-	private static final ResourceLocation down_arrow_green = new ResourceLocation("buildersdelight:textures/gui/down_arrow_green.png");
+	private static final ResourceLocation texture = ResourceLocation.parse("buildersdelight:textures/gui/chisel_gui.png");
+	private static final ResourceLocation chisel_all_button = ResourceLocation.parse("buildersdelight:textures/gui/chisel_all_button.png");
+	private static final ResourceLocation chisel_hover_button = ResourceLocation.parse("buildersdelight:textures/gui/chisel_hover_button.png");
+	private static final ResourceLocation right_arrow_green = ResourceLocation.parse("buildersdelight:textures/gui/right_arrow_green.png");
+	private static final ResourceLocation right_arrow_red = ResourceLocation.parse("buildersdelight:textures/gui/right_arrow_red.png");
+	private static final ResourceLocation down_arrow_green = ResourceLocation.parse("buildersdelight:textures/gui/down_arrow_green.png");
 
 	@Override
 	public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-		this.renderBackground(graphics);
+		this.renderBackground(graphics, mouseX, mouseY, partialTicks);
 		super.render(graphics, mouseX, mouseY, partialTicks);
 		this.renderTooltip(graphics, mouseX, mouseY);
 	}

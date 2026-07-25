@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 
 public class BlockCandle extends LanternLightable {
     protected final ParticleOptions flameParticle;
-    public static final BooleanProperty LIT = BooleanProperty.create("lit");
+    //public static final BooleanProperty LIT = BooleanProperty.create("lit");
     protected static final VoxelShape HANGING = Block.box(0, 0, 0, 16, 16, 16);
     protected static final VoxelShape STANDING = Block.box(5, 0, 5, 11, 15, 11);
     protected static final VoxelShape MOUNTED_NORTH = Block.box(4, 1, 6, 12, 15, 16);

@@ -4,7 +4,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -34,7 +36,18 @@ public class BlockInteractive extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected ItemInteractionResult useItemOn(ItemStack p_316304_, BlockState state, Level level,
+            BlockPos pos, Player player, InteractionHand p_316595_, BlockHitResult hit) {
+        if (!level.isClientSide && player.getAbilities().mayBuild) {
+            BlockInteractiveState newState = (state.getValue(STATE) == BlockInteractiveState.OFF) ? BlockInteractiveState.ON : BlockInteractiveState.OFF;
+            level.setBlock(pos, state.setValue(STATE, newState), 3);
+        }
+
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    @Override
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         if (!level.isClientSide && player.getAbilities().mayBuild) {
             BlockInteractiveState newState = (state.getValue(STATE) == BlockInteractiveState.OFF) ? BlockInteractiveState.ON : BlockInteractiveState.OFF;
             level.setBlock(pos, state.setValue(STATE, newState), 3);

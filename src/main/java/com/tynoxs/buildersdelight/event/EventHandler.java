@@ -5,12 +5,13 @@ import com.tynoxs.buildersdelight.content.block.custom.IWeatheringBlock;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ToolActions;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.event.level.BlockEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.event.level.BlockEvent;
 
-@Mod.EventBusSubscriber(modid = BuildersDelight.MODID)
+
+@EventBusSubscriber(modid = BuildersDelight.MODID)
 public class EventHandler
 {
     @SubscribeEvent
@@ -19,9 +20,9 @@ public class EventHandler
         LevelAccessor level = event.getLevel();
 
         BlockState blockState = event.getState();
-        if (event.getToolAction().equals(ToolActions.AXE_WAX_OFF)) {
+        if (event.getItemAbility().equals(ItemAbilities.AXE_WAX_OFF)) {
             IWeatheringBlock.getUnwaxed(blockState).ifPresent(event::setFinalState);
-        } else if (event.getToolAction().equals(ToolActions.AXE_SCRAPE) && block instanceof IWeatheringBlock) {
+        } else if (event.getItemAbility().equals(ItemAbilities.AXE_SCRAPE) && block instanceof IWeatheringBlock) {
             IWeatheringBlock.getPrevious(blockState).ifPresent(event::setFinalState);
         }
     }

@@ -17,8 +17,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
 
-import net.minecraftforge.network.NetworkHooks;
-
 import javax.annotation.Nullable;
 
 public class BdIronChisel extends Item {
@@ -33,10 +31,10 @@ public class BdIronChisel extends Item {
 
         if (!world.isClientSide) {
             if (BdConfig.shouldPlayGuiOpenSound.get()) {
-                world.playSound(null, player, SoundEvents.ARMOR_EQUIP_LEATHER, SoundSource.PLAYERS, 1f, 1f);
+                world.playSound(player, player.blockPosition(), SoundEvents.ARMOR_EQUIP_LEATHER.value(), SoundSource.PLAYERS, 1f, 1f);
             }
 
-            NetworkHooks.openScreen((ServerPlayer) player, new MenuProvider() {
+            ((ServerPlayer)player).openMenu(new MenuProvider() {
                 @Override
                 public Component getDisplayName() {
                     return Component.translatable("container.iron_chisel");
