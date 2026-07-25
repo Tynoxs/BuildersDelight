@@ -4,7 +4,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -40,38 +42,53 @@ public class BlockSmallTable extends Block {
         }
     }
 
-    @Override
-    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+    protected ItemInteractionResult use(BlockState state, Level level, BlockPos pos, Player player)
+    {
         if (!level.isClientSide && player.getAbilities().mayBuild) {
             TableTexture newTexture = (state.getValue(VARIANT) == TableTexture.VARIANT_1) ? TableTexture.VARIANT_2 : TableTexture.VARIANT_1;
             level.setBlock(pos, state.setValue(VARIANT, newTexture), 3);
         }
 
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }
 
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack p_316304_, BlockState state, Level level,
+            BlockPos pos, Player player, InteractionHand p_316595_, BlockHitResult hit) {
+        return use(state, level, pos, player);
+    }
+
+    @Override
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        return use(state, level, pos, player).result();
+    }
+
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(VARIANT);
     }
 
     public BlockSmallTable(BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(VARIANT, TableTexture.VARIANT_1));
+        super.registerDefaultState(this.stateDefinition.any().setValue(VARIANT, TableTexture.VARIANT_1));
     }
 
+    @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
+    @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter getter, BlockPos blockPos, CollisionContext ctx) {
         return SHAPE;
     }
 
+    @Override
     public VoxelShape getOcclusionShape(BlockState blockState, BlockGetter getter, BlockPos blockPos) {
-
         return SHAPE;
     }
 
+    @Override
     public VoxelShape getCollisionShape(BlockState blockState, BlockGetter getter, BlockPos blockPos, CollisionContext ctx) {
         return SHAPE;
     }

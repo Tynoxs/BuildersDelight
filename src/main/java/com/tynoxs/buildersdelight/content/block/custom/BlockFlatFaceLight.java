@@ -34,6 +34,7 @@ public class BlockFlatFaceLight extends BlockFlatFace {
         this.registerDefaultState(this.defaultBlockState().setValue(FACE, AttachFace.FLOOR).setValue(LIT, Boolean.FALSE).setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
 
+    @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
         FluidState fluidstate = blockPlaceContext.getLevel().getFluidState(blockPlaceContext.getClickedPos());
@@ -54,6 +55,7 @@ public class BlockFlatFaceLight extends BlockFlatFace {
         return null;
     }
 
+    @Override
     public void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos1, boolean b) {
         if (!level.isClientSide) {
             boolean flag = blockState.getValue(LIT);
@@ -84,12 +86,14 @@ public class BlockFlatFaceLight extends BlockFlatFace {
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
+    @Override
     public void tick(BlockState blockState, ServerLevel world, BlockPos blockPos, RandomSource random) {
         if (blockState.getValue(LIT) && !world.hasNeighborSignal(blockPos)) {
             world.setBlock(blockPos, blockState.cycle(LIT), 2);
         }
     }
 
+    @Override
     public @NotNull VoxelShape getShape(BlockState p_51104_, @NotNull BlockGetter p_51105_, @NotNull BlockPos p_51106_, @NotNull CollisionContext p_51107_) {
         Direction direction = p_51104_.getValue(FACING);
         switch(p_51104_.getValue(FACE)) {
@@ -115,6 +119,7 @@ public class BlockFlatFaceLight extends BlockFlatFace {
         }
     }
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
         blockStateBuilder.add(FACING, FACE, LIT, WATERLOGGED);
     }

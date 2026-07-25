@@ -43,10 +43,12 @@ public class BlockFlatFace extends FaceAttachedHorizontalDirectionalBlock implem
         this.registerDefaultState(this.stateDefinition.any().setValue(FACE, AttachFace.FLOOR).setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
 
+    @Override
     public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
         return true;
     }
 
+    @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
         FluidState fluidstate = blockPlaceContext.getLevel().getFluidState(blockPlaceContext.getClickedPos());
@@ -67,6 +69,7 @@ public class BlockFlatFace extends FaceAttachedHorizontalDirectionalBlock implem
         return null;
     }
 
+    @Override
     public @NotNull VoxelShape getShape(BlockState blockState, @NotNull BlockGetter blockGetter, @NotNull BlockPos blockPos, @NotNull CollisionContext collisionContext) {
         Direction direction = blockState.getValue(FACING);
         switch(blockState.getValue(FACE)) {
@@ -92,10 +95,12 @@ public class BlockFlatFace extends FaceAttachedHorizontalDirectionalBlock implem
         }
     }
 
+    @Override
     public FluidState getFluidState(BlockState blockState) {
         return blockState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(blockState);
     }
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
         blockStateBuilder.add(FACING, FACE, WATERLOGGED);
     }

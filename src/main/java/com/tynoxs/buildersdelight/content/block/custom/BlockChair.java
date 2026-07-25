@@ -37,10 +37,12 @@ public class BlockChair extends BlockStool {
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
+    @Override
     public RenderShape getRenderShape(BlockState blockState) {
         return RenderShape.MODEL;
     }
 
+    @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext ctx) {
         Direction direction = blockState.getValue(FACING);
         return switch (direction) {
@@ -51,6 +53,7 @@ public class BlockChair extends BlockStool {
         };
     }
 
+    @Override
     public VoxelShape getOcclusionShape(BlockState p_54584_, BlockGetter p_54585_, BlockPos p_54586_) {
         return FACING_NORTH;
     }
@@ -82,6 +85,7 @@ public class BlockChair extends BlockStool {
         return null;
     }
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
         blockStateBuilder.add(FACING);
     }
