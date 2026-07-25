@@ -22,14 +22,18 @@ public class BlockWeatheringChain extends ChainBlock implements IWeatheringBlock
         this.weatherState = weatherState;
     }
 
+    @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.randomTick(state, level, pos, random);
+        changeOverTime(state, level, pos, random);
     }
 
+    @Override
     public boolean isRandomlyTicking(BlockState state) {
         return IWeatheringBlock.getNext(state.getBlock()).isPresent();
     }
 
+    @Override
     public WeatherState getAge() {
         return this.weatherState;
     }

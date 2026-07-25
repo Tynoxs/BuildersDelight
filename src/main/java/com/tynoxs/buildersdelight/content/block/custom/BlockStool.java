@@ -4,7 +4,9 @@ import com.tynoxs.buildersdelight.content.entity.EntitySit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -17,34 +19,46 @@ import org.jetbrains.annotations.NotNull;
 
 public class BlockStool extends Block  {
     protected static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 11, 14);
+    protected static final Double YOFFSET = 0.6;
 
     public BlockStool(Properties properties) {
         super(properties);
     }
 
+    @Override
     public RenderShape getRenderShape(BlockState blockState) {
         return RenderShape.MODEL;
     }
 
+    @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter getter, BlockPos blockPos, CollisionContext ctx) {
         return SHAPE;
     }
 
+    @Override
     public VoxelShape getOcclusionShape(BlockState blockState, BlockGetter getter, BlockPos blockPos) {
         return SHAPE;
     }
 
+    @Override
     public VoxelShape getCollisionShape(BlockState blockState, BlockGetter getter, BlockPos blockPos, CollisionContext ctx) {
         return SHAPE;
     }
 
+    @Override
     public boolean useShapeForLightOcclusion(BlockState blockState) {
         return true;
     }
 
     @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level,
+            BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult result) {
+        return EntitySit.create(level, blockPos, YOFFSET, player);
+    }
+
+    @Override
     public @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult result)
     {
-        return EntitySit.create(level, blockPos, 0.3, player);
+        return EntitySit.create(level, blockPos, YOFFSET, player).result();
     }
 }

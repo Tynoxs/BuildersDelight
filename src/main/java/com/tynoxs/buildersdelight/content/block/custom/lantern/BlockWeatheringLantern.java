@@ -22,14 +22,23 @@ public class BlockWeatheringLantern extends BlockLantern implements IWeatheringB
         this.weatherState = weatherState;
     }
 
+    @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.randomTick(state, level, pos, random);
+        changeOverTime(state, level, pos, random);
     }
 
+    @Override
+    protected void tick(BlockState p_222945_, ServerLevel p_222946_, BlockPos p_222947_, RandomSource p_222948_) {
+        super.tick(p_222945_, p_222946_, p_222947_, p_222948_);
+    }
+
+    @Override
     public boolean isRandomlyTicking(BlockState state) {
         return IWeatheringBlock.getNext(state.getBlock()).isPresent();
     }
 
+    @Override
     public WeatherState getAge() {
         return this.weatherState;
     }

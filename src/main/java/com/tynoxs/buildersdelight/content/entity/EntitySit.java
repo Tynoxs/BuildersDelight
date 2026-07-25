@@ -9,10 +9,13 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.network.syncher.SynchedEntityData.Builder;
 import net.minecraft.server.level.ServerEntity;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityAttachment;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.NetworkInitialization;
 
 import java.util.List;
@@ -59,6 +62,11 @@ public class EntitySit extends Entity {
     protected void readAdditionalSaveData(CompoundTag compound) {}
 
     @Override
+    public Vec3 getVehicleAttachmentPoint(Entity p_316322_) {
+        return this.getAttachments().get(EntityAttachment.PASSENGER, 0, 0.0F);
+    }
+
+    @Override
     protected void addAdditionalSaveData(CompoundTag compound) {}
 
     @Override
@@ -74,7 +82,7 @@ public class EntitySit extends Entity {
         //return NetworkHooks.getEntitySpawningPacket(this);
     }
 
-    public static InteractionResult create(Level level, BlockPos pos, double yOffset, Player player)
+    public static ItemInteractionResult create(Level level, BlockPos pos, double yOffset, Player player)
     {
         if(!level.isClientSide())
         {
@@ -87,6 +95,6 @@ public class EntitySit extends Entity {
 
             }
         }
-        return InteractionResult.SUCCESS;
+        return ItemInteractionResult.SUCCESS;
     }
 }

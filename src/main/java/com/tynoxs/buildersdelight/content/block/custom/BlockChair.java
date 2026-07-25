@@ -5,7 +5,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -28,6 +30,7 @@ public class BlockChair extends BlockStool {
     protected static final VoxelShape FACING_SOUTH = Shapes.or(Block.box(2, 8, 1, 14, 11, 13), Block.box(2, 0, 13, 4, 8, 15), Block.box(12, 0, 13, 14, 8, 15), Block.box(2, 8, 13, 14, 11, 15), Block.box(2, 11, 13, 14, 26, 15), Block.box(2, 0, 1, 4, 8, 3), Block.box(12, 0, 1, 14, 8, 3), Block.box(2.5, 4, 3, 2.5, 6, 13), Block.box(13.5, 4, 3, 13.5, 6, 13), Block.box(4, 4, 1.5, 12, 6, 1.5), Block.box(4, 4, 14.5, 12, 6, 14.5));
     protected static final VoxelShape FACING_WEST = Shapes.or(Block.box(3, 8, 2, 15, 11, 14), Block.box(1, 0, 2, 3, 8, 4), Block.box(1, 0, 12, 3, 8, 14), Block.box(1, 8, 2, 3, 11, 14), Block.box(1, 11, 2, 3, 26, 14), Block.box(13, 0, 2, 15, 8, 4), Block.box(13, 0, 12, 15, 8, 14), Block.box(3, 4, 2.5, 13, 6, 2.5), Block.box(3, 4, 13.5, 13, 6, 13.5), Block.box(14.5, 4, 4, 14.5, 6, 12), Block.box(1.5, 4, 4, 1.5, 6, 12));
     protected static final VoxelShape FACING_EAST = Shapes.or(Block.box(1, 8, 2, 13, 11, 14), Block.box(13, 0, 2, 15, 8, 4), Block.box(13, 0, 12, 15, 8, 14), Block.box(13, 8, 2, 15, 11, 14), Block.box(13, 11, 2, 15, 26, 14), Block.box(1, 0, 2, 3, 8, 4), Block.box(1, 0, 12, 3, 8, 14), Block.box(3, 4, 2.5, 13, 6, 2.5), Block.box(3, 4, 13.5, 13, 6, 13.5), Block.box(1.5, 4, 4, 1.5, 6, 12), Block.box(14.5, 4, 4, 14.5, 6, 12));
+    protected static final Double YOFFSET = 0.7;
 
     public BlockChair(Properties properties) {
         super(properties);
@@ -84,8 +87,14 @@ public class BlockChair extends BlockStool {
     }
 
     @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level,
+            BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+        return EntitySit.create(level, pos, YOFFSET, player);
+    }
+
+    @Override
     public @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult result)
     {
-        return EntitySit.create(level, pos, 0.4, player);
+        return EntitySit.create(level, pos, YOFFSET, player).result();
     }
 }
