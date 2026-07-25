@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "tag": "buildersdelight:bamboo_planks"
+    },
+    "1": {
+      "tag": "minecraft:wool"
+    },
+    "2": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "202",
+    "010",
+    "202"
+  ],
+  "result": {
+    "id": "buildersdelight:bamboo_frame_8"
+  },
+  "show_notification": true
+}
