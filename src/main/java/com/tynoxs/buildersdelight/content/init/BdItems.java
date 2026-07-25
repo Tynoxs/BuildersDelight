@@ -40,27 +40,22 @@ public class BdItems {
         Supplier<Item> newItem = ITEMS.register(name, item);
         itemMap.put(name, newItem);
 
+        if (tooltipKey == null) {
+            tooltipKey = name;
+        }
+
         registerItemTooltip(newItem, tooltipKey);
 
         return newItem;
     }
 
     private static void registerItemTooltip(Supplier<Item> item, String tooltipKey) {
-        // item.ifPresent(i -> {
-        //     ITEMS.register(tooltipKey + "_tooltip", () -> new Item(new Item.Properties()) {
-        //         @Override
-        //         public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, @NotNull TooltipFlag flagIn) {
-        //             tooltip.add(Component.translatable("tooltip.item." + tooltipKey).withStyle(ChatFormatting.GRAY));
-        //         }
-        //     });
-        // });
-
-        // ITEMS.register(tooltipKey + "_tooltip", () -> new Item(new Item.Properties()) {
-        //         @Override
-        //         public void appendHoverText(@NotNull ItemStack stack, @Nullable Item.TooltipContext worldIn, List<Component> tooltip, @NotNull TooltipFlag flagIn) {
-        //             tooltip.add(Component.translatable("tooltip.item." + tooltipKey).withStyle(ChatFormatting.GRAY));
-        //         }
-        //     });
+        ITEMS.register(tooltipKey + "_tooltip", () -> new Item(new Item.Properties()) {
+            @Override
+            public void appendHoverText(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+                tooltip.add(Component.translatable("tooltip.item." + tooltipKey).withStyle(ChatFormatting.GRAY));
+            }
+        });
     }
 
     public static Map<String, Supplier<Item>> getItemMap() {
