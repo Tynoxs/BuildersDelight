@@ -50,12 +50,13 @@ public class BdItems {
     }
 
     private static void registerItemTooltip(Supplier<Item> item, String tooltipKey) {
-        ITEMS.register(tooltipKey + "_tooltip", () -> new Item(new Item.Properties()) {
-            @Override
-            public void appendHoverText(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-                tooltip.add(Component.translatable("tooltip.item." + tooltipKey).withStyle(ChatFormatting.GRAY));
-            }
-        });
+        //For items tooltip need TooltipHandler event
+        // ITEMS.register(tooltipKey + "_tooltip", () -> new Item(new Item.Properties()) {
+        //     @Override
+        //     public void appendHoverText(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+        //         tooltip.add(Component.translatable("tooltip.item." + tooltipKey).withStyle(ChatFormatting.GRAY));
+        //     }
+        // });
     }
 
     public static Map<String, Supplier<Item>> getItemMap() {

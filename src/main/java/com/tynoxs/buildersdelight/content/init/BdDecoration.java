@@ -19,6 +19,9 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import javax.annotation.Nullable;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -112,9 +115,10 @@ public class BdDecoration {
                 new BlockItem(block.get(),
                         new Item.Properties())
                 {
-                    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag)
+                    @Override
+                    public void appendHoverText(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
                     {
-                        pTooltip.add(Component.translatable("tooltip.block." + name).withStyle(ChatFormatting.GRAY));
+                        tooltip.add(Component.translatable("tooltip.block." + name).withStyle(ChatFormatting.GRAY));
                     }
                 });
         decorationItemMap.put(name, item);
