@@ -1,19 +1,14 @@
 package com.tynoxs.buildersdelight.content.block.connected.model;
 
-import com.tynoxs.buildersdelight.content.block.connected.IConnectedTextureBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.data.ModelData;
-import net.neoforged.neoforge.client.model.data.ModelProperty;
 import net.neoforged.neoforge.client.model.geometry.IGeometryBakingContext;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,11 +27,9 @@ public class CTConnectedBakedModel extends CTBakedModel {
             sides.put(direction, new SideData(direction, world, pos, state.getBlock()));
         }
 
-        ModelData modelData = ModelData.builder()
-            .with(BDProperties.SIDES, sides)
-            .build();
-
-        return modelData;
+        return ModelData.builder()
+                .with(BDProperties.SIDES, sides)
+                .build();
     }
 
     @Override
@@ -45,11 +38,13 @@ public class CTConnectedBakedModel extends CTBakedModel {
             return getUV(0, 0);
 
         SideData blocks = modelData.get(BDProperties.SIDES).get(side);
+        if (blocks == null) return getUV(0, 0);
+
         float[] uv;
 
-        if(!blocks.left && !blocks.up && !blocks.right && !blocks.down) // all directions
+        if(!blocks.left && !blocks.up && !blocks.right && !blocks.down)
             uv = this.getUV(0, 0);
-        else{ // one direction
+        else{
             if(blocks.left && !blocks.up && !blocks.right && !blocks.down)
                 uv = this.getUV(3, 0);
             else if(!blocks.left && blocks.up && !blocks.right && !blocks.down)
@@ -58,7 +53,7 @@ public class CTConnectedBakedModel extends CTBakedModel {
                 uv = this.getUV(1, 0);
             else if(!blocks.left && !blocks.up && !blocks.right && blocks.down)
                 uv = this.getUV(0, 1);
-            else{ // two directions
+            else{
                 if(blocks.left && !blocks.up && blocks.right && !blocks.down)
                     uv = this.getUV(2, 0);
                 else if(!blocks.left && blocks.up && !blocks.right && blocks.down)
@@ -83,7 +78,7 @@ public class CTConnectedBakedModel extends CTBakedModel {
                         uv = this.getUV(3, 1);
                     else
                         uv = this.getUV(5, 0);
-                }else{ // three directions
+                }else{
                     if(!blocks.left){
                         if(blocks.up_right && blocks.down_right)
                             uv = this.getUV(1, 2);
@@ -120,7 +115,7 @@ public class CTConnectedBakedModel extends CTBakedModel {
                             uv = this.getUV(6, 3);
                         else
                             uv = this.getUV(6, 1);
-                    }else{ // four directions
+                    }else{
                         if(blocks.up_left && blocks.up_right && blocks.down_left && blocks.down_right)
                             uv = this.getUV(2, 2);
                         else{
@@ -168,6 +163,6 @@ public class CTConnectedBakedModel extends CTBakedModel {
     }
 
     private float[] getUV(int x, int y){
-        return new float[]{x * 2, y * 2, (x + 1) * 2, (y + 1) * 2};
+        return new float[]{x * 2.0f, y * 2.0f, (x + 1) * 2.0f, (y + 1) * 2.0f};
     }
 }

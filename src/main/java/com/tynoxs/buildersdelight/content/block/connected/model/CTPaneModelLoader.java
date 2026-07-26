@@ -1,7 +1,6 @@
 package com.tynoxs.buildersdelight.content.block.connected.model;
 
 import com.tynoxs.buildersdelight.BuildersDelight;
-import com.tynoxs.buildersdelight.content.block.connected.model.CTConnectedPaneBakedModel;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
@@ -35,7 +34,8 @@ public class CTPaneModelLoader implements IGeometryLoader<CTPaneModelLoader.CTMo
     public static class CTModelGeometry implements IUnbakedGeometry<CTModelGeometry> {
         @Override
         public BakedModel bake(IGeometryBakingContext context, ModelBaker baker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides) {
-            return new CTConnectedPaneBakedModel(context, GENERATOR_LOADER);
+            ResourceLocation realModelLocation = ResourceLocation.parse(context.getModelName());
+            return new CTConnectedPaneBakedModel(context, realModelLocation);
         }
     }
 }

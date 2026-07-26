@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "buildersdelight:block/industrial_4",
-    "side": "buildersdelight:block/industrial_4",
-    "top": "buildersdelight:block/industrial_4"
-  }
-}

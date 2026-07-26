@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "buildersdelight:block/prismarine_2",
-    "side": "buildersdelight:block/prismarine_2",
-    "top": "buildersdelight:block/prismarine_2"
-  }
-}

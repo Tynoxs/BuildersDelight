@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "buildersdelight:block/cherry_planks_3",
-    "side": "buildersdelight:block/cherry_planks_3",
-    "top": "buildersdelight:block/cherry_planks_3"
-  }
-}

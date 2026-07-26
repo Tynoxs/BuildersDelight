@@ -7,6 +7,7 @@ import com.tynoxs.buildersdelight.content.init.BdItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import javax.annotation.Nonnull;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -944,69 +945,92 @@ public class BdItemModelProvider extends ItemModelProvider {
         blockItem(BdBlocks.WARNING_STRIPES_8);
     }
 
-    private ItemModelBuilder simpleItem(Item item) {
-        return withExistingParent(item.toString(),
+    private void simpleItem(Item item) {
+        String path = BuiltInRegistries.ITEM.getKey(item).getPath();
+        withExistingParent(path,
                 ResourceLocation.parse("item/generated")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "item/" + item));
+                ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "item/" + path));
     }
 
+    @Nonnull
     public ItemModelBuilder handheldItem(Item item) {
-        return withExistingParent(item.toString(),
+        String path = BuiltInRegistries.ITEM.getKey(item).getPath();
+        return withExistingParent(path,
                 ResourceLocation.parse("item/handheld")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "item/" + item));
+                ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "item/" + path));
     }
 
-    private ItemModelBuilder complexBlock(Block block) {
-        return withExistingParent(BuiltInRegistries.BLOCK_TYPE.getKey(block.CODEC).getPath(), 
-        ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(block.CODEC).getPath()));
+    private void complexBlock(Block block) {
+        withExistingParent(BuiltInRegistries.BLOCK.getKey(block).getPath(),
+        ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath()));
     }
 
+    @Nonnull
     public ItemModelBuilder paneItem(DeferredBlock<Block> block, DeferredBlock<Block> baseBlock) {
-        return withExistingParent(BuiltInRegistries.BLOCK_TYPE.getKey(block.get().CODEC).getPath(), ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + "glass_pane"))
-                .texture("glass", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.get().CODEC).getPath()))
-                .texture("side", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(block.get().CODEC).getPath() + "_top"));
+        return withExistingParent(BuiltInRegistries.BLOCK.getKey(block.get()).getPath(), ResourceLocation.fromNamespaceAndPath("minecraft", "block/glass_pane"))
+                .texture("glass", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block.get()).getPath()))
+                .texture("side", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block.get()).getPath() + "_top"));
     }
 
     public void carpetItem(DeferredBlock<Block> block, DeferredBlock<Block> baseBlock) {
-        this.withExistingParent(BuiltInRegistries.BLOCK_TYPE.getKey(block.get().CODEC).getPath(), ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/carpet"))
-                .texture("wool", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.get().CODEC).getPath()));
+        ResourceLocation blockId = BuiltInRegistries.BLOCK.getKey(block.get());
+        String path = blockId.getPath();
+        ResourceLocation baseBlockId = BuiltInRegistries.BLOCK.getKey(baseBlock.get());
+        String basePath = baseBlockId.getPath();
+        String baseNamespace = baseBlockId.getNamespace();
+        this.withExistingParent(path, ResourceLocation.fromNamespaceAndPath("minecraft", "block/carpet"))
+                .texture("wool", ResourceLocation.fromNamespaceAndPath(baseNamespace, "block/" + basePath));
     }
 
     public void logItem(DeferredBlock<Block> block) {
-        this.withExistingParent(BuiltInRegistries.BLOCK_TYPE.getKey(block.get().CODEC).getPath(), ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/cube_column"))
-                .texture("side", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(block.get().CODEC).getPath()))
-                .texture("end", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(block.get().CODEC).getPath() + "_top"));
+        this.withExistingParent(BuiltInRegistries.BLOCK.getKey(block.get()).getPath(), ResourceLocation.fromNamespaceAndPath("minecraft", "block/cube_column"))
+                .texture("side", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block.get()).getPath()))
+                .texture("end", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block.get()).getPath() + "_top"));
+    }
+
+    private void slabItemTextures(DeferredBlock<Block> block, Block baseBlock) {
+        ResourceLocation blockId = BuiltInRegistries.BLOCK.getKey(block.get());
+        String path = blockId.getPath();
+        ResourceLocation baseBlockId = BuiltInRegistries.BLOCK.getKey(baseBlock);
+        String basePath = baseBlockId.getPath();
+        String baseNamespace = baseBlockId.getNamespace();
+        this.withExistingParent(path, ResourceLocation.fromNamespaceAndPath("minecraft", "block/slab"))
+                .texture("side", ResourceLocation.fromNamespaceAndPath(baseNamespace, "block/" + basePath))
+                .texture("bottom", ResourceLocation.fromNamespaceAndPath(baseNamespace, "block/" + basePath))
+                .texture("top", ResourceLocation.fromNamespaceAndPath(baseNamespace, "block/" + basePath));
     }
 
     public void slabItem(DeferredBlock<Block> block, DeferredBlock<Block> baseBlock) {
-        this.withExistingParent(BuiltInRegistries.BLOCK_TYPE.getKey(block.get().CODEC).getPath(), ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/slab"))
-                .texture("side", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.get().CODEC).getPath()))
-                .texture("bottom", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.get().CODEC).getPath()))
-                .texture("top", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.get().CODEC).getPath()));
+        slabItemTextures(block, baseBlock.get());
     }
 
     public void vanillaSlabItem(DeferredBlock<Block> block, Block baseBlock) {
-        this.withExistingParent(BuiltInRegistries.BLOCK_TYPE.getKey(block.get().CODEC).getPath(), ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/stairs"))
-                .texture("side", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.CODEC).getPath()))
-                .texture("bottom", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.CODEC).getPath()))
-                .texture("top", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.CODEC).getPath()));
+        slabItemTextures(block, baseBlock);
+    }
+
+    private void stairsItemTextures(DeferredBlock<Block> block, Block baseBlock) {
+        ResourceLocation blockId = BuiltInRegistries.BLOCK.getKey(block.get());
+        String path = blockId.getPath();
+        ResourceLocation baseBlockId = BuiltInRegistries.BLOCK.getKey(baseBlock);
+        String basePath = baseBlockId.getPath();
+        String baseNamespace = baseBlockId.getNamespace();
+        this.withExistingParent(path, ResourceLocation.fromNamespaceAndPath("minecraft", "block/stairs"))
+                .texture("side", ResourceLocation.fromNamespaceAndPath(baseNamespace, "block/" + basePath))
+                .texture("bottom", ResourceLocation.fromNamespaceAndPath(baseNamespace, "block/" + basePath))
+                .texture("top", ResourceLocation.fromNamespaceAndPath(baseNamespace, "block/" + basePath));
     }
 
     public void stairsItem(DeferredBlock<Block> block, DeferredBlock<Block> baseBlock) {
-        this.withExistingParent(BuiltInRegistries.BLOCK_TYPE.getKey(block.get().CODEC).getPath(), ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/stairs"))
-                .texture("side", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.get().CODEC).getPath()))
-                .texture("bottom", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.get().CODEC).getPath()))
-                .texture("top", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.get().CODEC).getPath()));
+        stairsItemTextures(block, baseBlock.get());
     }
 
     public void vanillaStairsItem(DeferredBlock<Block> block, Block baseBlock) {
-        this.withExistingParent(BuiltInRegistries.BLOCK_TYPE.getKey(block.get().CODEC).getPath(), ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/stairs"))
-                .texture("side", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.CODEC).getPath()))
-                .texture("bottom", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.CODEC).getPath()))
-                .texture("top", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(baseBlock.CODEC).getPath()));
+        stairsItemTextures(block, baseBlock);
     }
 
     public void blockItem(DeferredBlock<Block> block) {
-        this.withExistingParent(BuiltInRegistries.BLOCK_TYPE.getKey(block.get().CODEC).getPath(), ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + BuiltInRegistries.BLOCK_TYPE.getKey(block.get().CODEC).getPath()));
+        ResourceLocation blockId = BuiltInRegistries.BLOCK.getKey(block.get());
+        String path = blockId.getPath();
+        this.withExistingParent(path, ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + path));
     }
 }

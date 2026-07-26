@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "buildersdelight:block/cobblestone_6",
-    "side": "buildersdelight:block/cobblestone_6",
-    "top": "buildersdelight:block/cobblestone_6"
-  }
-}

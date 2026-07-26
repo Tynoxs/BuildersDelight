@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "buildersdelight:block/prismarine_6",
-    "side": "buildersdelight:block/prismarine_6",
-    "top": "buildersdelight:block/prismarine_6"
-  }
-}

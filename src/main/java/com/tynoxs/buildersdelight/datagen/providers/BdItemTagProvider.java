@@ -3,18 +3,19 @@ package com.tynoxs.buildersdelight.datagen.providers;
 import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.content.init.BdBlocks;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.common.Tags.Items;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -26,41 +27,76 @@ public class BdItemTagProvider extends ItemTagsProvider {
         super(packOutput, future, completableFuture, BuildersDelight.MODID, existingFileHelper);
     }
 
-    private int getMaxBlockNumber(String blockType) {
-        return BdBlockCount.BLOCK_COUNTS.getOrDefault(blockType, 0);
-    }
-
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        addItemByName();
-    }
+        var glassBlocksItemTag = this.tag(Tags.Items.GLASS_BLOCKS);
+        var glassBlocksCheapTag = this.tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "glass_blocks/cheap")));
+        var glassBlocksColorlessTag = this.tag(Tags.Items.GLASS_BLOCKS_COLORLESS);
 
-    private void addItemByName() {
-        for (String blockType : BdBlockCount.BLOCK_COUNTS.keySet()) {
-            int maxBlockNumber = getMaxBlockNumber(blockType);
+        var glassPanesItemTag = this.tag(Tags.Items.GLASS_PANES);
+        var glassPanesColorlessTag = this.tag(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "glass_panes/colorless")));
 
-            for (int i = 1; i <= maxBlockNumber; i++) {
-                String registryName = blockType.toLowerCase() + "_" + i;
-                Supplier<Item> itemRegistryObject = BdBlocks.getBlockItemMap().get(registryName);
+        for (Map.Entry<String, Supplier<Item>> entry : BdBlocks.getBlockItemMap().entrySet()) {
+            String registryName = entry.getKey().toLowerCase();
+            Item item = entry.getValue().get();
 
-                if (itemRegistryObject != null) {
-                    addTagsForBlockType(blockType, itemRegistryObject.get());
+            if (registryName.contains("glass") && !registryName.contains("pane")) {
+                glassBlocksItemTag.add(item);
+
+                if (!isStainedGlass(registryName)) {
+                    glassBlocksCheapTag.add(item);
+                    glassBlocksColorlessTag.add(item);
+                }
+            } else if (registryName.contains("pane")) {
+                glassPanesItemTag.add(item);
+
+                if (!isStainedGlass(registryName)) {
+                    glassPanesColorlessTag.add(item);
                 }
             }
         }
+
+        addItemByName();
     }
 
-    private void addTagsForBlockType(String blockType, Item item) {
+    private boolean isStainedGlass(String name) {
+        return name.contains("white") || name.contains("orange") || name.contains("magenta") ||
+                name.contains("light_blue") || name.contains("yellow") || name.contains("lime") ||
+                name.contains("pink") || name.contains("gray") || name.contains("light_gray") ||
+                name.contains("cyan") || name.contains("purple") || name.contains("blue") ||
+                name.contains("brown") || name.contains("green") || name.contains("red") ||
+                name.contains("black");
+    }
+
+    private void addItemByName() {
+        Map<String, List<Item>> blocksByType = new HashMap<>();
+        for (Map.Entry<String, Supplier<Item>> entry : BdBlocks.getBlockItemMap().entrySet()) {
+            String registryName = entry.getKey();
+            int lastUnderscore = registryName.lastIndexOf('_');
+            if (lastUnderscore > 0) {
+                String typePrefix = registryName.substring(0, lastUnderscore);
+                String suffix = registryName.substring(lastUnderscore + 1);
+                if (suffix.matches("\\d+")) {
+                    blocksByType.computeIfAbsent(typePrefix.toUpperCase(), k -> new ArrayList<>()).add(entry.getValue().get());
+                }
+            }
+        }
+
         Map<String, Consumer<Item>> tagMappings = createTagMappings();
-        tagMappings.getOrDefault(blockType, (unused) -> {}).accept(item);
+        for (Map.Entry<String, List<Item>> entry : blocksByType.entrySet()) {
+            String blockType = entry.getKey();
+            List<Item> items = entry.getValue();
+            Consumer<Item> consumer = tagMappings.get(blockType);
+            if (consumer != null) {
+                items.forEach(consumer);
+            }
+        }
     }
 
     private Map<String, Consumer<Item>> createTagMappings() {
         Map<String, Consumer<Item>> tagMappings = new HashMap<>();
 
         tagMappings.put("COBBLESTONE", this::tagCobblestone);
-        tagMappings.put("GLASS", this::tagGlass);
-        tagMappings.put("GLASS_PANE", this::tagGlassPanes);
         tagMappings.put("ANDESITE", this::tagStone);
         tagMappings.put("DIORITE", this::tagStone);
         tagMappings.put("GRANITE", this::tagStone);
@@ -101,52 +137,18 @@ public class BdItemTagProvider extends ItemTagsProvider {
         tagMappings.put("SPRUCE_SLAB", this::tagWoodenSlabs);
         tagMappings.put("WARPED_SLAB", this::tagWoodenSlabs);
 
-        tagMappings.put("ACACIA_GLASS", this::tagGlass);
-        tagMappings.put("BAMBOO_GLASS", this::tagGlass);
-        tagMappings.put("BIRCH_GLASS", this::tagGlass);
-        tagMappings.put("CHERRY_GLASS", this::tagGlass);
-        tagMappings.put("CRIMSON_GLASS", this::tagGlass);
-        tagMappings.put("DARK_OAK_GLASS", this::tagGlass);
-        tagMappings.put("JUNGLE_GLASS", this::tagGlass);
-        tagMappings.put("MANGROVE_GLASS", this::tagGlass);
-        tagMappings.put("OAK_GLASS", this::tagGlass);
-        tagMappings.put("SPRUCE_GLASS", this::tagGlass);
-        tagMappings.put("WARPED_GLASS", this::tagGlass);
-
-        tagMappings.put("ACACIA_GLASS_PANE", this::tagGlassPanes);
-        tagMappings.put("BAMBOO_GLASS_PANE", this::tagGlassPanes);
-        tagMappings.put("BIRCH_GLASS_PANE", this::tagGlassPanes);
-        tagMappings.put("CHERRY_GLASS_PANE", this::tagGlassPanes);
-        tagMappings.put("CRIMSON_GLASS_PANE", this::tagGlassPanes);
-        tagMappings.put("DARK_OAK_GLASS_PANE", this::tagGlassPanes);
-        tagMappings.put("JUNGLE_GLASS_PANE", this::tagGlassPanes);
-        tagMappings.put("MANGROVE_GLASS_PANE", this::tagGlassPanes);
-        tagMappings.put("OAK_GLASS_PANE", this::tagGlassPanes);
-        tagMappings.put("SPRUCE_GLASS_PANE", this::tagGlassPanes);
-        tagMappings.put("WARPED_GLASS_PANE", this::tagGlassPanes);
-
         tagMappings.put("SANDSTONE", this::addSandstoneTags);
 
         return tagMappings;
     }
 
     private void tagCobblestone(Item item) {
-        this.tag(Items.COBBLESTONES).add(item);
+        this.tag(Tags.Items.COBBLESTONES).add(item);
         this.tag(ItemTags.STONE_TOOL_MATERIALS).add(item);
     }
 
-    private void tagGlass(Item item) {
-        this.tag(Items.GLASS_BLOCKS).add(item);
-        this.tag(Items.GLASS_BLOCKS_COLORLESS).add(item);
-    }
-
-    private void tagGlassPanes(Item item) {
-        this.tag(Items.GLASS_PANES).add(item);
-        this.tag(Items.GLASS_PANES_COLORLESS).add(item);
-    }
-
     private void tagStone(Item item) {
-        this.tag(Items.STONES).add(item);
+        this.tag(Tags.Items.STONES).add(item);
     }
 
     private void tagPlanks(Item item) {
@@ -162,7 +164,7 @@ public class BdItemTagProvider extends ItemTagsProvider {
     }
 
     private void addSandstoneTags(Item item) {
-        this.tag(Items.SANDSTONE_BLOCKS).add(item);
+        this.tag(Tags.Items.SANDSTONE_BLOCKS).add(item);
     }
 
     @Override

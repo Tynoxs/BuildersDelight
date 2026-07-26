@@ -8,14 +8,14 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.DeferredItem;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
@@ -32,43 +32,68 @@ public class BdBlockTagProvider extends BlockTagsProvider {
         Map<String, List<Consumer<Supplier<Item>>>> tagMappings = createTagMappings();
         Map<String, Supplier<Item>> allBlockItems = getAllBlockItems();
 
+        var glassTag = this.tag(Tags.Blocks.GLASS_BLOCKS);
+        var glassPanesTag = this.tag(Tags.Blocks.GLASS_PANES);
+
+        for (Map.Entry<String, Supplier<Item>> entry : allBlockItems.entrySet()) {
+            String registryName = entry.getKey().toLowerCase();
+            if (entry.getValue().get() instanceof BlockItem blockItem) {
+                Block block = blockItem.getBlock();
+
+                if (registryName.contains("glass") && !registryName.contains("pane")) {
+                    glassTag.add(block);
+                } else if (registryName.contains("pane")) {
+                    glassPanesTag.add(block);
+                }
+            }
+        }
+
         this.tag(BdTags.Blocks.GLASS)
                 .addTags(Tags.Blocks.GLASS_BLOCKS)
                 .addTags(Tags.Blocks.GLASS_BLOCKS_COLORLESS);
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(BdDecoration.EXPOSED_LANTERN_3.get(),
-                    BdDecoration.WEATHERED_LANTERN_3.get(),
-                    BdDecoration.OXIDIZED_LANTERN_3.get(),
-                    BdDecoration.WAXED_LANTERN_3.get(),
-                    BdDecoration.WAXED_EXPOSED_LANTERN_3.get(),
-                    BdDecoration.WAXED_WEATHERED_LANTERN_3.get(),
-                    BdDecoration.WAXED_OXIDIZED_LANTERN_3.get(),
+                        BdDecoration.WEATHERED_LANTERN_3.get(),
+                        BdDecoration.OXIDIZED_LANTERN_3.get(),
+                        BdDecoration.WAXED_LANTERN_3.get(),
+                        BdDecoration.WAXED_EXPOSED_LANTERN_3.get(),
+                        BdDecoration.WAXED_WEATHERED_LANTERN_3.get(),
+                        BdDecoration.WAXED_OXIDIZED_LANTERN_3.get(),
 
-                    BdDecoration.EXPOSED_CHAIN_3.get(),
-                    BdDecoration.WEATHERED_CHAIN_3.get(),
-                    BdDecoration.OXIDIZED_CHAIN_3.get(),
-                    BdDecoration.WAXED_CHAIN_3.get(),
-                    BdDecoration.WAXED_EXPOSED_CHAIN_3.get(),
-                    BdDecoration.WAXED_WEATHERED_CHAIN_3.get(),
-                    BdDecoration.WAXED_OXIDIZED_CHAIN_3.get()
+                        BdDecoration.EXPOSED_CHAIN_3.get(),
+                        BdDecoration.WEATHERED_CHAIN_3.get(),
+                        BdDecoration.OXIDIZED_CHAIN_3.get(),
+                        BdDecoration.WAXED_CHAIN_3.get(),
+                        BdDecoration.WAXED_EXPOSED_CHAIN_3.get(),
+                        BdDecoration.WAXED_WEATHERED_CHAIN_3.get(),
+                        BdDecoration.WAXED_OXIDIZED_CHAIN_3.get()
                 );
 
         this.tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(BdDecoration.LANTERN_8.get()
                 );
 
-        BdBlockCount.BLOCK_COUNTS.forEach((blockType, maxBlockNumber) -> {
-            for (int i = 1; i <= maxBlockNumber; i++) {
-                String registryName = blockType.toLowerCase() + "_" + i;
-                Supplier<Item> itemSupplier = allBlockItems.get(registryName);
+        Map<String, List<Supplier<Item>>> blocksByType = new HashMap<>();
+        for (Map.Entry<String, Supplier<Item>> entry : allBlockItems.entrySet()) {
+            String registryName = entry.getKey();
+            int lastUnderscore = registryName.lastIndexOf('_');
+            if (lastUnderscore > 0) {
+                String typePrefix = registryName.substring(0, lastUnderscore);
+                String suffix = registryName.substring(lastUnderscore + 1);
 
-                if (itemSupplier != null) {
-                    tagMappings.getOrDefault(blockType, Collections.emptyList())
-                            .forEach(consumer -> consumer.accept(itemSupplier));
+                if (suffix.matches("\\d+")) {
+                    blocksByType.computeIfAbsent(typePrefix.toUpperCase(), k -> new ArrayList<>()).add(entry.getValue());
                 }
             }
-        });
+        }
+
+        for (Map.Entry<String, List<Supplier<Item>>> entry : blocksByType.entrySet()) {
+            String blockType = entry.getKey();
+            List<Supplier<Item>> blocks = entry.getValue();
+            tagMappings.getOrDefault(blockType, Collections.emptyList())
+                    .forEach(consumer -> blocks.forEach(consumer));
+        }
     }
 
     private Map<String, Supplier<Item>> getAllBlockItems() {

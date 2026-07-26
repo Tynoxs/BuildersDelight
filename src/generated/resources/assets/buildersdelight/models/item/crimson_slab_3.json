@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "buildersdelight:block/crimson_planks_3",
-    "side": "buildersdelight:block/crimson_planks_3",
-    "top": "buildersdelight:block/crimson_planks_3"
-  }
-}

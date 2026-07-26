@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_top",
-  "textures": {
-    "side": "buildersdelight:block/dark_oak_glass_3",
-    "top": "buildersdelight:block/dark_oak_glass_3_top"
-  }
-}

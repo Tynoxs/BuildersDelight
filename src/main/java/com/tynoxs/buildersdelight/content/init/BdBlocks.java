@@ -1,9 +1,8 @@
 package com.tynoxs.buildersdelight.content.init;
 
-import com.mojang.serialization.MapCodec;
 import com.tynoxs.buildersdelight.BuildersDelight;
 import com.tynoxs.buildersdelight.content.block.custom.*;
-import com.tynoxs.buildersdelight.content.block.wood.BlockFlammable;
+        import com.tynoxs.buildersdelight.content.block.wood.BlockFlammable;
 import com.tynoxs.buildersdelight.content.block.wood.SlabFlammable;
 import com.tynoxs.buildersdelight.content.block.wood.StairFlammable;
 
@@ -11,19 +10,14 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
+        import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+        import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import javax.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -35,7 +29,7 @@ import java.util.function.ToIntFunction;
 
 public class BdBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(BuildersDelight.MODID);
-    
+
     private static final Map<String, Supplier<Item>> blockItemMap = new LinkedHashMap<>();
 
     public static final DeferredBlock<Block> ACACIA_PLANKS_1 = registerBlock("acacia_planks_1", () -> new BlockFlammable(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS)), null);
@@ -886,13 +880,11 @@ public class BdBlocks {
         return toReturn;
     }
 
-    private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block, String tooltipKey) {  
-        Supplier<Item> item = BdItems.ITEMS.register(name, 
-             () -> new BlockItem(block.get(), new Item.Properties())
-                {
+    private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block, String tooltipKey) {
+        Supplier<Item> item = BdItems.ITEMS.register(name,
+                () -> new BlockItem(block.get(), new Item.Properties()) {
                     @Override
-                    public void appendHoverText(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
-                    {
+                    public void appendHoverText(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
                         tooltip.add(Component.translatable("tooltip.block." + name).withStyle(ChatFormatting.GRAY));
                     }
                 });
@@ -907,4 +899,3 @@ public class BdBlocks {
         return blockItemMap;
     }
 }
-

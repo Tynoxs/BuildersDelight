@@ -1,20 +1,15 @@
 package com.tynoxs.buildersdelight.content.block.connected.model;
 
-import com.tynoxs.buildersdelight.content.block.connected.IConnectedTextureBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.data.ModelData;
-import net.neoforged.neoforge.client.model.data.ModelProperty;
 import net.neoforged.neoforge.client.model.geometry.IGeometryBakingContext;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,25 +38,23 @@ public class CTConnectedPaneBakedModel extends CTPaneBakedModel {
             downPost = downState.getBlock() == state.getBlock();
         }
 
-        ModelData modelData = ModelData.builder()
-            .with(BDProperties.SIDES, sides)
-            .with(BDProperties.UP, upMap)
-            .with(BDProperties.DOWN, downMap)
-            .with(BDProperties.UPPOST, upPost)
-            .with(BDProperties.DOWNPOST, downPost)
-            .build();
-
-        return modelData;
+        return ModelData.builder()
+                .with(BDProperties.SIDES, sides)
+                .with(BDProperties.UP, upMap)
+                .with(BDProperties.DOWN, downMap)
+                .with(BDProperties.UPPOST, upPost)
+                .with(BDProperties.DOWNPOST, downPost)
+                .build();
     }
 
     @Override
     protected boolean isEnabledUp(Direction part, ModelData extraData){
-        return (extraData.has(BDProperties.UPPOST) || extraData.has(BDProperties.UP)) && (part == null ? extraData.get(BDProperties.UPPOST) : extraData.get(BDProperties.UP).get(part));
+        return (extraData.has(BDProperties.UPPOST) || extraData.has(BDProperties.UP)) && (part == null ? Boolean.TRUE.equals(extraData.get(BDProperties.UPPOST)) : Boolean.TRUE.equals(extraData.get(BDProperties.UP).get(part)));
     }
 
     @Override
     protected boolean isEnabledDown(Direction part, ModelData extraData){
-        return (extraData.has(BDProperties.DOWNPOST) || extraData.has(BDProperties.DOWN)) && (part == null ? extraData.get(BDProperties.DOWNPOST) : extraData.get(BDProperties.DOWN).get(part));
+        return (extraData.has(BDProperties.DOWNPOST) || extraData.has(BDProperties.DOWN)) && (part == null ? Boolean.TRUE.equals(extraData.get(BDProperties.DOWNPOST)) : Boolean.TRUE.equals(extraData.get(BDProperties.DOWN).get(part)));
     }
 
     @Override
@@ -78,6 +71,8 @@ public class CTConnectedPaneBakedModel extends CTPaneBakedModel {
             return getUV(0, 0);
 
         SideData blocks = modelData.get(BDProperties.SIDES).get(side);
+        if (blocks == null) return getUV(0, 0);
+
         float[] uv;
 
         if(!blocks.left && !blocks.up && !blocks.right && !blocks.down) // all directions
@@ -201,6 +196,6 @@ public class CTConnectedPaneBakedModel extends CTPaneBakedModel {
     }
 
     private float[] getUV(int x, int y){
-        return new float[]{x * 2, y * 2, (x + 1) * 2, (y + 1) * 2};
+        return new float[]{x * 2.0f, y * 2.0f, (x + 1) * 2.0f, (y + 1) * 2.0f};
     }
 }

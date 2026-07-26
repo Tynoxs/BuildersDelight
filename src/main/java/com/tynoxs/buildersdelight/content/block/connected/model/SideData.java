@@ -4,8 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
 
 class SideData {
     private BlockGetter world;
@@ -28,14 +26,35 @@ class SideData {
         Direction right;
         Direction up;
         Direction down;
+
         if(side.getAxis() == Direction.Axis.Y){
             left = Direction.WEST;
             right = Direction.EAST;
             up = side == Direction.UP ? Direction.NORTH : Direction.SOUTH;
             down = side == Direction.UP ? Direction.SOUTH : Direction.NORTH;
-        }else{
-            left = side.getClockWise();
-            right = side.getCounterClockWise();
+        } else {
+            switch (side) {
+                case NORTH -> {
+                    left = Direction.EAST;
+                    right = Direction.WEST;
+                }
+                case SOUTH -> {
+                    left = Direction.WEST;
+                    right = Direction.EAST;
+                }
+                case WEST -> {
+                    left = Direction.NORTH;
+                    right = Direction.SOUTH;
+                }
+                case EAST -> {
+                    left = Direction.SOUTH;
+                    right = Direction.NORTH;
+                }
+                default -> {
+                    left = side.getCounterClockWise();
+                    right = side.getClockWise();
+                }
+            }
             up = Direction.UP;
             down = Direction.DOWN;
         }

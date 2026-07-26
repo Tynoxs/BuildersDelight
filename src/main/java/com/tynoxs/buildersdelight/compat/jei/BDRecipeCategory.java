@@ -1,11 +1,15 @@
 package com.tynoxs.buildersdelight.compat.jei;
 
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
@@ -27,9 +31,20 @@ public abstract class BDRecipeCategory<T> implements IRecipeCategory<T>
     }
 
     @Override
-    public IDrawable getBackground()
-    {
-        return this.background;
+    public int getWidth() {
+        return this.background != null ? this.background.getWidth() : 0;
+    }
+
+    @Override
+    public int getHeight() {
+        return this.background != null ? this.background.getHeight() : 0;
+    }
+
+    @Override
+    public void draw(T recipe, mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        if (this.background != null) {
+            this.background.draw(guiGraphics);
+        }
     }
 
     protected void setBackground(IDrawableStatic background)

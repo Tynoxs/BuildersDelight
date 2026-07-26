@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "buildersdelight:block/jungle_planks_5",
-    "side": "buildersdelight:block/jungle_planks_5",
-    "top": "buildersdelight:block/jungle_planks_5"
-  }
-}

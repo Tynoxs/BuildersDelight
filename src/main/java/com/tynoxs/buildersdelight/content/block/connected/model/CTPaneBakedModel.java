@@ -1,18 +1,15 @@
 package com.tynoxs.buildersdelight.content.block.connected.model;
 
 import org.joml.Vector3f;
-import com.tynoxs.buildersdelight.content.block.connected.IConnectedTextureBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.*;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BlockModelRotation;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CrossCollisionBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -58,7 +55,7 @@ public class CTPaneBakedModel implements IDynamicBakedModel {
 
     @Override
     public TextureAtlasSprite getParticleIcon(){
-        return this.getTexture(false);
+        return this.getTexture();
     }
 
     @Override
@@ -89,17 +86,25 @@ public class CTPaneBakedModel implements IDynamicBakedModel {
         return quads;
     }
 
-    protected TextureAtlasSprite getTexture(boolean asItem){
-        if (asItem) {
-            // From inventory or as item, different texture path.
-            return Minecraft.getInstance().getTextureAtlas(TextureAtlas.LOCATION_BLOCKS).apply(
-                ResourceLocation.fromNamespaceAndPath(modelLocation.getNamespace(), "block/connected/" + modelLocation.getPath().replaceFirst("_pane", ""))
-            );
+    protected TextureAtlasSprite getTexture() {
+        String path = modelLocation.getPath().replaceFirst("_pane", "");
+
+        if (path.startsWith("block/")) {
+            path = path.substring(6);
+        } else if (path.startsWith("item/")) {
+            path = path.substring(5);
         }
 
-        return Minecraft.getInstance().getTextureAtlas(TextureAtlas.LOCATION_BLOCKS).apply(
-            ResourceLocation.fromNamespaceAndPath(modelLocation.getNamespace(), "block/connected/" + modelLocation.getPath().replaceFirst("_pane", ""))
-        );
+        if (!path.startsWith("block/connected/")) {
+            path = "block/connected/" + path;
+        }
+
+        ResourceLocation textureLoc = ResourceLocation.fromNamespaceAndPath(modelLocation.getNamespace(), path);
+
+        return Minecraft.getInstance()
+                .getModelManager()
+                .getAtlas(TextureAtlas.LOCATION_BLOCKS)
+                .getSprite(textureLoc);
     }
 
     protected float[] getUV(Direction side, ModelData modelData){
@@ -120,13 +125,13 @@ public class CTPaneBakedModel implements IDynamicBakedModel {
         float[] uv = new float[]{7 / 8f, 2 * 7 + 7 / 8f, 9 / 8f, 2 * 7 + 9 / 8f};
         BlockElementFace face = new BlockElementFace(hasCulling ? side : null, -1, "", new BlockFaceUV(uv, 0));
 
-        BakedQuad quad = BAKERY.bakeQuad(from, to, face, getTexture(state == null), side, BlockModelRotation.X0_Y0, null, true);
+        BakedQuad quad = BAKERY.bakeQuad(from, to, face, getTexture(), side, BlockModelRotation.X0_Y0, null, true);
         return Collections.singletonList(quad);
     }
 
     protected List<BakedQuad> getPartQuad(BlockState state, Direction part, Direction side, float[] totalUV, boolean culling, boolean isEnabledUp, boolean isEnabledDown){
         List<BakedQuad> quads = new ArrayList<>();
-        float unitW = (totalUV[2] - totalUV[0]) / 16, unitH = (totalUV[3] - totalUV[1]) / 16; // width and height of one pixel
+        float unitW = (totalUV[2] - totalUV[0]) / 16f, unitH = (totalUV[3] - totalUV[1]) / 16f;
 
         BooleanProperty property = part == Direction.NORTH ? CrossCollisionBlock.NORTH : part == Direction.EAST ? CrossCollisionBlock.EAST : part == Direction.SOUTH ? CrossCollisionBlock.SOUTH : part == Direction.WEST ? CrossCollisionBlock.WEST : null;
         if((state == null && (part == Direction.NORTH || part == Direction.SOUTH)) || (state != null && state.getValue(property))){
@@ -159,13 +164,13 @@ public class CTPaneBakedModel implements IDynamicBakedModel {
             if(hasQuad && hasCulling == culling){
                 Vector3f from = getPartFromPos(part), to = getPartToPos(part);
                 BlockElementFace face = new BlockElementFace(hasCulling ? side : null, -1, "", new BlockFaceUV(uv, rotation));
-                quads.add(BAKERY.bakeQuad(from, to, face, getTexture(state == null), side, BlockModelRotation.X0_Y0, null, true));
+                quads.add(BAKERY.bakeQuad(from, to, face, getTexture(), side, BlockModelRotation.X0_Y0, null, true));
             }
         }else if(side == part && !culling){
             Vector3f from = new Vector3f(7, 0, 7), to = new Vector3f(9, 16, 9);
             float[] uv = new float[]{totalUV[0] + 7 * unitW, totalUV[1], totalUV[0] + 9 * unitH, totalUV[3]};
             BlockElementFace face = new BlockElementFace(null, -1, "", new BlockFaceUV(uv, 0));
-            quads.add(BAKERY.bakeQuad(from, to, face, getTexture(state == null), side, BlockModelRotation.X0_Y0, null, true));
+            quads.add(BAKERY.bakeQuad(from, to, face, getTexture(), side, BlockModelRotation.X0_Y0, null, true));
         }
 
         return quads;
@@ -206,5 +211,4 @@ public class CTPaneBakedModel implements IDynamicBakedModel {
     protected boolean isEnabledDown(Direction part, ModelData extraData){
         return false;
     }
-
 }

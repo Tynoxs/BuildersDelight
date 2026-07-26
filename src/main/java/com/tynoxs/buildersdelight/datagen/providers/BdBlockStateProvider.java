@@ -3,7 +3,6 @@ package com.tynoxs.buildersdelight.datagen.providers;
 import com.tynoxs.buildersdelight.content.block.custom.BlockInteractive;
 import com.tynoxs.buildersdelight.content.init.BdBlocks;
 import com.tynoxs.buildersdelight.datagen.blockstate.BdBlockStateCreator;
-import com.tynoxs.buildersdelight.datagen.providers.BdBlockStateProvider.CTBlockLoaderBuilder;
 import com.tynoxs.buildersdelight.content.block.connected.model.CTBlockModelLoader;
 import com.tynoxs.buildersdelight.content.block.connected.model.CTPaneModelLoader;
 
@@ -886,14 +885,14 @@ public class BdBlockStateProvider extends BdBlockStateCreator {
     }
 
     protected BlockModelBuilder registerCustomBlockLoader(Block block) {
-        return models().getBuilder(BuiltInRegistries.BLOCK_TYPE.getKey(block.CODEC).getPath())
+        return models().getBuilder(BuiltInRegistries.BLOCK.getKey(block).getPath())
             .parent(models().getExistingFile(mcLoc("cube")))
             .customLoader((builder, helper) -> new CTBlockLoaderBuilder(CTBlockModelLoader.GENERATOR_LOADER, builder, helper))
             .end();
     }
 
     protected BlockModelBuilder registerCustomPaneLoader(Block block) {
-        return models().getBuilder(BuiltInRegistries.BLOCK_TYPE.getKey(block.CODEC).getPath())
+        return models().getBuilder(BuiltInRegistries.BLOCK.getKey(block).getPath())
             .parent(models().getExistingFile(mcLoc("cube")))
             .customLoader((builder, helper) -> new CTBlockLoaderBuilder(CTPaneModelLoader.GENERATOR_LOADER, builder, helper))
             .end();

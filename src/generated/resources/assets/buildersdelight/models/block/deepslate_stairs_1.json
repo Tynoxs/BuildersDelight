@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "buildersdelight:block/deepslate_1",
-    "side": "buildersdelight:block/deepslate_1",
-    "top": "buildersdelight:block/deepslate_1"
-  }
-}

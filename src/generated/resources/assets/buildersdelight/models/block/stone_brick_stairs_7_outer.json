@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "buildersdelight:block/stone_bricks_7",
-    "side": "buildersdelight:block/stone_bricks_7",
-    "top": "buildersdelight:block/stone_bricks_7"
-  }
-}
