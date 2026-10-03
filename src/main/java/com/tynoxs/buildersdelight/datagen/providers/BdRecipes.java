@@ -11,18 +11,14 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class BdRecipes extends RecipeProvider implements IConditionBuilder {
     String[] woodTypes = {"acacia", "bamboo", "birch", "cherry", "crimson", "dark_oak", "jungle", "mangrove", "oak", "spruce", "warped"};
@@ -39,175 +35,178 @@ public class BdRecipes extends RecipeProvider implements IConditionBuilder {
     }
 
     private void registerFrameAndGlassRecipes(RecipeOutput pWriter) {
-        Set<String> generatedIds = new HashSet<>();
-
         for (String woodType : woodTypes) {
             for (int number = 1; number <= 8; number++) {
-                for (int plankNumber = 1; plankNumber <= 7; plankNumber++) {
-                    String frameName = woodType + "_frame_" + number;
-
-                    String recipeId = String.valueOf(getRecipeId(frameName));
-                    if (generatedIds.contains(recipeId)) {
-                        continue;
-                    }
-
-                    generateFrameRecipe(pWriter, woodType, number, plankNumber);
-                    generateGlassRecipe(pWriter, woodType, number, plankNumber);
-                    generatedIds.add(recipeId);
-                }
+                generateFrameRecipe(pWriter, woodType, number);
+                generateGlassRecipe(pWriter, woodType, number);
             }
         }
     }
 
     private void registerStairsAndSlabRecipes(RecipeOutput pWriter) {
-        Set<String> generatedIds = new HashSet<>();
-
         for (String woodType : woodTypes) {
             for (int plankNumber = 1; plankNumber <= 7; plankNumber++) {
-                String plankName = woodType + "_planks_" + plankNumber;
-
-                String recipeId = String.valueOf(getRecipeId(plankName));
-                if (generatedIds.contains(recipeId)) {
-                    continue;
-                }
-
                 generateStairsRecipe(pWriter, woodType, plankNumber);
                 generateSlabRecipe(pWriter, woodType, plankNumber);
-                generatedIds.add(recipeId);
             }
         }
     }
 
-    private void generateFrameRecipe(RecipeOutput pWriter, String woodType, int number, int plankNumber) {
+    private void generateFrameRecipe(RecipeOutput pWriter, String woodType, int number) {
         String frameName = woodType + "_frame_" + number;
-        String plankName = woodType + "_planks_" + plankNumber;
 
-        TagKey<Item> woodPlanksTag = getWoodPlanksTag(woodType);
+        Supplier<Item> frameItemSupplier = BdBlocks.getBlockItemMap().get(frameName);
+        if (frameItemSupplier == null) return;
+        Item frameItem = frameItemSupplier.get();
 
-        BdBlocks.BLOCKS.getEntries().forEach(entry -> {
-            Block block = entry.get();
-
-            if (block.asItem().toString().equals(plankName)) {
-                Item frameItem = BdBlocks.getBlockItemMap().get(frameName).get();
-
-                if (block != Blocks.AIR && frameItem != Items.AIR) {
-                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, frameItem)
-                            .pattern("202")
-                            .pattern("010")
-                            .pattern("202")
-                            .define('0', woodPlanksTag)
-                            .define('1', ItemTags.WOOL)
-                            .define('2', Tags.Items.RODS_WOODEN)
-                            .unlockedBy("has_wool", inventoryTrigger(ItemPredicate.Builder.item()
-                                    .of(ItemTags.WOOL).build()))
-                            .save(pWriter, getRecipeId(frameName));
+        if (frameItem != null) {
+            java.util.List<Item> plankItems = new java.util.ArrayList<>();
+            Item vanillaPlank = getVanillaPlank(woodType);
+            if (vanillaPlank != null) {
+                plankItems.add(vanillaPlank);
+            }
+            for (int i = 1; i <= 7; i++) {
+                String plankName = woodType + "_planks_" + i;
+                Supplier<Item> plankSupplier = BdBlocks.getBlockItemMap().get(plankName);
+                if (plankSupplier != null) {
+                    Item plankItem = plankSupplier.get();
+                    if (plankItem != null) {
+                        plankItems.add(plankItem);
+                    }
                 }
             }
-        });
+
+            if (!plankItems.isEmpty()) {
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, frameItem)
+                        .pattern("202")
+                        .pattern("010")
+                        .pattern("202")
+                        .define('0', Ingredient.of(plankItems.toArray(new Item[0]))) // Accept any plank variant
+                        .define('1', ItemTags.WOOL)
+                        .define('2', Tags.Items.RODS_WOODEN)
+                        .unlockedBy("has_wool", inventoryTrigger(ItemPredicate.Builder.item()
+                                .of(ItemTags.WOOL).build()))
+                        .save(pWriter, getRecipeId(frameName));
+            }
+        }
     }
 
     private void generateStairsRecipe(RecipeOutput pWriter, String woodType, int plankNumber) {
         String plankName = woodType + "_planks_" + plankNumber;
         String stairsName = woodType + "_stairs_" + plankNumber;
 
-        BdBlocks.BLOCKS.getEntries().forEach(entry -> {
-            Block block = entry.get();
+        Supplier<Item> stairsItemSupplier = BdBlocks.getBlockItemMap().get(stairsName);
+        Supplier<Item> planksItemSupplier = BdBlocks.getBlockItemMap().get(plankName);
+        if (stairsItemSupplier == null || planksItemSupplier == null) return;
+        Item stairsItem = stairsItemSupplier.get();
+        Item planksItem = planksItemSupplier.get();
 
-            if (block.asItem().toString().equals(plankName)) {
-                Item stairsItem = BdBlocks.getBlockItemMap().get(stairsName).get();
-                Item planksItem = BdBlocks.getBlockItemMap().get(plankName).get();
-
-                if (block != Blocks.AIR && stairsItem != Items.AIR) {
-                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, stairsItem, 4)
-                            .pattern("  0")
-                            .pattern(" 00")
-                            .pattern("000")
-                            .define('0', planksItem)
-                            .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item()
-                                    .of(BdTags.Items.tag(woodType + "_planks")).build()))
-                            .save(pWriter, getRecipeId(stairsName));
-                }
-            }
-        });
+        if (stairsItem != null && planksItem != null) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, stairsItem, 4)
+                    .pattern("  0")
+                    .pattern(" 00")
+                    .pattern("000")
+                    .define('0', planksItem)
+                    .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item()
+                            .of(planksItem).build()))
+                    .save(pWriter, getRecipeId(stairsName));
+        }
     }
 
     private void generateSlabRecipe(RecipeOutput pWriter, String woodType, int plankNumber) {
         String plankName = woodType + "_planks_" + plankNumber;
         String slabName = woodType + "_slab_" + plankNumber;
 
-        BdBlocks.BLOCKS.getEntries().forEach(entry -> {
-            Block block = entry.get();
+        Supplier<Item> slabItemSupplier = BdBlocks.getBlockItemMap().get(slabName);
+        Supplier<Item> planksItemSupplier = BdBlocks.getBlockItemMap().get(plankName);
+        if (slabItemSupplier == null || planksItemSupplier == null) return;
+        Item slabItem = slabItemSupplier.get();
+        Item planksItem = planksItemSupplier.get();
 
-            if (block.asItem().toString().equals(plankName)) {
-                Item slabItem = BdBlocks.getBlockItemMap().get(slabName).get();
-                Item planksItem = BdBlocks.getBlockItemMap().get(plankName).get();
-
-                if (block != Blocks.AIR && slabItem != Items.AIR) {
-                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, slabItem, 6)
-                            .pattern("000")
-                            .define('0', planksItem)
-                            .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item()
-                                    .of(BdTags.Items.tag(woodType + "_planks")).build()))
-                            .save(pWriter, getRecipeId(slabName));
-                }
-            }
-        });
+        if (slabItem != null && planksItem != null) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, slabItem, 6)
+                    .pattern("000")
+                    .define('0', planksItem)
+                    .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item()
+                            .of(planksItem).build()))
+                    .save(pWriter, getRecipeId(slabName));
+        }
     }
 
-    private void generateGlassRecipe(RecipeOutput pWriter, String woodType, int number, int plankNumber) {
-        String plankName = woodType + "_planks_" + plankNumber;
+    private void generateGlassRecipe(RecipeOutput pWriter, String woodType, int number) {
         String glassName = woodType + "_glass_" + number;
         String glassPaneName = woodType + "_glass_pane_" + number;
 
-        TagKey<Item> woodPlanksTag = getWoodPlanksTag(woodType);
+        Supplier<Item> glassItemSupplier = BdBlocks.getBlockItemMap().get(glassName);
+        Supplier<Item> glassPaneItemSupplier = BdBlocks.getBlockItemMap().get(glassPaneName);
+        Item glassItem = glassItemSupplier != null ? glassItemSupplier.get() : null;
+        Item glassPaneItem = glassPaneItemSupplier != null ? glassPaneItemSupplier.get() : null;
 
-        BdBlocks.BLOCKS.getEntries().forEach(entry -> {
-            Block block = entry.get();
-
-            Item glassItem = BdBlocks.getBlockItemMap().get(glassName).get();
-
-            if (block.asItem().toString().equals(plankName)) {
-                if (block != Blocks.AIR && glassItem != Items.AIR) {
-                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, glassItem, 8)
-                            .pattern("000")
-                            .pattern("010")
-                            .pattern("000")
-                            .define('0', BdTags.Items.tag("glass"))
-                            .define('1', woodPlanksTag)
-                            .unlockedBy("has_glass", has(Tags.Items.GLASS_BLOCKS))
-                            .unlockedBy("has_glass_colorless", has(Tags.Items.GLASS_BLOCKS_COLORLESS))
-                            .save(pWriter, getRecipeId(glassName));
+        // Collect all plank variants for this wood type
+        java.util.List<Item> plankItems = new java.util.ArrayList<>();
+        Item vanillaPlank = getVanillaPlank(woodType);
+        if (vanillaPlank != null) {
+            plankItems.add(vanillaPlank);
+        }
+        for (int i = 1; i <= 7; i++) {
+            String plankName = woodType + "_planks_" + i;
+            Supplier<Item> plankSupplier = BdBlocks.getBlockItemMap().get(plankName);
+            if (plankSupplier != null) {
+                Item item = plankSupplier.get();
+                if (item != null) {
+                    plankItems.add(item);
                 }
             }
+        }
 
-            if (block.asItem().toString().equals(plankName)) {
-                Item glassPaneItem = BdBlocks.getBlockItemMap().get(glassPaneName).get();
+        if (glassItem != null && !plankItems.isEmpty()) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, glassItem, 8)
+                    .pattern("000")
+                    .pattern("010")
+                    .pattern("000")
+                    .define('0', Tags.Items.GLASS_BLOCKS)
+                    .define('1', Ingredient.of(plankItems.toArray(new Item[0]))) // Accept any plank variant
+                    .unlockedBy("has_glass", has(Tags.Items.GLASS_BLOCKS))
+                    .unlockedBy("has_glass_colorless", has(Tags.Items.GLASS_BLOCKS_COLORLESS))
+                    .save(pWriter, getRecipeId(glassName));
+        }
 
-                if (block != Blocks.AIR && glassItem != Items.AIR) {
-                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, glassPaneItem, 8)
-                            .pattern("000")
-                            .pattern("000")
-                            .define('0', glassItem)
-                            .unlockedBy("has_woodtype_glass", has(glassItem))
-                            .save(pWriter, getRecipeId(glassPaneName));
+        // Collect all glass variants for this wood type
+        java.util.List<Item> glassItems = new java.util.ArrayList<>();
+        for (int i = 1; i <= 8; i++) {
+            String glassVariantName = woodType + "_glass_" + i;
+            Supplier<Item> glassVariantSupplier = BdBlocks.getBlockItemMap().get(glassVariantName);
+            if (glassVariantSupplier != null) {
+                Item item = glassVariantSupplier.get();
+                if (item != null) {
+                    glassItems.add(item);
                 }
             }
-        });
+        }
+
+        if (glassPaneItem != null && !glassItems.isEmpty()) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, glassPaneItem, 8)
+                    .pattern("000")
+                    .pattern("000")
+                    .define('0', Ingredient.of(glassItems.toArray(new Item[0]))) // Accept any glass variant
+                    .unlockedBy("has_woodtype_glass", has(glassItems.get(0)))
+                    .save(pWriter, getRecipeId(glassPaneName));
+        }
     }
 
-    private TagKey<Item> getWoodPlanksTag(String woodType) {
+    private Item getVanillaPlank(String woodType) {
         return switch (woodType) {
-            case "acacia" -> BdTags.Items.tag("acacia_planks");
-            case "bamboo" -> BdTags.Items.tag("bamboo_planks");
-            case "birch" -> BdTags.Items.tag("birch_planks");
-            case "cherry" -> BdTags.Items.tag("cherry_planks");
-            case "crimson" -> BdTags.Items.tag("crimson_planks");
-            case "dark_oak" -> BdTags.Items.tag("dark_oak_planks");
-            case "jungle" -> BdTags.Items.tag("jungle_planks");
-            case "mangrove" -> BdTags.Items.tag("mangrove_planks");
-            case "oak" -> BdTags.Items.tag("oak_planks");
-            case "spruce" -> BdTags.Items.tag("spruce_planks");
-            case "warped" -> BdTags.Items.tag("warped_planks");
+            case "acacia" -> Items.ACACIA_PLANKS;
+            case "bamboo" -> Items.BAMBOO_PLANKS;
+            case "birch" -> Items.BIRCH_PLANKS;
+            case "cherry" -> Items.CHERRY_PLANKS;
+            case "crimson" -> Items.CRIMSON_PLANKS;
+            case "dark_oak" -> Items.DARK_OAK_PLANKS;
+            case "jungle" -> Items.JUNGLE_PLANKS;
+            case "mangrove" -> Items.MANGROVE_PLANKS;
+            case "oak" -> Items.OAK_PLANKS;
+            case "spruce" -> Items.SPRUCE_PLANKS;
+            case "warped" -> Items.WARPED_PLANKS;
             default -> null;
         };
     }
